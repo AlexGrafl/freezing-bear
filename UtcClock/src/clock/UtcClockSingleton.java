@@ -1,9 +1,13 @@
 package clock;
 
+import clock.commands.Command;
 import clock.types.ClockObserver;
+import com.sun.jmx.remote.internal.ClientCommunicatorAdmin;
+import javafx.beans.Observable;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Stack;
 import java.util.TimeZone;
 
 /**
@@ -17,8 +21,10 @@ public class UtcClockSingleton {
     private int hours;
     private int minutes;
     private int seconds;
-    public ArrayList<ClockObserver> clockObservers= new ArrayList<ClockObserver>();
+    public ArrayList<ClockObserver> clockObservers = new ArrayList<ClockObserver>();
 
+    public Stack<Command> doneStack = new Stack<Command>();
+    public Stack<Command> undoneStack = new Stack<Command>();
 
     public static UtcClockSingleton getInstance() {
         return ourInstance;
@@ -48,52 +54,43 @@ public class UtcClockSingleton {
         return seconds;
     }
 
-    public void incrementHours(){
+    public boolean incrementHours(){
         this.hours = (this.hours + 1) % 24;
+        return this.hours == 0;
     }
 
     public void decrementHours(){
         this.hours = (this.hours - 1) % 24;
     }
 
-    public void incrementMinutes(){
+    public boolean incrementMinutes(){
         this.minutes = (this.minutes + 1) % 60;
+        return this.minutes == 0;
     }
 
     public void decrementMinutes(){
         this.minutes = (this.minutes - 1) % 60;
     }
 
-    public void incrementSeconds(){
+    public boolean incrementSeconds(){
         this.seconds = (this.seconds + 1) % 60;
+        return this.seconds == 0;
     }
 
     public void decrementSeconds(){
         this.seconds = (this.seconds - 1) % 60;
     }
 
-    public boolean setHours(int hours){
-        if(0 <= hours && hours < 24){
-            this.hours = hours;
-            return true;
-        }
-        return false;
+    public void setHours(int hours) {
+        this.hours = hours;
     }
 
-    public boolean setMinutes(int minutes){
-        if(0 <= minutes && minutes < 60){
-            this.minutes= minutes;
-            return true;
-        }
-        return false;
+    public void setMinutes(int minutes) {
+        this.minutes = minutes;
     }
 
-    public boolean setSeconds(int seconds){
-        if(0 <= seconds && seconds < 60){
-            this.seconds = seconds;
-            return true;
-        }
-        return false;
+    public void setSeconds(int seconds) {
+        this.seconds = seconds;
     }
 
     public void registerObserver(ClockObserver observer){

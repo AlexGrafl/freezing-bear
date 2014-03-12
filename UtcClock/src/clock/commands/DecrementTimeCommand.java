@@ -3,8 +3,7 @@ package clock.commands;
 /**
  * @author Alex
  */
-public class IncrementTimeCommand implements Command {
-
+public class DecrementTimeCommand implements Command {
     @Override
     public void doCommand() {
         //get boolean values from checkboxes [x]hours []minutes [x]seconds
