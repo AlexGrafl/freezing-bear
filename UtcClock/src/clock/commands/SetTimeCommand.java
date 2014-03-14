@@ -20,15 +20,15 @@ public class SetTimeCommand implements Command{
 
     @Override
     public void doCommand() {
-        if(this.hours != -1) UtcClockSingleton.getInstance().setHours(hours);
-        if(this.minutes != -1 ) UtcClockSingleton.getInstance().setMinutes(minutes);
-        if(this.seconds != -1) UtcClockSingleton.getInstance().setSeconds(seconds);
+        if(hours != -1) UtcClockSingleton.getInstance().setHours(hours);
+        if(minutes != -1 ) UtcClockSingleton.getInstance().setMinutes(minutes);
+        if(seconds != -1) UtcClockSingleton.getInstance().setSeconds(seconds);
     }
 
     @Override
     public void undoCommand() {
-        UtcClockSingleton.getInstance().setHours(prevHours);
-        UtcClockSingleton.getInstance().setMinutes(prevMinutes);
-        UtcClockSingleton.getInstance().setSeconds(prevSeconds);
+        if(hours != -1) UtcClockSingleton.getInstance().setHours(prevHours);
+        if(minutes != -1)UtcClockSingleton.getInstance().setMinutes(prevMinutes);
+        if(seconds != -1) UtcClockSingleton.getInstance().setSeconds(prevSeconds);
     }
 }
