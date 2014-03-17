@@ -37,11 +37,13 @@
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
               <children>
-                <CheckBox layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Hours" />
-                <CheckBox layoutX="14.0" layoutY="40.0" mnemonicParsing="false" text="Minutes" />
-                <CheckBox layoutX="14.0" layoutY="67.0" mnemonicParsing="false" text="Seconds" />
-                <Button layoutX="122.0" layoutY="16.0" mnemonicParsing="false" text="Increment" />
-                <Button layoutX="122.0" layoutY="57.0" mnemonicParsing="false" text="Decrement" />
+                <CheckBox fx:id="hoursBool" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Hours" />
+                <CheckBox fx:id="minutesBool" layoutX="14.0" layoutY="40.0" mnemonicParsing="false" text="Minutes" />
+                <CheckBox fx:id="secondsBool" layoutX="14.0" layoutY="67.0" mnemonicParsing="false" text="Seconds" />
+                <Button layoutX="122.0" layoutY="16.0" mnemonicParsing="false" text="Increment"
+                        onAction="#incrementTime"/>
+                <Button layoutX="122.0" layoutY="57.0" mnemonicParsing="false" text="Decrement"
+                        onAction="#decrementTime"/>
               </children>
             </AnchorPane>
           </content>
@@ -89,7 +91,7 @@
     </Accordion>
     <Button layoutX="70.0" layoutY="370.0" mnemonicParsing="false" onAction="#redoCommand" text="Redo" />
     <Button layoutX="14.0" layoutY="370.0" mnemonicParsing="false" onAction="#undoCommand" text="Undo" />
-    <Label fx:id="error" layoutX="134.0" layoutY="373.0" text="" textFill="#ff3333" />
+    <Label fx:id="label" layoutX="134.0" layoutY="373.0" text=""  />
   </children>
   <padding>
     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

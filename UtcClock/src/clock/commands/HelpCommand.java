@@ -3,7 +3,7 @@ package clock.commands;
 /**
  * @author Alex
  */
-public class HelpCommand implements Command {
+public class HelpCommand extends Command {
     @Override
     public void doCommand() {
 
