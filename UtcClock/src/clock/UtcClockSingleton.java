@@ -105,10 +105,11 @@ public class UtcClockSingleton {
         return false;
     }
 
-    public void notifyAllObservers(){
+    public synchronized void notifyAllObservers(){
         for(ClockObserver observer : clockObservers){
             observer.updateObserver();
         }
     }
+
 
 }

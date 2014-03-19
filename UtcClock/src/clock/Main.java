@@ -2,10 +2,13 @@ package clock;
 
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.util.Arrays;
 import java.util.TimeZone;
@@ -20,6 +23,12 @@ public class Main extends Application implements Runnable{
         Parent root = FXMLLoader.load(getClass().getResource("controlPanel.fxml"));
         primaryStage.setTitle("UTC Clock - Control panel");
         primaryStage.setScene(new Scene(root));
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent windowEvent) {
+                Platform.exit();
+            }
+        });
         primaryStage.show();
         System.out.println("Started.");
         thread = new Thread(this);
@@ -28,8 +37,9 @@ public class Main extends Application implements Runnable{
     }
     @Override
     public void stop() {
-        System.out.println("Stopped.");
         running = false;
+        System.out.println("Stopped.");
+
     }
 
     public static void main(String[] args) {
@@ -48,7 +58,12 @@ public class Main extends Application implements Runnable{
                         UtcClockSingleton.getInstance().incrementHours();
 
                 //danach alle benachrichtigen
-                UtcClockSingleton.getInstance().notifyAllObservers();
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        UtcClockSingleton.getInstance().notifyAllObservers();
+                    }
+                });
                 System.out.format("%02d:%02d:%02d\n", UtcClockSingleton.getInstance().getHours(),
                         UtcClockSingleton.getInstance().getMinutes(), UtcClockSingleton.getInstance().getSeconds());
             } catch (InterruptedException e) {

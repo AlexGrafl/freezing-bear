@@ -15,6 +15,40 @@
   <children>
     <Accordion layoutX="14.0" layoutY="19.0" prefHeight="339.0" prefWidth="360.0">
       <expandedPane>
+        <TitledPane fx:id="x3" animated="false" text="Show">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <ComboBox layoutX="14.0" layoutY="35.0" fx:id="type">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="Type 1" />
+                      <String fx:value="Type 2" />
+                    </FXCollections>
+                  </items>
+                </ComboBox>
+                <Label layoutX="14.0" layoutY="14.0" text="Type" />
+                <Label layoutX="14.0" layoutY="77.0" text="Timezone" />
+                <ComboBox layoutX="14.0" layoutY="104.0" fx:id="timezone">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="Vienna" />
+                      <String fx:value="Moscow" />
+                      <String fx:value="Los Angeles" />
+                    </FXCollections>
+                  </items>
+                </ComboBox>
+                <Button layoutX="277.0" layoutY="35.0" mnemonicParsing="false" onAction="#showTime" text="Show" />
+                <TextField layoutX="143.0" layoutY="34.0" prefWidth="71.0" fx:id="xLocation"/>
+                <TextField layoutX="143.0" layoutY="102.0" prefWidth="71.0" fx:id="yLocation"/>
+                <Label layoutX="143.0" layoutY="19.0" text="X" />
+                <Label layoutX="143.0" layoutY="86.0" text="Y" />
+              </children>
+            </AnchorPane>
+          </content>
+        </TitledPane>
+      </expandedPane>
+      <panes>
         <TitledPane fx:id="x2" animated="false" text="Set">
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -30,9 +64,6 @@
             </AnchorPane>
           </content>
         </TitledPane>
-      </expandedPane>
-      <panes>
-        <fx:reference source="x2" />
         <TitledPane animated="false" text="Inc/dec">
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -40,43 +71,13 @@
                 <CheckBox fx:id="hoursBool" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Hours" />
                 <CheckBox fx:id="minutesBool" layoutX="14.0" layoutY="40.0" mnemonicParsing="false" text="Minutes" />
                 <CheckBox fx:id="secondsBool" layoutX="14.0" layoutY="67.0" mnemonicParsing="false" text="Seconds" />
-                <Button layoutX="122.0" layoutY="16.0" mnemonicParsing="false" text="Increment"
-                        onAction="#incrementTime"/>
-                <Button layoutX="122.0" layoutY="57.0" mnemonicParsing="false" text="Decrement"
-                        onAction="#decrementTime"/>
+                <Button layoutX="122.0" layoutY="16.0" mnemonicParsing="false" onAction="#incrementTime" text="Increment" />
+                <Button layoutX="122.0" layoutY="57.0" mnemonicParsing="false" onAction="#decrementTime" text="Decrement" />
               </children>
             </AnchorPane>
           </content>
         </TitledPane>
-        <TitledPane animated="false" text="Show">
-          <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-              <children>
-                <ComboBox layoutX="14.0" layoutY="35.0">
-                  <items>
-                    <FXCollections fx:factory="observableArrayList">
-                      <String fx:value="Item 1" />
-                      <String fx:value="Item 2" />
-                      <String fx:value="Item 3" />
-                    </FXCollections>
-                  </items>
-                </ComboBox>
-                <Label layoutX="14.0" layoutY="14.0" text="Type" />
-                <Label layoutX="14.0" layoutY="77.0" text="Timezone" />
-                <ComboBox layoutX="14.0" layoutY="104.0">
-                  <items>
-                    <FXCollections fx:factory="observableArrayList">
-                      <String fx:value="Item 1" />
-                      <String fx:value="Item 2" />
-                      <String fx:value="Item 3" />
-                    </FXCollections>
-                  </items>
-                </ComboBox>
-                <Button layoutX="132.0" layoutY="35.0" mnemonicParsing="false" text="Show" />
-              </children>
-            </AnchorPane>
-          </content>
-        </TitledPane>
+        <fx:reference source="x3" />
         <TitledPane fx:id="x1" animated="false" text="Help">
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -91,7 +92,7 @@
     </Accordion>
     <Button layoutX="70.0" layoutY="370.0" mnemonicParsing="false" onAction="#redoCommand" text="Redo" />
     <Button layoutX="14.0" layoutY="370.0" mnemonicParsing="false" onAction="#undoCommand" text="Undo" />
-    <Label fx:id="label" layoutX="134.0" layoutY="373.0" text=""  />
+    <Label fx:id="label" layoutX="134.0" layoutY="373.0" text="" />
   </children>
   <padding>
     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

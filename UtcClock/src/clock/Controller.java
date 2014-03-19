@@ -1,30 +1,25 @@
 package clock;
 
-import clock.commands.Command;
-import clock.commands.DecrementTimeCommand;
-import clock.commands.IncrementTimeCommand;
-import clock.commands.SetTimeCommand;
+import clock.commands.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class Controller {
 
-    @FXML
-    CheckBox hoursBool;
-    @FXML
-    CheckBox minutesBool;
-    @FXML
-    CheckBox secondsBool;
-    @FXML
-    TextField hours;
-    @FXML
-    TextField minutes;
-    @FXML
-    TextField seconds;
-    @FXML
-    Label label;
+    @FXML ComboBox type;
+    @FXML ComboBox timezone;
+    @FXML TextField xLocation;
+    @FXML TextField yLocation;
+    @FXML CheckBox hoursBool;
+    @FXML CheckBox minutesBool;
+    @FXML CheckBox secondsBool;
+    @FXML TextField hours;
+    @FXML TextField minutes;
+    @FXML TextField seconds;
+    @FXML Label label;
 
     @FXML
     public void setTime(){
@@ -54,6 +49,7 @@ public class Controller {
             printMessage("Command '" + lastCommand.getName() +"' undone.");
             UtcClockSingleton.getInstance().doneStack.pop();
             UtcClockSingleton.getInstance().undoneStack.push(lastCommand);
+            UtcClockSingleton.getInstance().notifyAllObservers();
         }
         else{
             printError("Nothing to undo!");
@@ -69,6 +65,7 @@ public class Controller {
             printMessage("Command '" + prevCommand.getName() +"' redone.");
             UtcClockSingleton.getInstance().undoneStack.pop();
             UtcClockSingleton.getInstance().doneStack.push(prevCommand);
+            UtcClockSingleton.getInstance().notifyAllObservers();
         }
         else{
             printError("Nothing to redo!");
@@ -103,5 +100,19 @@ public class Controller {
     public void printError(String err){
         label.setStyle("-fx-text-fill:red;");
         label.setText(err);
+    }
+
+    @FXML
+    public void showTime(){
+        int x;
+        int y;
+        try {
+            x = Integer.parseInt(xLocation.getText());
+            y = Integer.parseInt(yLocation.getText());
+        }
+        catch (NumberFormatException ignored){
+            x = y = -1;
+        }
+        executeCommand(new ShowCommand(type.getValue().toString(), timezone.getValue().toString(), x, y));
     }
 }

@@ -1,5 +1,7 @@
 package clock.types;
 
+import javafx.stage.Stage;
+
 /**
  * @author Alex
  *
@@ -8,9 +10,16 @@ package clock.types;
  *
  */
 public abstract class ClockObserver {
-
+    protected int offset;
     public ClockObserver(){ }
 
     public abstract void updateObserver();
+
+    public void setOffset(int offset){
+        this.offset = offset;
+    }
+
+    public abstract void setTimezoneLabel(String timezone);
+
 
 }
