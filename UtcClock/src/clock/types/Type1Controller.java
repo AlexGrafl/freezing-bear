@@ -14,7 +14,8 @@ public class Type1Controller extends ClockObserver{
 
     @Override
     public void updateObserver() {
-        time.setText(String.format("%02d:%02d:%02d\n", (UtcClockSingleton.getInstance().getHours() + super.offset) % 24,
+        time.setText(String.format("%02d:%02d:%02d\n", UtcClockSingleton.getInstance().modulo(
+                UtcClockSingleton.getInstance().getHours() + super.offset, 24),
                 UtcClockSingleton.getInstance().getMinutes(), UtcClockSingleton.getInstance().getSeconds()));
     }
 

@@ -55,30 +55,30 @@ public class UtcClockSingleton {
     }
 
     public boolean incrementHours(){
-        this.hours = (this.hours + 1) % 24;
+        this.hours = modulo(this.hours + 1, 24);
         return this.hours == 0;
     }
 
     public void decrementHours(){
-        this.hours = (this.hours - 1) % 24;
+        this.hours = modulo(this.hours - 1, 24);
     }
 
     public boolean incrementMinutes(){
-        this.minutes = (this.minutes + 1) % 60;
+        this.minutes = modulo(this.minutes + 1, 60);
         return this.minutes == 0;
     }
 
     public void decrementMinutes(){
-        this.minutes = (this.minutes - 1) % 60;
+        this.minutes = modulo(this.minutes - 1, 60);
     }
 
     public boolean incrementSeconds(){
-        this.seconds = (this.seconds + 1) % 60;
+        this.seconds = modulo(this.seconds + 1, 60);
         return this.seconds == 0;
     }
 
     public void decrementSeconds(){
-        this.seconds = (this.seconds - 1) % 60;
+        this.seconds = modulo(this.seconds - 1, 60);
     }
 
     public void setHours(int hours) {
@@ -111,5 +111,7 @@ public class UtcClockSingleton {
         }
     }
 
-
+     public int modulo(int value, int modulo){
+         return (((value% modulo) + modulo)% modulo);
+     }
 }
