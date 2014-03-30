@@ -11,5 +11,4 @@ import java.sql.SQLException;
 public interface IPlugin {
     public boolean acceptRequest(String requestUrl);
     public void runPlugin(Socket socket, UrlClass url) throws SQLException;
-    void returnPluginPage(Socket socket);
 }
