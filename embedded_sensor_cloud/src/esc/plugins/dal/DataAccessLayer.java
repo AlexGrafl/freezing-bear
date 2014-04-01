@@ -1,26 +1,23 @@
-package esc.plugins;
+package esc.plugins.dal;
+
+import esc.plugins.Contact;
+import esc.plugins.ResultSetMapper;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
  * @author Alex
  */
-public class DataAccessLayer {
-    private static DataAccessLayer ourInstance = new DataAccessLayer();
+public class DataAccessLayer implements IDataAccessLayer{
+
 
     private Connection connection;
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
     private String sql;
 
-    public static DataAccessLayer getInstance() {
-        return ourInstance;
-    }
-
-    private DataAccessLayer() {
+    public DataAccessLayer() {
         try {
             if (connection != null) connection.close();
 

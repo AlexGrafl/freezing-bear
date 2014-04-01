@@ -40,16 +40,18 @@ public class ResultSetMapper<T> {
                 for (int i = 1; i <= rsmd.getColumnCount(); i++) {
                     String rsColumnName = rsmd.getColumnName(i);
                     Object rsColumnValue = rs.getObject(i);
-                    for (Field field : fields) {
-                        if (field.isAnnotationPresent(Column.class)) {
-                            Column column = field.getAnnotation(Column.class);
-                            String beanColumnName = field.getName();
-                            if (!column.name().isEmpty()) {
-                                beanColumnName = column.name();
-                            }
-                            if (beanColumnName.equals(rsColumnName)) {
-                                BeanUtils.setProperty(bean, field.getName(), rsColumnValue);
-                                break;
+                    if(rsColumnValue != null) {
+                        for (Field field : fields) {
+                            if (field.isAnnotationPresent(Column.class)) {
+                                Column column = field.getAnnotation(Column.class);
+                                String beanColumnName = field.getName();
+                                if (!column.name().isEmpty()) {
+                                    beanColumnName = column.name();
+                                }
+                                if (beanColumnName.equals(rsColumnName)) {
+                                    BeanUtils.setProperty(bean, field.getName(), rsColumnValue);
+                                    break;
+                                }
                             }
                         }
                     }

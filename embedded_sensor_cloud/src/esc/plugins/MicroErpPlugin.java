@@ -1,14 +1,18 @@
 package esc.plugins;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import esc.HttpResponse;
 import esc.IPlugin;
 import esc.UrlClass;
+import esc.plugins.dal.DataAccessLayer;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.lang.reflect.Type;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,7 +20,7 @@ import java.util.List;
  */
 public class MicroErpPlugin implements IPlugin {
 
-    private BusinessLayer businessLayer = new BusinessLayer();
+    private BusinessLayer businessLayer = new BusinessLayer(new DataAccessLayer());
 
     @Override
     public boolean acceptRequest(String requestUrl){
@@ -28,7 +32,8 @@ public class MicroErpPlugin implements IPlugin {
             System.out.println("woo");
             Gson gson = new Gson();
             List<Contact> contactList = businessLayer.searchContacts(url.getParameters().get("q").toString());
-            String json = gson.toJson(contactList);
+            Type arrayType = new TypeToken<ArrayList<Contact>>(){}.getType();
+            String json = gson.toJson(contactList, arrayType);
             System.out.println("JSON: " + json);
             sendResponse(json, socket);
         }

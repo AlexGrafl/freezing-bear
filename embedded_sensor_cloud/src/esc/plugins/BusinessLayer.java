@@ -1,5 +1,8 @@
 package esc.plugins;
 
+import esc.plugins.dal.DataAccessLayer;
+import esc.plugins.dal.IDataAccessLayer;
+
 import java.util.List;
 
 /**
@@ -7,8 +10,14 @@ import java.util.List;
  */
 public class BusinessLayer {
 
+    private IDataAccessLayer dataAccessLayer;
+
+    public BusinessLayer(IDataAccessLayer dataAccessLayer){
+        this.dataAccessLayer = dataAccessLayer;
+    }
+
     public List<Contact> searchContacts(String text){
-        return DataAccessLayer.getInstance().searchContacts(text, true);
+        return dataAccessLayer.searchContacts(text, true);
     }
 
 }

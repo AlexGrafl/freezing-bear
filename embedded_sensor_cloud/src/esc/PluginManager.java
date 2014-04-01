@@ -21,6 +21,7 @@ public class PluginManager {
             File[] fileList = dir.listFiles();
             if(fileList != null){
                 for(File file : fileList){
+                    if(file.isDirectory()) continue;
                     //magic
                     Object o;
                     Class c = classLoader.loadClass("esc.plugins." + (file.getName()).split("\\.")[0]);

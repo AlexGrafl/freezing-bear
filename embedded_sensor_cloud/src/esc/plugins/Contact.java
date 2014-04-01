@@ -12,12 +12,14 @@ import java.util.HashSet;
 @Entity
 public class Contact {
 
+
+
     @Column(name="contactID")
     private int contactID;
     @Column(name="name")
     private String name;
     @Column(name="uid")
-    private int uid;
+    private Integer uid;
     @Column(name="title")
     private String title;
     @Column(name="firstName")
@@ -38,6 +40,23 @@ public class Contact {
     private boolean isActive;
     private HashSet<Invoice> invoiceList;
 
+    public Contact(){}
+    public Contact(int contactID, String name, int uid, String title, String firstName, String lastName,
+                   String suffix, Date birthDate, String address, String invoiceAddress,
+                   String shippingAddress, boolean isActive) {
+        this.contactID = contactID;
+        this.name = name;
+        this.uid = uid;
+        this.title = title;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.suffix = suffix;
+        this.birthDate = birthDate;
+        this.address = address;
+        this.invoiceAddress = invoiceAddress;
+        this.shippingAddress = shippingAddress;
+        this.isActive = isActive;
+    }
     public int getContactID() {
         return contactID;
     }
@@ -54,7 +73,7 @@ public class Contact {
         this.name = name;
     }
 
-    public int getUid() {
+    public Integer getUid() {
         return uid;
     }
 
