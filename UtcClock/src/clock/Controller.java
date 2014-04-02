@@ -2,8 +2,7 @@ package clock;
 
 import clock.commands.*;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -20,6 +19,7 @@ public class Controller {
     @FXML TextField minutes;
     @FXML TextField seconds;
     @FXML Label label;
+    @FXML javafx.scene.control.TextArea helpText;
 
     @FXML
     public void setTime(){
@@ -50,6 +50,7 @@ public class Controller {
             UtcClockSingleton.getInstance().doneStack.pop();
             UtcClockSingleton.getInstance().undoneStack.push(lastCommand);
             UtcClockSingleton.getInstance().notifyAllObservers();
+            this.helpText.setText( UtcClockSingleton.getInstance().getHelpMessage());
         }
         else{
             printError("Nothing to undo!");
@@ -66,6 +67,7 @@ public class Controller {
             UtcClockSingleton.getInstance().undoneStack.pop();
             UtcClockSingleton.getInstance().doneStack.push(prevCommand);
             UtcClockSingleton.getInstance().notifyAllObservers();
+            this.helpText.setText( UtcClockSingleton.getInstance().getHelpMessage());
         }
         else{
             printError("Nothing to redo!");
@@ -83,13 +85,31 @@ public class Controller {
         executeCommand(new DecrementTimeCommand(hoursBool.isSelected(), minutesBool.isSelected(),
                 secondsBool.isSelected()));
     }
-
+    @FXML
+    public void macroIncrement10(){
+        executeCommand(new MacroIncr10Command(hoursBool.isSelected(), minutesBool.isSelected(),
+                secondsBool.isSelected()));
+    }
+    @FXML
+    public void macroDecrement10(){
+        executeCommand(new MacroDecr10Command(hoursBool.isSelected(), minutesBool.isSelected(),
+                secondsBool.isSelected()));
+    }
+    @FXML
+    public void showHelp(){
+        executeCommand(new HelpCommand());
+    }
+    @FXML
+    public void crazyMacro(){
+        executeCommand(new CrazyMacro());
+    }
     public void executeCommand(Command cmd){
         cmd.doCommand();
         printMessage("Command '" + cmd.getName() + "' executed.");
         UtcClockSingleton.getInstance().doneStack.push(cmd);
         UtcClockSingleton.getInstance().undoneStack.clear();
         UtcClockSingleton.getInstance().notifyAllObservers();
+        this.helpText.setText( UtcClockSingleton.getInstance().getHelpMessage());
     }
 
     public void printMessage(String msg){

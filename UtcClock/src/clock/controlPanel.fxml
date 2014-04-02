@@ -15,34 +15,19 @@
   <children>
     <Accordion layoutX="14.0" layoutY="19.0" prefHeight="339.0" prefWidth="360.0">
       <expandedPane>
-        <TitledPane fx:id="x3" animated="false" text="Show">
+        <TitledPane fx:id="x4" animated="false" text="Inc/dec">
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
               <children>
-                <ComboBox layoutX="14.0" layoutY="35.0" fx:id="type">
-                  <items>
-                    <FXCollections fx:factory="observableArrayList">
-                      <String fx:value="Type 1" />
-                      <String fx:value="Type 2" />
-                    </FXCollections>
-                  </items>
-                </ComboBox>
-                <Label layoutX="14.0" layoutY="14.0" text="Type" />
-                <Label layoutX="14.0" layoutY="77.0" text="Timezone" />
-                <ComboBox layoutX="14.0" layoutY="104.0" fx:id="timezone">
-                  <items>
-                    <FXCollections fx:factory="observableArrayList">
-                      <String fx:value="Vienna" />
-                      <String fx:value="Moscow" />
-                      <String fx:value="Los Angeles" />
-                    </FXCollections>
-                  </items>
-                </ComboBox>
-                <Button layoutX="277.0" layoutY="35.0" mnemonicParsing="false" onAction="#showTime" text="Show" />
-                <TextField layoutX="143.0" layoutY="34.0" prefWidth="71.0" fx:id="xLocation"/>
-                <TextField layoutX="143.0" layoutY="102.0" prefWidth="71.0" fx:id="yLocation"/>
-                <Label layoutX="143.0" layoutY="19.0" text="X" />
-                <Label layoutX="143.0" layoutY="86.0" text="Y" />
+                <CheckBox fx:id="hoursBool" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Hours" />
+                <CheckBox fx:id="minutesBool" layoutX="14.0" layoutY="40.0" mnemonicParsing="false" text="Minutes" />
+                <CheckBox fx:id="secondsBool" layoutX="14.0" layoutY="67.0" mnemonicParsing="false" text="Seconds" />
+                <Button layoutX="122.0" layoutY="16.0" mnemonicParsing="false" onAction="#incrementTime" prefWidth="86.0" text="Increment" />
+                <Button layoutX="122.0" layoutY="48.0" mnemonicParsing="false" onAction="#decrementTime" prefWidth="86.0" text="Decrement" />
+                <Button layoutX="122.0" layoutY="118.0" minHeight="16.0" mnemonicParsing="false" onAction="#macroIncrement10" prefHeight="21.0" prefWidth="86.0" text="10x Incr." />
+                <Label layoutX="17.0" layoutY="108.0" text="Macros:" />
+                <Button layoutX="122.0" layoutY="150.0" mnemonicParsing="false" onAction="#macroDecrement10" prefWidth="86.0" text="10x Decr." />
+                <Button fx:id="crazyMacroButton" layoutX="122.0" layoutY="184.0" mnemonicParsing="false" onAction="#crazyMacro" prefWidth="85.99990000000253" text="DO IT!" />
               </children>
             </AnchorPane>
           </content>
@@ -64,26 +49,48 @@
             </AnchorPane>
           </content>
         </TitledPane>
-        <TitledPane animated="false" text="Inc/dec">
+        <fx:reference source="x4" />
+        <TitledPane fx:id="x3" animated="false" text="Show">
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
               <children>
-                <CheckBox fx:id="hoursBool" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Hours" />
-                <CheckBox fx:id="minutesBool" layoutX="14.0" layoutY="40.0" mnemonicParsing="false" text="Minutes" />
-                <CheckBox fx:id="secondsBool" layoutX="14.0" layoutY="67.0" mnemonicParsing="false" text="Seconds" />
-                <Button layoutX="122.0" layoutY="16.0" mnemonicParsing="false" onAction="#incrementTime" text="Increment" />
-                <Button layoutX="122.0" layoutY="57.0" mnemonicParsing="false" onAction="#decrementTime" text="Decrement" />
+                <ComboBox fx:id="type" layoutX="14.0" layoutY="35.0" value="Type 1">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="Type 1" />
+                      <String fx:value="Type 2" />
+                    </FXCollections>
+                  </items>
+                </ComboBox>
+                <Label layoutX="14.0" layoutY="14.0" text="Type" />
+                <Label layoutX="14.0" layoutY="77.0" text="Timezone" />
+                <ComboBox fx:id="timezone" layoutX="14.0" layoutY="104.0" value="UTC">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="UTC" />
+                      <String fx:value="Vienna" />
+                      <String fx:value="Moscow" />
+                      <String fx:value="Sydney" />
+                      <String fx:value="Los Angeles" />
+                    </FXCollections>
+                  </items>
+                </ComboBox>
+                <Button layoutX="277.0" layoutY="35.0" mnemonicParsing="false" onAction="#showTime" text="Show" />
+                <TextField fx:id="xLocation" layoutX="143.0" layoutY="34.0" prefWidth="71.0" />
+                <TextField fx:id="yLocation" layoutX="143.0" layoutY="102.0" prefWidth="71.0" />
+                <Label layoutX="143.0" layoutY="19.0" text="X" />
+                <Label layoutX="143.0" layoutY="86.0" text="Y" />
               </children>
             </AnchorPane>
           </content>
         </TitledPane>
-        <fx:reference source="x3" />
         <TitledPane fx:id="x1" animated="false" text="Help">
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
               <children>
-                <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Show help" />
-                <TextArea layoutX="14.0" layoutY="49.0" prefHeight="186.0" prefWidth="330.0" wrapText="true" />
+                <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#showHelp" text="Show help" />
+                <TextArea fx:id="helpText" layoutX="14.0" layoutY="49.0" prefHeight="186.0" prefWidth="330.0"
+                          text="Nothing to see here!" wrapText="true" />
               </children>
             </AnchorPane>
           </content>

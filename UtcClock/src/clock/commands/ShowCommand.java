@@ -3,6 +3,7 @@ package clock.commands;
 import clock.UtcClockSingleton;
 import clock.types.ClockObserver;
 import clock.types.Type1Controller;
+import clock.types.Type2Controller;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,13 +23,13 @@ public class ShowCommand extends Command {
     private Stage stage;
     private int xLocation,yLocation;
 
-    public ShowCommand(String type, String timezone, int xLocation, int yLocation){
+    public ShowCommand(String type, String timezone, int xLocation, int yLocation) {
         super.setName("Show");
         int offset;
         this.xLocation = xLocation;
         this.yLocation = yLocation;
 
-        if (timezone.equals("Vienna")) {
+        if(timezone.equals("Vienna")) {
             offset = 1;
         } else if (timezone.equals("Moscow")) {
             offset = 4;
@@ -38,11 +39,15 @@ public class ShowCommand extends Command {
             offset = -8;
         } else {
             offset = 0;
+            timezone = "UTC";
         }
 
         FXMLLoader f1 = new FXMLLoader();
         if (type.equals("Type 1")) {
             f1.setLocation(getClass().getResource("../types/type1.fxml"));
+        }
+        if (type.equals("Type 2")) {
+            f1.setLocation(getClass().getResource("../types/type2.fxml"));
         }
         try {
             f1.load();

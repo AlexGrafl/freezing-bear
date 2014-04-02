@@ -12,7 +12,7 @@
 <?import javafx.scene.text.*?>
 <?scenebuilder-background-color 0xcce0ffff?>
 
-<fx:root type="javafx.scene.layout.AnchorPane" id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" opacity="1.0" prefHeight="203.0" prefWidth="315.0" visible="true" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="clock.types.Type1Controller">
+<fx:root type="javafx.scene.layout.AnchorPane" id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="203.0" prefWidth="315.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="clock.types.Type2Controller">
   <children>
     <Label fx:id="time" layoutX="10.0" layoutY="54.0" prefWidth="291.0" text="">
       <font>

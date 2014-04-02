@@ -5,10 +5,9 @@ import clock.types.ClockObserver;
 import com.sun.jmx.remote.internal.ClientCommunicatorAdmin;
 import javafx.beans.Observable;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Stack;
-import java.util.TimeZone;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * @author Alex
@@ -21,6 +20,7 @@ public class UtcClockSingleton {
     private int hours;
     private int minutes;
     private int seconds;
+    private String helpMessage;
     public ArrayList<ClockObserver> clockObservers = new ArrayList<ClockObserver>();
 
     public Stack<Command> doneStack = new Stack<Command>();
@@ -111,7 +111,22 @@ public class UtcClockSingleton {
         }
     }
 
-     public int modulo(int value, int modulo){
+    public int modulo(int value, int modulo){
          return (((value% modulo) + modulo)% modulo);
      }
+
+    public void setHelpMessage(String message){ helpMessage = message; }
+    public String getHelpMessage() { return helpMessage; }
+
+    public String convertToAMPM(int h){
+        SimpleDateFormat displayFormat = new SimpleDateFormat("hh a");
+        SimpleDateFormat parseFormat = new SimpleDateFormat("HH");
+        Date date = null;
+        try {
+            date = parseFormat.parse(Integer.toString(h));
+        } catch (ParseException e) {
+            System.out.println("Couldn't convert time: " + Integer.toString(h));
+        }
+        return displayFormat.format(date);
+    }
 }
