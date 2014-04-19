@@ -15,7 +15,14 @@
       <items>
         <Button fx:id="circle" mnemonicParsing="false" text="Cricle" />
         <Button fx:id="rect" mnemonicParsing="false" text="Rectangle" />
+        <Button fx:id="ellipse" mnemonicParsing="false" text="Ellipse" />
+        <Button fx:id="square" mnemonicParsing="false" text="Square" />
+        <Button fx:id="pen" mnemonicParsing="false" text="Pen" />
+        <Separator orientation="VERTICAL" prefHeight="21.0" />
         <ColorPicker fx:id="colorPicker" />
+        <Separator orientation="VERTICAL" prefHeight="21.0" />
+        <Label fx:id="scaleLabel" text="Scale" />
+        <Slider fx:id="scaleSlide" prefWidth="97.0" />
       </items>
     </ToolBar>
   </top>
