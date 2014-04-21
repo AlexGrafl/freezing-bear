@@ -36,10 +36,21 @@ public class Main extends Application {
         canvas.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
-                ColorPicker colorPicker = (ColorPicker) root.lookup("#colorPicker");
-                GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
-                graphicsContext.setFill(colorPicker.getValue());
-                graphicsContext.fillRect(me.getX(), me.getY(), 20, 20);
+                switch(me.getButton()){
+
+                    case PRIMARY:
+                        ColorPicker colorPicker = (ColorPicker) root.lookup("#colorPicker");
+                        GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
+                        graphicsContext.setFill(colorPicker.getValue());
+                        graphicsContext.fillRect(me.getX(), me.getY(), 20, 20);
+                        // do the stuff here with prototype adding to model and drawing the shit
+                        break;
+                    case SECONDARY:
+                        ObjectModel.getInstance().addObjectToSelection(me.getX(), me.getY(), me.isControlDown());
+                        //draw selection boxes
+                        break;
+                }
+
             }
         });
         return canvas;

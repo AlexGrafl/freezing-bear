@@ -1,23 +1,28 @@
 package graphicseditor.factory.shapes;
 
 import graphicseditor.factory.ShapePrototype;
+import javafx.scene.shape.Ellipse;
 
-public class Ellipse implements ShapePrototype
-{
+public class CustomEllipse extends Ellipse implements ShapePrototype {
+
     private String name = null;
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     @Override
-    public Ellipse clone() throws CloneNotSupportedException {
-        return (Ellipse) super.clone();
+    public CustomEllipse clone() throws CloneNotSupportedException {
+        return (CustomEllipse) super.clone();
     }
+
     @Override
     public String toString() {
-        return "Ellipse";
+        return "CustomEllipse";
     }
 }
 

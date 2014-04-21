@@ -1,23 +1,28 @@
 package graphicseditor.factory.shapes;
 
 import graphicseditor.factory.ShapePrototype;
+import javafx.scene.shape.Rectangle;
 
-public class Rectangle implements ShapePrototype
-{
+public class CustomRectange extends Rectangle implements ShapePrototype {
+
     private String name = null;
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     @Override
-    public Rectangle clone() throws CloneNotSupportedException {
-        return (Rectangle) super.clone();
+    public CustomRectange clone() throws CloneNotSupportedException {
+        return (CustomRectange) super.clone();
     }
+
     @Override
     public String toString() {
-        return "Rectangle";
+        return "CustomRectange";
     }
 }
 
