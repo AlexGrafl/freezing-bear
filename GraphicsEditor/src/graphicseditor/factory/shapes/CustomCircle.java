@@ -25,6 +25,22 @@ public class CustomCircle extends Circle implements ShapePrototype  {
     }
 
     @Override
+    public void setPosition(double x, double y) {
+        super.setCenterY(y);
+        super.setCenterX(x);
+    }
+
+    @Override
+    public double getX() {
+        return super.getCenterX();
+    }
+
+    @Override
+    public double getY() {
+        return super.getCenterY();
+    }
+
+    @Override
     public String toString() {
         return "Circle";
     }

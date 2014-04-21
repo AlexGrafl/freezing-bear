@@ -20,7 +20,7 @@ public class ShapeFactory
     {
         prototypes.put(ModelType.CIRCLE, new CustomCircle());
         prototypes.put(ModelType.ELLIPSE, new CustomEllipse());
-        prototypes.put(ModelType.RECTANGLE, new CustomRectange());
+        prototypes.put(ModelType.RECTANGLE, new CustomRectangle());
         prototypes.put(ModelType.SQUARE, new Square());
         prototypes.put(ModelType.PEN, new Pen());
     }

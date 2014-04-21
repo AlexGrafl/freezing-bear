@@ -1,8 +1,13 @@
 package graphicseditor;
 
-import javafx.scene.canvas.GraphicsContext;
+import graphicseditor.factory.ShapePrototype;
+import javafx.geometry.Bounds;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
+import javafx.scene.shape.StrokeLineJoin;
+import javafx.scene.shape.StrokeType;
 
 import java.util.LinkedList;
 
@@ -26,25 +31,34 @@ public class ObjectModel {
         objectList.add(shape);
     }
 
-    public void addObject(double x, double y){
-
-    }
-
     public void addObjectToSelection(double x, double y, boolean isCtrlDown){
         for(Shape shape : objectList){
             if(shape.contains(x, y)){
                 if(!isCtrlDown) selectionList.clear();
-                //Rectangle selection = new Rectangle(shape.getLayoutX(), shape.getLayoutY());
                 selectionList.add(shape);
+                return;
             }
         }
     }
 
-    //public void drawSelection(GraphicsContext graphicsContext2D) {
-   //     for(Shape)
-   // }
+    public LinkedList<Rectangle> getSelectionBoxes(){
+        LinkedList<Rectangle> rectangles = new LinkedList<Rectangle>();
+        for(Shape shape : selectionList){
+            Bounds bounds = shape.getBoundsInParent();
+            Rectangle selection = new Rectangle(bounds.getMaxX() - (bounds.getMaxX() - bounds.getMinX()),
+                    bounds.getMaxY() - (bounds.getMaxY() - bounds.getMinY()),
+                    bounds.getWidth(), bounds.getHeight());
+            selection.setFill(new Color(0, 0, 0, 0));
+            selection.setStroke(Color.BLACK);
+            selection.setStrokeType(StrokeType.CENTERED);
+            selection.getStrokeDashArray().add(3.0);
+            rectangles.add(selection);
+        }
+        return rectangles;
+    }
 
-   // public void drawObjects(GraphicsContext graphicsContext2D) {
-  //
-  //  }
+
+    public LinkedList<Shape> getModel() {
+        return objectList;
+    }
 }

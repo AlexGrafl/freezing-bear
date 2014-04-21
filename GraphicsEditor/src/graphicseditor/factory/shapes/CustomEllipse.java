@@ -24,6 +24,22 @@ public class CustomEllipse extends Ellipse implements ShapePrototype {
     }
 
     @Override
+    public void setPosition(double x, double y) {
+        super.setCenterX(x);
+        super.setCenterY(y);
+    }
+
+    @Override
+    public double getX() {
+        return super.getCenterX();
+    }
+
+    @Override
+    public double getY() {
+        return super.getCenterY();
+    }
+
+    @Override
     public String toString() {
         return "Ellipse";
     }

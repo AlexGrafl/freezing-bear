@@ -1,6 +1,7 @@
 package graphicseditor;
 
 import graphicseditor.factory.ShapeFactory;
+import graphicseditor.factory.ShapePrototype;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +12,9 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 
@@ -19,25 +22,24 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     Parent root;
+    Pane canvasPane;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         root = FXMLLoader.load(getClass().getResource("editor.fxml"));
         primaryStage.setTitle("Graphics Editor");
-        StackPane canvasPane = (StackPane) root.lookup("#canvasPane");
-        canvasPane.getChildren().add(setUpCanvas(primaryStage));
+        canvasPane  = (Pane) root.lookup("#canvasPane");
+        setUpCanvas();
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 
-    private Canvas setUpCanvas(Stage primaryStage) {
-        final Canvas canvas = new Canvas();
-        canvas.widthProperty().bind(primaryStage.widthProperty());
-        canvas.heightProperty().bind(primaryStage.heightProperty());
-        canvas.setCursor(Cursor.CROSSHAIR);
-        canvas.setOnMousePressed(new EventHandler<MouseEvent>() {
+    private void setUpCanvas() {
+        canvasPane.setCursor(Cursor.CROSSHAIR);
+        canvasPane.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
+                canvasPane.getChildren().clear();
                 switch(me.getButton()){
 
                     case PRIMARY:
@@ -46,7 +48,7 @@ public class Main extends Application {
                         try {
                             Shape shape = (Shape) ShapeFactory.getInstance(comboBox.getValue().toString());
                             shape.setFill(colorPicker.getValue());
-                            shape.relocate(me.getX(), me.getY());
+                            ((ShapePrototype) shape).setPosition(me.getX(), me.getY());
                             ObjectModel.getInstance().addShapeToModel(shape);
                         } catch (CloneNotSupportedException e) {
                             e.printStackTrace();
@@ -57,17 +59,20 @@ public class Main extends Application {
                         ObjectModel.getInstance().addObjectToSelection(me.getX(), me.getY(), me.isControlDown());
                         break;
                 }
+                for(Shape shape : ObjectModel.getInstance().getModel()){
+                    //redraw everything
+                    canvasPane.getChildren().add(shape);
+                }
 
-          //      ObjectModel.getInstance().drawObjects(canvas.getGraphicsContext2D());
-            //    ObjectModel.getInstance().drawSelection(canvas.getGraphicsContext2D());
-
-
+                for(Rectangle rectangle : ObjectModel.getInstance().getSelectionBoxes()){
+                    //selection
+                    canvasPane.getChildren().add(rectangle);
+                }
                 //redraw canvas, incl. selection
 
             }
 
         });
-        return canvas;
     }
 
 

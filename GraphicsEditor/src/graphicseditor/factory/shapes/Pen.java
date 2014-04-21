@@ -21,6 +21,21 @@ public class Pen extends Circle implements ShapePrototype {
     }
 
     @Override
+    public void setPosition(double x, double y) {
+
+    }
+
+    @Override
+    public double getX() {
+        return 0;
+    }
+
+    @Override
+    public double getY() {
+        return 0;
+    }
+
+    @Override
     public String toString() {
         return "Pen";
     }

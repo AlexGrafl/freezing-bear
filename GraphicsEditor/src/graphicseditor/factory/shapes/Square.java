@@ -26,6 +26,12 @@ public class Square extends Rectangle implements ShapePrototype {
     }
 
     @Override
+    public void setPosition(double x, double y) {
+        super.setX(x - (super.getHeight() / 2));
+        super.setY(y - (super.getWidth() / 2));
+    }
+
+    @Override
     public String toString() {
         return "Square";
     }

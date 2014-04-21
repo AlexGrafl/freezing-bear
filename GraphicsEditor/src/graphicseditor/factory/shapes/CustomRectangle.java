@@ -3,9 +3,9 @@ package graphicseditor.factory.shapes;
 import graphicseditor.factory.ShapePrototype;
 import javafx.scene.shape.Rectangle;
 
-public class CustomRectange extends Rectangle implements ShapePrototype {
+public class CustomRectangle extends Rectangle implements ShapePrototype {
 
-    public CustomRectange(){
+    public CustomRectangle(){
         super(40, 20);
     }
     private String name = null;
@@ -19,8 +19,14 @@ public class CustomRectange extends Rectangle implements ShapePrototype {
     }
 
     @Override
-    public CustomRectange clone() throws CloneNotSupportedException {
-        return (CustomRectange) super.clone();
+    public CustomRectangle clone() throws CloneNotSupportedException {
+        return (CustomRectangle) super.clone();
+    }
+
+    @Override
+    public void setPosition(double x, double y) {
+        super.setX(x - (super.getWidth() / 2));
+        super.setY(y - (super.getHeight() / 2));
     }
 
     @Override
