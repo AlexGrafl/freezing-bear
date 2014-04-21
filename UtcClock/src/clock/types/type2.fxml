@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.*?>
+<?scenebuilder-background-color 0xcce0ffff?>
+
+<fx:root type="javafx.scene.layout.AnchorPane" id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="203.0" prefWidth="315.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="clock.types.Type2Controller">
+  <children>
+    <Label fx:id="time" layoutX="10.0" layoutY="54.0" prefWidth="291.0" text="">
+      <font>
+        <Font size="72.0" />
+      </font>
+    </Label>
+    <Label fx:id="timezone" layoutX="14.0" layoutY="14.0" text="" />
+    <Label fx:id="type" layoutX="261.0" layoutY="54.0" text="" />
+  </children>
+  <padding>
+    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+  </padding>
+</fx:root>
