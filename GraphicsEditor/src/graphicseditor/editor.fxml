@@ -2,6 +2,7 @@
 
 <?import java.lang.*?>
 <?import java.util.*?>
+<?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
@@ -13,11 +14,17 @@
   <top>
     <ToolBar>
       <items>
-        <Button fx:id="circle" mnemonicParsing="false" text="Cricle" />
-        <Button fx:id="rect" mnemonicParsing="false" text="Rectangle" />
-        <Button fx:id="ellipse" mnemonicParsing="false" text="Ellipse" />
-        <Button fx:id="square" mnemonicParsing="false" text="Square" />
-        <Button fx:id="pen" mnemonicParsing="false" text="Pen" />
+        <ComboBox fx:id="typeBox">
+          <items>
+            <FXCollections fx:factory="observableArrayList">
+              <String fx:value="Rectangle" />
+              <String fx:value="Circle" />
+              <String fx:value="Ellipse" />
+              <String fx:value="Square" />
+              <String fx:value="Pen" />
+            </FXCollections>
+          </items>
+        </ComboBox>
         <Separator orientation="VERTICAL" prefHeight="21.0" />
         <ColorPicker fx:id="colorPicker" />
         <Separator orientation="VERTICAL" prefHeight="21.0" />
