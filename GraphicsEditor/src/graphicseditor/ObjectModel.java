@@ -1,5 +1,7 @@
 package graphicseditor;
 
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
 import java.util.LinkedList;
@@ -32,9 +34,17 @@ public class ObjectModel {
         for(Shape shape : objectList){
             if(shape.contains(x, y)){
                 if(!isCtrlDown) selectionList.clear();
+                //Rectangle selection = new Rectangle(shape.getLayoutX(), shape.getLayoutY());
                 selectionList.add(shape);
             }
         }
     }
 
+    //public void drawSelection(GraphicsContext graphicsContext2D) {
+   //     for(Shape)
+   // }
+
+   // public void drawObjects(GraphicsContext graphicsContext2D) {
+  //
+  //  }
 }

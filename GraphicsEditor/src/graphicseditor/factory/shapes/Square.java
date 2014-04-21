@@ -6,6 +6,9 @@ import javafx.scene.shape.Rectangle;
 public class Square extends Rectangle implements ShapePrototype {
 
     //height = width, aber ka noch wie, man kann die setHeight, setWidth vom parent nicht überschreiben...
+    public Square (){
+        super(30, 30);
+    }
 
     private String name = null;
 

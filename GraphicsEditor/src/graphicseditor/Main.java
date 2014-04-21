@@ -1,5 +1,6 @@
 package graphicseditor;
 
+import graphicseditor.factory.ShapeFactory;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -7,10 +8,11 @@ import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 
 
@@ -40,18 +42,30 @@ public class Main extends Application {
 
                     case PRIMARY:
                         ColorPicker colorPicker = (ColorPicker) root.lookup("#colorPicker");
-                        GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
-                        graphicsContext.setFill(colorPicker.getValue());
-                        graphicsContext.fillRect(me.getX(), me.getY(), 20, 20);
-                        // do the stuff here with prototype adding to model and drawing the shit
+                        ComboBox comboBox = (ComboBox) root.lookup("#typeBox");
+                        try {
+                            Shape shape = (Shape) ShapeFactory.getInstance(comboBox.getValue().toString());
+                            shape.setFill(colorPicker.getValue());
+                            shape.relocate(me.getX(), me.getY());
+                            ObjectModel.getInstance().addShapeToModel(shape);
+                        } catch (CloneNotSupportedException e) {
+                            e.printStackTrace();
+                        }
+
                         break;
                     case SECONDARY:
                         ObjectModel.getInstance().addObjectToSelection(me.getX(), me.getY(), me.isControlDown());
-                        //draw selection boxes
                         break;
                 }
 
+          //      ObjectModel.getInstance().drawObjects(canvas.getGraphicsContext2D());
+            //    ObjectModel.getInstance().drawSelection(canvas.getGraphicsContext2D());
+
+
+                //redraw canvas, incl. selection
+
             }
+
         });
         return canvas;
     }

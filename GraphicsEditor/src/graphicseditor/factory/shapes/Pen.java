@@ -1,8 +1,9 @@
 package graphicseditor.factory.shapes;
 
 import graphicseditor.factory.ShapePrototype;
+import javafx.scene.shape.Circle;
 
-public class Pen implements ShapePrototype {
+public class Pen extends Circle implements ShapePrototype {
 
     private String name = null;
 

@@ -5,6 +5,10 @@ import javafx.scene.shape.Circle;
 
 public class CustomCircle extends Circle implements ShapePrototype  {
 
+    public CustomCircle(){
+        super(15);
+    }
+
     private String name = null;
 
     public String getName() {
@@ -22,7 +26,7 @@ public class CustomCircle extends Circle implements ShapePrototype  {
 
     @Override
     public String toString() {
-        return "CustomCircle";
+        return "Circle";
     }
 }
 

@@ -5,6 +5,9 @@ import javafx.scene.shape.Ellipse;
 
 public class CustomEllipse extends Ellipse implements ShapePrototype {
 
+    public CustomEllipse(){
+        super(40, 20);
+    }
     private String name = null;
 
     public String getName() {
@@ -22,7 +25,7 @@ public class CustomEllipse extends Ellipse implements ShapePrototype {
 
     @Override
     public String toString() {
-        return "CustomEllipse";
+        return "Ellipse";
     }
 }
 

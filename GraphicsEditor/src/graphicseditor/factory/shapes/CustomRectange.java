@@ -5,6 +5,9 @@ import javafx.scene.shape.Rectangle;
 
 public class CustomRectange extends Rectangle implements ShapePrototype {
 
+    public CustomRectange(){
+        super(40, 20);
+    }
     private String name = null;
 
     public String getName() {
@@ -22,7 +25,7 @@ public class CustomRectange extends Rectangle implements ShapePrototype {
 
     @Override
     public String toString() {
-        return "CustomRectange";
+        return "Rectangle";
     }
 }
 
