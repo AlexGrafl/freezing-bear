@@ -30,6 +30,7 @@ public class Main extends Application {
     Slider scaleSlide;
     ColorPicker colorPicker;
     private Pen tmpPen = null;
+    private boolean penMode = false;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -101,7 +102,11 @@ public class Main extends Application {
                             ComboBox comboBox = (ComboBox) root.lookup("#typeBox");
                             try {
                                 ShapePrototype shape = (ShapePrototype) ShapeFactory.getInstance(comboBox.getValue().toString());
-                                if(comboBox.getValue().toString().equals("Pen") && tmpPen == null) tmpPen = ((Pen) shape);
+                                if(comboBox.getValue().toString().equals("Pen") && tmpPen == null){
+                                    tmpPen = new Pen(me.getX(), me.getY(), colorPicker.getValue());
+                                    penMode = true;
+                                    return;
+                                }
 
                                 shape.setColor(colorPicker.getValue());
                                 shape.setPosition(me.getX(), me.getY());
@@ -141,8 +146,9 @@ public class Main extends Application {
         });
         canvasPane.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
+
             public void handle(MouseEvent me) {
-                canvasPane.getChildren().clear();
+                ComboBox comboBox = (ComboBox) root.lookup("#typeBox");
                 if (me.isShiftDown() && ObjectModel.getInstance().isSomethingSelected()) {
                     canvasPane.setCursor(Cursor.MOVE);
                     for (ShapePrototype tmpShape : ObjectModel.getInstance().getSelected()) {
@@ -157,9 +163,10 @@ public class Main extends Application {
                         ((Shape) tmpShape).setLayoutY(me.getSceneY() + tmpShape.getDragDeltaY());
                     }
                 }
-                else {
-                    ComboBox comboBox = (ComboBox) root.lookup("#typeBox");
-                    if(comboBox.getValue().toString().equals("Pen") && tmpPen != null) tmpPen.addPathElement(me.getX(),me.getY());
+                else if(comboBox.getValue().toString().equals("Pen") && tmpPen != null && penMode){
+                        tmpPen.addPathElement(me.getX(),me.getY());
+
+                        //tmpPen.addPathElement(me.getX(),me.getY());
 
                 }
                 redrawCanvas();
@@ -170,10 +177,14 @@ public class Main extends Application {
 
             @Override
             public void handle(MouseEvent mouseEvent) {
-                canvasPane.getChildren().clear();
-                tmpPen = new Pen();
-                tmpPen = null;
-                redrawCanvas();
+                ComboBox comboBox = (ComboBox) root.lookup("#typeBox");
+                if(comboBox.getValue().toString().equals("Pen") && penMode) {
+                    canvasPane.getChildren().clear();
+                    ObjectModel.getInstance().addShapeToModel(tmpPen);
+                    tmpPen = null;
+                    penMode = false;
+                    redrawCanvas();
+                }
             }
         });
     }

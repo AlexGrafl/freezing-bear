@@ -16,13 +16,13 @@ public class Pen extends Path implements ShapePrototype {
     private double dragDeltaY;
     //private Path path;
 
-    public Pen() {
+    public Pen(double x, double y, Color value) {
         super();
         super.setStrokeWidth(initRadius);
-        super.setStroke(Color.BLACK);
+        super.setStroke(value);
         super.getElements().clear();
         super.getElements()
-                .add(new MoveTo(initRadius,initRadius));
+                .add(new MoveTo(x, y));
     }
 
     public double getDragDeltaX(){
@@ -58,7 +58,7 @@ public class Pen extends Path implements ShapePrototype {
 
     @Override
     public Pen clone() throws CloneNotSupportedException {
-        return (Pen) super.clone();
+        return new Pen(initRadius, initRadius, Color.AQUA);
     }
 
     @Override

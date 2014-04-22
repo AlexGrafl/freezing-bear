@@ -2,6 +2,7 @@ package graphicseditor.factory;
 
 
 import graphicseditor.factory.shapes.*;
+import javafx.scene.paint.Color;
 
 public class ShapeFactory
 {
@@ -23,7 +24,7 @@ public class ShapeFactory
         prototypes.put(ModelType.ELLIPSE, new CustomEllipse());
         prototypes.put(ModelType.RECTANGLE, new CustomRectangle());
         prototypes.put(ModelType.SQUARE, new Square());
-        prototypes.put(ModelType.PEN, new Pen());
+        prototypes.put(ModelType.PEN, new Pen(1,1, Color.AQUA));
         prototypes.put(ModelType.TRIANGLE, new Triangle());
     }
 

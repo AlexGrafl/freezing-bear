@@ -2,6 +2,7 @@ package graphicseditor;
 
 import graphicseditor.factory.ShapePrototype;
 import graphicseditor.factory.shapes.Composite;
+import graphicseditor.factory.shapes.Pen;
 import javafx.geometry.Bounds;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -132,4 +133,5 @@ public class ObjectModel {
         objectList.add(composite);
         clearSelection();
     }
+
 }
