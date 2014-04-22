@@ -1,16 +1,29 @@
 package graphicseditor.factory.shapes;
 
 import graphicseditor.factory.ShapePrototype;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import javafx.scene.shape.Circle;
+import javafx.scene.shape.LineTo;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
 
-public class Pen extends Circle implements ShapePrototype {
+public class Pen extends Path implements ShapePrototype {
 
     private String name = null;
     private double factor = 1;
-    private double initRadius = 1;
+    private double initRadius = 3;
     private double dragDeltaX;
     private double dragDeltaY;
+    //private Path path;
+
+    public Pen() {
+        super();
+        super.setStrokeWidth(initRadius);
+        super.setStroke(Color.BLACK);
+        super.getElements().clear();
+        super.getElements()
+                .add(new MoveTo(initRadius,initRadius));
+    }
 
     public double getDragDeltaX(){
         return this.dragDeltaX;
@@ -27,9 +40,14 @@ public class Pen extends Circle implements ShapePrototype {
 
     @Override
     public void setColor(Paint color) {
-        this.setFill(color);
+        super.setStroke(color);
+        super.setFill(null);
     }
 
+    public void addPathElement(double x, double y){
+        super.getElements()
+                .add(new LineTo(x - initRadius * factor, y - initRadius * factor));
+    }
     public String getName() {
         return name;
     }

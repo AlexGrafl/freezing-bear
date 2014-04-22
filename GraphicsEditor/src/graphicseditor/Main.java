@@ -3,6 +3,7 @@ package graphicseditor;
 import graphicseditor.factory.ShapeFactory;
 import graphicseditor.factory.ShapePrototype;
 import graphicseditor.factory.shapes.Composite;
+import graphicseditor.factory.shapes.Pen;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -20,8 +21,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 
-import java.net.CookieManager;
-
 
 public class Main extends Application {
 
@@ -30,6 +29,7 @@ public class Main extends Application {
     Label scaleLabel;
     Slider scaleSlide;
     ColorPicker colorPicker;
+    private Pen tmpPen = null;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -92,8 +92,7 @@ public class Main extends Application {
             @Override
             public void handle(MouseEvent me) {
                 canvasPane.setCursor(Cursor.CROSSHAIR);
-                if(!me.isShiftDown())
-                {
+                if (!me.isShiftDown()) {
                     switch (me.getButton()) {
 
                         case PRIMARY:
@@ -102,10 +101,10 @@ public class Main extends Application {
                             ComboBox comboBox = (ComboBox) root.lookup("#typeBox");
                             try {
                                 ShapePrototype shape = (ShapePrototype) ShapeFactory.getInstance(comboBox.getValue().toString());
+                                if(comboBox.getValue().toString().equals("Pen") && tmpPen == null) tmpPen = ((Pen) shape);
+
                                 shape.setColor(colorPicker.getValue());
                                 shape.setPosition(me.getX(), me.getY());
-
-                                //((ShapePrototype) shape).setScale(3);
                                 shape.setScale((splitScaleLabel(scaleLabel.getText())) / 100);
                                 ObjectModel.getInstance().addShapeToModel(shape);
                                 ObjectModel.getInstance().clearSelection();
@@ -115,21 +114,20 @@ public class Main extends Application {
 
                             break;
                         case SECONDARY:
-                            ObjectModel.getInstance().addObjectToSelection( me.isControlDown());
+                            ObjectModel.getInstance().addObjectToSelection(me.isControlDown());
                             break;
                     }
-                }
-                else{
-                    if(ObjectModel.getInstance().isSomethingSelected()) {
-                        for(ShapePrototype tmpShape : ObjectModel.getInstance().getSelected()) {
-                            if(tmpShape.getClass().isAssignableFrom(Composite.class)){
-                                for(ShapePrototype shapee : ((Composite)tmpShape).getShapes()){
-                                    ((Shape)shapee).setLayoutX(me.getSceneX() + shapee.getDragDeltaX());
-                                    ((Shape)shapee).setLayoutY(me.getSceneY() + shapee.getDragDeltaY());
+                } else {
+                    if (ObjectModel.getInstance().isSomethingSelected()) {
+                        for (ShapePrototype tmpShape : ObjectModel.getInstance().getSelected()) {
+                            if (tmpShape.getClass().isAssignableFrom(Composite.class)) {
+                                for (ShapePrototype shapee : ((Composite) tmpShape).getShapes()) {
+                                    ((Shape) shapee).setLayoutX(me.getSceneX() + shapee.getDragDeltaX());
+                                    ((Shape) shapee).setLayoutY(me.getSceneY() + shapee.getDragDeltaY());
                                 }
                                 continue;
                             }
-                            tmpShape.setDragDeltaX(((Shape)tmpShape).getLayoutX() - me.getSceneX());
+                            tmpShape.setDragDeltaX(((Shape) tmpShape).getLayoutX() - me.getSceneX());
                             tmpShape.setDragDeltaY(((Shape) tmpShape).getLayoutY() - me.getSceneY());
                             canvasPane.setCursor(Cursor.MOVE);
                         }
@@ -145,23 +143,38 @@ public class Main extends Application {
             @Override
             public void handle(MouseEvent me) {
                 canvasPane.getChildren().clear();
-                if(me.isShiftDown() && ObjectModel.getInstance().isSomethingSelected()) {
+                if (me.isShiftDown() && ObjectModel.getInstance().isSomethingSelected()) {
                     canvasPane.setCursor(Cursor.MOVE);
-                    for(ShapePrototype tmpShape : ObjectModel.getInstance().getSelected()){
-                        if(tmpShape.getClass().isAssignableFrom(Composite.class)){
-                            for(ShapePrototype shapee : ((Composite)tmpShape).getShapes()){
-                                ((Shape)shapee).setLayoutX(me.getSceneX() + shapee.getDragDeltaX());
-                                ((Shape)shapee).setLayoutY(me.getSceneY() + shapee.getDragDeltaY());
+                    for (ShapePrototype tmpShape : ObjectModel.getInstance().getSelected()) {
+                        if (tmpShape.getClass().isAssignableFrom(Composite.class)) {
+                            for (ShapePrototype shapee : ((Composite) tmpShape).getShapes()) {
+                                ((Shape) shapee).setLayoutX(me.getSceneX() + shapee.getDragDeltaX());
+                                ((Shape) shapee).setLayoutY(me.getSceneY() + shapee.getDragDeltaY());
                             }
                             continue;
                         }
-                        ((Shape)tmpShape).setLayoutX(me.getSceneX() + tmpShape.getDragDeltaX());
-                        ((Shape)tmpShape).setLayoutY(me.getSceneY() + tmpShape.getDragDeltaY());
+                        ((Shape) tmpShape).setLayoutX(me.getSceneX() + tmpShape.getDragDeltaX());
+                        ((Shape) tmpShape).setLayoutY(me.getSceneY() + tmpShape.getDragDeltaY());
                     }
+                }
+                else {
+                    ComboBox comboBox = (ComboBox) root.lookup("#typeBox");
+                    if(comboBox.getValue().toString().equals("Pen") && tmpPen != null) tmpPen.addPathElement(me.getX(),me.getY());
+
                 }
                 redrawCanvas();
             }
 
+        });
+        canvasPane.setOnMouseReleased (new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                canvasPane.getChildren().clear();
+                tmpPen = new Pen();
+                tmpPen = null;
+                redrawCanvas();
+            }
         });
     }
 
