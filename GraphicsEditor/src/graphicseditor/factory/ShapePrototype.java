@@ -7,4 +7,8 @@ public interface ShapePrototype extends Cloneable {
     public double getX();
     public double getY();
     public void setScale(double factor);
+    public double getDragDeltaX();
+    public void setDragDeltaX(double deltaX);
+    public double getDragDeltaY();
+    public void setDragDeltaY(double deltaY);
 }

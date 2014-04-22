@@ -50,14 +50,15 @@ public class Main extends Application {
         colorPicker =  lookupInToolBar((ToolBar) root.lookup("#toolBar"), "#colorPicker", ColorPicker.class);
         scaleLabel.setText(Math.round(scaleSlide.getValue()) + " %");
         scaleSlide.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
                 if (newValue == null) {
                     scaleLabel.setText("");
                     return;
                 }
                 scaleLabel.setText(Math.round(newValue.intValue()) + " %");
-                if(ObjectModel.getInstance().isSomethingSelected()){
-                    ObjectModel.getInstance().scaleSelection((double)(newValue.doubleValue() / 100.0));
+                if (ObjectModel.getInstance().isSomethingSelected()) {
+                    ObjectModel.getInstance().scaleSelection((double) (newValue.doubleValue() / 100.0));
                     redrawCanvas();
                 }
                 // change currently selected items
@@ -78,79 +79,79 @@ public class Main extends Application {
          *  MouseEvent Listener
          */
         canvasPane.setCursor(Cursor.CROSSHAIR);
+        canvasPane.setOnMouseReleased(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                canvasPane.setCursor(Cursor.CROSSHAIR);
+            }
+        });
         canvasPane.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
+                canvasPane.setCursor(Cursor.CROSSHAIR);
+                if(!me.isShiftDown())
+                {
+                    switch (me.getButton()) {
 
-                switch (me.getButton()) {
+                        case PRIMARY:
 
-                    case PRIMARY:
+                            ColorPicker colorPicker = (ColorPicker) root.lookup("#colorPicker");
+                            ComboBox comboBox = (ComboBox) root.lookup("#typeBox");
+                            try {
+                                Shape shape = (Shape) ShapeFactory.getInstance(comboBox.getValue().toString());
+                                shape.setFill(colorPicker.getValue());
+                                ((ShapePrototype) shape).setPosition(me.getX(), me.getY());
 
-                        ColorPicker colorPicker = (ColorPicker) root.lookup("#colorPicker");
-                        ComboBox comboBox = (ComboBox) root.lookup("#typeBox");
-                        try {
-                            Shape shape = (Shape) ShapeFactory.getInstance(comboBox.getValue().toString());
-                            shape.setFill(colorPicker.getValue());
-                            ((ShapePrototype) shape).setPosition(me.getX(), me.getY());
+                                //((ShapePrototype) shape).setScale(3);
+                                ((ShapePrototype) shape).setScale((splitScaleLabel(scaleLabel.getText())) / 100);
+                                ObjectModel.getInstance().addShapeToModel(shape);
+                                ObjectModel.getInstance().clearSelection();
+                            } catch (CloneNotSupportedException e) {
+                                e.printStackTrace();
+                            }
 
-                            //((ShapePrototype) shape).setScale(3);
-                            ((ShapePrototype) shape).setScale((splitScaleLabel(scaleLabel.getText())) / 100);
-                            ObjectModel.getInstance().addShapeToModel(shape);
-                            ObjectModel.getInstance().clearSelection();
-                        } catch (CloneNotSupportedException e) {
-                            e.printStackTrace();
+                            break;
+                        case SECONDARY:
+                            ObjectModel.getInstance().addObjectToSelection(me.getX(), me.getY(), me.isControlDown());
+                            break;
+                    }
+                }
+                else{
+                    if(me.isShiftDown() && ObjectModel.getInstance().isSomethingSelected()) {
+                        for(Shape tmpShape : ObjectModel.getInstance().getSelected()) {
+                            ((ShapePrototype) tmpShape).setDragDeltaX(tmpShape.getLayoutX() - me.getSceneX());
+                            ((ShapePrototype) tmpShape).setDragDeltaY(tmpShape.getLayoutY() - me.getSceneY());
+                            canvasPane.setCursor(Cursor.MOVE);
                         }
+                    }
 
-                        break;
-                    case SECONDARY:
-                        ObjectModel.getInstance().addObjectToSelection(me.getX(), me.getY(), me.isControlDown());
-                        break;
                 }
                 //(re-)draw all Objects
                 redrawCanvas();
             }
 
         });
-    }
-      /*
         canvasPane.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
-                System.out.println("YO");
-
-                switch (me.getButton()) {
-
-                    case SECONDARY:
-                        for (Shape tmpShape : ObjectModel.getInstance().getSelected()) addDragExitHandler(tmpShape);
-                        break;
-                }
-            }
-
-        });
-
-
-
-    private void addDragExitHandler(final Shape tmpShape){
-
-        tmpShape.setOnMouseDragExited(new EventHandler<MouseDragEvent>() {
-            @Override
-            public void handle(MouseDragEvent mouseDragEvent) {
-
                 canvasPane.getChildren().clear();
-
-                tmpShape.setLayoutX(mouseDragEvent.getX());
-                tmpShape.setLayoutY(mouseDragEvent.getY());
-                tmpShape.removeEventHandler(MouseDragEvent.MOUSE_DRAG_EXITED, this );
-
+                if(me.isShiftDown() && ObjectModel.getInstance().isSomethingSelected()) {
+                    canvasPane.setCursor(Cursor.MOVE);
+                    for(Shape tmpShape : ObjectModel.getInstance().getSelected()){
+                        tmpShape.setLayoutX(me.getSceneX() + ((ShapePrototype) tmpShape).getDragDeltaX());
+                        tmpShape.setLayoutY(me.getSceneY() + ((ShapePrototype) tmpShape).getDragDeltaY());
+                    }
+                }
                 redrawCanvas();
             }
+
         });
     }
-    */
 
     private double splitScaleLabel(String s){
         return Double.parseDouble(s.split(" ")[0]);
     }
+
     private void redrawCanvas(){
         canvasPane.getChildren().clear();
         for(Shape shape : ObjectModel.getInstance().getModel()){

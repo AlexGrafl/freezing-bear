@@ -11,6 +11,21 @@ public class CustomEllipse extends Ellipse implements ShapePrototype {
     private String name = null;
     private double factor = 1;
     private double initRadius = 10;
+    private double dragDeltaX;
+    private double dragDeltaY;
+
+    public double getDragDeltaX(){
+        return this.dragDeltaX;
+    }
+    public void setDragDeltaX(double deltaX){
+        this.dragDeltaX = deltaX;
+    }
+    public double getDragDeltaY(){
+        return this.dragDeltaY;
+    }
+    public void setDragDeltaY(double deltaY){
+        this.dragDeltaY = deltaY;
+    }
 
     public String getName() {
         return name;

@@ -14,6 +14,21 @@ public class Triangle extends Polygon implements ShapePrototype {
     private String name = null;
     private double initRadius = 15;
     private double factor;
+    private double dragDeltaX;
+    private double dragDeltaY;
+
+    public double getDragDeltaX(){
+        return this.dragDeltaX;
+    }
+    public void setDragDeltaX(double deltaX){
+        this.dragDeltaX = deltaX;
+    }
+    public double getDragDeltaY(){
+        return this.dragDeltaY;
+    }
+    public void setDragDeltaY(double deltaY){
+        this.dragDeltaY = deltaY;
+    }
 
     public String getName() {
         return name;
