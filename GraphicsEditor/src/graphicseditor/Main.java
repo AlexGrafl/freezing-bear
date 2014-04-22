@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
@@ -25,7 +26,7 @@ public class Main extends Application {
     Pane canvasPane;
     Label scaleLabel;
     Slider scaleSlide;
-
+    ColorPicker colorPicker;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -46,8 +47,8 @@ public class Main extends Application {
 
         scaleSlide = lookupInToolBar((ToolBar) root.lookup("#toolBar"), "#scaleSlide", Slider.class);
         scaleLabel = lookupInToolBar((ToolBar) root.lookup("#toolBar"), "#scaleValue", Label.class);
+        colorPicker =  lookupInToolBar((ToolBar) root.lookup("#toolBar"), "#colorPicker", ColorPicker.class);
         scaleLabel.setText(Math.round(scaleSlide.getValue()) + " %");
-
         scaleSlide.valueProperty().addListener(new ChangeListener<Number>() {
             @Override public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
                 if (newValue == null) {
@@ -56,10 +57,20 @@ public class Main extends Application {
                 }
                 scaleLabel.setText(Math.round(newValue.intValue()) + " %");
                 if(ObjectModel.getInstance().isSomethingSelected()){
-                    ObjectModel.getInstance().scaleSelection(newValue.intValue() / 100);
+                    ObjectModel.getInstance().scaleSelection((double)(newValue.doubleValue() / 100.0));
                     redrawCanvas();
                 }
                 // change currently selected items
+            }
+        });
+
+        colorPicker.valueProperty().addListener(new ChangeListener<Color>() {
+            @Override
+            public void changed(ObservableValue<? extends Color> observableValue, Color color, Color color2) {
+                if(ObjectModel.getInstance().isSomethingSelected()){
+                    ObjectModel.getInstance().changeColor(color2);
+                    redrawCanvas();
+                }
             }
         });
 
@@ -85,6 +96,7 @@ public class Main extends Application {
                             //((ShapePrototype) shape).setScale(3);
                             ((ShapePrototype) shape).setScale((splitScaleLabel(scaleLabel.getText())) / 100);
                             ObjectModel.getInstance().addShapeToModel(shape);
+                            ObjectModel.getInstance().clearSelection();
                         } catch (CloneNotSupportedException e) {
                             e.printStackTrace();
                         }

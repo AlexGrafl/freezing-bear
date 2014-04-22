@@ -22,7 +22,7 @@ public class CustomRectangle extends Rectangle implements ShapePrototype {
 
     @Override
     public CustomRectangle clone() throws CloneNotSupportedException {
-        return (CustomRectangle) super.clone();
+        return new CustomRectangle();
     }
 
     @Override

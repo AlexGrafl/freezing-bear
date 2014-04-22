@@ -25,7 +25,7 @@ public class Triangle extends Polygon implements ShapePrototype {
 
     @Override
     public Triangle clone() throws CloneNotSupportedException {
-        return (Triangle) super.clone();
+        return new Triangle();
     }
 
     @Override

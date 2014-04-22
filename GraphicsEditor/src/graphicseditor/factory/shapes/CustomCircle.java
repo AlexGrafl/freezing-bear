@@ -23,7 +23,7 @@ public class CustomCircle extends Circle implements ShapePrototype  {
 
     @Override
     public CustomCircle clone() throws CloneNotSupportedException {
-        return (CustomCircle) super.clone();
+        return new CustomCircle();
     }
 
     @Override

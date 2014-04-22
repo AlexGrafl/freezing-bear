@@ -22,7 +22,7 @@ public class CustomEllipse extends Ellipse implements ShapePrototype {
 
     @Override
     public CustomEllipse clone() throws CloneNotSupportedException {
-        return (CustomEllipse) super.clone();
+        return new CustomEllipse();
     }
 
     @Override

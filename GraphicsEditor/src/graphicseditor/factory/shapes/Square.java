@@ -24,7 +24,7 @@ public class Square extends Rectangle implements ShapePrototype {
 
     @Override
     public Square clone() throws CloneNotSupportedException {
-        return (Square) super.clone();
+        return new Square();
     }
 
     @Override

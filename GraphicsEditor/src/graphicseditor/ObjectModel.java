@@ -31,7 +31,7 @@ public class ObjectModel {
 
     public void addObjectToSelection(double x, double y, boolean isCtrlDown){
         for(Shape shape : objectList){
-            if(shape.contains(x, y)){
+            if(shape.isHover()){
                 if(!isCtrlDown) selectionList.clear();
                 selectionList.add(shape);
                 return;
@@ -67,9 +67,19 @@ public class ObjectModel {
         return !selectionList.isEmpty();
     }
 
-    public void scaleSelection(int value) {
+    public void scaleSelection(double value) {
         for(Shape shape : selectionList){
             ((ShapePrototype)shape).setScale(value);
+        }
+    }
+
+    public void clearSelection(){
+        selectionList.clear();
+    }
+
+    public void changeColor(Color color) {
+        for(Shape shape : selectionList){
+            shape.setFill(color);
         }
     }
 }
