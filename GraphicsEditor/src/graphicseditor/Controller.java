@@ -1,5 +1,6 @@
 package graphicseditor;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
@@ -11,11 +12,6 @@ import java.util.ResourceBundle;
 
 
 public class Controller implements Initializable{
-    @FXML
-    private ScrollPane canvasPane;
-
-    Canvas canvas;
-
 
 
    @Override
@@ -23,5 +19,20 @@ public class Controller implements Initializable{
 
     }
 
+    @FXML
+    public void deleteSelection(ActionEvent actionEvent) {
+        ObjectModel.getInstance().deleteSelection();
+        Main.redrawCanvas();
+    }
+    @FXML
+    public void ungroupSelection(ActionEvent actionEvent) {
+        ObjectModel.getInstance().upgroupSelection();
+        Main.redrawCanvas();
+    }
 
+    @FXML
+    public void groupSelection(ActionEvent actionEvent) {
+        ObjectModel.getInstance().groupSelection();
+        Main.redrawCanvas();
+    }
 }

@@ -1,6 +1,7 @@
 package graphicseditor.factory.shapes;
 
 import graphicseditor.factory.ShapePrototype;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
 public class Square extends Rectangle implements ShapePrototype {
@@ -27,6 +28,11 @@ public class Square extends Rectangle implements ShapePrototype {
     }
     public void setDragDeltaY(double deltaY){
         this.dragDeltaY = deltaY;
+    }
+
+    @Override
+    public void setColor(Paint color) {
+        this.setFill(color);
     }
 
     public String getName() {

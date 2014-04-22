@@ -1,6 +1,7 @@
 package graphicseditor.factory.shapes;
 
 import graphicseditor.factory.ShapePrototype;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Polygon;
 
 public class Triangle extends Polygon implements ShapePrototype {
@@ -28,6 +29,11 @@ public class Triangle extends Polygon implements ShapePrototype {
     }
     public void setDragDeltaY(double deltaY){
         this.dragDeltaY = deltaY;
+    }
+
+    @Override
+    public void setColor(Paint color) {
+        this.setFill(color);
     }
 
     public String getName() {

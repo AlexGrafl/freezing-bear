@@ -1,6 +1,9 @@
 package graphicseditor.factory;
 
+import javafx.scene.paint.Paint;
+
 public interface ShapePrototype extends Cloneable {
+
 
     public ShapePrototype clone() throws CloneNotSupportedException;
     public void setPosition(double x, double y);
@@ -11,4 +14,5 @@ public interface ShapePrototype extends Cloneable {
     public void setDragDeltaX(double deltaX);
     public double getDragDeltaY();
     public void setDragDeltaY(double deltaY);
+    public void setColor(Paint color);
 }

@@ -2,6 +2,7 @@ package graphicseditor;
 
 import graphicseditor.factory.ShapeFactory;
 import graphicseditor.factory.ShapePrototype;
+import graphicseditor.factory.shapes.Composite;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -19,11 +20,13 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 
+import java.net.CookieManager;
+
 
 public class Main extends Application {
 
     Parent root;
-    Pane canvasPane;
+    private static Pane canvasPane;
     Label scaleLabel;
     Slider scaleSlide;
     ColorPicker colorPicker;
@@ -98,12 +101,12 @@ public class Main extends Application {
                             ColorPicker colorPicker = (ColorPicker) root.lookup("#colorPicker");
                             ComboBox comboBox = (ComboBox) root.lookup("#typeBox");
                             try {
-                                Shape shape = (Shape) ShapeFactory.getInstance(comboBox.getValue().toString());
-                                shape.setFill(colorPicker.getValue());
-                                ((ShapePrototype) shape).setPosition(me.getX(), me.getY());
+                                ShapePrototype shape = (ShapePrototype) ShapeFactory.getInstance(comboBox.getValue().toString());
+                                shape.setColor(colorPicker.getValue());
+                                shape.setPosition(me.getX(), me.getY());
 
                                 //((ShapePrototype) shape).setScale(3);
-                                ((ShapePrototype) shape).setScale((splitScaleLabel(scaleLabel.getText())) / 100);
+                                shape.setScale((splitScaleLabel(scaleLabel.getText())) / 100);
                                 ObjectModel.getInstance().addShapeToModel(shape);
                                 ObjectModel.getInstance().clearSelection();
                             } catch (CloneNotSupportedException e) {
@@ -112,15 +115,22 @@ public class Main extends Application {
 
                             break;
                         case SECONDARY:
-                            ObjectModel.getInstance().addObjectToSelection(me.getX(), me.getY(), me.isControlDown());
+                            ObjectModel.getInstance().addObjectToSelection( me.isControlDown());
                             break;
                     }
                 }
                 else{
-                    if(me.isShiftDown() && ObjectModel.getInstance().isSomethingSelected()) {
-                        for(Shape tmpShape : ObjectModel.getInstance().getSelected()) {
-                            ((ShapePrototype) tmpShape).setDragDeltaX(tmpShape.getLayoutX() - me.getSceneX());
-                            ((ShapePrototype) tmpShape).setDragDeltaY(tmpShape.getLayoutY() - me.getSceneY());
+                    if(ObjectModel.getInstance().isSomethingSelected()) {
+                        for(ShapePrototype tmpShape : ObjectModel.getInstance().getSelected()) {
+                            if(tmpShape.getClass().isAssignableFrom(Composite.class)){
+                                for(ShapePrototype shapee : ((Composite)tmpShape).getShapes()){
+                                    ((Shape)shapee).setLayoutX(me.getSceneX() + shapee.getDragDeltaX());
+                                    ((Shape)shapee).setLayoutY(me.getSceneY() + shapee.getDragDeltaY());
+                                }
+                                continue;
+                            }
+                            tmpShape.setDragDeltaX(((Shape)tmpShape).getLayoutX() - me.getSceneX());
+                            tmpShape.setDragDeltaY(((Shape) tmpShape).getLayoutY() - me.getSceneY());
                             canvasPane.setCursor(Cursor.MOVE);
                         }
                     }
@@ -137,9 +147,16 @@ public class Main extends Application {
                 canvasPane.getChildren().clear();
                 if(me.isShiftDown() && ObjectModel.getInstance().isSomethingSelected()) {
                     canvasPane.setCursor(Cursor.MOVE);
-                    for(Shape tmpShape : ObjectModel.getInstance().getSelected()){
-                        tmpShape.setLayoutX(me.getSceneX() + ((ShapePrototype) tmpShape).getDragDeltaX());
-                        tmpShape.setLayoutY(me.getSceneY() + ((ShapePrototype) tmpShape).getDragDeltaY());
+                    for(ShapePrototype tmpShape : ObjectModel.getInstance().getSelected()){
+                        if(tmpShape.getClass().isAssignableFrom(Composite.class)){
+                            for(ShapePrototype shapee : ((Composite)tmpShape).getShapes()){
+                                ((Shape)shapee).setLayoutX(me.getSceneX() + shapee.getDragDeltaX());
+                                ((Shape)shapee).setLayoutY(me.getSceneY() + shapee.getDragDeltaY());
+                            }
+                            continue;
+                        }
+                        ((Shape)tmpShape).setLayoutX(me.getSceneX() + tmpShape.getDragDeltaX());
+                        ((Shape)tmpShape).setLayoutY(me.getSceneY() + tmpShape.getDragDeltaY());
                     }
                 }
                 redrawCanvas();
@@ -152,14 +169,19 @@ public class Main extends Application {
         return Double.parseDouble(s.split(" ")[0]);
     }
 
-    private void redrawCanvas(){
+    public static void redrawCanvas(){
         canvasPane.getChildren().clear();
-        for(Shape shape : ObjectModel.getInstance().getModel()){
+        for(ShapePrototype shape : ObjectModel.getInstance().getModel()){
             //redraw everything
-            canvasPane.getChildren().add(shape);
+            if(shape.getClass().isAssignableFrom(Composite.class)){
+                for(ShapePrototype shapee : ((Composite)shape).getShapes()){
+                    canvasPane.getChildren().add((Shape) shapee);
+                }
+            }
+            else canvasPane.getChildren().add((Shape)shape);
         }
 
-        for(Rectangle rectangle : ObjectModel.getInstance().getSelectionBoxes()){
+        for(Rectangle rectangle : ObjectModel.getInstance().getSelectionBoxes(ObjectModel.getInstance().getSelected())){
             //selection
             canvasPane.getChildren().add(rectangle);
         }
