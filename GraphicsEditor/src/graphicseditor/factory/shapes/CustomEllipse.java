@@ -40,6 +40,12 @@ public class CustomEllipse extends Ellipse implements ShapePrototype {
     }
 
     @Override
+    public void setScale(double factor){
+        super.setScaleX(factor);
+        super.setScaleY(factor);
+    }
+
+    @Override
     public String toString() {
         return "Ellipse";
     }

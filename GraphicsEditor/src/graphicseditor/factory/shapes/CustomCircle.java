@@ -41,6 +41,12 @@ public class CustomCircle extends Circle implements ShapePrototype  {
     }
 
     @Override
+    public void setScale(double factor){
+        super.setScaleX(factor);
+        super.setScaleY(factor);
+    }
+
+    @Override
     public String toString() {
         return "Circle";
     }

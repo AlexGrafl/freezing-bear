@@ -12,6 +12,7 @@ public class ShapeFactory
         public static final String RECTANGLE = "Rectangle";
         public static final String SQUARE = "Square";
         public static final String PEN = "Pen";
+        public static final String TRIANGLE = "Triangle";
     }
 
     private static java.util.Map<String , ShapePrototype> prototypes = new java.util.HashMap<String , ShapePrototype>();
@@ -23,6 +24,7 @@ public class ShapeFactory
         prototypes.put(ModelType.RECTANGLE, new CustomRectangle());
         prototypes.put(ModelType.SQUARE, new Square());
         prototypes.put(ModelType.PEN, new Pen());
+        prototypes.put(ModelType.TRIANGLE, new Triangle());
     }
 
     public static ShapePrototype getInstance(final String s) throws CloneNotSupportedException {

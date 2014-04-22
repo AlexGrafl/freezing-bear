@@ -24,6 +24,11 @@ public class Pen extends Circle implements ShapePrototype {
     public void setPosition(double x, double y) {
 
     }
+    @Override
+    public void setScale(double factor){
+        super.setScaleX(factor);
+        super.setScaleY(factor);
+    }
 
     @Override
     public double getX() {

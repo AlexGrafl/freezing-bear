@@ -1,15 +1,16 @@
 package graphicseditor.factory.shapes;
 
 import graphicseditor.factory.ShapePrototype;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Polygon;
 
-public class Square extends Rectangle implements ShapePrototype {
+public class Triangle extends Polygon implements ShapePrototype {
 
     //height = width, aber ka noch wie, man kann die setHeight, setWidth vom parent nicht überschreiben...
-    public Square (){
-        super(30, 30);
+    public Triangle() {
+        super(  15.0, 0.0,
+                0.0, 30.0,
+                30.0, 30.0);
     }
-
     private String name = null;
 
     public String getName() {
@@ -21,14 +22,25 @@ public class Square extends Rectangle implements ShapePrototype {
     }
 
     @Override
-    public Square clone() throws CloneNotSupportedException {
-        return (Square) super.clone();
+    public Triangle clone() throws CloneNotSupportedException {
+        return (Triangle) super.clone();
     }
 
     @Override
     public void setPosition(double x, double y) {
-        super.setX(x - (super.getHeight() / 2));
-        super.setY(y - (super.getWidth() / 2));
+        //Todo: its not centered yet!
+        super.setLayoutX(x );
+        super.setLayoutY(y);
+    }
+
+    @Override
+    public double getX() {
+        return super.getLayoutX();
+    }
+
+    @Override
+    public double getY() {
+        return super.getLayoutY();
     }
 
     @Override

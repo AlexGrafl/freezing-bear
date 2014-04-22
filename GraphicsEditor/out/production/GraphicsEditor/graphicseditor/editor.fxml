@@ -12,9 +12,9 @@
     <Pane fx:id="canvasPane" style="-fx-background-color:#dfdfdf;" />
   </center>
   <top>
-    <ToolBar>
+    <ToolBar fx:id="toolBar">
       <items>
-        <ComboBox fx:id="typeBox">
+        <ComboBox fx:id="typeBox" value="Pen">
           <items>
             <FXCollections fx:factory="observableArrayList">
               <String fx:value="Rectangle" />
@@ -22,14 +22,16 @@
               <String fx:value="Ellipse" />
               <String fx:value="Square" />
               <String fx:value="Pen" />
+              <String fx:value="Triangle" />
             </FXCollections>
           </items>
         </ComboBox>
         <Separator orientation="VERTICAL" prefHeight="21.0" />
         <ColorPicker fx:id="colorPicker" />
         <Separator orientation="VERTICAL" prefHeight="21.0" />
-        <Label fx:id="scaleLabel" text="Scale" />
-        <Slider fx:id="scaleSlide" prefWidth="97.0" />
+        <Label fx:id="scaleLabel" text="Scale (%)" />
+        <Slider fx:id="scaleSlide" max="500.0" min="0.0" prefWidth="124.0" showTickLabels="false" showTickMarks="false" value="100.0" />
+        <Label fx:id="scaleValue" text="" />
       </items>
     </ToolBar>
   </top>

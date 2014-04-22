@@ -1,12 +1,9 @@
 package graphicseditor;
 
-import graphicseditor.factory.ShapePrototype;
 import javafx.geometry.Bounds;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
-import javafx.scene.shape.StrokeLineJoin;
 import javafx.scene.shape.StrokeType;
 
 import java.util.LinkedList;
@@ -61,4 +58,7 @@ public class ObjectModel {
     public LinkedList<Shape> getModel() {
         return objectList;
     }
+    public LinkedList<Shape> getSelected(){
+        return selectionList;
+    };
 }
