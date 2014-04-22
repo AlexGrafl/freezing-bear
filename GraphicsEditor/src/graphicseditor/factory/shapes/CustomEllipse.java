@@ -9,6 +9,8 @@ public class CustomEllipse extends Ellipse implements ShapePrototype {
         super(40, 20);
     }
     private String name = null;
+    private double factor = 1;
+    private double initRadius = 10;
 
     public String getName() {
         return name;
@@ -25,8 +27,8 @@ public class CustomEllipse extends Ellipse implements ShapePrototype {
 
     @Override
     public void setPosition(double x, double y) {
-        super.setCenterX(x);
-        super.setCenterY(y);
+        super.setLayoutX(x - initRadius * factor);
+        super.setLayoutY(y - initRadius * factor);
     }
 
     @Override
@@ -41,6 +43,7 @@ public class CustomEllipse extends Ellipse implements ShapePrototype {
 
     @Override
     public void setScale(double factor){
+        this.factor = factor;
         super.setScaleX(factor);
         super.setScaleY(factor);
     }

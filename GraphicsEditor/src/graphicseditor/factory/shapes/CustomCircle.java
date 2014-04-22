@@ -10,6 +10,8 @@ public class CustomCircle extends Circle implements ShapePrototype  {
     }
 
     private String name = null;
+    private double factor = 1;
+    private double initRadius = 7.5;
 
     public String getName() {
         return name;
@@ -26,8 +28,8 @@ public class CustomCircle extends Circle implements ShapePrototype  {
 
     @Override
     public void setPosition(double x, double y) {
-        super.setCenterY(y);
-        super.setCenterX(x);
+        super.setLayoutX(x - initRadius * factor);
+        super.setLayoutY(y - initRadius * factor);
     }
 
     @Override
@@ -42,6 +44,7 @@ public class CustomCircle extends Circle implements ShapePrototype  {
 
     @Override
     public void setScale(double factor){
+        this.factor = factor;
         super.setScaleX(factor);
         super.setScaleY(factor);
     }

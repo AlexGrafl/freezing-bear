@@ -9,8 +9,11 @@ public class Triangle extends Polygon implements ShapePrototype {
         super(  15.0, 0.0,
                 0.0, 30.0,
                 30.0, 30.0);
+        factor = 1;
     }
     private String name = null;
+    private double initRadius = 15;
+    private double factor;
 
     public String getName() {
         return name;
@@ -27,9 +30,8 @@ public class Triangle extends Polygon implements ShapePrototype {
 
     @Override
     public void setPosition(double x, double y) {
-        //Todo: its not centered yet!
-        super.setLayoutX(x );
-        super.setLayoutY(y);
+        super.setLayoutX(x - initRadius * factor);
+        super.setLayoutY(y - initRadius * factor);
     }
 
     @Override
@@ -44,6 +46,7 @@ public class Triangle extends Polygon implements ShapePrototype {
 
     @Override
     public void setScale(double factor){
+        this.factor = factor;
         super.setScaleX(factor);
         super.setScaleY(factor);
     }

@@ -83,7 +83,7 @@ public class Main extends Application {
                             ((ShapePrototype) shape).setPosition(me.getX(), me.getY());
 
                             //((ShapePrototype) shape).setScale(3);
-                            //((ShapePrototype) shape).setScale((scaleSlide.getValue()) / 100);
+                            ((ShapePrototype) shape).setScale((splitScaleLabel(scaleLabel.getText())) / 100);
                             ObjectModel.getInstance().addShapeToModel(shape);
                         } catch (CloneNotSupportedException e) {
                             e.printStackTrace();
@@ -135,6 +135,10 @@ public class Main extends Application {
         });
     }
     */
+
+    private double splitScaleLabel(String s){
+        return Double.parseDouble(s.split(" ")[0]);
+    }
     private void redrawCanvas(){
         canvasPane.getChildren().clear();
         for(Shape shape : ObjectModel.getInstance().getModel()){
