@@ -127,8 +127,8 @@ public class Main extends Application {
                         for (ShapePrototype tmpShape : ObjectModel.getInstance().getSelected()) {
                             if (tmpShape.getClass().isAssignableFrom(Composite.class)) {
                                 for (ShapePrototype shapee : ((Composite) tmpShape).getShapes()) {
-                                    ((Shape) shapee).setLayoutX(me.getSceneX() + shapee.getDragDeltaX());
-                                    ((Shape) shapee).setLayoutY(me.getSceneY() + shapee.getDragDeltaY());
+                                    shapee.setDragDeltaX(((Shape) shapee).getLayoutX() - me.getSceneX());
+                                    shapee.setDragDeltaY(((Shape) shapee).getLayoutY() - me.getSceneY());
                                 }
                                 continue;
                             }
