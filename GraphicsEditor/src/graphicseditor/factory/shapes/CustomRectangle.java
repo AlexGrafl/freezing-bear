@@ -7,10 +7,8 @@ public class CustomRectangle extends Rectangle implements ShapePrototype {
 
     public CustomRectangle(){
         super(40, 20);
-        factor = 1;
     }
     private String name = null;
-    private double factor;
 
     public String getName() {
         return name;
@@ -27,13 +25,12 @@ public class CustomRectangle extends Rectangle implements ShapePrototype {
 
     @Override
     public void setPosition(double x, double y) {
-        super.setX(x - (super.getWidth() / 2) * factor);
-        super.setY(y - (super.getHeight() / 2) * factor);
+        super.setX(x - (super.getWidth() / 2));
+        super.setY(y - (super.getHeight() / 2));
     }
 
     @Override
     public void setScale(double factor){
-        this.factor = factor;
         super.setScaleX(factor);
         super.setScaleY(factor);
     }

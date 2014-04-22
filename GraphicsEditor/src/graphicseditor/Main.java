@@ -8,13 +8,10 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
-import javafx.scene.input.MouseDragEvent;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
@@ -35,6 +32,7 @@ public class Main extends Application {
         root = FXMLLoader.load(getClass().getResource("editor.fxml"));
         primaryStage.setTitle("Graphics Editor");
         canvasPane  = (Pane) root.lookup("#canvasPane");
+
         setUpCanvas();
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
@@ -45,8 +43,9 @@ public class Main extends Application {
         /*
          *  Scale Slider onChange Event
          */
-        scaleSlide = (Slider) root.lookup("#scaleSlide");
-        scaleLabel = (Label) root.lookup("#scaleValue");
+
+        scaleSlide = lookupInToolBar((ToolBar) root.lookup("#toolBar"), "#scaleSlide", Slider.class);
+        scaleLabel = lookupInToolBar((ToolBar) root.lookup("#toolBar"), "#scaleValue", Label.class);
         scaleLabel.setText(Math.round(scaleSlide.getValue()) + " %");
 
         scaleSlide.valueProperty().addListener(new ChangeListener<Number>() {
@@ -55,7 +54,11 @@ public class Main extends Application {
                     scaleLabel.setText("");
                     return;
                 }
-                scaleLabel.setText(Math.round(newValue.intValue()) + "");
+                scaleLabel.setText(Math.round(newValue.intValue()) + " %");
+                if(ObjectModel.getInstance().isSomethingSelected()){
+                    ObjectModel.getInstance().scaleSelection(newValue.intValue() / 100);
+                    redrawCanvas();
+                }
                 // change currently selected items
             }
         });
@@ -67,10 +70,11 @@ public class Main extends Application {
         canvasPane.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
-                canvasPane.getChildren().clear();
+
                 switch (me.getButton()) {
 
                     case PRIMARY:
+
                         ColorPicker colorPicker = (ColorPicker) root.lookup("#colorPicker");
                         ComboBox comboBox = (ComboBox) root.lookup("#typeBox");
                         try {
@@ -79,7 +83,7 @@ public class Main extends Application {
                             ((ShapePrototype) shape).setPosition(me.getX(), me.getY());
 
                             //((ShapePrototype) shape).setScale(3);
-                            ((ShapePrototype) shape).setScale((scaleSlide.getValue()) / 100);
+                            //((ShapePrototype) shape).setScale((scaleSlide.getValue()) / 100);
                             ObjectModel.getInstance().addShapeToModel(shape);
                         } catch (CloneNotSupportedException e) {
                             e.printStackTrace();
@@ -91,11 +95,13 @@ public class Main extends Application {
                         break;
                 }
                 //(re-)draw all Objects
-                drawStuff();
+                redrawCanvas();
             }
 
         });
-        canvasPane.setOnMouseDragEntered(new EventHandler<MouseEvent>() {
+    }
+      /*
+        canvasPane.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
                 System.out.println("YO");
@@ -110,7 +116,7 @@ public class Main extends Application {
 
         });
 
-    }
+
 
     private void addDragExitHandler(final Shape tmpShape){
 
@@ -124,11 +130,13 @@ public class Main extends Application {
                 tmpShape.setLayoutY(mouseDragEvent.getY());
                 tmpShape.removeEventHandler(MouseDragEvent.MOUSE_DRAG_EXITED, this );
 
-                drawStuff();
+                redrawCanvas();
             }
         });
     }
-    private void drawStuff(){
+    */
+    private void redrawCanvas(){
+        canvasPane.getChildren().clear();
         for(Shape shape : ObjectModel.getInstance().getModel()){
             //redraw everything
             canvasPane.getChildren().add(shape);
@@ -144,4 +152,12 @@ public class Main extends Application {
         launch(args);
     }
 
+    public <T> T lookupInToolBar(ToolBar parent, String id, Class<T> clazz) {
+        for (Node node : parent.getItems()) {
+            if (node.getClass().isAssignableFrom(clazz)) {
+                return (T)node;
+            }
+        }
+        throw new IllegalArgumentException("Parent " + parent + " doesn't contain node with id " + id);
+    }
 }

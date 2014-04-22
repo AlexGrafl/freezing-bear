@@ -1,5 +1,6 @@
 package graphicseditor;
 
+import graphicseditor.factory.ShapePrototype;
 import javafx.geometry.Bounds;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -61,4 +62,14 @@ public class ObjectModel {
     public LinkedList<Shape> getSelected(){
         return selectionList;
     };
+
+    public boolean isSomethingSelected(){
+        return !selectionList.isEmpty();
+    }
+
+    public void scaleSelection(int value) {
+        for(Shape shape : selectionList){
+            ((ShapePrototype)shape).setScale(value);
+        }
+    }
 }

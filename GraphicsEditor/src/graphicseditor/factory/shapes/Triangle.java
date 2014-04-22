@@ -5,7 +5,6 @@ import javafx.scene.shape.Polygon;
 
 public class Triangle extends Polygon implements ShapePrototype {
 
-    //height = width, aber ka noch wie, man kann die setHeight, setWidth vom parent nicht überschreiben...
     public Triangle() {
         super(  15.0, 0.0,
                 0.0, 30.0,
@@ -51,7 +50,7 @@ public class Triangle extends Polygon implements ShapePrototype {
 
     @Override
     public String toString() {
-        return "Square";
+        return "Triangle";
     }
 
 
