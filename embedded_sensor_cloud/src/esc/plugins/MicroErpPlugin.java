@@ -6,6 +6,7 @@ import esc.HttpResponse;
 import esc.IPlugin;
 import esc.UrlClass;
 import esc.plugins.dal.DataAccessLayer;
+import org.apache.log4j.Logger;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -19,6 +20,7 @@ import java.util.List;
  * @author Alex
  */
 public class MicroErpPlugin implements IPlugin {
+    private static final Logger log = Logger.getLogger(MicroErpPlugin.class);
 
     private BusinessLayer businessLayer = new BusinessLayer(new DataAccessLayer());
 
@@ -28,19 +30,28 @@ public class MicroErpPlugin implements IPlugin {
     }
     @Override
     public void runPlugin(Socket socket, UrlClass url){
-        if(url.getFullPath().contains("server/searchContacts")){
-            System.out.println("woo");
+        if(url.getFullPath().contains("searchContacts")){
+
             Gson gson = new Gson();
-            List<Contact> contactList = businessLayer.searchContacts(url.getParameters().get("q").toString());
+            List<Contact> contactList = businessLayer.searchContacts(url.getParameterAsString("q"));
             Type arrayType = new TypeToken<ArrayList<Contact>>(){}.getType();
             String json = gson.toJson(contactList, arrayType);
-            System.out.println("JSON: " + json);
             sendResponse(json, socket);
+        }
+
+        if(url.getFullPath().contains("insertNewContact")){
+            boolean inserted = businessLayer.insertNewContact(url.getParameterAsString("json"));
+            sendResponse(String.valueOf(inserted), socket);
+        }
+
+        if(url.getFullPath().contains("updateExistingContact")){
+            //Todo: this
         }
 
     }
 
     private void sendResponse(String text, Socket socket){
+        log.debug("Response: " + text);
         try(BufferedWriter out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()))) {
                 out.write("HTTP/1.1 200 OK\r\n");
                 out.write("Content-Type: text/plain\r\n");
@@ -48,10 +59,10 @@ public class MicroErpPlugin implements IPlugin {
                 out.write("Connection: close \r\n\r\n");
                 out.write(text);
                 out.flush();
-                System.out.println("Sent 200 OK to " + socket.getRemoteSocketAddress().toString());
+                log.info("Sent 200 OK to " + socket.getRemoteSocketAddress().toString());
         }
         catch(IOException | NullPointerException  e) {
-            e.printStackTrace();
+            log.error(e);
             new HttpResponse(socket, 500, "bla");
         }
     }

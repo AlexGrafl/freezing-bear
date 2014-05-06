@@ -13,40 +13,40 @@ import java.util.HashSet;
 public class Contact {
 
     @Column(name="contactID")
-    private int contactID;
+    private int contactID = -1;
 
     @Column(name="name")
-    private String name;
+    private String name = null;
 
     @Column(name="uid")
-    private Integer uid;
+    private Integer uid = null;
 
     @Column(name="title")
-    private String title;
+    private String title = null;
 
     @Column(name="firstName")
-    private String firstName;
+    private String firstName = null;
 
     @Column(name="lastName")
-    private String lastName;
+    private String lastName = null;
 
     @Column(name="suffix")
-    private String suffix;
+    private String suffix = null;
 
     @Column(name="birthDate")
-    private Date birthDate;
+    private Date birthDate = null;
 
     @Column(name="address")
-    private String address;
+    private String address = null;
 
     @Column(name="invoiceAddress")
-    private String invoiceAddress;
+    private String invoiceAddress = null;
 
     @Column(name="shippingAddress")
-    private String shippingAddress;
+    private String shippingAddress = null;
 
     @Column(name="isActive")
-    private boolean isActive;
+    private boolean isActive = false;
 
     private HashSet<Invoice> invoiceList;
 

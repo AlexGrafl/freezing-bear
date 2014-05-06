@@ -44,8 +44,9 @@ public class HttpRequest {
         if(foo.length > 1){
             this.requestOptions.put(foo[0], foo[1]);
         }
-        else{
-            url.parseParameters(line);
-        }
+    }
+
+    public void parsePostParameters(String line){
+        url.parseParameters(line);
     }
 }

@@ -1,19 +1,24 @@
 package esc;
 
+import org.apache.log4j.Logger;
+
 import java.io.*;
+import java.net.ConnectException;
 import java.net.Socket;
 
 /**
  * @author Alex
  */
 public class ConnectionHandler implements Runnable{
+
+    private static final Logger log = Logger.getLogger(ConnectionHandler.class);
     private Socket _socket;
     ConnectionHandler(Socket socket) {
         this._socket = socket;
     }
 
     public void run(){
-        System.out.println("Connected: " + _socket.getRemoteSocketAddress().toString());
+        log.info("Connected: " + _socket.getRemoteSocketAddress().toString());
         processRequest();
     }
 
@@ -22,7 +27,7 @@ public class ConnectionHandler implements Runnable{
         try(BufferedReader in = new BufferedReader(new InputStreamReader(_socket.getInputStream()))){
             //holt sich erste zeile
             requestHeaderLine = in.readLine();
-            System.out.println(requestHeaderLine);
+            log.debug(requestHeaderLine);
             //ruft funktion auf die die erste zeile verarbeitet
             String[] requestStrings = processRequestHeader(requestHeaderLine);
 
@@ -33,14 +38,14 @@ public class ConnectionHandler implements Runnable{
                     request.addLine(line);
                 }
                 if(request.getProtocol().equals("POST")){
-                    request.addLine(in.readLine());
+                    request.parsePostParameters(in.readLine());
                 }
                 request.processRequest();
             }
 
 
         } catch (IOException | NullPointerException e) {
-                e.printStackTrace();
+                log.error("Something went wrong", e);
                 new HttpResponse(_socket, 500, "bla");
         }
     }
@@ -57,11 +62,11 @@ public class ConnectionHandler implements Runnable{
                     }
                 }
             }
-            System.out.println("Invalid HTTP request headline: " + headLine);
+            log.warn("Invalid HTTP request headline: " + headLine);
             return null;
         }
         catch (Exception e) {
-            e.printStackTrace();
+            log.error(e);
             new HttpResponse(_socket, 500,"bla");
             return null;
         }

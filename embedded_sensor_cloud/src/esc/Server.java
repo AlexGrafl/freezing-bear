@@ -1,5 +1,8 @@
 package esc;
 
+
+import org.apache.log4j.Logger;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -13,17 +16,17 @@ public class Server {
      * @param args
      *            the command line arguments
      */
-
+    public static final Logger log = Logger.getLogger(Server.class);
     public static HashMap<String, String> naviEntries = new HashMap<>();
     public static PluginManager pluginManager = new PluginManager();
+    private static final int SERVER_PORT = 8080; // port
 
     public static void main(String[] args) {
 
-        final int SERVER_PORT = 8080; // port
 
         // erstellt listener und lauscht
         try(ServerSocket listener = new ServerSocket(SERVER_PORT)){
-            System.out.println("Waiting for connections...");
+            log.info("Listening on Port " + SERVER_PORT);
             while(true){
                 //akzeptiert verbindungen
                 Socket sock = listener.accept();
@@ -33,7 +36,7 @@ public class Server {
             }
         }
         catch(IOException ex){
-            ex.printStackTrace();
+            log.error(ex);
         }
     }
 }

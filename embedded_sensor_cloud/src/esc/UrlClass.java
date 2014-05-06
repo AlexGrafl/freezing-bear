@@ -111,6 +111,13 @@ public class UrlClass {
     public boolean hasParameters(){
         return !this.parameters.isEmpty();
     }
+
+    public String getParameterAsString(String key){
+        if(this.parameters.containsKey(key)) {
+            return this.parameters.get(key).toString();
+        }
+        else throw new IllegalArgumentException("Cannot find parameter: '"+key+"'.");
+    }
 }
 
 class FileThing {

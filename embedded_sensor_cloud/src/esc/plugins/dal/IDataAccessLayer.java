@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface IDataAccessLayer {
     public List<Contact> searchContacts(String text, boolean onlyActive);
+
+    boolean insertNewContact(Contact newContact);
 }
