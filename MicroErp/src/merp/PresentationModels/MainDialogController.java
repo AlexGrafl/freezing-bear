@@ -7,18 +7,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TabPane;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import merp.Models.Contact;
 import merp.Models.ContactModelBind;
 import merp.Models.ContactTableModel;
 import merp.Models.ProxySingleton;
-import merp.Samples.PresentationModelController;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -41,28 +40,16 @@ public class MainDialogController extends AbstractController {
     /*** javafx elements for Invoices  ***/
 
     public MainDialogController(){
-        /* init tableview here? */
-        // Set up the invoice table
-        /*ObservableList<Contact> teamMembers = ...;
-        table.setItems(teamMembers);
-
-        TableColumn<Person,String> firstNameCol = new TableColumn<Person,String>("First Name");
-        firstNameCol.setCellValueFactory(new PropertyValueFactory("firstName"));
-        TableColumn<Person,String> lastNameCol = new TableColumn<Person,String>("Last Name");
-        lastNameCol.setCellValueFactory(new PropertyValueFactory("lastName"));
-
-        table.getColumns().setAll(firstNameCol, lastNameCol);           */
     }
 
 
     @FXML
 	public void onCreateContact() throws IOException {
-        showDialog("Samples/PresentationModel.fxml", "Create Contact");
+        openContactDialog(new Contact(),false);
     }
     @FXML
     public void onEditContact() throws IOException {
-        Contact object = new Contact();
-        showDialog("Samples/PresentationModel.fxml", object, "Edit Contact");
+        //openContactDialog(,true);
     }
     @FXML
     public void onSearchContact(ActionEvent actionEvent) throws IOException {
@@ -84,26 +71,27 @@ public class MainDialogController extends AbstractController {
                 if(event.getClickCount() == 2 && event.getButton().equals(MouseButton.PRIMARY)){
                     int index = tableContact.getSelectionModel().getSelectedIndex();
                     if(index >= 0){
-                        openCustomerWindow((contactList.get(index)));
+                        openContactDialog((contactList.get(index)),true);
                     }
                 }
             }
         });
     }
-    private void openCustomerWindow(Contact result) {
-        if(result == null) return;
+    private void openContactDialog(Contact result, boolean isEdit) {
+        if(result == null) result = new Contact();
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Samples/PresentationModel.fxml"));
-            TabPane root = (TabPane)fxmlLoader.load();
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PresentationModel.fxml"));
+            Pane root = (Pane)fxmlLoader.load();
 
             Stage secondStage = new Stage(StageStyle.DECORATED);
-            Scene scene = new Scene(root, 550, 700);
-            scene.getStylesheets().add(getClass().getResource("/merp/application.css").toExternalForm());
+            Scene scene = new Scene(root, 364, 457);
+            scene.getStylesheets().add(getClass().getResource("../application.css").toExternalForm());
             secondStage.setScene(scene);
-            secondStage.setTitle("Contact");
+            secondStage.setTitle("MERP - Contact");
 
-            PresentationModelController controller = fxmlLoader.<PresentationModelController>getController();
-            controller.initDialog(result);
+            PresentationModelController controller = fxmlLoader.getController();
+            controller.initDialog(result, isEdit);
             secondStage.show();
 
         } catch (IOException e){

@@ -25,13 +25,41 @@ public class HttpConnectionHandler {
     private static String url = "http://localhost:8080/server/";
 
 
-    public boolean sendPostEditRequest(String jsonObject) throws IOException {
+    public boolean sendPostCreateContactRequest(String jsonObject) throws IOException {
 
         // url = server/insertNewContacts
         // keyword: json
         // maybe search auch per POST  ??
         HttpClient client = HttpClientBuilder.create().build();
-        HttpPost post = new HttpPost(url + "insertNewContacts");
+        HttpPost post = new HttpPost(url + "insertNewContact");
+
+        List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
+        urlParameters.add(new BasicNameValuePair("json", "jsonObject"));
+
+        post.setEntity(new UrlEncodedFormEntity(urlParameters));
+
+        HttpResponse response = client.execute(post);
+        System.out.println("Response Code : "
+                + response.getStatusLine().getStatusCode());
+
+        BufferedReader rd = new BufferedReader(
+                new InputStreamReader(response.getEntity().getContent()));
+
+        StringBuffer result = new StringBuffer();
+        String line = "";
+        while ((line = rd.readLine()) != null) {
+            result.append(line);
+        }
+
+        return true;
+    }
+    public boolean sendPostEditContactRequest(String jsonObject) throws IOException {
+
+        // url = server/insertNewContacts
+        // keyword: json
+        // maybe search auch per POST  ??
+        HttpClient client = HttpClientBuilder.create().build();
+        HttpPost post = new HttpPost(url + "editContact");
 
         List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
         urlParameters.add(new BasicNameValuePair("json", "jsonObject"));
@@ -78,6 +106,88 @@ public class HttpConnectionHandler {
             result.append(line);
         }
         return result.toString();
+    }
+    public String sendGetEditContactRequest(String contact) throws IOException {
+        String responseBody ="";
+
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        try {
+            HttpGet httpget = new HttpGet(url + "editContacts?json=" + contact);
+
+            System.out.println("Executing request " + httpget.getRequestLine());
+
+            // Create a custom response handler
+            ResponseHandler<String> responseHandler = new ResponseHandler<String>() {
+
+                public String handleResponse(
+                        final HttpResponse response) throws ClientProtocolException, IOException {
+                    int status = response.getStatusLine().getStatusCode();
+                    if (status >= 200 && status < 300) {
+                        HttpEntity entity = response.getEntity();
+                        return entity != null ? EntityUtils.toString(entity) : null;
+                    } else {
+                        throw new ClientProtocolException("Unexpected response status: " + status);
+                    }
+                }
+
+            };
+            responseBody = httpClient.execute(httpget, responseHandler);
+            System.out.println("----------------------------------------");
+            System.out.println(responseBody);
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                httpClient.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return responseBody;
+
+    }
+    public String sendGetCreateContactRequest(String contact) throws IOException {
+        String responseBody ="";
+
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        try {
+            HttpGet httpget = new HttpGet(url + "insertNewContacts?json=" + contact);
+
+            System.out.println("Executing request " + httpget.getRequestLine());
+
+            // Create a custom response handler
+            ResponseHandler<String> responseHandler = new ResponseHandler<String>() {
+
+                public String handleResponse(
+                        final HttpResponse response) throws ClientProtocolException, IOException {
+                    int status = response.getStatusLine().getStatusCode();
+                    if (status >= 200 && status < 300) {
+                        HttpEntity entity = response.getEntity();
+                        return entity != null ? EntityUtils.toString(entity) : null;
+                    } else {
+                        throw new ClientProtocolException("Unexpected response status: " + status);
+                    }
+                }
+
+            };
+            responseBody = httpClient.execute(httpget, responseHandler);
+            System.out.println("----------------------------------------");
+            System.out.println(responseBody);
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                httpClient.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return responseBody;
+
     }
 
     public String sendGetRequest(String searchString){
