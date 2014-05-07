@@ -1,8 +1,7 @@
 package merp.Models;
 
 
-import merp.Contact;
-
+import java.io.IOException;
 import java.util.List;
 
 public class ProxySingleton {
@@ -17,12 +16,13 @@ public class ProxySingleton {
         return ourInstance;
     }
 
-    public List<Contact> proxyMain(String searchString){
-        String response = httpRequest(searchString);
-        return jp.jsonToContact(response);
-    }
+    public List<Contact> searchContacts(String firstName, String surName, String name, String uid) throws IOException {
+        if (name.equals("")) name= "''";
+        String searchString = "firstName="+ firstName + "&lastName="+ surName + "" +
+                "&q="+ name + "" + "&uid="+ uid;
 
-    private String httpRequest(String request){
-        return httpHandler.sendRequest(request);
+        String response = httpHandler.sendGetRequest(searchString);
+        //String response = httpHandler.sendPostSearchRequest(firstName,surName,name,uid);
+        return jp.jsonToContactList(response);
     }
 }

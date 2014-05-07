@@ -1,11 +1,11 @@
 package merp;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import merp.Models.Person;
-import merp.Models.ProxySingleton;
+import merp.PresentationModels.AbstractController;
 
 import java.io.IOException;
-import java.util.List;
 
 public class MainController extends AbstractController {
 
@@ -18,16 +18,7 @@ public class MainController extends AbstractController {
 	}
     @FXML
     public void onShowData() throws IOException {
-        /*
-            Display ResultSet sent by Server
-            - Via Proxy
-            - display in Table
-        */
-        List<Contact> contactList = ProxySingleton.getInstance().proxyMain("Grafl");
 
-        for(Contact tmp : contactList) {
-            displayTable.getItems().add(tmp);
-        }
 
     }
 
@@ -37,4 +28,7 @@ public class MainController extends AbstractController {
 		result.setNachname("Mayer");
 		return result;
 	}
+
+    public void onCreateContact(ActionEvent actionEvent) {
+    }
 }

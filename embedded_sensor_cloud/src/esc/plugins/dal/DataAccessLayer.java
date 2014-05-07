@@ -24,8 +24,8 @@ public class DataAccessLayer implements IDataAccessLayer{
 
             // Establish the connection.
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String connectionUrl = "jdbc:sqlserver://ALEX-NOTEBOOK;databaseName=ErpData";
-            connection = DriverManager.getConnection(connectionUrl, "test_user", "password_yo");
+            String connectionUrl = "jdbc:sqlserver://PHIPS-THINK\\SQLEXPRESS;databaseName=ErpData";
+            connection = DriverManager.getConnection(connectionUrl, "Remote", "1q2w3e");
         } catch (Exception e) {
            log.error(e);
         }

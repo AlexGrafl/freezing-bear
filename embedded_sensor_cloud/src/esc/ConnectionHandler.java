@@ -2,8 +2,9 @@ package esc;
 
 import org.apache.log4j.Logger;
 
-import java.io.*;
-import java.net.ConnectException;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.Socket;
 
 /**
@@ -27,7 +28,7 @@ public class ConnectionHandler implements Runnable{
         try(BufferedReader in = new BufferedReader(new InputStreamReader(_socket.getInputStream()))){
             //holt sich erste zeile
             requestHeaderLine = in.readLine();
-            log.debug(requestHeaderLine);
+            log.info(requestHeaderLine);
             //ruft funktion auf die die erste zeile verarbeitet
             String[] requestStrings = processRequestHeader(requestHeaderLine);
 
@@ -35,10 +36,13 @@ public class ConnectionHandler implements Runnable{
                 HttpRequest request = new HttpRequest(requestStrings, this._socket);
                 String line;
                 while(!(line = in.readLine()).equals("")){
+                    log.debug(line);
                     request.addLine(line);
                 }
                 if(request.getProtocol().equals("POST")){
-                    request.parsePostParameters(in.readLine());
+                    String parameterString = in.readLine();
+                    log.debug(parameterString);
+                    request.parsePostParameters(parameterString);
                 }
                 request.processRequest();
             }

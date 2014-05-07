@@ -1,39 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import merp.PresentationModels.* ?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="merp.Samples.PresentationModelController"
-	styleClass="pane">
-
-	<TitledPane text="Person" fx:id="personPane">
-		<VBox styleClass="editorPane">
-			<Label>Vorname</Label>
-			<TextField fx:id="vorname"/>
-			<Label>Nachname</Label>
-			<TextField fx:id="nachname" />
-		</VBox>
-	</TitledPane>
-	<TitledPane text="Firma"  fx:id="firmaPane">
-		<VBox styleClass="editorPane">
-			<Label>Name</Label>
-			<TextField fx:id="firmenname" />
-			<Label>UID</Label>
-			<TextField fx:id="UID" />
-		</VBox>
-	</TitledPane>
-	<TitledPane text="Debug">
-		<VBox styleClass="editorPane">
-			<CheckBox fx:id="isFirma" disable="true">Ist Firma</CheckBox>
-			<CheckBox fx:id="disableEditPerson" disable="true">Person
-				bearbeiten deaktivieren</CheckBox>
-			<CheckBox fx:id="disableEditFirma" disable="true">Firma
-				bearbeiten
-				deaktivieren</CheckBox>
-		</VBox>
-	</TitledPane>
+<VBox prefHeight="317.0" prefWidth="367.0" styleClass="pane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="merp.Samples.PresentationModelController">
+  <TitledPane fx:id="personPane" prefHeight="112.0" text="Person">
+    <VBox prefHeight="82.0" prefWidth="338.0" styleClass="editorPane">
+      <Label />
+      <TextField fx:id="vorname" />
+      <Label />
+      <TextField fx:id="nachname" />
+    </VBox>
+  </TitledPane>
+  <TitledPane fx:id="firmaPane" prefHeight="120.0" prefWidth="367.0" text="Firma">
+    <VBox styleClass="editorPane">
+      <Label />
+      <TextField fx:id="firmenname" />
+      <Label />
+      <TextField fx:id="UID" />
+    </VBox>
+  </TitledPane>
+  <Pane prefHeight="82.0" prefWidth="367.0">
+    <children>
+      <Button layoutX="220.0" layoutY="50.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="65.0" text="Button" />
+      <Button layoutX="295.0" layoutY="50.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="65.0" text="Button" />
+    </children>
+  </Pane>
 </VBox>
-

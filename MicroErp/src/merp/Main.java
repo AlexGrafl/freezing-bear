@@ -1,18 +1,18 @@
 package merp;
 	
 import javafx.application.Application;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.TabPane;
+import javafx.stage.Stage;
 
 
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Pane root = (Pane)FXMLLoader.load(getClass().getResource("Main.fxml"));
-			Scene scene = new Scene(root,400,400);
+			TabPane root = FXMLLoader.load(getClass().getResource("PresentationModels/MainDialog.fxml"));
+			Scene scene = new Scene(root,400,515);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("SWE 2 - JavaFX Samples");

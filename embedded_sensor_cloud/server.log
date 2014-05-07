@@ -49,3 +49,382 @@ java.lang.NullPointerException
 18:40:39 [INFO] esc.ConnectionHandler:21 - Connected: /0:0:0:0:0:0:0:1:61082
 18:41:19 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
 18:41:19 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /0:0:0:0:0:0:0:1:61082
+15:56:59 [ERROR] esc.plugins.dal.DataAccessLayer:30 - com.microsoft.sqlserver.jdbc.SQLServerException: Fehler beim Herstellen einer Verbindung mit dem Host "PHIPS-THINK", benannte Instanz "\sqlexpress". Fehler: "java.net.SocketTimeoutException: Receive timed out". Überprüfen Sie die Server- und Instanznamen, und stellen Sie sicher, dass der UDP-Datenverkehr an Port 1434 nicht von einer Firewall blockiert wird. Überprüfen Sie für SQL Server 2005 oder höher, ob der SQL Server Browser Dienst auf dem Host ausgeführt wird.
+15:56:59 [INFO] esc.Server:29 - Listening on Port 8080
+15:58:00 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:54740
+15:58:00 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:54741
+15:58:00 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:54742
+15:58:00 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:54743
+15:58:00 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:54744
+15:58:23 [ERROR] esc.ConnectionHandler:48 - Something went wrong
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:196)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:283)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:325)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:177)
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	at java.io.BufferedReader.fill(BufferedReader.java:154)
+	at java.io.BufferedReader.readLine(BufferedReader.java:317)
+	at java.io.BufferedReader.readLine(BufferedReader.java:382)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:41)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:22)
+	at java.lang.Thread.run(Thread.java:724)
+15:59:16 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:54753
+16:00:05 [ERROR] esc.ConnectionHandler:48 - Something went wrong
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:196)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:283)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:325)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:177)
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	at java.io.BufferedReader.fill(BufferedReader.java:154)
+	at java.io.BufferedReader.readLine(BufferedReader.java:317)
+	at java.io.BufferedReader.readLine(BufferedReader.java:382)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:41)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:22)
+	at java.lang.Thread.run(Thread.java:724)
+16:00:46 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:54766
+16:01:00 [ERROR] esc.ConnectionHandler:48 - Something went wrong
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:196)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:283)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:325)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:177)
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	at java.io.BufferedReader.fill(BufferedReader.java:154)
+	at java.io.BufferedReader.readLine(BufferedReader.java:317)
+	at java.io.BufferedReader.readLine(BufferedReader.java:382)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:41)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:22)
+	at java.lang.Thread.run(Thread.java:724)
+16:03:30 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:54785
+16:03:57 [ERROR] esc.ConnectionHandler:48 - Something went wrong
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:196)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:283)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:325)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:177)
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	at java.io.BufferedReader.fill(BufferedReader.java:154)
+	at java.io.BufferedReader.readLine(BufferedReader.java:317)
+	at java.io.BufferedReader.readLine(BufferedReader.java:382)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:41)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:22)
+	at java.lang.Thread.run(Thread.java:724)
+16:06:34 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:54817
+16:06:48 [ERROR] esc.ConnectionHandler:48 - Something went wrong
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:196)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:283)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:325)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:177)
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	at java.io.BufferedReader.fill(BufferedReader.java:154)
+	at java.io.BufferedReader.readLine(BufferedReader.java:317)
+	at java.io.BufferedReader.readLine(BufferedReader.java:382)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:41)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:22)
+	at java.lang.Thread.run(Thread.java:724)
+16:14:28 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:54900
+16:15:05 [ERROR] esc.ConnectionHandler:48 - Something went wrong
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:196)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:283)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:325)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:177)
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	at java.io.BufferedReader.fill(BufferedReader.java:154)
+	at java.io.BufferedReader.readLine(BufferedReader.java:317)
+	at java.io.BufferedReader.readLine(BufferedReader.java:382)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:41)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:22)
+	at java.lang.Thread.run(Thread.java:724)
+16:15:24 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:54917
+16:15:55 [ERROR] esc.ConnectionHandler:48 - Something went wrong
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:196)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:283)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:325)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:177)
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	at java.io.BufferedReader.fill(BufferedReader.java:154)
+	at java.io.BufferedReader.readLine(BufferedReader.java:317)
+	at java.io.BufferedReader.readLine(BufferedReader.java:382)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:41)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:22)
+	at java.lang.Thread.run(Thread.java:724)
+16:18:09 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:54933
+16:18:16 [ERROR] esc.ConnectionHandler:48 - Something went wrong
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:196)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:283)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:325)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:177)
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	at java.io.BufferedReader.fill(BufferedReader.java:154)
+	at java.io.BufferedReader.readLine(BufferedReader.java:317)
+	at java.io.BufferedReader.readLine(BufferedReader.java:382)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:41)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:22)
+	at java.lang.Thread.run(Thread.java:724)
+16:20:07 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:54940
+16:20:16 [ERROR] esc.ConnectionHandler:48 - Something went wrong
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:196)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:283)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:325)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:177)
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	at java.io.BufferedReader.fill(BufferedReader.java:154)
+	at java.io.BufferedReader.readLine(BufferedReader.java:317)
+	at java.io.BufferedReader.readLine(BufferedReader.java:382)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:41)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:22)
+	at java.lang.Thread.run(Thread.java:724)
+16:20:36 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:54947
+16:20:45 [ERROR] esc.ConnectionHandler:48 - Something went wrong
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:196)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:283)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:325)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:177)
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	at java.io.BufferedReader.fill(BufferedReader.java:154)
+	at java.io.BufferedReader.readLine(BufferedReader.java:317)
+	at java.io.BufferedReader.readLine(BufferedReader.java:382)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:41)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:22)
+	at java.lang.Thread.run(Thread.java:724)
+16:22:49 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:54960
+16:22:49 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:54961
+16:22:49 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:54962
+16:22:49 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:54963
+16:23:17 [INFO] esc.ConnectionHandler:21 - Connected: /0:0:0:0:0:0:0:1:54971
+16:23:17 [INFO] esc.ConnectionHandler:21 - Connected: /0:0:0:0:0:0:0:1:54972
+16:23:49 [ERROR] esc.plugins.dal.DataAccessLayer:30 - com.microsoft.sqlserver.jdbc.SQLServerException: Fehler beim Herstellen einer Verbindung mit dem Host "PHIPS-THINK", benannte Instanz "\sqlexpress". Fehler: "java.net.SocketTimeoutException: Receive timed out". Überprüfen Sie die Server- und Instanznamen, und stellen Sie sicher, dass der UDP-Datenverkehr an Port 1434 nicht von einer Firewall blockiert wird. Überprüfen Sie für SQL Server 2005 oder höher, ob der SQL Server Browser Dienst auf dem Host ausgeführt wird.
+16:23:49 [INFO] esc.Server:29 - Listening on Port 8080
+16:24:35 [INFO] esc.ConnectionHandler:21 - Connected: /0:0:0:0:0:0:0:1:54984
+16:24:35 [INFO] esc.ConnectionHandler:21 - Connected: /0:0:0:0:0:0:0:1:54985
+16:24:44 [INFO] esc.ConnectionHandler:21 - Connected: /0:0:0:0:0:0:0:1:54988
+16:24:47 [INFO] esc.ConnectionHandler:21 - Connected: /0:0:0:0:0:0:0:1:54989
+16:24:49 [INFO] esc.ConnectionHandler:21 - Connected: /0:0:0:0:0:0:0:1:54990
+16:24:49 [ERROR] esc.ConnectionHandler:48 - Something went wrong
+java.lang.NullPointerException
+	at esc.plugins.dal.DataAccessLayer.searchContacts(DataAccessLayer.java:38)
+	at esc.plugins.BusinessLayer.searchContacts(BusinessLayer.java:25)
+	at esc.plugins.MicroErpPlugin.runPlugin(MicroErpPlugin.java:36)
+	at esc.PluginManager.findPlugin(PluginManager.java:46)
+	at esc.HttpRequest.processRequest(HttpRequest.java:35)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:43)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:22)
+	at java.lang.Thread.run(Thread.java:724)
+16:24:52 [ERROR] esc.ConnectionHandler:48 - Something went wrong
+java.lang.NullPointerException
+	at esc.plugins.dal.DataAccessLayer.searchContacts(DataAccessLayer.java:38)
+	at esc.plugins.BusinessLayer.searchContacts(BusinessLayer.java:25)
+	at esc.plugins.MicroErpPlugin.runPlugin(MicroErpPlugin.java:36)
+	at esc.PluginManager.findPlugin(PluginManager.java:46)
+	at esc.HttpRequest.processRequest(HttpRequest.java:35)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:43)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:22)
+	at java.lang.Thread.run(Thread.java:724)
+16:24:52 [INFO] esc.ConnectionHandler:21 - Connected: /0:0:0:0:0:0:0:1:54991
+16:25:02 [WARN] esc.ConnectionHandler:65 - Invalid HTTP request headline: null
+16:25:51 [ERROR] esc.plugins.dal.DataAccessLayer:30 - com.microsoft.sqlserver.jdbc.SQLServerException: Fehler beim Herstellen einer Verbindung mit dem Host "PHIPS-THINK", benannte Instanz "\sqlexpress". Fehler: "java.net.SocketTimeoutException: Receive timed out". Überprüfen Sie die Server- und Instanznamen, und stellen Sie sicher, dass der UDP-Datenverkehr an Port 1434 nicht von einer Firewall blockiert wird. Überprüfen Sie für SQL Server 2005 oder höher, ob der SQL Server Browser Dienst auf dem Host ausgeführt wird.
+16:25:51 [INFO] esc.Server:29 - Listening on Port 8080
+16:28:53 [INFO] esc.Server:29 - Listening on Port 8080
+16:29:30 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:55032
+16:30:08 [ERROR] esc.ConnectionHandler:48 - Something went wrong
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:196)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:283)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:325)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:177)
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	at java.io.BufferedReader.fill(BufferedReader.java:154)
+	at java.io.BufferedReader.readLine(BufferedReader.java:317)
+	at java.io.BufferedReader.readLine(BufferedReader.java:382)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:41)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:22)
+	at java.lang.Thread.run(Thread.java:724)
+16:30:21 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:55044
+16:30:44 [ERROR] esc.ConnectionHandler:48 - Something went wrong
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:196)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:283)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:325)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:177)
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	at java.io.BufferedReader.fill(BufferedReader.java:154)
+	at java.io.BufferedReader.readLine(BufferedReader.java:317)
+	at java.io.BufferedReader.readLine(BufferedReader.java:382)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:41)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:22)
+	at java.lang.Thread.run(Thread.java:724)
+16:31:00 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:55049
+16:31:00 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:55050
+16:31:00 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:55051
+16:31:00 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:55052
+16:32:17 [INFO] esc.ConnectionHandler:21 - Connected: /0:0:0:0:0:0:0:1:55062
+16:32:17 [INFO] esc.ConnectionHandler:21 - Connected: /0:0:0:0:0:0:0:1:55063
+16:32:17 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+16:32:17 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /0:0:0:0:0:0:0:1:55062
+16:32:22 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:55065
+16:32:22 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+16:32:22 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /127.0.0.1:55065
+16:32:27 [WARN] esc.ConnectionHandler:65 - Invalid HTTP request headline: null
+16:34:18 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:55074
+16:34:41 [INFO] esc.Server:29 - Listening on Port 8080
+16:35:03 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:55084
+16:37:37 [ERROR] esc.ConnectionHandler:48 - Something went wrong
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:196)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:283)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:325)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:177)
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	at java.io.BufferedReader.fill(BufferedReader.java:154)
+	at java.io.BufferedReader.readLine(BufferedReader.java:317)
+	at java.io.BufferedReader.readLine(BufferedReader.java:382)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:41)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:22)
+	at java.lang.Thread.run(Thread.java:724)
+16:37:47 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:55096
+16:38:11 [INFO] esc.Server:29 - Listening on Port 8080
+16:38:23 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:55104
+16:38:36 [ERROR] esc.ConnectionHandler:48 - Something went wrong
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:196)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:283)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:325)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:177)
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	at java.io.BufferedReader.fill(BufferedReader.java:154)
+	at java.io.BufferedReader.readLine(BufferedReader.java:317)
+	at java.io.BufferedReader.readLine(BufferedReader.java:382)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:41)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:22)
+	at java.lang.Thread.run(Thread.java:724)
+16:38:45 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:55108
+16:38:59 [ERROR] esc.ConnectionHandler:48 - Something went wrong
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:196)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:283)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:325)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:177)
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	at java.io.BufferedReader.fill(BufferedReader.java:154)
+	at java.io.BufferedReader.readLine(BufferedReader.java:317)
+	at java.io.BufferedReader.readLine(BufferedReader.java:382)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:41)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:22)
+	at java.lang.Thread.run(Thread.java:724)
+16:42:59 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:55123
+16:43:25 [ERROR] esc.ConnectionHandler:48 - Something went wrong
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:196)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:283)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:325)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:177)
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	at java.io.BufferedReader.fill(BufferedReader.java:154)
+	at java.io.BufferedReader.readLine(BufferedReader.java:317)
+	at java.io.BufferedReader.readLine(BufferedReader.java:382)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:41)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:22)
+	at java.lang.Thread.run(Thread.java:724)
+16:43:32 [INFO] esc.Server:29 - Listening on Port 8080
+16:44:14 [INFO] esc.ConnectionHandler:21 - Connected: /127.0.0.1:55143
+16:45:29 [ERROR] esc.ConnectionHandler:48 - Something went wrong
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:196)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:283)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:325)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:177)
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	at java.io.BufferedReader.fill(BufferedReader.java:154)
+	at java.io.BufferedReader.readLine(BufferedReader.java:317)
+	at java.io.BufferedReader.readLine(BufferedReader.java:382)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:41)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:22)
+	at java.lang.Thread.run(Thread.java:724)
+16:46:11 [INFO] esc.ConnectionHandler:21 - Connected: /0:0:0:0:0:0:0:1:55155
+16:46:35 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+16:46:35 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /0:0:0:0:0:0:0:1:55155
+16:49:48 [INFO] esc.Server:29 - Listening on Port 8080
+16:50:01 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:55179
+16:50:01 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+16:51:07 [INFO] esc.Server:29 - Listening on Port 8080
+16:51:09 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:55188
+16:51:09 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+16:51:09 [INFO] esc.ConnectionHandler:39 - Content-Length: 7
+16:51:09 [INFO] esc.ConnectionHandler:39 - Content-Type: application/x-www-form-urlencoded
+16:51:09 [INFO] esc.ConnectionHandler:39 - Host: localhost:8080
+16:51:09 [INFO] esc.ConnectionHandler:39 - Connection: Keep-Alive
+16:51:09 [INFO] esc.ConnectionHandler:39 - User-Agent: Apache-HttpClient/4.3.3 (java 1.5)
+16:51:09 [INFO] esc.ConnectionHandler:39 - Accept-Encoding: gzip,deflate
+16:53:34 [INFO] esc.Server:29 - Listening on Port 8080
+16:53:34 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:55206
+16:53:34 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+16:53:34 [INFO] esc.ConnectionHandler:41 - 
+16:54:17 [INFO] esc.Server:29 - Listening on Port 8080
+16:54:20 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:55221
+16:54:20 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+16:54:20 [INFO] esc.ConnectionHandler:41 - POST
+17:03:31 [INFO] esc.Server:29 - Listening on Port 8080
+17:03:32 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:55400
+17:03:32 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+17:03:56 [ERROR] esc.ConnectionHandler:55 - Something went wrong
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:196)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at java.net.SocketInputStream.read(SocketInputStream.java:210)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:44)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:23)
+	at java.lang.Thread.run(Thread.java:724)
+17:04:49 [INFO] esc.Server:29 - Listening on Port 8080
+17:05:15 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:55425
+17:05:15 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+17:05:53 [INFO] esc.Server:29 - Listening on Port 8080
+17:06:09 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:55434
+17:06:09 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+17:12:36 [ERROR] esc.ConnectionHandler:57 - Something went wrong
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:196)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at java.net.SocketInputStream.read(SocketInputStream.java:210)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:45)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:23)
+	at java.lang.Thread.run(Thread.java:724)
+17:12:52 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:55490
+17:12:52 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+17:17:11 [ERROR] esc.ConnectionHandler:57 - Something went wrong
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:196)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at java.net.SocketInputStream.read(SocketInputStream.java:210)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:45)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:23)
+	at java.lang.Thread.run(Thread.java:724)
+17:17:21 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:60331
+17:17:21 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+17:18:11 [INFO] esc.Server:29 - Listening on Port 8080
+17:18:24 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:60343
+17:18:24 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1

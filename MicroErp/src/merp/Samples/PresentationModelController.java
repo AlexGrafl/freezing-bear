@@ -1,15 +1,16 @@
 package merp.Samples;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
-import merp.AbstractController;
-import merp.Models.Person;
-import merp.PresentationModels.PersonModel;
 import javafx.scene.control.TitledPane;
+import merp.Models.Contact;
+import merp.Models.Person;
+import merp.PresentationModels.AbstractController;
+import merp.PresentationModels.PersonModel;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class PresentationModelController extends AbstractController {
 	@FXML
@@ -45,6 +46,13 @@ public class PresentationModelController extends AbstractController {
 		this.presenationModel = new PersonModel();
 		applyBindings();
 	}
+    public void initDialog(Contact result)
+    {
+        vorname.setText(result.getFirstName());
+        nachname.setText(result.getLastName());
+        firmenname.setText(result.getName());
+        //UID.setText(result.getUid().toString());
+    }
 
 	private void applyBindings() {
 		vorname.textProperty().bindBidirectional(presenationModel.vornameProperty());
