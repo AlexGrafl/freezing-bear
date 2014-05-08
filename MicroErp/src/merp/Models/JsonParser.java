@@ -19,8 +19,6 @@ public class JsonParser {
     }
     public String contactToJson(Contact obj){
         Gson gson = new Gson();
-        String json = gson.toJson(obj);
-
-        return json;
+        return gson.toJson(obj);
     }
 }

@@ -21,8 +21,8 @@ public class ProxySingleton {
         String searchString = "firstName="+ firstName + "&lastName="+ surName + "" +
                 "&q="+ name + "" + "&uid="+ uid;
 
-        String response = httpHandler.sendGetRequest(searchString);
-        //String response = httpHandler.sendPostSearchRequest(firstName,surName,name,uid);
+        //String response = httpHandler.sendGetRequest(searchString);
+        String response = httpHandler.sendPostSearchRequest(firstName,surName,name,uid);
         return jp.jsonToContactList(response);
     }
 

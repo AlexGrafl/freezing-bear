@@ -9,6 +9,7 @@ import org.junit.runners.JUnit4;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -27,7 +28,9 @@ public class BusinessLayerTest {
 
     @Test
     public void searchContactsTest(){
-        List<Contact> contactList = businessLayer.searchContacts("Grafl");
+        HashMap<String, String> parameters = new HashMap<>();
+        parameters.put("name", "Grafl");
+        List<Contact> contactList = businessLayer.searchContacts(parameters);
         assertEquals(2, contactList.size());
         assertEquals("Grafl", contactList.get(0).getLastName());
         assertNull(contactList.get(0).getUid());

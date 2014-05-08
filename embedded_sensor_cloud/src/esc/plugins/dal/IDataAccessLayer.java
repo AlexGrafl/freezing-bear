@@ -8,7 +8,10 @@ import java.util.List;
  * @author Alex
  */
 public interface IDataAccessLayer {
-    public List<Contact> searchContacts(String text, boolean onlyActive);
+    public List<Contact> searchContacts(String key, String value);
 
     boolean insertNewContact(Contact newContact);
+
+    boolean editContact(Contact contact);
+
 }

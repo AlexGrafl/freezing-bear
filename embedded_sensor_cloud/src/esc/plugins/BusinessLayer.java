@@ -6,6 +6,7 @@ import esc.plugins.dal.IDataAccessLayer;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -20,9 +21,13 @@ public class BusinessLayer {
         this.dataAccessLayer = dataAccessLayer;
     }
 
-    public List<Contact> searchContacts(String text){
-        if(text != null) {
-            return dataAccessLayer.searchContacts(text, true);
+    public List<Contact> searchContacts(HashMap<String, String> parameters){
+        if(!parameters.isEmpty() && parameters.size() == 1) {
+            String key = (String) parameters.keySet().toArray()[0];
+            if(key.equals("name") || key.equals("firstName") || key.equals("lastName") || key.equals("uid")) {
+                String value = parameters.get(key);
+                return dataAccessLayer.searchContacts(key, value);
+            }
         }
         return new ArrayList<>();
     }
@@ -34,9 +39,20 @@ public class BusinessLayer {
             return dataAccessLayer.insertNewContact(newContact);
         }
         catch(JsonParseException e){
-            log.error(e);
+            log.error("Cannot parse JSON '"+json+"'-", e);
             return false;
         }
     }
 
+    public boolean editContact(String json) {
+        try {
+            Gson gson = new Gson();
+            Contact contact = gson.fromJson(json, Contact.class);
+            return dataAccessLayer.editContact(contact);
+        }
+        catch(JsonParseException e){
+            log.error("Cannot parse JSON '"+json+"'-", e);
+            return false;
+        }
+    }
 }

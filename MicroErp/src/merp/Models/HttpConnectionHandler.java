@@ -34,7 +34,7 @@ public class HttpConnectionHandler {
         HttpPost post = new HttpPost(url + "insertNewContact");
 
         List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
-        urlParameters.add(new BasicNameValuePair("json", "jsonObject"));
+        urlParameters.add(new BasicNameValuePair("json", jsonObject));
 
         post.setEntity(new UrlEncodedFormEntity(urlParameters));
 
@@ -62,7 +62,7 @@ public class HttpConnectionHandler {
         HttpPost post = new HttpPost(url + "editContact");
 
         List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
-        urlParameters.add(new BasicNameValuePair("json", "jsonObject"));
+        urlParameters.add(new BasicNameValuePair("json", jsonObject));
 
         post.setEntity(new UrlEncodedFormEntity(urlParameters));
 
@@ -89,7 +89,7 @@ public class HttpConnectionHandler {
         List <NameValuePair> urlParameters = new ArrayList <NameValuePair>();
         if(!firstName.isEmpty()) urlParameters.add(new BasicNameValuePair("firstName", firstName));
         if(!lastName.isEmpty()) urlParameters.add(new BasicNameValuePair("lastName", lastName));
-        if(!name.isEmpty()) urlParameters.add(new BasicNameValuePair("q", name));
+        if(!name.isEmpty()) urlParameters.add(new BasicNameValuePair("name", name));
         if(!uid.isEmpty()) urlParameters.add(new BasicNameValuePair("uid", uid));
         UrlEncodedFormEntity urlEncodedFormEntity = new UrlEncodedFormEntity(urlParameters, "UTF-8");
         httpPost.setEntity(urlEncodedFormEntity);

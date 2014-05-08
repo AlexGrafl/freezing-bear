@@ -428,3 +428,434 @@ java.net.SocketException: Connection reset
 17:18:11 [INFO] esc.Server:29 - Listening on Port 8080
 17:18:24 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:60343
 17:18:24 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+23:38:22 [ERROR] esc.plugins.dal.DataAccessLayer:30 - com.microsoft.sqlserver.jdbc.SQLServerException: Fehler beim Herstellen einer Verbindung mit dem Host "PHIPS-THINK", benannte Instanz "sqlexpress". Fehler: "java.net.UnknownHostException: PHIPS-THINK". Überprüfen Sie die Server- und Instanznamen, und stellen Sie sicher, dass der UDP-Datenverkehr an Port 1434 nicht von einer Firewall blockiert wird. Überprüfen Sie für SQL Server 2005 oder höher, ob der SQL Server Browser Dienst auf dem Host ausgeführt wird.
+23:38:22 [INFO] esc.Server:29 - Listening on Port 8080
+23:39:27 [ERROR] esc.plugins.dal.DataAccessLayer:30 - com.microsoft.sqlserver.jdbc.SQLServerException: Login failed for user 'Remote'. ClientConnectionId:30b41e40-df43-47b8-972a-dd7bb663e34e
+23:39:27 [INFO] esc.Server:29 - Listening on Port 8080
+23:39:55 [INFO] esc.Server:29 - Listening on Port 8080
+23:39:59 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:56356
+23:39:59 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=Grafl&uid= HTTP/1.1
+23:39:59 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+23:39:59 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /127.0.0.1:56356
+23:40:32 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:56374
+23:40:32 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=Grafl&uid= HTTP/1.1
+23:40:32 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+23:40:32 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /127.0.0.1:56374
+23:43:23 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:56423
+23:43:23 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=Grafl&uid= HTTP/1.1
+23:43:23 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+23:43:23 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /127.0.0.1:56423
+23:43:53 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:56440
+23:43:53 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=Grafl&uid= HTTP/1.1
+23:43:53 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+23:43:53 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /127.0.0.1:56440
+23:45:39 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:56475
+23:45:39 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=Grafl&uid= HTTP/1.1
+23:45:39 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+23:45:39 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /127.0.0.1:56475
+23:47:40 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:56521
+23:47:40 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=Grafl&uid= HTTP/1.1
+23:47:40 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+23:47:40 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /127.0.0.1:56521
+23:51:06 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:56609
+23:51:06 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+23:51:15 [ERROR] esc.ConnectionHandler:52 - Something went wrong
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:196)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:283)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:325)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:177)
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	at java.io.BufferedReader.fill(BufferedReader.java:154)
+	at java.io.BufferedReader.readLine(BufferedReader.java:317)
+	at java.io.BufferedReader.readLine(BufferedReader.java:382)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:43)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:23)
+	at java.lang.Thread.run(Thread.java:724)
+23:56:30 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:56934
+23:56:30 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+23:58:56 [ERROR] esc.ConnectionHandler:52 - Something went wrong
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:196)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:283)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:325)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:177)
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	at java.io.BufferedReader.fill(BufferedReader.java:154)
+	at java.io.BufferedReader.readLine(BufferedReader.java:317)
+	at java.io.BufferedReader.readLine(BufferedReader.java:382)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:43)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:23)
+	at java.lang.Thread.run(Thread.java:724)
+23:59:28 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:56992
+23:59:28 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+00:01:13 [ERROR] esc.ConnectionHandler:52 - Something went wrong
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:196)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:283)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:325)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:177)
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	at java.io.BufferedReader.fill(BufferedReader.java:154)
+	at java.io.BufferedReader.readLine(BufferedReader.java:317)
+	at java.io.BufferedReader.readLine(BufferedReader.java:382)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:43)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:23)
+	at java.lang.Thread.run(Thread.java:724)
+00:01:36 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:57035
+00:01:36 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=Grafl&uid= HTTP/1.1
+00:01:36 [ERROR] esc.plugins.dal.DataAccessLayer:51 - com.microsoft.sqlserver.jdbc.SQLServerException: Connection reset by peer: socket write error
+00:01:36 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /127.0.0.1:57035
+00:01:58 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:57042
+00:01:58 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=Grafl&uid= HTTP/1.1
+00:01:58 [ERROR] esc.plugins.dal.DataAccessLayer:51 - com.microsoft.sqlserver.jdbc.SQLServerException: Die Verbindung wurde geschlossen.
+00:01:58 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /127.0.0.1:57042
+00:02:49 [INFO] esc.Server:29 - Listening on Port 8080
+00:02:53 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:57063
+00:02:53 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=Grafl&uid= HTTP/1.1
+00:02:53 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+00:02:53 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /127.0.0.1:57063
+00:04:53 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:57092
+00:04:53 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=Grafl&uid= HTTP/1.1
+00:04:53 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+00:04:53 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /127.0.0.1:57092
+00:07:24 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:57151
+00:07:24 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=Grafl&uid= HTTP/1.1
+00:07:24 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+00:07:24 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /127.0.0.1:57151
+00:07:44 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:57154
+00:07:44 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=Grafl&uid= HTTP/1.1
+00:07:44 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+00:07:44 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /127.0.0.1:57154
+00:08:16 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:57166
+00:08:16 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=Grafl&uid= HTTP/1.1
+00:08:16 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+00:08:16 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /127.0.0.1:57166
+00:08:32 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:57171
+00:08:32 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=Grafl&uid= HTTP/1.1
+00:08:32 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+00:08:32 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /127.0.0.1:57171
+00:10:03 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:57198
+00:10:03 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=Grafl&uid= HTTP/1.1
+00:10:03 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+00:10:03 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /127.0.0.1:57198
+00:13:19 [INFO] esc.ConnectionHandler:22 - Connected: /192.168.1.15:57315
+00:13:19 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=Grafl&uid= HTTP/1.1
+00:13:19 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+00:13:19 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /192.168.1.15:57315
+00:15:02 [INFO] esc.ConnectionHandler:22 - Connected: /192.168.1.15:57335
+00:15:02 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=Grafl&uid= HTTP/1.1
+00:15:02 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+00:15:02 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /192.168.1.15:57335
+00:15:30 [INFO] esc.ConnectionHandler:22 - Connected: /192.168.1.15:57349
+00:15:30 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+00:15:44 [ERROR] esc.ConnectionHandler:52 - Something went wrong
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:196)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:283)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:325)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:177)
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	at java.io.BufferedReader.fill(BufferedReader.java:154)
+	at java.io.BufferedReader.readLine(BufferedReader.java:317)
+	at java.io.BufferedReader.readLine(BufferedReader.java:382)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:43)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:23)
+	at java.lang.Thread.run(Thread.java:724)
+00:15:57 [INFO] esc.ConnectionHandler:22 - Connected: /192.168.1.15:57355
+00:15:57 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=Grafl&uid= HTTP/1.1
+00:15:57 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+00:15:57 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /192.168.1.15:57355
+00:18:10 [INFO] esc.ConnectionHandler:22 - Connected: /192.168.1.15:57386
+00:18:10 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=Grafl&uid= HTTP/1.1
+00:18:10 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+00:18:10 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /192.168.1.15:57386
+00:22:32 [INFO] esc.ConnectionHandler:22 - Connected: /192.168.1.15:57457
+00:22:32 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=Grafl&uid= HTTP/1.1
+00:22:32 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+00:22:32 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /192.168.1.15:57457
+00:22:39 [INFO] esc.ConnectionHandler:22 - Connected: /192.168.1.15:57462
+00:22:39 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=Grafl&uid= HTTP/1.1
+00:22:39 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+00:22:39 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /192.168.1.15:57462
+00:23:09 [INFO] esc.ConnectionHandler:22 - Connected: /192.168.1.15:57467
+00:23:09 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=Grafl&uid= HTTP/1.1
+00:23:09 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+00:23:09 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /192.168.1.15:57467
+00:23:12 [INFO] esc.ConnectionHandler:22 - Connected: /192.168.1.15:57473
+00:23:12 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=Grafl&uid= HTTP/1.1
+00:23:12 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+00:23:12 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /192.168.1.15:57473
+00:23:29 [INFO] esc.ConnectionHandler:22 - Connected: /192.168.1.15:57478
+00:23:29 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=asd&uid= HTTP/1.1
+00:23:29 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 0 contacts for string 'asd'.
+00:23:29 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /192.168.1.15:57478
+00:28:57 [INFO] esc.ConnectionHandler:22 - Connected: /192.168.1.15:57655
+00:28:57 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=asd&uid= HTTP/1.1
+00:28:57 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 0 contacts for string 'asd'.
+00:28:57 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /192.168.1.15:57655
+00:29:14 [INFO] esc.ConnectionHandler:22 - Connected: /192.168.1.15:57668
+00:29:14 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=asd&uid= HTTP/1.1
+00:29:14 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 0 contacts for string 'asd'.
+00:29:14 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /192.168.1.15:57668
+00:31:51 [INFO] esc.ConnectionHandler:22 - Connected: /192.168.1.15:57707
+00:31:51 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=Grafl&uid= HTTP/1.1
+00:31:51 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+00:31:51 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /192.168.1.15:57707
+00:37:00 [INFO] esc.ConnectionHandler:22 - Connected: /192.168.1.15:57897
+00:37:00 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=Grafl&uid= HTTP/1.1
+00:37:00 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+00:37:00 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /192.168.1.15:57897
+00:41:11 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:57983
+00:41:11 [INFO] esc.ConnectionHandler:31 - GET /server/searchContacts?firstName=&lastName=&q=Grafl&uid= HTTP/1.1
+00:41:11 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+00:41:11 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /127.0.0.1:57983
+00:44:06 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58019
+00:44:06 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+00:44:11 [ERROR] esc.ConnectionHandler:52 - Something went wrong
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:196)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:283)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:325)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:177)
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	at java.io.BufferedReader.fill(BufferedReader.java:154)
+	at java.io.BufferedReader.readLine(BufferedReader.java:317)
+	at java.io.BufferedReader.readLine(BufferedReader.java:382)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:43)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:23)
+	at java.lang.Thread.run(Thread.java:724)
+00:48:32 [INFO] esc.Server:28 - Listening on Port 8080
+00:48:42 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58087
+00:48:42 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+00:49:10 [INFO] esc.Server:28 - Listening on Port 8080
+00:49:12 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58112
+00:49:12 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+00:51:21 [INFO] esc.Server:28 - Listening on Port 8080
+00:51:23 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58158
+00:51:23 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+00:52:07 [INFO] esc.Server:28 - Listening on Port 8080
+00:52:09 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58171
+00:52:09 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+00:52:21 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+00:52:21 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /127.0.0.1:58171
+00:53:00 [ERROR] esc.Server:38 - java.net.BindException: Address already in use: JVM_Bind
+01:04:10 [INFO] esc.Server:28 - Listening on Port 8080
+01:04:13 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58488
+01:04:13 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+01:04:13 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 0 contacts for string 'asd'.
+01:04:13 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /127.0.0.1:58488
+01:04:22 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58489
+01:04:22 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+01:04:22 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 2 contacts for string 'Grafl'.
+01:04:22 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /127.0.0.1:58489
+01:21:06 [INFO] esc.Server:28 - Listening on Port 8080
+01:24:35 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58850
+01:24:35 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+01:24:35 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 0 contacts for string 'Grafl'.
+01:24:35 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /127.0.0.1:58850
+01:25:27 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58860
+01:25:27 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+01:25:27 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 0 contacts for string 'Grafl'.
+01:25:27 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /127.0.0.1:58860
+01:25:33 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58865
+01:25:33 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+01:25:33 [INFO] esc.plugins.dal.DataAccessLayer:46 - Found 0 contacts for string 'Grafl'.
+01:25:33 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /127.0.0.1:58865
+01:30:55 [INFO] esc.Server:28 - Listening on Port 8080
+01:30:58 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58993
+01:30:58 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+01:30:59 [INFO] esc.plugins.dal.DataAccessLayer:45 - Found 1 contacts for string 'Grafl'.
+01:30:59 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /127.0.0.1:58993
+01:31:13 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59000
+01:31:13 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+01:31:13 [INFO] esc.plugins.dal.DataAccessLayer:45 - Found 1 contacts for string 'Alex'.
+01:31:13 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /127.0.0.1:59000
+01:31:25 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59010
+01:31:25 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+01:31:25 [INFO] esc.plugins.dal.DataAccessLayer:45 - Found 2 contacts for string 'Grafl'.
+01:31:25 [INFO] esc.plugins.MicroErpPlugin:62 - Sent 200 OK to /127.0.0.1:59010
+01:32:24 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59032
+01:32:24 [INFO] esc.ConnectionHandler:31 - POST /server/editContact HTTP/1.1
+01:42:07 [INFO] esc.Server:28 - Listening on Port 8080
+01:42:18 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59186
+01:42:18 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+01:42:18 [INFO] esc.plugins.dal.DataAccessLayer:45 - Found 1 contacts for string 'Grafl'.
+01:42:18 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:59186
+01:42:31 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59191
+01:42:31 [INFO] esc.ConnectionHandler:31 - POST /server/editContact HTTP/1.1
+01:42:31 [ERROR] esc.plugins.BusinessLayer:54 - com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+01:43:38 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59214
+01:43:38 [INFO] esc.ConnectionHandler:31 - POST /server/insertNewContact HTTP/1.1
+01:43:38 [ERROR] esc.plugins.BusinessLayer:42 - com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+01:43:38 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:59214
+01:44:33 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59233
+01:44:33 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+01:44:33 [INFO] esc.plugins.dal.DataAccessLayer:45 - Found 1 contacts for string 'Grafl'.
+01:44:33 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:59233
+01:44:48 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59234
+01:44:48 [INFO] esc.ConnectionHandler:31 - POST /server/editContact HTTP/1.1
+01:44:48 [ERROR] esc.plugins.BusinessLayer:54 - com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+01:46:46 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59281
+01:46:46 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+01:46:46 [INFO] esc.plugins.dal.DataAccessLayer:45 - Found 1 contacts for string 'Grafl'.
+01:46:46 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:59281
+01:46:55 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59282
+01:46:55 [INFO] esc.ConnectionHandler:31 - POST /server/editContact HTTP/1.1
+01:46:55 [ERROR] esc.plugins.BusinessLayer:54 - com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+01:48:15 [INFO] esc.Server:28 - Listening on Port 8080
+01:48:25 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59307
+01:48:25 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+01:48:25 [INFO] esc.plugins.dal.DataAccessLayer:45 - Found 1 contacts for string 'a'.
+01:48:25 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:59307
+01:48:31 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59313
+01:48:31 [INFO] esc.ConnectionHandler:31 - POST /server/editContact HTTP/1.1
+01:48:31 [ERROR] esc.plugins.BusinessLayer:54 - Cannot parse JSON '%7B%22contactID%22%3A1%2C%22name%22%3A%22Alexander+Grafl%22%2C%22uid%22%3A-1%2C%22title%22%3A%22Dr.%22%2C%22firstName%22%3A%22qwe%22%2C%22lastName%22%3A%22Grafl%22%2C%22suffix%22%3A%22Msc%22%2C%22birthDate%22%3A%22Mar+28%2C+2014+12%3A00%3A00+AM%22%2C%22address%22%3A%22Bergengasse+6%2F5%2F14+1220+Wien%22%2C%22invoiceAddress%22%3A%22Bergengasse+6%2F5%2F14+1220+Wien%22%2C%22shippingAddress%22%3A%22Bergengasse+6%2F5%2F14+1220+Wien%22%2C%22isActive%22%3Atrue%7D'-
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at com.google.gson.Gson.fromJson(Gson.java:689)
+	at esc.plugins.BusinessLayer.editContact(BusinessLayer.java:50)
+	at esc.plugins.MicroErpPlugin.runPlugin(MicroErpPlugin.java:48)
+	at esc.PluginManager.findPlugin(PluginManager.java:46)
+	at esc.HttpRequest.processRequest(HttpRequest.java:35)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:51)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:23)
+	at java.lang.Thread.run(Thread.java:724)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 11 more
+01:50:16 [INFO] esc.Server:28 - Listening on Port 8080
+01:50:20 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59352
+01:50:20 [INFO] esc.ConnectionHandler:31 - POST /server/editContact HTTP/1.1
+01:50:20 [ERROR] esc.plugins.dal.DataAccessLayer:110 - Update failed - 
+com.microsoft.sqlserver.jdbc.SQLServerException: Wert für Parameternummer "12" wurde nicht festgelegt.
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:190)
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.buildParamTypeDefinitions(SQLServerPreparedStatement.java:260)
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.buildPreparedStrings(SQLServerPreparedStatement.java:219)
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.doPrepExec(SQLServerPreparedStatement.java:612)
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.doExecutePreparedStatement(SQLServerPreparedStatement.java:400)
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement$PrepStmtExecCmd.doExecute(SQLServerPreparedStatement.java:350)
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:5696)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:1715)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:180)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:155)
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.executeUpdate(SQLServerPreparedStatement.java:314)
+	at esc.plugins.dal.DataAccessLayer.editContact(DataAccessLayer.java:107)
+	at esc.plugins.BusinessLayer.editContact(BusinessLayer.java:51)
+	at esc.plugins.MicroErpPlugin.runPlugin(MicroErpPlugin.java:48)
+	at esc.PluginManager.findPlugin(PluginManager.java:46)
+	at esc.HttpRequest.processRequest(HttpRequest.java:36)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:51)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:23)
+	at java.lang.Thread.run(Thread.java:724)
+01:51:00 [INFO] esc.Server:28 - Listening on Port 8080
+01:51:05 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59361
+01:51:05 [INFO] esc.ConnectionHandler:31 - POST /server/editContact HTTP/1.1
+01:51:14 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59374
+01:51:14 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+01:51:14 [INFO] esc.plugins.dal.DataAccessLayer:45 - Found 0 contacts for string 'a'.
+01:51:14 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:59374
+01:51:20 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59375
+01:51:20 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+01:51:20 [INFO] esc.plugins.dal.DataAccessLayer:45 - Found 1 contacts for string 'q'.
+01:51:20 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:59375
+01:51:29 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59376
+01:51:29 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+01:51:29 [INFO] esc.plugins.dal.DataAccessLayer:45 - Found 0 contacts for string 'a'.
+01:51:29 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:59376
+01:51:38 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59377
+01:51:38 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+01:51:38 [INFO] esc.plugins.dal.DataAccessLayer:45 - Found 1 contacts for string 'q'.
+01:51:38 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:59377
+01:51:44 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59381
+01:51:44 [INFO] esc.ConnectionHandler:31 - POST /server/editContact HTTP/1.1
+01:51:52 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59382
+01:51:52 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+01:51:52 [INFO] esc.plugins.dal.DataAccessLayer:45 - Found 1 contacts for string 'as'.
+01:51:52 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:59382
+01:52:08 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59386
+01:52:08 [INFO] esc.ConnectionHandler:31 - POST /server/insertNewContact HTTP/1.1
+01:52:08 [ERROR] esc.ConnectionHandler:56 - Something went wrong
+java.lang.NullPointerException
+	at esc.plugins.dal.DataAccessLayer.insertNewContact(DataAccessLayer.java:71)
+	at esc.plugins.BusinessLayer.insertNewContact(BusinessLayer.java:39)
+	at esc.plugins.MicroErpPlugin.runPlugin(MicroErpPlugin.java:43)
+	at esc.PluginManager.findPlugin(PluginManager.java:46)
+	at esc.HttpRequest.processRequest(HttpRequest.java:36)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:51)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:23)
+	at java.lang.Thread.run(Thread.java:724)
+01:53:03 [INFO] esc.Server:28 - Listening on Port 8080
+01:53:07 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59407
+01:53:07 [INFO] esc.ConnectionHandler:31 - POST /server/insertNewContact HTTP/1.1
+01:53:07 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:59407
+01:53:15 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59410
+01:53:15 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+01:53:15 [INFO] esc.plugins.dal.DataAccessLayer:45 - Found 3 contacts for string '1'.
+01:53:15 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:59410
+01:53:32 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59414
+01:53:32 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+01:53:32 [INFO] esc.plugins.dal.DataAccessLayer:45 - Found 1 contacts for string 'woo'.
+01:53:32 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:59414
+01:53:41 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59419
+01:53:41 [INFO] esc.ConnectionHandler:31 - POST /server/editContact HTTP/1.1
+01:53:41 [ERROR] esc.ConnectionHandler:56 - Something went wrong
+java.lang.NullPointerException
+	at esc.plugins.dal.DataAccessLayer.editContact(DataAccessLayer.java:107)
+	at esc.plugins.BusinessLayer.editContact(BusinessLayer.java:51)
+	at esc.plugins.MicroErpPlugin.runPlugin(MicroErpPlugin.java:48)
+	at esc.PluginManager.findPlugin(PluginManager.java:46)
+	at esc.HttpRequest.processRequest(HttpRequest.java:36)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:51)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:23)
+	at java.lang.Thread.run(Thread.java:724)
+01:54:14 [INFO] esc.Server:28 - Listening on Port 8080
+01:54:19 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59433
+01:54:19 [INFO] esc.ConnectionHandler:31 - POST /server/editContact HTTP/1.1
+01:54:22 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59435
+01:54:22 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+01:54:22 [INFO] esc.plugins.dal.DataAccessLayer:45 - Found 1 contacts for string 'woo'.
+01:54:22 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:59435
+01:56:35 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59480
+01:56:35 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+01:56:35 [INFO] esc.plugins.dal.DataAccessLayer:45 - Found 2 contacts for string 'Gr'.
+01:56:35 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:59480
+01:56:54 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59484
+01:56:54 [INFO] esc.ConnectionHandler:31 - POST /server/editContact HTTP/1.1
+01:57:16 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59490
+01:57:16 [INFO] esc.ConnectionHandler:31 - POST /server/editContact HTTP/1.1
+01:57:40 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59494
+01:57:40 [INFO] esc.ConnectionHandler:31 - POST /server/editContact HTTP/1.1
+01:57:53 [INFO] esc.Server:28 - Listening on Port 8080
+01:58:10 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59505
+01:58:10 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+01:58:10 [INFO] esc.plugins.dal.DataAccessLayer:45 - Found 2 contacts for string 'Gr'.
+01:58:10 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:59505
+01:58:16 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59509
+01:58:16 [INFO] esc.ConnectionHandler:31 - POST /server/editContact HTTP/1.1
+02:00:56 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59538
+02:00:56 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+02:00:56 [INFO] esc.plugins.dal.DataAccessLayer:45 - Found 2 contacts for string 'Gr'.
+02:00:56 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:59538
+02:01:01 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59542
+02:01:01 [INFO] esc.ConnectionHandler:31 - POST /server/editContact HTTP/1.1
+02:01:44 [INFO] esc.Server:28 - Listening on Port 8080
+02:01:49 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59562
+02:01:49 [INFO] esc.ConnectionHandler:31 - POST /server/editContact HTTP/1.1
+02:01:49 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:59562
+02:02:09 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59569
+02:02:09 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+02:02:09 [INFO] esc.plugins.dal.DataAccessLayer:47 - Found 2 contacts for string 'Gr'.
+02:02:09 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:59569
+02:02:15 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59573
+02:02:15 [INFO] esc.ConnectionHandler:31 - POST /server/editContact HTTP/1.1
+02:02:15 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:59573

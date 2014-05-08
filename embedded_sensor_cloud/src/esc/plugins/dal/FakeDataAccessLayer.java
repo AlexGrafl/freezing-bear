@@ -13,10 +13,10 @@ import java.util.List;
  */
 public class FakeDataAccessLayer implements IDataAccessLayer {
     @Override
-    public List<Contact> searchContacts(String text, boolean onlyActive) {
+    public List<Contact> searchContacts(String key, String value) {
         Type arrayType = new TypeToken<ArrayList<Contact>>(){}.getType();
         Gson gson = new Gson();
-        if(text.equals("Grafl")) {
+        if(key.equals("name") && value.equals("Grafl")) {
             return gson.fromJson("[{\"contactID\":1,\"name\":\"Alexander Grafl\",\"title\":\"Dr.\",\"firstName\":" +
                     "\"Alexander\",\"lastName\":\"Grafl\",\"suffix\":\"Msc\",\"birthDate\":\"Mar 28, 2014 12:00:0" +
                     "0 AM\",\"address\":\"Bergengasse 6/5/14 1220 Wien\",\"invoiceAddress\":\"Bergengasse 6/5/14 " +
@@ -30,6 +30,11 @@ public class FakeDataAccessLayer implements IDataAccessLayer {
 
     @Override
     public boolean insertNewContact(Contact newContact) {
+        return true;
+    }
+
+    @Override
+    public boolean editContact(Contact contact) {
         return true;
     }
 }

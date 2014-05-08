@@ -33,7 +33,7 @@ public class MicroErpPlugin implements IPlugin {
         if(url.getFullPath().contains("searchContacts")){
 
             Gson gson = new Gson();
-            List<Contact> contactList = businessLayer.searchContacts(url.getParameterAsString("q"));
+            List<Contact> contactList = businessLayer.searchContacts(url.getParameters());
             Type arrayType = new TypeToken<ArrayList<Contact>>(){}.getType();
             String json = gson.toJson(contactList, arrayType);
             sendResponse(json, socket);
@@ -44,8 +44,9 @@ public class MicroErpPlugin implements IPlugin {
             sendResponse(String.valueOf(inserted), socket);
         }
 
-        if(url.getFullPath().contains("updateExistingContact")){
-            //Todo: this
+        if(url.getFullPath().contains("editContact")){
+            boolean edited = businessLayer.editContact(url.getParameterAsString("json"));
+            sendResponse(String.valueOf(edited), socket);
         }
 
     }

@@ -40,7 +40,11 @@ public class ConnectionHandler implements Runnable{
                     request.addLine(line);
                 }
                 if(request.getProtocol().equals("POST")){
-                    String parameterString = in.readLine();
+                    StringBuilder stringBuilder = new StringBuilder();
+                    while(in.ready()){
+                        stringBuilder.append((char)in.read());
+                    }
+                    String parameterString = stringBuilder.toString();
                     log.debug(parameterString);
                     request.parsePostParameters(parameterString);
                 }

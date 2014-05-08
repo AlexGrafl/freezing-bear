@@ -17,7 +17,6 @@ public class Server {
      *            the command line arguments
      */
     public static final Logger log = Logger.getLogger(Server.class);
-    public static HashMap<String, String> naviEntries = new HashMap<>();
     public static PluginManager pluginManager = new PluginManager();
     private static final int SERVER_PORT = 8080; // port
 

@@ -3,6 +3,7 @@ package esc;
 
 import java.io.*;
 import java.net.Socket;
+import java.net.URLDecoder;
 import java.util.HashMap;
 
 
@@ -47,6 +48,11 @@ public class HttpRequest {
     }
 
     public void parsePostParameters(String line){
-        url.parseParameters(line);
+
+        try {
+            url.parseParameters(URLDecoder.decode(line, "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
 }

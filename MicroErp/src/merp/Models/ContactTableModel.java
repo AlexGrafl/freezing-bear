@@ -122,12 +122,12 @@ public class ContactTableModel {
         this.address.set(address);
     }
 
-    public StringProperty getFirstName() {
-        return firstName;
+    public String getFirstName() {
+        return firstName.get();
     }
 
-    public void setFirstName(StringProperty firstName) {
-        this.firstName = firstName;
+    public void setFirstName(String firstName) {
+        this.firstName.setValue(firstName);
     }
 
     public IntegerProperty getContactID() {

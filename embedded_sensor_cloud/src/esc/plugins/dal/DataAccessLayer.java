@@ -24,26 +24,27 @@ public class DataAccessLayer implements IDataAccessLayer{
 
             // Establish the connection.
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String connectionUrl = "jdbc:sqlserver://PHIPS-THINK\\SQLEXPRESS;databaseName=ErpData";
-            connection = DriverManager.getConnection(connectionUrl, "Remote", "1q2w3e");
+            //String connectionUrl = "jdbc:sqlserver://PHIPS-THINK\\SQLEXPRESS;databaseName=ErpData";
+            String connectionUrl = "jdbc:sqlserver://ALEX-NOTEBOOK;databaseName=ErpData";
+          //  connection = DriverManager.getConnection(connectionUrl, "Remote", "1q2w3e");
+            connection = DriverManager.getConnection(connectionUrl, "test_user", "password_yo");
         } catch (Exception e) {
            log.error(e);
         }
     }
 
-    public List<Contact> searchContacts(String text, boolean onlyActive) {
-        sql = "SELECT * FROM contact WHERE name LIKE ? AND isActive = ?;";
+    public List<Contact> searchContacts(String key, String value) {
+        sql = "SELECT * FROM contact WHERE "+ key +" LIKE ? ;";
         try {
             resultSet = null;
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, "%"+text+"%");
-            preparedStatement.setBoolean(2, onlyActive);
+            preparedStatement.setString(1, "%" + value + "%");
 
             resultSet = preparedStatement.executeQuery();
             if (resultSet != null) {
                 ResultSetMapper<Contact> resultSetMapper = new ResultSetMapper<>();
                 List<Contact> contactList = resultSetMapper.mapToList(resultSet, Contact.class);
-                log.info("Found " + contactList.size() + " contacts for string '" + text + "'.");
+                log.info("Found " + contactList.size() + " contacts for string '" + value + "'.");
                 return  contactList;
             }
 
@@ -69,7 +70,12 @@ public class DataAccessLayer implements IDataAccessLayer{
             preparedStatement.setString(4, newContact.getFirstName());
             preparedStatement.setString(5, newContact.getLastName());
             preparedStatement.setString(6, newContact.getSuffix());
-            preparedStatement.setDate(7, new Date(newContact.getBirthDate().getTime()));
+            if(newContact.getBirthDate() != null) {
+                preparedStatement.setDate(7, new Date(newContact.getBirthDate().getTime()));
+            }
+            else{
+                preparedStatement.setNull(7, Types.DATE);
+            }
             preparedStatement.setString(8, newContact.getAddress());
             preparedStatement.setString(9, newContact.getInvoiceAddress());
             preparedStatement.setString(10, newContact.getShippingAddress());
@@ -79,6 +85,42 @@ public class DataAccessLayer implements IDataAccessLayer{
         }
         catch (SQLException e){
             log.error("Insert failed - ", e);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean editContact(Contact contact) {
+        sql = "UPDATE contact SET name = ?, uid = ?, title = ?, firstName = ?, lastName = ?, suffix = ?, birthDate =" +
+                " ?, address = ?, invoiceAddress = ?, shippingAddress = ?, isActive = ? WHERE contactID = ?";
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, contact.getName());
+            if(contact.getUid() != null) {
+                preparedStatement.setInt(2, contact.getUid());
+            }
+            else{
+                preparedStatement.setNull(2, Types.INTEGER);
+            }
+            preparedStatement.setString(3, contact.getTitle());
+            preparedStatement.setString(4, contact.getFirstName());
+            preparedStatement.setString(5, contact.getLastName());
+            preparedStatement.setString(6, contact.getSuffix());
+            if(contact.getBirthDate() != null) {
+                preparedStatement.setDate(7, new Date(contact.getBirthDate().getTime()));
+            }
+            else{
+                preparedStatement.setNull(7, Types.DATE);
+            }
+            preparedStatement.setString(8, contact.getAddress());
+            preparedStatement.setString(9, contact.getInvoiceAddress());
+            preparedStatement.setString(10, contact.getShippingAddress());
+            preparedStatement.setBoolean(11, contact.isActive());
+            preparedStatement.setInt(12, contact.getContactID());
+            int result = preparedStatement.executeUpdate();
+            if(result == 1) return true;
+        } catch (SQLException e) {
+            log.error("Update failed - ", e);
         }
         return false;
     }

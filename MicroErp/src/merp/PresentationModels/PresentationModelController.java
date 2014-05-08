@@ -105,6 +105,7 @@ public class PresentationModelController extends AbstractController {
         else {
             ProxySingleton.getInstance().editContact(result);
         }
+        ((Stage)btnSave.getScene().getWindow()).close();
     }
     @FXML
     private void onCancel(){
