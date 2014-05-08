@@ -37,14 +37,22 @@ public class BusinessLayerTest {
     }
 
     @Test
-    public void searchContactsNullText(){
+    public void searchContactsNull(){
         List<Contact> contactList = businessLayer.searchContacts(null);
         assertEquals(new ArrayList<Contact>(), contactList);
     }
 
     @Test
+    public void searchContactsCannotFind(){
+        HashMap<String, String> parameters = new HashMap<>();
+        parameters.put("firstName", "woop");
+        List<Contact> contactList = businessLayer.searchContacts(parameters);
+        assertEquals(new ArrayList<Contact>(), contactList);
+    }
+
+    @Test
     public void insertNewContactSuccessTest(){
-        String json = "{\"contactID\":1, \"name\":\"Alexander Grafl\",\"title\":\"Dr.\",\"firstName\":\"Alexander\"," +
+        String json = "{\"name\":\"Alexander Grafl\",\"title\":\"Dr.\",\"firstName\":\"Alexander\"," +
                 "\"lastName\":\"Grafl\",\"suffix\":\"Msc\",\"birthDate\":\"Mar 28, 2014 12:00:00 AM\",\"address\":\"" +
                 "Bergengasse 6/5/14 1220 Wien\",\"invoiceAddress\":\"Bergengasse 6/5/14 1220 Wien\",\"shippingAddres" +
                 "s\":\"Bergengasse 6/5/14 1220 Wien\",\"isActive\":false}";
@@ -55,11 +63,31 @@ public class BusinessLayerTest {
     @Test
     public void insertNewContactFailsTest(){
         //JSON is malformed, ending curly bracket got "lost"
-        String json = "{\"contactID\":1, \"name\":\"Alexander Grafl\",\"title\":\"Dr.\",\"firstName\":\"Alexander\"," +
+        String json = "{\"name\":\"Alexander Grafl\",\"title\":\"Dr.\",\"firstName\":\"Alexander\"," +
                 "\"lastName\":\"Grafl\",\"suffix\":\"Msc\",\"birthDate\":\"Mar 28, 2014 12:00:00 AM\",\"address\":\"" +
                 "Bergengasse 6/5/14 1220 Wien\",\"invoiceAddress\":\"Bergengasse 6/5/14 1220 Wien\",\"shippingAddres" +
                 "s\":\"Bergengasse 6/5/14 1220 Wien\",\"isActive\":false";
         boolean result = businessLayer.insertNewContact(json);
+        assertFalse(result);
+    }
+
+    @Test
+    public void editContactSuccess(){
+        String json = "{\"contactID\":1, \"name\":\"Alexander Grafl\",\"title\":\"Dr.\",\"firstName\":\"Alexander\"," +
+                "\"lastName\":\"Grafl\",\"suffix\":\"Msc\",\"birthDate\":\"Mar 28, 2014 12:00:00 AM\",\"address\":\"" +
+                "Bergengasse 6/5/14 1220 Wien\",\"invoiceAddress\":\"Bergengasse 6/5/14 1220 Wien\",\"shippingAddres" +
+                "s\":\"Bergengasse 6/5/14 1220 Wien\",\"isActive\":false}";
+        boolean result = businessLayer.editContact(json);
+        assertTrue(result);
+    }
+
+    @Test
+    public void editContactFails(){
+        String json = "{\"name\":\"Alexander Grafl\",\"title\":\"Dr.\",\"firstName\":\"Alexander\"," +
+                "\"lastName\":\"Grafl\",\"suffix\":\"Msc\",\"birthDate\":\"Mar 28, 2014 12:00:00 AM\",\"address\":\"" +
+                "Bergengasse 6/5/14 1220 Wien\",\"invoiceAddress\":\"Bergengasse 6/5/14 1220 Wien\",\"shippingAddres" +
+                "s\":\"Bergengasse 6/5/14 1220 Wien\",\"isActive\":false}";
+        boolean result = businessLayer.editContact(json);
         assertFalse(result);
     }
 }

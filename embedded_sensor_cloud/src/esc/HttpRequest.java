@@ -32,12 +32,10 @@ public class HttpRequest {
         return this.protocol;
     }
     public void processRequest(){
-
-        if(! Server.pluginManager.findPlugin(this.socket, this.url)){
+        if(! (new PluginManager()).findPlugin(this.socket, this.url)){
                 //page not found, yo
                 new HttpResponse(this.socket, 404, url.getFullPath());
         }
-
     }
 
     public void addLine(String line){

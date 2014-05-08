@@ -2,6 +2,7 @@ package esc.plugins;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
+import com.sun.media.jfxmediaimpl.MediaDisposer;
 import esc.plugins.dal.IDataAccessLayer;
 import org.apache.log4j.Logger;
 
@@ -22,7 +23,7 @@ public class BusinessLayer {
     }
 
     public List<Contact> searchContacts(HashMap<String, String> parameters){
-        if(!parameters.isEmpty() && parameters.size() == 1) {
+        if(parameters != null && !parameters.isEmpty() && parameters.size() == 1) {
             String key = (String) parameters.keySet().toArray()[0];
             if(key.equals("name") || key.equals("firstName") || key.equals("lastName") || key.equals("uid")) {
                 String value = parameters.get(key);
@@ -48,11 +49,15 @@ public class BusinessLayer {
         try {
             Gson gson = new Gson();
             Contact contact = gson.fromJson(json, Contact.class);
+            if(contact.getContactID() < 0) throw new IllegalArgumentException();
             return dataAccessLayer.editContact(contact);
         }
         catch(JsonParseException e){
             log.error("Cannot parse JSON '"+json+"'-", e);
-            return false;
         }
+        catch(IllegalArgumentException e){
+            log.error("Cannot edit contact with ID < 0!", e);
+        }
+        return false;
     }
 }

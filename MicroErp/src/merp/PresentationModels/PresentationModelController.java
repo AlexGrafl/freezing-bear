@@ -1,5 +1,6 @@
 package merp.PresentationModels;
 
+import eu.schudt.javafx.controls.calendar.DatePicker;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -7,11 +8,13 @@ import javafx.stage.Stage;
 import merp.Models.Contact;
 import merp.Models.ProxySingleton;
 
+import javax.ejb.Init;
 import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class PresentationModelController extends AbstractController {
@@ -32,7 +35,7 @@ public class PresentationModelController extends AbstractController {
     @FXML
     private TextField suffix;
     @FXML
-    private TextField birthDate;
+    private DatePicker birthDate;
     @FXML
     private TextField address;
     @FXML
@@ -51,26 +54,30 @@ public class PresentationModelController extends AbstractController {
 	public void initialize(URL url, ResourceBundle rb) {
 
 		applyBindings();
+        birthDate.setDateFormat(new SimpleDateFormat("yyyy-MM-dd"));
+        birthDate.getCalendarView().todayButtonTextProperty().set("Today");
+        birthDate.getCalendarView().setShowWeeks(false);
+        birthDate.getStylesheets().add("merp/DatePicker.css");
+
 	}
     public void initDialog(Contact result, boolean isEdit)
     {
         this.result = result;
 
         if(isEdit){
-            String date;
-            //uid.setText(result.getUid().toString());
+            if(result.getUid() != null) {
+                uid.setText(result.getUid().toString());
+            }
             name.setText(result.getName());
             title.setText(result.getTitle());
             firstName.setText(result.getFirstName());
             lastName.setText(result.getLastName());
             suffix.setText(result.getSuffix());
-            try{
-                date = result.getBirthDate().toString();
-
-            }catch(NullPointerException e){
-                date="";
+            if(result.getBirthDate() != null){
+                birthDate.setSelectedDate(result.getBirthDate());
+            }else{
+                birthDate.setSelectedDate(null);
             }
-            birthDate.setText(date);
             address.setText(result.getAddress());
             invoiceAddress.setText(result.getInvoiceAddress());
             shippingAddress.setText(result.getShippingAddress());
@@ -87,17 +94,17 @@ public class PresentationModelController extends AbstractController {
     //ToDo: input-error handling
     @FXML
     private void onSave() throws IOException, ParseException {
-        DateFormat df = new SimpleDateFormat("MM dd, yyyy HH:mm:ss a");
-
-        result.setUid(Integer.parseInt(uid.getText()));
-        result.setName(name.getText());
-        result.setTitle(title.getText());
-        result.setFirstName(firstName.getText());
-        result.setLastName(lastName.getText());
-        //result.setBirthDate(df.parse(birthDate.getText()));
-        result.setAddress(address.getText());
-        result.setInvoiceAddress(invoiceAddress.getText());
-        result.setShippingAddress(shippingAddress.getText());
+        //Todo: Properties binden
+        result.setUid(uid.getText().equals("") ? null : Integer.parseInt(uid.getText()));
+        result.setName(name.getText().equals("") ? null : name.getText());
+        result.setTitle(title.getText().equals("") ? null : title.getText());
+        result.setFirstName(firstName.getText().equals("") ? null : firstName.getText());
+        result.setLastName(lastName.getText().equals("") ? null : lastName.getText());
+        result.setBirthDate(birthDate.getSelectedDate());
+        result.setSuffix(suffix.getText().equals("") ? null : suffix.getText());
+        result.setAddress(address.getText().equals("") ? null : address.getText());
+        result.setInvoiceAddress(invoiceAddress.getText().equals("") ? null : invoiceAddress.getText());
+        result.setShippingAddress(shippingAddress.getText().equals("") ? null : shippingAddress.getText());
 
         if(this.result.getContactID() == -1){
            ProxySingleton.getInstance().createContact(result);

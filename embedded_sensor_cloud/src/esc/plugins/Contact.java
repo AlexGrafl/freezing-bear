@@ -87,7 +87,7 @@ public class Contact {
         return uid;
     }
 
-    public void setUid(int uid) {
+    public void setUid(Integer uid) {
         this.uid = uid;
     }
 

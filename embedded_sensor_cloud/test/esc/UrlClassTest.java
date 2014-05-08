@@ -76,4 +76,5 @@ public class UrlClassTest {
         assertArrayEquals(expectedPath, url.getSplitFullPath());
         assertEquals("foo", url.getPluginPath());
     }
+
 }

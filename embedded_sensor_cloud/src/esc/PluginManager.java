@@ -1,5 +1,7 @@
 package esc;
 
+import esc.plugins.MicroErpPlugin;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.Socket;
@@ -12,30 +14,11 @@ import java.util.LinkedList;
 public class PluginManager {
 
     private LinkedList<IPlugin> pluginList = new LinkedList<>();
-    private CustomClassLoader classLoader = new CustomClassLoader();
 
     public PluginManager(){
         //Alle plugins durchgehen ob sie den Request verarbeiten können/wollen
-        try{
-            File dir = new File("./src/esc/plugins");
-            File[] fileList = dir.listFiles();
-            if(fileList != null){
-                for(File file : fileList){
-                    if(file.isDirectory()) continue;
-                    //magic
-                    Object o;
-                    Class c = classLoader.loadClass("esc.plugins." + (file.getName()).split("\\.")[0]);
-                    if(IPlugin.class.isAssignableFrom(c)){
-                        o = c.newInstance();
-                        pluginList.add((IPlugin) o);
-                    }
-                }
-            }
-        }
-        catch ( NullPointerException | ClassNotFoundException | InstantiationException |
-                IllegalAccessException e) {
-            e.printStackTrace();
-        }
+        pluginList.add(new MicroErpPlugin());
+
     }
 
 

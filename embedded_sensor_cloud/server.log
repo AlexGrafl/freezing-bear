@@ -859,3 +859,1159 @@ java.lang.NullPointerException
 02:02:15 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:59573
 02:02:15 [INFO] esc.ConnectionHandler:31 - POST /server/editContact HTTP/1.1
 02:02:15 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:59573
+10:18:19 [ERROR] esc.plugins.BusinessLayer:42 - Cannot parse JSON '{"name":"Alexander Grafl","title":"Dr.","firstName":"Alexander","lastName":"Grafl","suffix":"Msc","birthDate":"Mar 28, 2014 12:00:00 AM","address":"Bergengasse 6/5/14 1220 Wien","invoiceAddress":"Bergengasse 6/5/14 1220 Wien","shippingAddress":"Bergengasse 6/5/14 1220 Wien","isActive":false'-
+com.google.gson.JsonSyntaxException: java.io.EOFException: End of input at line 1 column 292
+	at com.google.gson.Gson.fromJson(Gson.java:813)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at com.google.gson.Gson.fromJson(Gson.java:689)
+	at esc.plugins.BusinessLayer.insertNewContact(BusinessLayer.java:38)
+	at esc.BusinessLayerTest.insertNewContactFailsTest(BusinessLayerTest.java:62)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:74)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:211)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:67)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:120)
+Caused by: java.io.EOFException: End of input at line 1 column 292
+	at com.google.gson.stream.JsonReader.nextNonWhitespace(JsonReader.java:1377)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:471)
+	at com.google.gson.stream.JsonReader.hasNext(JsonReader.java:403)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:166)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	... 31 more
+10:18:20 [ERROR] esc.plugins.BusinessLayer:58 - Cannot edit contact with ID < 0!
+java.lang.IllegalArgumentException
+	at esc.plugins.BusinessLayer.editContact(BusinessLayer.java:51)
+	at esc.BusinessLayerTest.editContactFails(BusinessLayerTest.java:82)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:74)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:211)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:67)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:120)
+10:20:37 [ERROR] esc.plugins.BusinessLayer:42 - Cannot parse JSON '{"name":"Alexander Grafl","title":"Dr.","firstName":"Alexander","lastName":"Grafl","suffix":"Msc","birthDate":"Mar 28, 2014 12:00:00 AM","address":"Bergengasse 6/5/14 1220 Wien","invoiceAddress":"Bergengasse 6/5/14 1220 Wien","shippingAddress":"Bergengasse 6/5/14 1220 Wien","isActive":false'-
+com.google.gson.JsonSyntaxException: java.io.EOFException: End of input at line 1 column 292
+	at com.google.gson.Gson.fromJson(Gson.java:813)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at com.google.gson.Gson.fromJson(Gson.java:689)
+	at esc.plugins.BusinessLayer.insertNewContact(BusinessLayer.java:38)
+	at esc.BusinessLayerTest.insertNewContactFailsTest(BusinessLayerTest.java:62)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:74)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:211)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:67)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:120)
+Caused by: java.io.EOFException: End of input at line 1 column 292
+	at com.google.gson.stream.JsonReader.nextNonWhitespace(JsonReader.java:1377)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:471)
+	at com.google.gson.stream.JsonReader.hasNext(JsonReader.java:403)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:166)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	... 31 more
+10:20:37 [ERROR] esc.plugins.BusinessLayer:58 - Cannot edit contact with ID < 0!
+java.lang.IllegalArgumentException
+	at esc.plugins.BusinessLayer.editContact(BusinessLayer.java:51)
+	at esc.BusinessLayerTest.editContactFails(BusinessLayerTest.java:82)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:74)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:211)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:67)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:120)
+10:22:42 [ERROR] esc.plugins.BusinessLayer:42 - Cannot parse JSON '{"name":"Alexander Grafl","title":"Dr.","firstName":"Alexander","lastName":"Grafl","suffix":"Msc","birthDate":"Mar 28, 2014 12:00:00 AM","address":"Bergengasse 6/5/14 1220 Wien","invoiceAddress":"Bergengasse 6/5/14 1220 Wien","shippingAddress":"Bergengasse 6/5/14 1220 Wien","isActive":false'-
+com.google.gson.JsonSyntaxException: java.io.EOFException: End of input at line 1 column 292
+	at com.google.gson.Gson.fromJson(Gson.java:813)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at com.google.gson.Gson.fromJson(Gson.java:689)
+	at esc.plugins.BusinessLayer.insertNewContact(BusinessLayer.java:38)
+	at esc.BusinessLayerTest.insertNewContactFailsTest(BusinessLayerTest.java:70)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:74)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:211)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:67)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:120)
+Caused by: java.io.EOFException: End of input at line 1 column 292
+	at com.google.gson.stream.JsonReader.nextNonWhitespace(JsonReader.java:1377)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:471)
+	at com.google.gson.stream.JsonReader.hasNext(JsonReader.java:403)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:166)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	... 31 more
+10:22:42 [ERROR] esc.plugins.BusinessLayer:58 - Cannot edit contact with ID < 0!
+java.lang.IllegalArgumentException
+	at esc.plugins.BusinessLayer.editContact(BusinessLayer.java:51)
+	at esc.BusinessLayerTest.editContactFails(BusinessLayerTest.java:90)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:74)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:211)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:67)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:120)
+10:36:01 [ERROR] esc.plugins.BusinessLayer:43 - Cannot parse JSON '{"name":"Alexander Grafl","title":"Dr.","firstName":"Alexander","lastName":"Grafl","suffix":"Msc","birthDate":"Mar 28, 2014 12:00:00 AM","address":"Bergengasse 6/5/14 1220 Wien","invoiceAddress":"Bergengasse 6/5/14 1220 Wien","shippingAddress":"Bergengasse 6/5/14 1220 Wien","isActive":false'-
+com.google.gson.JsonSyntaxException: java.io.EOFException: End of input at line 1 column 292
+	at com.google.gson.Gson.fromJson(Gson.java:813)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at com.google.gson.Gson.fromJson(Gson.java:689)
+	at esc.plugins.BusinessLayer.insertNewContact(BusinessLayer.java:39)
+	at esc.BusinessLayerTest.insertNewContactFailsTest(BusinessLayerTest.java:70)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:74)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:211)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:67)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:120)
+Caused by: java.io.EOFException: End of input at line 1 column 292
+	at com.google.gson.stream.JsonReader.nextNonWhitespace(JsonReader.java:1377)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:471)
+	at com.google.gson.stream.JsonReader.hasNext(JsonReader.java:403)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:166)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	... 31 more
+10:36:01 [ERROR] esc.plugins.BusinessLayer:59 - Cannot edit contact with ID < 0!
+java.lang.IllegalArgumentException
+	at esc.plugins.BusinessLayer.editContact(BusinessLayer.java:52)
+	at esc.BusinessLayerTest.editContactFails(BusinessLayerTest.java:90)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:74)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:211)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:67)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:120)
+10:36:11 [INFO] esc.Server:23 - Listening on Port 8080
+10:36:39 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:57474
+10:36:39 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+10:36:41 [INFO] esc.plugins.dal.DataAccessLayer:47 - Found 2 contacts for string 'Grafl'.
+10:36:41 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:57474
+10:37:00 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:57477
+10:37:00 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+10:37:00 [INFO] esc.plugins.dal.DataAccessLayer:47 - Found 1 contacts for string 'sdq'.
+10:37:00 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:57477
+10:37:07 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:57479
+10:37:07 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+10:37:07 [INFO] esc.plugins.dal.DataAccessLayer:47 - Found 2 contacts for string 'Grafl'.
+10:37:07 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:57479
+10:37:20 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:57481
+10:37:20 [INFO] esc.ConnectionHandler:31 - POST /server/editContact HTTP/1.1
+10:37:20 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:57481
+10:37:24 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:57483
+10:37:24 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+10:37:24 [INFO] esc.plugins.dal.DataAccessLayer:47 - Found 2 contacts for string 'Grafl'.
+10:37:24 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:57483
+10:58:51 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:57654
+10:58:51 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+10:58:51 [INFO] esc.plugins.dal.DataAccessLayer:47 - Found 2 contacts for string 'Grafl'.
+10:58:51 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:57654
+11:01:39 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:57665
+11:01:39 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+11:01:39 [INFO] esc.plugins.dal.DataAccessLayer:47 - Found 2 contacts for string 'Grafl'.
+11:01:39 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:57665
+11:03:20 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:57677
+11:03:20 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+11:03:20 [INFO] esc.plugins.dal.DataAccessLayer:47 - Found 2 contacts for string 'Grafl'.
+11:03:20 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:57677
+11:10:34 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:57726
+11:10:34 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+11:10:34 [INFO] esc.plugins.dal.DataAccessLayer:47 - Found 2 contacts for string 'G'.
+11:10:34 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:57726
+11:26:17 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:57856
+11:26:17 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+11:26:17 [INFO] esc.plugins.dal.DataAccessLayer:47 - Found 2 contacts for string 'Graf'.
+11:26:17 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:57856
+12:23:38 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58144
+12:23:38 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+12:23:38 [INFO] esc.plugins.dal.DataAccessLayer:47 - Found 2 contacts for string 'g'.
+12:23:38 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:58144
+12:24:16 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58164
+12:24:17 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+12:24:17 [INFO] esc.plugins.dal.DataAccessLayer:47 - Found 2 contacts for string 'g'.
+12:24:17 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:58164
+12:24:52 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58168
+12:24:52 [INFO] esc.ConnectionHandler:31 - POST /server/editContact HTTP/1.1
+12:24:52 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:58168
+12:27:02 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58185
+12:27:02 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+12:27:02 [INFO] esc.plugins.dal.DataAccessLayer:47 - Found 2 contacts for string 'g'.
+12:27:02 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:58185
+12:27:46 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58199
+12:27:46 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+12:27:46 [INFO] esc.plugins.dal.DataAccessLayer:47 - Found 2 contacts for string 'g'.
+12:27:46 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:58199
+12:27:54 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58202
+12:27:54 [INFO] esc.ConnectionHandler:31 - POST /server/editContact HTTP/1.1
+12:27:54 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:58202
+12:28:45 [INFO] esc.Server:23 - Listening on Port 8080
+12:28:52 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58219
+12:28:52 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+12:28:52 [DEBUG] esc.ConnectionHandler:39 - Content-Length: 6
+12:28:52 [DEBUG] esc.ConnectionHandler:39 - Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+12:28:52 [DEBUG] esc.ConnectionHandler:39 - Host: localhost:8080
+12:28:52 [DEBUG] esc.ConnectionHandler:39 - Connection: Keep-Alive
+12:28:52 [DEBUG] esc.ConnectionHandler:39 - User-Agent: Apache-HttpClient/4.3.3 (java 1.5)
+12:28:52 [DEBUG] esc.ConnectionHandler:39 - Accept-Encoding: gzip,deflate
+12:28:52 [DEBUG] esc.ConnectionHandler:48 - name=g
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: false
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Boolean' value 'false' to type 'Boolean'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Boolean
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '0' to type 'Byte'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Byte value '0'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value:  
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Character' value ' ' to type 'Character'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Character
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '0' to type 'Double'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Double value '0.0'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '0' to type 'Float'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Float value '0.0'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '0' to type 'Integer'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Integer
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '0' to type 'Long'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Long value '0'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '0' to type 'Short'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Short value '0'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0.0
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'BigDecimal' value '0.0' to type 'BigDecimal'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a BigDecimal
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'BigInteger' value '0' to type 'BigInteger'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a BigInteger
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: false
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Boolean' value 'false' to type 'Boolean'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Boolean
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '0' to type 'Byte'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Byte value '0'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value:  
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Character' value ' ' to type 'Character'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Character
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '0' to type 'Double'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Double value '0.0'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '0' to type 'Float'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Float value '0.0'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '0' to type 'Integer'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Integer
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '0' to type 'Long'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Long value '0'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '0' to type 'Short'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Short value '0'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value '' to type 'String'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Z@341b6e35
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'boolean[]' value '[Z@341b6e35' to type 'boolean[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a boolean[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [B@3bf36586
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'byte[]' value '[B@3bf36586' to type 'byte[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a byte[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [C@5b09b25f
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'char[]' value '[C@5b09b25f' to type 'char[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a char[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [D@7dee05dc
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'double[]' value '[D@7dee05dc' to type 'double[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a double[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [F@30dfe0c6
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'float[]' value '[F@30dfe0c6' to type 'float[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a float[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [I@7a13f4c
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'int[]' value '[I@7a13f4c' to type 'int[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a int[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [J@61acbb8e
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'long[]' value '[J@61acbb8e' to type 'long[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a long[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [S@4ba7cde3
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'short[]' value '[S@4ba7cde3' to type 'short[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a short[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.math.BigDecimal;@1353d9d2
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'BigDecimal[]' value '[Ljava.math.BigDecimal;@1353d9d2' to type 'BigDecimal[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a BigDecimal[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.math.BigInteger;@69607702
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'BigInteger[]' value '[Ljava.math.BigInteger;@69607702' to type 'BigInteger[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a BigInteger[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.lang.Boolean;@384ee98f
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Boolean[]' value '[Ljava.lang.Boolean;@384ee98f' to type 'Boolean[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Boolean[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.lang.Byte;@182660ad
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Byte[]' value '[Ljava.lang.Byte;@182660ad' to type 'Byte[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Byte[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.lang.Character;@11d36c3b
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Character[]' value '[Ljava.lang.Character;@11d36c3b' to type 'Character[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Character[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.lang.Double;@34938786
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Double[]' value '[Ljava.lang.Double;@34938786' to type 'Double[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Double[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.lang.Float;@78a00025
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Float[]' value '[Ljava.lang.Float;@78a00025' to type 'Float[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Float[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.lang.Integer;@4d7467e5
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer[]' value '[Ljava.lang.Integer;@4d7467e5' to type 'Integer[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Integer[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.lang.Long;@7dbddfd9
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Long[]' value '[Ljava.lang.Long;@7dbddfd9' to type 'Long[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Long[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.lang.Short;@2467149d
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Short[]' value '[Ljava.lang.Short;@2467149d' to type 'Short[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Short[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.lang.String;@2fbdc97a
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String[]' value '[Ljava.lang.String;@2fbdc97a' to type 'String[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a String[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.lang.Class;@393f052
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Class[]' value '[Ljava.lang.Class;@393f052' to type 'Class[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Class[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.util.Date;@7b2fe415
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Date[]' value '[Ljava.util.Date;@7b2fe415' to type 'Date[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Date[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.util.Calendar;@60ee21ae
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Calendar[]' value '[Ljava.util.Calendar;@60ee21ae' to type 'Calendar[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Calendar[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.io.File;@48031fc6
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'java.io.File[]' value '[Ljava.io.File;@48031fc6' to type 'java.io.File[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a java.io.File[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.sql.Date;@50f2a460
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'java.sql.Date[]' value '[Ljava.sql.Date;@50f2a460' to type 'java.sql.Date[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a java.sql.Date[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.sql.Time;@61e7f8de
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'java.sql.Time[]' value '[Ljava.sql.Time;@61e7f8de' to type 'java.sql.Time[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a java.sql.Time[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.sql.Timestamp;@498394b0
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'java.sql.Timestamp[]' value '[Ljava.sql.Timestamp;@498394b0' to type 'java.sql.Timestamp[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a java.sql.Timestamp[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.net.URL;@595a561c
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'java.net.URL[]' value '[Ljava.net.URL;@595a561c' to type 'java.net.URL[]'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a java.net.URL[]
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '1' to type 'Integer'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Integer
+12:28:53 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Alexander Grafl' to class 'java.lang.String'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Alexander Grafl' to type 'String'
+12:28:53 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Dr.' to class 'java.lang.String'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Dr.' to type 'String'
+12:28:53 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'sdqwe' to class 'java.lang.String'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'sdqwe' to type 'String'
+12:28:53 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Grafl' to class 'java.lang.String'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Grafl' to type 'String'
+12:28:53 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Msc' to class 'java.lang.String'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Msc' to type 'String'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'java.sql.Date' value '2014-03-28' to type 'Date'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Date value 'Fri Mar 28 00:00:00 CET 2014'
+12:28:53 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:28:53 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:28:53 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Boolean' value 'true' to type 'Boolean'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Boolean
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '2' to type 'Integer'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Integer
+12:28:53 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Grafl GmbH' to class 'java.lang.String'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Grafl GmbH' to type 'String'
+12:28:53 [DEBUG] org.apache.commons.beanutils.BeanUtilsBean:966 - Skipping read-only property
+12:28:53 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'qqqqqsse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'qqqqqsse 6/5/14 1220 Wien' to type 'String'
+12:28:53 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:28:53 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Boolean' value 'true' to type 'Boolean'
+12:28:53 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Boolean
+12:28:53 [INFO] esc.plugins.dal.DataAccessLayer:47 - Found 2 contacts for string 'g'.
+12:28:53 [DEBUG] esc.plugins.MicroErpPlugin:55 - Response: [{"contactID":1,"name":"Alexander Grafl","title":"Dr.","firstName":"sdqwe","lastName":"Grafl","suffix":"Msc","birthDate":"Mar 28, 2014 12:00:00 AM","address":"Bergengasse 6/5/14 1220 Wien","invoiceAddress":"Bergengasse 6/5/14 1220 Wien","shippingAddress":"Bergengasse 6/5/14 1220 Wien","isActive":true},{"contactID":2,"name":"Grafl GmbH","address":"qqqqqsse 6/5/14 1220 Wien","invoiceAddress":"Bergengasse 6/5/14 1220 Wien","shippingAddress":"Bergengasse 6/5/14 1220 Wien","isActive":true}]
+12:28:53 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:58219
+12:30:08 [INFO] esc.Server:23 - Listening on Port 8080
+12:30:12 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58233
+12:30:12 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+12:30:12 [DEBUG] esc.ConnectionHandler:39 - Content-Length: 6
+12:30:12 [DEBUG] esc.ConnectionHandler:39 - Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+12:30:12 [DEBUG] esc.ConnectionHandler:39 - Host: localhost:8080
+12:30:12 [DEBUG] esc.ConnectionHandler:39 - Connection: Keep-Alive
+12:30:12 [DEBUG] esc.ConnectionHandler:39 - User-Agent: Apache-HttpClient/4.3.3 (java 1.5)
+12:30:12 [DEBUG] esc.ConnectionHandler:39 - Accept-Encoding: gzip,deflate
+12:30:12 [DEBUG] esc.ConnectionHandler:48 - name=g
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: false
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Boolean' value 'false' to type 'Boolean'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Boolean
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '0' to type 'Byte'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Byte value '0'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value:  
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Character' value ' ' to type 'Character'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Character
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '0' to type 'Double'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Double value '0.0'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '0' to type 'Float'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Float value '0.0'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '0' to type 'Integer'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Integer
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '0' to type 'Long'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Long value '0'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '0' to type 'Short'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Short value '0'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0.0
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'BigDecimal' value '0.0' to type 'BigDecimal'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a BigDecimal
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'BigInteger' value '0' to type 'BigInteger'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a BigInteger
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: false
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Boolean' value 'false' to type 'Boolean'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Boolean
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '0' to type 'Byte'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Byte value '0'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value:  
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Character' value ' ' to type 'Character'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Character
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '0' to type 'Double'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Double value '0.0'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '0' to type 'Float'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Float value '0.0'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '0' to type 'Integer'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Integer
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '0' to type 'Long'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Long value '0'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 0
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '0' to type 'Short'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Short value '0'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: 
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value '' to type 'String'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Z@74e0744c
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'boolean[]' value '[Z@74e0744c' to type 'boolean[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a boolean[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [B@688e5f29
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'byte[]' value '[B@688e5f29' to type 'byte[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a byte[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [C@599da9aa
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'char[]' value '[C@599da9aa' to type 'char[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a char[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [D@15c2ef1b
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'double[]' value '[D@15c2ef1b' to type 'double[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a double[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [F@3a1e003b
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'float[]' value '[F@3a1e003b' to type 'float[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a float[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [I@6b429a7d
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'int[]' value '[I@6b429a7d' to type 'int[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a int[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [J@134d99bb
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'long[]' value '[J@134d99bb' to type 'long[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a long[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [S@75be18e2
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'short[]' value '[S@75be18e2' to type 'short[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a short[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.math.BigDecimal;@660173e7
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'BigDecimal[]' value '[Ljava.math.BigDecimal;@660173e7' to type 'BigDecimal[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a BigDecimal[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.math.BigInteger;@3c255a5a
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'BigInteger[]' value '[Ljava.math.BigInteger;@3c255a5a' to type 'BigInteger[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a BigInteger[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.lang.Boolean;@44c7c82a
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Boolean[]' value '[Ljava.lang.Boolean;@44c7c82a' to type 'Boolean[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Boolean[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.lang.Byte;@7f950a3d
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Byte[]' value '[Ljava.lang.Byte;@7f950a3d' to type 'Byte[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Byte[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.lang.Character;@4f669ea1
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Character[]' value '[Ljava.lang.Character;@4f669ea1' to type 'Character[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Character[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.lang.Double;@41a68961
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Double[]' value '[Ljava.lang.Double;@41a68961' to type 'Double[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Double[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.lang.Float;@5069bb01
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Float[]' value '[Ljava.lang.Float;@5069bb01' to type 'Float[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Float[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.lang.Integer;@1551131d
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer[]' value '[Ljava.lang.Integer;@1551131d' to type 'Integer[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Integer[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.lang.Long;@3cb3600d
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Long[]' value '[Ljava.lang.Long;@3cb3600d' to type 'Long[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Long[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.lang.Short;@6b7a6216
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Short[]' value '[Ljava.lang.Short;@6b7a6216' to type 'Short[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Short[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.lang.String;@54f68112
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String[]' value '[Ljava.lang.String;@54f68112' to type 'String[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a String[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.lang.Class;@65869953
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Class[]' value '[Ljava.lang.Class;@65869953' to type 'Class[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Class[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.util.Date;@5275de2
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Date[]' value '[Ljava.util.Date;@5275de2' to type 'Date[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Date[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.util.Calendar;@31e55839
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Calendar[]' value '[Ljava.util.Calendar;@31e55839' to type 'Calendar[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Calendar[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.io.File;@451b2519
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'java.io.File[]' value '[Ljava.io.File;@451b2519' to type 'java.io.File[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a java.io.File[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.sql.Date;@6a05c424
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'java.sql.Date[]' value '[Ljava.sql.Date;@6a05c424' to type 'java.sql.Date[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a java.sql.Date[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.sql.Time;@4483e909
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'java.sql.Time[]' value '[Ljava.sql.Time;@4483e909' to type 'java.sql.Time[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a java.sql.Time[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.sql.Timestamp;@5d96d484
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'java.sql.Timestamp[]' value '[Ljava.sql.Timestamp;@5d96d484' to type 'java.sql.Timestamp[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a java.sql.Timestamp[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:353 - Setting default value: [Ljava.net.URL;@39cb7618
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'java.net.URL[]' value '[Ljava.net.URL;@39cb7618' to type 'java.net.URL[]'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a java.net.URL[]
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '1' to type 'Integer'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Integer
+12:30:14 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Alexander Grafl' to class 'java.lang.String'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Alexander Grafl' to type 'String'
+12:30:14 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Dr.' to class 'java.lang.String'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Dr.' to type 'String'
+12:30:14 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'sdqwe' to class 'java.lang.String'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'sdqwe' to type 'String'
+12:30:14 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Grafl' to class 'java.lang.String'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Grafl' to type 'String'
+12:30:14 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Msc' to class 'java.lang.String'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Msc' to type 'String'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'java.sql.Date' value '2014-03-28' to type 'Date'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Date value 'Fri Mar 28 00:00:00 CET 2014'
+12:30:14 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:30:14 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:30:14 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Boolean' value 'true' to type 'Boolean'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Boolean
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '2' to type 'Integer'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Integer
+12:30:14 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Grafl GmbH' to class 'java.lang.String'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Grafl GmbH' to type 'String'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '1234' to type 'Integer'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Integer
+12:30:14 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'qqqqqsse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'qqqqqsse 6/5/14 1220 Wien' to type 'String'
+12:30:14 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:30:14 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Boolean' value 'true' to type 'Boolean'
+12:30:14 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Boolean
+12:30:14 [INFO] esc.plugins.dal.DataAccessLayer:47 - Found 2 contacts for string 'g'.
+12:30:14 [DEBUG] esc.plugins.MicroErpPlugin:55 - Response: [{"contactID":1,"name":"Alexander Grafl","title":"Dr.","firstName":"sdqwe","lastName":"Grafl","suffix":"Msc","birthDate":"Mar 28, 2014 12:00:00 AM","address":"Bergengasse 6/5/14 1220 Wien","invoiceAddress":"Bergengasse 6/5/14 1220 Wien","shippingAddress":"Bergengasse 6/5/14 1220 Wien","isActive":true},{"contactID":2,"name":"Grafl GmbH","uid":1234,"address":"qqqqqsse 6/5/14 1220 Wien","invoiceAddress":"Bergengasse 6/5/14 1220 Wien","shippingAddress":"Bergengasse 6/5/14 1220 Wien","isActive":true}]
+12:30:14 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:58233
+12:32:40 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58278
+12:32:40 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+12:32:40 [DEBUG] esc.ConnectionHandler:39 - Content-Length: 6
+12:32:40 [DEBUG] esc.ConnectionHandler:39 - Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+12:32:40 [DEBUG] esc.ConnectionHandler:39 - Host: localhost:8080
+12:32:40 [DEBUG] esc.ConnectionHandler:39 - Connection: Keep-Alive
+12:32:40 [DEBUG] esc.ConnectionHandler:39 - User-Agent: Apache-HttpClient/4.3.3 (java 1.5)
+12:32:40 [DEBUG] esc.ConnectionHandler:39 - Accept-Encoding: gzip,deflate
+12:32:40 [DEBUG] esc.ConnectionHandler:48 - name=g
+12:32:40 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '1' to type 'Integer'
+12:32:40 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Integer
+12:32:40 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Alexander Grafl' to class 'java.lang.String'
+12:32:40 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Alexander Grafl' to type 'String'
+12:32:40 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Dr.' to class 'java.lang.String'
+12:32:40 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Dr.' to type 'String'
+12:32:40 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'sdqwe' to class 'java.lang.String'
+12:32:40 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'sdqwe' to type 'String'
+12:32:40 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Grafl' to class 'java.lang.String'
+12:32:40 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Grafl' to type 'String'
+12:32:40 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Msc' to class 'java.lang.String'
+12:32:40 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Msc' to type 'String'
+12:32:40 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'java.sql.Date' value '2014-03-28' to type 'Date'
+12:32:40 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Date value 'Fri Mar 28 00:00:00 CET 2014'
+12:32:40 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:32:40 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:32:40 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:32:40 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:32:40 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:32:40 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:32:40 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Boolean' value 'true' to type 'Boolean'
+12:32:40 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Boolean
+12:32:40 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '2' to type 'Integer'
+12:32:40 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Integer
+12:32:40 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Grafl GmbH' to class 'java.lang.String'
+12:32:40 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Grafl GmbH' to type 'String'
+12:32:40 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '1234' to type 'Integer'
+12:32:40 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Integer
+12:32:40 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'qqqqqsse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:32:40 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'qqqqqsse 6/5/14 1220 Wien' to type 'String'
+12:32:40 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:32:40 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:32:40 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:32:40 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:32:40 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Boolean' value 'true' to type 'Boolean'
+12:32:40 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Boolean
+12:32:40 [INFO] esc.plugins.dal.DataAccessLayer:47 - Found 2 contacts for string 'g'.
+12:32:40 [DEBUG] esc.plugins.MicroErpPlugin:55 - Response: [{"contactID":1,"name":"Alexander Grafl","title":"Dr.","firstName":"sdqwe","lastName":"Grafl","suffix":"Msc","birthDate":"Mar 28, 2014 12:00:00 AM","address":"Bergengasse 6/5/14 1220 Wien","invoiceAddress":"Bergengasse 6/5/14 1220 Wien","shippingAddress":"Bergengasse 6/5/14 1220 Wien","isActive":true},{"contactID":2,"name":"Grafl GmbH","uid":1234,"address":"qqqqqsse 6/5/14 1220 Wien","invoiceAddress":"Bergengasse 6/5/14 1220 Wien","shippingAddress":"Bergengasse 6/5/14 1220 Wien","isActive":true}]
+12:32:40 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:58278
+12:34:49 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58297
+12:34:49 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+12:34:49 [DEBUG] esc.ConnectionHandler:39 - Content-Length: 6
+12:34:49 [DEBUG] esc.ConnectionHandler:39 - Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+12:34:49 [DEBUG] esc.ConnectionHandler:39 - Host: localhost:8080
+12:34:49 [DEBUG] esc.ConnectionHandler:39 - Connection: Keep-Alive
+12:34:49 [DEBUG] esc.ConnectionHandler:39 - User-Agent: Apache-HttpClient/4.3.3 (java 1.5)
+12:34:49 [DEBUG] esc.ConnectionHandler:39 - Accept-Encoding: gzip,deflate
+12:34:49 [DEBUG] esc.ConnectionHandler:48 - name=g
+12:34:49 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '1' to type 'Integer'
+12:34:49 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Integer
+12:34:49 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Alexander Grafl' to class 'java.lang.String'
+12:34:49 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Alexander Grafl' to type 'String'
+12:34:49 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Dr.' to class 'java.lang.String'
+12:34:49 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Dr.' to type 'String'
+12:34:49 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'sdqwe' to class 'java.lang.String'
+12:34:49 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'sdqwe' to type 'String'
+12:34:49 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Grafl' to class 'java.lang.String'
+12:34:49 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Grafl' to type 'String'
+12:34:49 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Msc' to class 'java.lang.String'
+12:34:49 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Msc' to type 'String'
+12:34:49 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'java.sql.Date' value '2014-03-28' to type 'Date'
+12:34:49 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Date value 'Fri Mar 28 00:00:00 CET 2014'
+12:34:49 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:34:49 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:34:49 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:34:49 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:34:49 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:34:49 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:34:49 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Boolean' value 'true' to type 'Boolean'
+12:34:49 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Boolean
+12:34:49 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '2' to type 'Integer'
+12:34:49 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Integer
+12:34:49 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Grafl GmbH' to class 'java.lang.String'
+12:34:49 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Grafl GmbH' to type 'String'
+12:34:49 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '1234' to type 'Integer'
+12:34:49 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Integer
+12:34:49 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'qqqqqsse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:34:49 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'qqqqqsse 6/5/14 1220 Wien' to type 'String'
+12:34:49 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:34:49 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:34:49 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:34:49 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:34:49 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Boolean' value 'true' to type 'Boolean'
+12:34:49 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Boolean
+12:34:49 [INFO] esc.plugins.dal.DataAccessLayer:47 - Found 2 contacts for string 'g'.
+12:34:49 [DEBUG] esc.plugins.MicroErpPlugin:55 - Response: [{"contactID":1,"name":"Alexander Grafl","title":"Dr.","firstName":"sdqwe","lastName":"Grafl","suffix":"Msc","birthDate":"Mar 28, 2014 12:00:00 AM","address":"Bergengasse 6/5/14 1220 Wien","invoiceAddress":"Bergengasse 6/5/14 1220 Wien","shippingAddress":"Bergengasse 6/5/14 1220 Wien","isActive":true},{"contactID":2,"name":"Grafl GmbH","uid":1234,"address":"qqqqqsse 6/5/14 1220 Wien","invoiceAddress":"Bergengasse 6/5/14 1220 Wien","shippingAddress":"Bergengasse 6/5/14 1220 Wien","isActive":true}]
+12:34:49 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:58297
+12:35:15 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58310
+12:35:15 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+12:35:15 [DEBUG] esc.ConnectionHandler:39 - Content-Length: 6
+12:35:15 [DEBUG] esc.ConnectionHandler:39 - Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+12:35:15 [DEBUG] esc.ConnectionHandler:39 - Host: localhost:8080
+12:35:15 [DEBUG] esc.ConnectionHandler:39 - Connection: Keep-Alive
+12:35:15 [DEBUG] esc.ConnectionHandler:39 - User-Agent: Apache-HttpClient/4.3.3 (java 1.5)
+12:35:15 [DEBUG] esc.ConnectionHandler:39 - Accept-Encoding: gzip,deflate
+12:35:15 [DEBUG] esc.ConnectionHandler:48 - name=G
+12:35:15 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '1' to type 'Integer'
+12:35:15 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Integer
+12:35:15 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Alexander Grafl' to class 'java.lang.String'
+12:35:15 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Alexander Grafl' to type 'String'
+12:35:15 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Dr.' to class 'java.lang.String'
+12:35:15 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Dr.' to type 'String'
+12:35:15 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'sdqwe' to class 'java.lang.String'
+12:35:15 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'sdqwe' to type 'String'
+12:35:15 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Grafl' to class 'java.lang.String'
+12:35:15 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Grafl' to type 'String'
+12:35:15 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Msc' to class 'java.lang.String'
+12:35:15 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Msc' to type 'String'
+12:35:15 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'java.sql.Date' value '2014-03-28' to type 'Date'
+12:35:15 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Date value 'Fri Mar 28 00:00:00 CET 2014'
+12:35:15 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:35:15 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:35:15 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:35:15 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:35:15 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:35:15 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:35:15 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Boolean' value 'true' to type 'Boolean'
+12:35:15 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Boolean
+12:35:15 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '2' to type 'Integer'
+12:35:15 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Integer
+12:35:15 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Grafl GmbH' to class 'java.lang.String'
+12:35:15 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Grafl GmbH' to type 'String'
+12:35:15 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '1234' to type 'Integer'
+12:35:15 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Integer
+12:35:15 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'qqqqqsse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:35:15 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'qqqqqsse 6/5/14 1220 Wien' to type 'String'
+12:35:15 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:35:15 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:35:15 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:35:15 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:35:15 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Boolean' value 'true' to type 'Boolean'
+12:35:15 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Boolean
+12:35:15 [INFO] esc.plugins.dal.DataAccessLayer:47 - Found 2 contacts for string 'G'.
+12:35:15 [DEBUG] esc.plugins.MicroErpPlugin:55 - Response: [{"contactID":1,"name":"Alexander Grafl","title":"Dr.","firstName":"sdqwe","lastName":"Grafl","suffix":"Msc","birthDate":"Mar 28, 2014 12:00:00 AM","address":"Bergengasse 6/5/14 1220 Wien","invoiceAddress":"Bergengasse 6/5/14 1220 Wien","shippingAddress":"Bergengasse 6/5/14 1220 Wien","isActive":true},{"contactID":2,"name":"Grafl GmbH","uid":1234,"address":"qqqqqsse 6/5/14 1220 Wien","invoiceAddress":"Bergengasse 6/5/14 1220 Wien","shippingAddress":"Bergengasse 6/5/14 1220 Wien","isActive":true}]
+12:35:15 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:58310
+12:36:23 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58318
+12:36:23 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+12:36:23 [DEBUG] esc.ConnectionHandler:39 - Content-Length: 6
+12:36:23 [DEBUG] esc.ConnectionHandler:39 - Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+12:36:23 [DEBUG] esc.ConnectionHandler:39 - Host: localhost:8080
+12:36:23 [DEBUG] esc.ConnectionHandler:39 - Connection: Keep-Alive
+12:36:23 [DEBUG] esc.ConnectionHandler:39 - User-Agent: Apache-HttpClient/4.3.3 (java 1.5)
+12:36:23 [DEBUG] esc.ConnectionHandler:39 - Accept-Encoding: gzip,deflate
+12:36:23 [DEBUG] esc.ConnectionHandler:48 - name=g
+12:36:23 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '1' to type 'Integer'
+12:36:23 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Integer
+12:36:23 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Alexander Grafl' to class 'java.lang.String'
+12:36:23 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Alexander Grafl' to type 'String'
+12:36:23 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Dr.' to class 'java.lang.String'
+12:36:23 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Dr.' to type 'String'
+12:36:23 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'sdqwe' to class 'java.lang.String'
+12:36:23 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'sdqwe' to type 'String'
+12:36:23 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Grafl' to class 'java.lang.String'
+12:36:23 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Grafl' to type 'String'
+12:36:23 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Msc' to class 'java.lang.String'
+12:36:23 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Msc' to type 'String'
+12:36:23 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'java.sql.Date' value '2014-03-28' to type 'Date'
+12:36:23 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Date value 'Fri Mar 28 00:00:00 CET 2014'
+12:36:23 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:36:23 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:36:23 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:36:23 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:36:23 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:36:23 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:36:23 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Boolean' value 'true' to type 'Boolean'
+12:36:23 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Boolean
+12:36:23 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '2' to type 'Integer'
+12:36:23 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Integer
+12:36:23 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Grafl GmbH' to class 'java.lang.String'
+12:36:23 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Grafl GmbH' to type 'String'
+12:36:23 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '1234' to type 'Integer'
+12:36:23 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Integer
+12:36:23 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'qqqqqsse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:36:23 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'qqqqqsse 6/5/14 1220 Wien' to type 'String'
+12:36:23 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:36:23 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:36:23 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:36:23 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:36:23 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Boolean' value 'true' to type 'Boolean'
+12:36:23 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Boolean
+12:36:23 [INFO] esc.plugins.dal.DataAccessLayer:47 - Found 2 contacts for string 'g'.
+12:36:23 [DEBUG] esc.plugins.MicroErpPlugin:55 - Response: [{"contactID":1,"name":"Alexander Grafl","title":"Dr.","firstName":"sdqwe","lastName":"Grafl","suffix":"Msc","birthDate":"Mar 28, 2014 12:00:00 AM","address":"Bergengasse 6/5/14 1220 Wien","invoiceAddress":"Bergengasse 6/5/14 1220 Wien","shippingAddress":"Bergengasse 6/5/14 1220 Wien","isActive":true},{"contactID":2,"name":"Grafl GmbH","uid":1234,"address":"qqqqqsse 6/5/14 1220 Wien","invoiceAddress":"Bergengasse 6/5/14 1220 Wien","shippingAddress":"Bergengasse 6/5/14 1220 Wien","isActive":true}]
+12:36:23 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:58318
+12:36:44 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58331
+12:36:44 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+12:36:44 [DEBUG] esc.ConnectionHandler:39 - Content-Length: 6
+12:36:44 [DEBUG] esc.ConnectionHandler:39 - Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+12:36:44 [DEBUG] esc.ConnectionHandler:39 - Host: localhost:8080
+12:36:44 [DEBUG] esc.ConnectionHandler:39 - Connection: Keep-Alive
+12:36:44 [DEBUG] esc.ConnectionHandler:39 - User-Agent: Apache-HttpClient/4.3.3 (java 1.5)
+12:36:44 [DEBUG] esc.ConnectionHandler:39 - Accept-Encoding: gzip,deflate
+12:36:44 [DEBUG] esc.ConnectionHandler:48 - name=g
+12:36:44 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '1' to type 'Integer'
+12:36:44 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Integer
+12:36:44 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Alexander Grafl' to class 'java.lang.String'
+12:36:44 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Alexander Grafl' to type 'String'
+12:36:44 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Dr.' to class 'java.lang.String'
+12:36:44 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Dr.' to type 'String'
+12:36:44 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'sdqwe' to class 'java.lang.String'
+12:36:44 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'sdqwe' to type 'String'
+12:36:44 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Grafl' to class 'java.lang.String'
+12:36:44 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Grafl' to type 'String'
+12:36:44 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Msc' to class 'java.lang.String'
+12:36:44 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Msc' to type 'String'
+12:36:44 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'java.sql.Date' value '2014-03-28' to type 'Date'
+12:36:44 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:171 -     Converted to Date value 'Fri Mar 28 00:00:00 CET 2014'
+12:36:44 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:36:44 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:36:44 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:36:44 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:36:44 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:36:44 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:36:44 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Boolean' value 'true' to type 'Boolean'
+12:36:44 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Boolean
+12:36:44 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '2' to type 'Integer'
+12:36:44 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Integer
+12:36:44 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Grafl GmbH' to class 'java.lang.String'
+12:36:44 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Grafl GmbH' to type 'String'
+12:36:44 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Integer' value '1234' to type 'Integer'
+12:36:44 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Integer
+12:36:44 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'qqqqqsse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:36:44 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'qqqqqsse 6/5/14 1220 Wien' to type 'String'
+12:36:44 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:36:44 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:36:44 [DEBUG] org.apache.commons.beanutils.ConvertUtilsBean:481 - Convert string 'Bergengasse 6/5/14 1220 Wien' to class 'java.lang.String'
+12:36:44 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'String' value 'Bergengasse 6/5/14 1220 Wien' to type 'String'
+12:36:44 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:140 - Converting 'Boolean' value 'true' to type 'Boolean'
+12:36:44 [DEBUG] org.apache.commons.beanutils.converters.AbstractConverter:162 -     No conversion required, value is already a Boolean
+12:36:44 [INFO] esc.plugins.dal.DataAccessLayer:47 - Found 2 contacts for string 'g'.
+12:36:44 [DEBUG] esc.plugins.MicroErpPlugin:55 - Response: [{"contactID":1,"name":"Alexander Grafl","title":"Dr.","firstName":"sdqwe","lastName":"Grafl","suffix":"Msc","birthDate":"Mar 28, 2014 12:00:00 AM","address":"Bergengasse 6/5/14 1220 Wien","invoiceAddress":"Bergengasse 6/5/14 1220 Wien","shippingAddress":"Bergengasse 6/5/14 1220 Wien","isActive":true},{"contactID":2,"name":"Grafl GmbH","uid":1234,"address":"qqqqqsse 6/5/14 1220 Wien","invoiceAddress":"Bergengasse 6/5/14 1220 Wien","shippingAddress":"Bergengasse 6/5/14 1220 Wien","isActive":true}]
+12:36:44 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:58331
+12:41:31 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58392
+12:41:31 [INFO] esc.ConnectionHandler:31 - POST /server/insertNewContact HTTP/1.1
+12:41:31 [DEBUG] esc.ConnectionHandler:39 - Content-Length: 301
+12:41:31 [DEBUG] esc.ConnectionHandler:39 - Content-Type: application/x-www-form-urlencoded
+12:41:31 [DEBUG] esc.ConnectionHandler:39 - Host: localhost:8080
+12:41:31 [DEBUG] esc.ConnectionHandler:39 - Connection: Keep-Alive
+12:41:31 [DEBUG] esc.ConnectionHandler:39 - User-Agent: Apache-HttpClient/4.3.3 (java 1.5)
+12:41:31 [DEBUG] esc.ConnectionHandler:39 - Accept-Encoding: gzip,deflate
+12:41:31 [DEBUG] esc.ConnectionHandler:48 - json=%7B%22contactID%22%3A-1%2C%22name%22%3A%22%22%2C%22title%22%3A%22%22%2C%22firstName%22%3A%22%22%2C%22lastName%22%3A%22%22%2C%22birthDate%22%3A%22May+13%2C+2014+12%3A00%3A00+AM%22%2C%22address%22%3A%22%22%2C%22invoiceAddress%22%3A%22%22%2C%22shippingAddress%22%3A%22%22%2C%22isActive%22%3Afalse%7D
+12:41:31 [DEBUG] esc.plugins.MicroErpPlugin:55 - Response: true
+12:41:31 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:58392
+12:47:42 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58462
+12:47:42 [INFO] esc.ConnectionHandler:31 - POST /server/insertNewContact HTTP/1.1
+12:47:42 [DEBUG] esc.ConnectionHandler:39 - Content-Length: 56
+12:47:42 [DEBUG] esc.ConnectionHandler:39 - Content-Type: application/x-www-form-urlencoded
+12:47:42 [DEBUG] esc.ConnectionHandler:39 - Host: localhost:8080
+12:47:42 [DEBUG] esc.ConnectionHandler:39 - Connection: Keep-Alive
+12:47:42 [DEBUG] esc.ConnectionHandler:39 - User-Agent: Apache-HttpClient/4.3.3 (java 1.5)
+12:47:42 [DEBUG] esc.ConnectionHandler:39 - Accept-Encoding: gzip,deflate
+12:47:42 [DEBUG] esc.ConnectionHandler:48 - json=%7B%22contactID%22%3A-1%2C%22isActive%22%3Afalse%7D
+12:47:42 [DEBUG] esc.plugins.MicroErpPlugin:55 - Response: true
+12:47:42 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:58462
+13:01:15 [ERROR] esc.plugins.BusinessLayer:43 - Cannot parse JSON '{"name":"Alexander Grafl","title":"Dr.","firstName":"Alexander","lastName":"Grafl","suffix":"Msc","birthDate":"Mar 28, 2014 12:00:00 AM","address":"Bergengasse 6/5/14 1220 Wien","invoiceAddress":"Bergengasse 6/5/14 1220 Wien","shippingAddress":"Bergengasse 6/5/14 1220 Wien","isActive":false'-
+com.google.gson.JsonSyntaxException: java.io.EOFException: End of input at line 1 column 292
+	at com.google.gson.Gson.fromJson(Gson.java:813)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at com.google.gson.Gson.fromJson(Gson.java:689)
+	at esc.plugins.BusinessLayer.insertNewContact(BusinessLayer.java:39)
+	at esc.BusinessLayerTest.insertNewContactFailsTest(BusinessLayerTest.java:70)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.junit.runners.Suite.runChild(Suite.java:127)
+	at org.junit.runners.Suite.runChild(Suite.java:26)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:74)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:211)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:67)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:120)
+Caused by: java.io.EOFException: End of input at line 1 column 292
+	at com.google.gson.stream.JsonReader.nextNonWhitespace(JsonReader.java:1377)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:471)
+	at com.google.gson.stream.JsonReader.hasNext(JsonReader.java:403)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:166)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	... 39 more
+13:01:15 [ERROR] esc.plugins.BusinessLayer:59 - Cannot edit contact with ID < 0!
+java.lang.IllegalArgumentException
+	at esc.plugins.BusinessLayer.editContact(BusinessLayer.java:52)
+	at esc.BusinessLayerTest.editContactFails(BusinessLayerTest.java:90)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.junit.runners.Suite.runChild(Suite.java:127)
+	at org.junit.runners.Suite.runChild(Suite.java:26)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:74)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:211)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:67)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:120)
+13:07:26 [INFO] esc.Server:23 - Listening on Port 8080
+13:07:37 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58629
+13:07:37 [INFO] esc.ConnectionHandler:31 - POST /server/searchContacts HTTP/1.1
+13:07:39 [INFO] esc.plugins.dal.DataAccessLayer:47 - Found 2 contacts for string 'G'.
+13:07:39 [INFO] esc.plugins.MicroErpPlugin:63 - Sent 200 OK to /127.0.0.1:58629
+13:07:52 [INFO] esc.ConnectionHandler:22 - Connected: /127.0.0.1:58651
+13:07:52 [INFO] esc.ConnectionHandler:31 - POST /server/editContact HTTP/1.1
+13:08:07 [ERROR] esc.plugins.dal.DataAccessLayer:32 - com.microsoft.sqlserver.jdbc.SQLServerException: Fehler beim Herstellen der TCP/IP-Verbindung mit dem Host 'ALEX-NOTEBOOK', Port 1433. Fehler: 'connect timed out. Überprüfen Sie die Verbindungseigenschaften. Stellen Sie sicher, dass eine SQL Server-Instanz auf dem Host ausgeführt wird und am Port TCP/IP-Verbindungen akzeptiert. Vergewissern Sie sich, dass am Port keine TCP-Verbindungen durch eine Firewall blockiert werden.'.
+13:08:07 [ERROR] esc.ConnectionHandler:56 - Something went wrong
+java.lang.NullPointerException
+	at esc.plugins.dal.DataAccessLayer.editContact(DataAccessLayer.java:97)
+	at esc.plugins.BusinessLayer.editContact(BusinessLayer.java:53)
+	at esc.plugins.MicroErpPlugin.runPlugin(MicroErpPlugin.java:48)
+	at esc.PluginManager.findPlugin(PluginManager.java:29)
+	at esc.HttpRequest.processRequest(HttpRequest.java:35)
+	at esc.ConnectionHandler.processRequest(ConnectionHandler.java:51)
+	at esc.ConnectionHandler.run(ConnectionHandler.java:23)
+	at java.lang.Thread.run(Thread.java:724)
+13:10:24 [ERROR] esc.plugins.BusinessLayer:43 - Cannot parse JSON '{"name":"Alexander Grafl","title":"Dr.","firstName":"Alexander","lastName":"Grafl","suffix":"Msc","birthDate":"Mar 28, 2014 12:00:00 AM","address":"Bergengasse 6/5/14 1220 Wien","invoiceAddress":"Bergengasse 6/5/14 1220 Wien","shippingAddress":"Bergengasse 6/5/14 1220 Wien","isActive":false'-
+com.google.gson.JsonSyntaxException: java.io.EOFException: End of input at line 1 column 292
+	at com.google.gson.Gson.fromJson(Gson.java:813)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at com.google.gson.Gson.fromJson(Gson.java:689)
+	at esc.plugins.BusinessLayer.insertNewContact(BusinessLayer.java:39)
+	at esc.BusinessLayerTest.insertNewContactFailsTest(BusinessLayerTest.java:70)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:74)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:211)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:67)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:120)
+Caused by: java.io.EOFException: End of input at line 1 column 292
+	at com.google.gson.stream.JsonReader.nextNonWhitespace(JsonReader.java:1377)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:471)
+	at com.google.gson.stream.JsonReader.hasNext(JsonReader.java:403)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:166)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	... 31 more
+13:10:24 [ERROR] esc.plugins.BusinessLayer:59 - Cannot edit contact with ID < 0!
+java.lang.IllegalArgumentException
+	at esc.plugins.BusinessLayer.editContact(BusinessLayer.java:52)
+	at esc.BusinessLayerTest.editContactFails(BusinessLayerTest.java:90)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:74)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:211)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:67)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:120)
+13:11:47 [INFO] esc.Server:23 - Listening on Port 8080

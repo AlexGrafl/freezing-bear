@@ -1,5 +1,6 @@
 package merp.PresentationModels;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -15,8 +16,6 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import merp.Models.Contact;
-import merp.Models.ContactModelBind;
-import merp.Models.ContactTableModel;
 import merp.Models.ProxySingleton;
 
 import java.io.IOException;
@@ -30,7 +29,7 @@ public class MainDialogController extends AbstractController {
     @FXML
     private Button btnCreateContact, btnEditContact, btnSearchContact;
     @FXML
-    private TableView<ContactTableModel> tableContact;
+    private TableView<Contact> tableContact;
     @FXML
     private TextField textFirstNameCont, textSurnameCont, textNameCont, textUIDCont;
    /*
@@ -49,7 +48,10 @@ public class MainDialogController extends AbstractController {
     }
     @FXML
     public void onEditContact() throws IOException {
-        //openContactDialog(,true);
+        int index = tableContact.getSelectionModel().getSelectedIndex();
+        if(index >= 0){
+            openContactDialog((tableContact.getItems().get(index)),true);
+        }
     }
     @FXML
     public void onSearchContact(ActionEvent actionEvent) throws IOException {
@@ -61,9 +63,8 @@ public class MainDialogController extends AbstractController {
         final List<Contact> contactList = ProxySingleton.getInstance().searchContacts(textFirstNameCont.getText(),
                 textSurnameCont.getText(), textNameCont.getText(), textUIDCont.getText());
 
-        ContactModelBind modelBind = new ContactModelBind((ArrayList)contactList);
-        ObservableList<ContactTableModel> resultElements = modelBind.getItems();
-
+        ObservableList<Contact> resultElements = FXCollections.observableArrayList();
+        resultElements.addAll(contactList);
         tableContact.setItems(resultElements);
         tableContact.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override

@@ -7,6 +7,7 @@
 <?import javafx.scene.text.*?>
 <?import merp.PresentationModels.* ?>
 
+<?import eu.schudt.javafx.controls.calendar.DatePicker?>
 <Pane prefHeight="457.0" prefWidth="364.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="merp.PresentationModels.PresentationModelController">
   <children>
     <Button fx:id="btnSave" layoutX="294.0" layoutY="423.0" mnemonicParsing="false" onAction="#onSave" text="Save" />
@@ -25,7 +26,7 @@
         <Label layoutX="21.0" layoutY="134.0" text="Last name" />
         <TextField fx:id="suffix" layoutX="122.0" layoutY="162.0" prefWidth="200.0" />
         <Label layoutX="21.0" layoutY="162.0" text="Suffix" />
-        <TextField fx:id="birthDate" layoutX="122.0" layoutY="191.0" prefWidth="200.0" />
+        <DatePicker fx:id="birthDate" layoutX="122.0" layoutY="191.0" prefWidth="200.0"/>
         <Label layoutX="21.0" layoutY="191.0" text="Birthdate" />
         <TextField fx:id="address" layoutX="122.0" layoutY="227.0" prefWidth="200.0" />
         <Label layoutX="21.0" layoutY="227.0" text="Address" />
