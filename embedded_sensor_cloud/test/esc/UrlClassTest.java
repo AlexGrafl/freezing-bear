@@ -59,14 +59,13 @@ public class UrlClassTest {
     public void complexInvalidUrlPasses(){
         UrlClass url = new UrlClass("/foo//foo.bar?=bl%C3%9Fa*&a=b&moo='?sds&qwwe&ai");
         boolean ok = url.parseUrl();
-        assertEquals(ok, true);
+        assertTrue(ok);
 
         String[] expectedPath = {"foo", "", "foo.bar"};
         FileThing expectedFile = new FileThing();
         expectedFile.setName("foo");
         expectedFile.setExtension("bar");
         HashMap expectedMap = new HashMap<String, String>();
-        expectedMap.put("", "blßa*");
         expectedMap.put("a", "b");
         expectedMap.put("moo", "'");
 
@@ -77,4 +76,16 @@ public class UrlClassTest {
         assertEquals("foo", url.getPluginPath());
     }
 
+    @Test
+    public void emptyKeyValuePair(){
+        UrlClass url = new UrlClass("/findCompany");
+        boolean ok = url.parseUrl();
+        assertTrue(ok);
+        url.parseParameters("asdf=&==&woop=1&&&=woo");
+        HashMap expectedMap = new HashMap<String, String>();
+        expectedMap.put("asdf", "");
+        expectedMap.put("woop", "1");
+
+        assertEquals(expectedMap, url.getParameters());
+    }
 }

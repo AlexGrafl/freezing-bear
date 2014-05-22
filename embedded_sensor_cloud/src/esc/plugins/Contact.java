@@ -21,6 +21,9 @@ public class Contact {
     @Column(name="uid")
     private Integer uid = null;
 
+    @Column(name="companyID")
+    private Integer companyID = null;
+
     @Column(name="title")
     private String title = null;
 
@@ -169,5 +172,13 @@ public class Contact {
 
     public void setIsActive(boolean isActive) {
         this.isActive = isActive;
+    }
+
+    public Integer getCompanyID() {
+        return companyID;
+    }
+
+    public void setCompanyID(Integer companyID) {
+        this.companyID = companyID;
     }
 }

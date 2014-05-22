@@ -23,14 +23,7 @@ public class BusinessLayer {
     }
 
     public List<Contact> searchContacts(HashMap<String, String> parameters){
-        if(parameters != null && !parameters.isEmpty() && parameters.size() == 1) {
-            String key = (String) parameters.keySet().toArray()[0];
-            if(key.equals("name") || key.equals("firstName") || key.equals("lastName") || key.equals("uid")) {
-                String value = parameters.get(key);
-                return dataAccessLayer.searchContacts(key, value);
-            }
-        }
-        return new ArrayList<>();
+        return dataAccessLayer.searchContacts(parameters);
     }
 
     public boolean insertNewContact(String json){
@@ -58,6 +51,15 @@ public class BusinessLayer {
         catch(IllegalArgumentException e){
             log.error("Cannot edit contact with ID < 0!", e);
         }
+        return false;
+    }
+
+    public List<Contact> findCompany(String company) {
+        return dataAccessLayer.findCompany(company);
+    }
+
+    public boolean createInvoice(HashMap parameters) {
+
         return false;
     }
 }

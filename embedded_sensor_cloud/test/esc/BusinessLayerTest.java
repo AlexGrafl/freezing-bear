@@ -27,9 +27,10 @@ public class BusinessLayerTest {
     }
 
     @Test
-    public void searchContactsTest(){
+    public void searchContactsTest() {
         HashMap<String, String> parameters = new HashMap<>();
         parameters.put("name", "Grafl");
+        parameters.put("uid", "1234");
         List<Contact> contactList = businessLayer.searchContacts(parameters);
         assertEquals(2, contactList.size());
         assertEquals("Grafl", contactList.get(0).getLastName());
@@ -89,5 +90,16 @@ public class BusinessLayerTest {
                 "s\":\"Bergengasse 6/5/14 1220 Wien\",\"isActive\":false}";
         boolean result = businessLayer.editContact(json);
         assertFalse(result);
+    }
+
+    @Test
+    public void findCompanySuccess(){
+        String company = "Grafl";
+        List<Contact> contacts = businessLayer.findCompany(company);
+        assertEquals(1, contacts.size());
+
+        company = "";
+        contacts = businessLayer.findCompany(company);
+        assertEquals(new ArrayList<Contact>(), contacts);
     }
 }

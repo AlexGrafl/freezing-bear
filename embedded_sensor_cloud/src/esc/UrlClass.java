@@ -91,9 +91,12 @@ public class UrlClass {
                 {
                     for(String part : bar){
                         String[] temp = part.split("=");
-                        if(temp.length == 2)
+                        if(temp.length == 0 || part.equals("")) continue;
+                        if(temp.length >= 2)
                         {
-                            foo.put(temp[0], temp[1]);
+                            if(!temp[0].equals("")) foo.put(temp[0], temp[1]);
+                        } else {
+                            foo.put(temp[0], "");
                         }
                     }
                 }

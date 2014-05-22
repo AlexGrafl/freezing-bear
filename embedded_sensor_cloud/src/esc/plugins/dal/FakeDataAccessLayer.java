@@ -6,6 +6,7 @@ import esc.plugins.Contact;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -13,10 +14,10 @@ import java.util.List;
  */
 public class FakeDataAccessLayer implements IDataAccessLayer {
     @Override
-    public List<Contact> searchContacts(String key, String value) {
+    public List<Contact> searchContacts(HashMap<String, String> parameters) {
         Type arrayType = new TypeToken<ArrayList<Contact>>(){}.getType();
         Gson gson = new Gson();
-        if(key.equals("name") && value.equals("Grafl")) {
+        if(parameters != null && !parameters.containsKey("firstName")) {
             return gson.fromJson("[{\"contactID\":1,\"name\":\"Alexander Grafl\",\"title\":\"Dr.\",\"firstName\":" +
                     "\"Alexander\",\"lastName\":\"Grafl\",\"suffix\":\"Msc\",\"birthDate\":\"Mar 28, 2014 12:00:0" +
                     "0 AM\",\"address\":\"Bergengasse 6/5/14 1220 Wien\",\"invoiceAddress\":\"Bergengasse 6/5/14 " +
@@ -25,7 +26,7 @@ public class FakeDataAccessLayer implements IDataAccessLayer {
                     "nvoiceAddress\":\"Bergengasse 6/5/14 1220 Wien\",\"shippingAddress\":\"Bergengasse 6/5/14 12" +
                     "20 Wien\",\"isActive\":false}]", arrayType);
         }
-        return new ArrayList<Contact>();
+        return new ArrayList<>();
     }
 
     @Override
@@ -36,5 +37,17 @@ public class FakeDataAccessLayer implements IDataAccessLayer {
     @Override
     public boolean editContact(Contact contact) {
         return true;
+    }
+
+    @Override
+    public List<Contact> findCompany(String company) {
+        Gson gson = new Gson();
+        Type arrayType = new TypeToken<ArrayList<Contact>>(){}.getType();
+        if(!company.equals("")){
+            return gson.fromJson("[{\"contactID\":2,\"name\":\"Grafl GmbH\",\"uid\":1,\"address\":\"Bergengasse 6/5" +
+                    "/14 1220 Wien\",\"invoiceAddress\":\"Bergengasse 6/5/14 1220 Wien\",\"shippingAddress\":\"Berg" +
+                    "engasse 6/5/14 1220 Wien\",\"isActive\":false}]", arrayType);
+        }
+        return new ArrayList<>();
     }
 }

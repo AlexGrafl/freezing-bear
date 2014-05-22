@@ -49,6 +49,20 @@ public class MicroErpPlugin implements IPlugin {
             sendResponse(String.valueOf(edited), socket);
         }
 
+        if(url.getFullPath().contains("findCompany")){
+
+            Gson gson = new Gson();
+            List<Contact> contactList = businessLayer.findCompany(url.getParameterAsString("company"));
+            Type arrayType = new TypeToken<ArrayList<Contact>>(){}.getType();
+            String json = gson.toJson(contactList, arrayType);
+            sendResponse(json, socket);
+        }
+
+        if(url.getFullPath().contains("createInvoice")){
+            boolean created = businessLayer.createInvoice(url.getParameters());
+            sendResponse(String.valueOf(created), socket);
+        }
+
     }
 
     private void sendResponse(String text, Socket socket){
