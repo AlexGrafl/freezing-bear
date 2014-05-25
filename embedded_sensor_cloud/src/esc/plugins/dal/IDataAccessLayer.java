@@ -1,6 +1,7 @@
 package esc.plugins.dal;
 
 import esc.plugins.Contact;
+import esc.plugins.Invoice;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,4 +17,6 @@ public interface IDataAccessLayer {
     boolean editContact(Contact contact);
 
     List<Contact> findCompany(String company);
+
+    boolean createInvoice(Invoice newInvoice);
 }

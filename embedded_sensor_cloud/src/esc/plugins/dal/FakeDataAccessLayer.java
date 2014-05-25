@@ -3,6 +3,7 @@ package esc.plugins.dal;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import esc.plugins.Contact;
+import esc.plugins.Invoice;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -49,5 +50,10 @@ public class FakeDataAccessLayer implements IDataAccessLayer {
                     "engasse 6/5/14 1220 Wien\",\"isActive\":false}]", arrayType);
         }
         return new ArrayList<>();
+    }
+
+    @Override
+    public boolean createInvoice(Invoice newInvoice) {
+        return true;
     }
 }

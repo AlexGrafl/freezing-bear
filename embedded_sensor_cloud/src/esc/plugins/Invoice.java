@@ -11,14 +11,14 @@ public class Invoice {
     private Date dueDate;
     private String comment;
     private String message;
-    private int customerID;
+    private int contactID;
 
-    public int getCustomerID() {
-        return customerID;
+    public int getContactID() {
+        return contactID;
     }
 
-    public void setCustomerID(int customerID) {
-        this.customerID = customerID;
+    public void setContactID(int contactID) {
+        this.contactID = contactID;
     }
 
     public int getInvoiceID() {

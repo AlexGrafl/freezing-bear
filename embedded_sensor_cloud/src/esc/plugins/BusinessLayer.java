@@ -58,8 +58,15 @@ public class BusinessLayer {
         return dataAccessLayer.findCompany(company);
     }
 
-    public boolean createInvoice(HashMap parameters) {
-
-        return false;
+    public boolean createInvoice(String json) {
+        try {
+            Gson gson = new Gson();
+            Invoice newInvoice = gson.fromJson(json, Invoice.class);
+            return dataAccessLayer.createInvoice(newInvoice);
+        }
+        catch(JsonParseException e){
+            log.error("Cannot parse JSON '"+json+"'-", e);
+            return false;
+        }
     }
 }

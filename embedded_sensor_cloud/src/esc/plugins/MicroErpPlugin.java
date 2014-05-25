@@ -59,7 +59,7 @@ public class MicroErpPlugin implements IPlugin {
         }
 
         if(url.getFullPath().contains("createInvoice")){
-            boolean created = businessLayer.createInvoice(url.getParameters());
+            boolean created = businessLayer.createInvoice(url.getParameterAsString("json"));
             sendResponse(String.valueOf(created), socket);
         }
 

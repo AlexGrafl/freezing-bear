@@ -1,6 +1,7 @@
 package esc.plugins.dal;
 
 import esc.plugins.Contact;
+import esc.plugins.Invoice;
 import esc.plugins.ResultSetMapper;
 import org.apache.log4j.Logger;
 
@@ -108,7 +109,10 @@ public class DataAccessLayer implements IDataAccessLayer{
             preparedStatement.setBoolean(12, true);
 
             int result = preparedStatement.executeUpdate();
-            if(result == 1) return true;
+            if(result == 1){
+                log.info("Contact added");
+                return true;
+            }
         }
         catch (SQLException e){
             log.error("Insert failed - ", e);
@@ -178,6 +182,28 @@ public class DataAccessLayer implements IDataAccessLayer{
             log.error(e);
         }
         return new ArrayList<>();
+    }
+
+    @Override
+    public boolean createInvoice(Invoice newInvoice) {
+        sql = "INSERT INTO invoice VALUES (?,?,?,?,?);";
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setDate(1, new Date(new java.util.Date().getTime()));
+            preparedStatement.setDate(2, new Date(newInvoice.getDueDate().getTime()));
+            preparedStatement.setString(3, newInvoice.getComment());
+            preparedStatement.setString(4, newInvoice.getMessage());
+            preparedStatement.setInt(5, newInvoice.getContactID());
+            int result = preparedStatement.executeUpdate();
+            if(result == 1){
+                log.info("Invoice added.");
+                return true;
+            }
+        }
+        catch(SQLException e){
+            log.error("Cannot create new invoice - ", e);
+        }
+        return false;
     }
 }
 
