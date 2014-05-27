@@ -67,7 +67,7 @@ public class AndroidLauncher extends AndroidApplication implements ActionResolve
     @Override
     public void submitScore(int score) {
         //add score to leaderboard
-        //TODO: UPDATE KEY
+        //TODO: UPDATE KEYS
         gameHelper.getGamesClient().submitScore("CgkI6574wJUXEAIQBw", score);
     }
 
