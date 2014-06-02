@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Othello</string>
+    <string name="app_id">630762537371</string>
+    <string name="leaderboard_total_pieces_difference">CgkIm4OC460SEAIQAg</string>
+    <string name="achievement_first_blood">CgkIm4OC460SEAIQAw</string>
+    <string name="achievement_first_black_blood">CgkIm4OC460SEAIQBA</string>
+    <string name="achievement_first_white_blood">CgkIm4OC460SEAIQBQ</string>
+    <string name="achievement_keep_up_the_good_work">CgkIm4OC460SEAIQBg</string>
+    <string name="achievement_master_mind">CgkIm4OC460SEAIQBw</string>
+</resources>
