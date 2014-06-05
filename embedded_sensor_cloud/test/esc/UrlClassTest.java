@@ -87,6 +87,8 @@ public class UrlClassTest {
         assertEquals(expectedFile.getExtension(), url.getFile().getExtension());
         assertArrayEquals(expectedPath, url.getSplitFullPath());
         assertEquals("foo", url.getPluginPath());
+        assertEquals("/foo//foo.bar?=blßa*&a=b&moo='?sds&qwwe&ai", url.getRawUrl());
+        assertEquals("/foo//foo.bar", url.getFullPath());
     }
 
     @Test
@@ -101,6 +103,7 @@ public class UrlClassTest {
         assertEquals(expectedMap, url.getParameters());
         assertEquals("", url.getParameterAsString("asdf"));
         assertEquals("1", url.getParameterAsString("woop"));
+        assertTrue(url.hasParameters());
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -125,7 +128,7 @@ public class UrlClassTest {
             UrlClass url = new UrlClass(URLEncoder.encode("/asdf/?%$äüö#!", "US-ASCII"));
             boolean ok = url.parseUrl();
             assertTrue(ok);
-            url.parseParameters(null);
+            url.parseParameters("&");
         }
         catch (UnsupportedEncodingException e){
             e.printStackTrace();
