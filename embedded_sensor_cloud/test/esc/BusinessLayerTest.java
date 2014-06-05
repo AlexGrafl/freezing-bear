@@ -101,4 +101,31 @@ public class BusinessLayerTest {
         contacts = businessLayer.findCompany(company);
         assertEquals(new ArrayList<Contact>(), contacts);
     }
+
+    @Test
+    public void createInvoiceTestSuccess(){
+        String json = "{";
+    }
+
+    @Test
+    public void createInvoiceTestFails(){
+
+    }
+
+    @Test
+    public void addInvoiceItemsTestSuccess(){
+        String json = "[{\"invoiceItemID\":1, \"invoiceID\":1, \"quantity\":2, \"nettoPrice\":10.60, \"pricePerUnit\":" +
+                "5.30, \"tax\":20, \"description\":\"wooop\"}, {\"invoiceItemID\":2, \"invoiceID\":1, \"quantity\":1, " +
+                "\"nettoPrice\":18.90, \"pricePerUnit\":18.90, \"tax\":20, \"description\":\"wooopieh\"}]";
+        boolean success = businessLayer.addInvoiceItems(json);
+        assertTrue(success);
+    }
+
+    @Test
+    public void addInvoiceItemsTestFails(){
+        String json = "[]";
+        boolean success = businessLayer.addInvoiceItems(json);
+        assertFalse(success);
+    }
+
 }

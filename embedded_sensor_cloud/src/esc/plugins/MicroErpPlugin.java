@@ -63,6 +63,11 @@ public class MicroErpPlugin implements IPlugin {
             sendResponse(String.valueOf(created), socket);
         }
 
+        if(url.getFullPath().contains("addInvoiceItems")){
+            boolean added = businessLayer.addInvoiceItems(url.getParameterAsString("json"));
+            sendResponse(String.valueOf(added), socket);
+        }
+
     }
 
     private void sendResponse(String text, Socket socket){

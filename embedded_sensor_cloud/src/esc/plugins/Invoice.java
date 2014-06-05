@@ -1,17 +1,32 @@
 package esc.plugins;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import java.util.Date;
+import java.util.LinkedList;
 
 /**
  * @author Alex
  */
+
+@Entity
 public class Invoice {
+    @Column(name="invoiceID")
     private int invoiceID;
+    @Column(name="issueDate")
     private Date issueDate;
+    @Column(name="dueDate")
     private Date dueDate;
+    @Column(name="comment")
     private String comment;
+    @Column(name="message")
     private String message;
+    @Column(name="contactID")
     private int contactID;
+    @Column(name="total")
+    private double total;
+
+    private LinkedList<InvoiceItem> invoiceItems = new LinkedList<>();
 
     public int getContactID() {
         return contactID;
@@ -61,4 +76,21 @@ public class Invoice {
         this.message = message;
     }
 
+    public LinkedList<InvoiceItem> getInvoiceItems() {
+        return invoiceItems;
+    }
+    public void setInvoiceItems(LinkedList<InvoiceItem> invoiceItems) {
+        this.invoiceItems = invoiceItems;
+    }
+    public void addInvoiceItems(InvoiceItem invoiceItem){
+        invoiceItems.add(invoiceItem);
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
 }

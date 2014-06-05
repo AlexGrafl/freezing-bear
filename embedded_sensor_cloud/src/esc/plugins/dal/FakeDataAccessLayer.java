@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import esc.plugins.Contact;
 import esc.plugins.Invoice;
+import esc.plugins.InvoiceItem;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -55,5 +56,18 @@ public class FakeDataAccessLayer implements IDataAccessLayer {
     @Override
     public boolean createInvoice(Invoice newInvoice) {
         return true;
+    }
+
+    @Override
+    public boolean addInvoiceItem(InvoiceItem invoiceItem) {
+        return true;
+    }
+
+    @Override
+    public boolean setTotalInInvoice(double total, int invoiceID) {
+        if(total == 35.40 && invoiceID == 1){
+            return true;
+        }
+        return false;
     }
 }

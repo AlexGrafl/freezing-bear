@@ -2,6 +2,7 @@ package esc.plugins.dal;
 
 import esc.plugins.Contact;
 import esc.plugins.Invoice;
+import esc.plugins.InvoiceItem;
 import esc.plugins.ResultSetMapper;
 import org.apache.log4j.Logger;
 
@@ -38,12 +39,12 @@ public class DataAccessLayer implements IDataAccessLayer{
     public List<Contact> searchContacts(HashMap<String, String> parameters) {
         if(parameters != null && !parameters.isEmpty()) {
             sql = "SELECT * FROM contact WHERE ";
-            int i = 0;
+            int i;
             boolean valid = false;
             for (Map.Entry<String, String> entry : parameters.entrySet()) {
                 String key = entry.getKey();
                 if (key.equals("name") || key.equals("firstName") || key.equals("lastName") || key.equals("uid")) {
-                    sql += key + " LIKE ? AND";
+                    sql += key + " LIKE ? AND ";
                     valid = true;
                 }
             }
@@ -186,7 +187,7 @@ public class DataAccessLayer implements IDataAccessLayer{
 
     @Override
     public boolean createInvoice(Invoice newInvoice) {
-        sql = "INSERT INTO invoice VALUES (?,?,?,?,?);";
+        sql = "INSERT INTO invoice VALUES (?,?,?,?,?,?);";
         try{
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setDate(1, new Date(new java.util.Date().getTime()));
@@ -194,6 +195,7 @@ public class DataAccessLayer implements IDataAccessLayer{
             preparedStatement.setString(3, newInvoice.getComment());
             preparedStatement.setString(4, newInvoice.getMessage());
             preparedStatement.setInt(5, newInvoice.getContactID());
+            preparedStatement.setNull(6, Types.DOUBLE);
             int result = preparedStatement.executeUpdate();
             if(result == 1){
                 log.info("Invoice added.");
@@ -202,6 +204,46 @@ public class DataAccessLayer implements IDataAccessLayer{
         }
         catch(SQLException e){
             log.error("Cannot create new invoice - ", e);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean addInvoiceItem(InvoiceItem invoiceItem) {
+        sql = "INSERT INTO invoiceItem VALUES (?, ?, ?, ?, ?, ?)";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, invoiceItem.getInvoiceID());
+            preparedStatement.setInt(2, invoiceItem.getQuantity());
+            preparedStatement.setDouble(3, invoiceItem.getNettoPrice());
+            preparedStatement.setDouble(4, invoiceItem.getPricePerUnit());
+            preparedStatement.setInt(5, invoiceItem.getTax());
+            preparedStatement.setString(6, invoiceItem.getDescription());
+            int success = preparedStatement.executeUpdate();
+            if(success == 1){
+                log.info("InvoiceItem added.");
+                return true;
+            }
+        }catch (SQLException e){
+            log.error("Cannot add InvoiceItem - ", e);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean setTotalInInvoice(double total, int invoiceID) {
+        sql = "UPDATE invoice SET total = ? WHERE invoiceID = ?;";
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setDouble(1, total);
+            preparedStatement.setInt(2, invoiceID);
+            int success = preparedStatement.executeUpdate();
+            if(success == 1){
+                log.info("Set total to '"+total+"' in invoice '"+invoiceID+"'");
+                return true;
+            }
+        }catch (SQLException e){
+            log.error("Failed to set total!");
         }
         return false;
     }
