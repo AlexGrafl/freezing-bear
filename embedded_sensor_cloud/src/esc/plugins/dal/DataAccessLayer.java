@@ -23,8 +23,6 @@ public class DataAccessLayer implements IDataAccessLayer{
 
     public DataAccessLayer() {
         try {
-            if (connection != null) connection.close();
-
             // Establish the connection.
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             //String connectionUrl = "jdbc:sqlserver://PHIPS-THINK\\SQLEXPRESS;databaseName=ErpData";
@@ -36,20 +34,22 @@ public class DataAccessLayer implements IDataAccessLayer{
         }
     }
 
-    public List<Contact> searchContacts(HashMap<String, String> parameters) {
+    public ArrayList<Contact> searchContacts(HashMap<String, String> parameters) {
         if(parameters != null && !parameters.isEmpty()) {
-            sql = "SELECT * FROM contact WHERE ";
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("SELECT * FROM contact WHERE ");
             int i;
             boolean valid = false;
             for (Map.Entry<String, String> entry : parameters.entrySet()) {
                 String key = entry.getKey();
                 if (key.equals("name") || key.equals("firstName") || key.equals("lastName") || key.equals("uid")) {
-                    sql += key + " LIKE ? AND ";
+                    stringBuilder.append(key + " LIKE ? AND ");
                     valid = true;
                 }
             }
-            sql += " isActive = 1;";
+            stringBuilder.append(" isActive = 1;");
             if(valid) {
+                sql = stringBuilder.toString();
                 log.debug("SQL string: " + sql);
                 try {
                     resultSet = null;
@@ -62,7 +62,8 @@ public class DataAccessLayer implements IDataAccessLayer{
                     resultSet = preparedStatement.executeQuery();
                     if (resultSet != null) {
                         ResultSetMapper<Contact> resultSetMapper = new ResultSetMapper<>();
-                        List<Contact> contactList = resultSetMapper.mapToList(resultSet, Contact.class);
+                        ArrayList<Contact> contactList = (ArrayList<Contact>)
+                                resultSetMapper.mapToList(resultSet, Contact.class);
                         log.info("Found " + contactList.size() + " contacts.");
                         return contactList;
                     }
@@ -164,7 +165,7 @@ public class DataAccessLayer implements IDataAccessLayer{
     }
 
     @Override
-    public List<Contact> findCompany(String company) {
+    public ArrayList<Contact> findCompany(String company) {
         sql = "SELECT * FROM contact WHERE name LIKE ? AND isActive = 1;";
         try {
             resultSet = null;
@@ -174,7 +175,8 @@ public class DataAccessLayer implements IDataAccessLayer{
             resultSet = preparedStatement.executeQuery();
             if (resultSet != null) {
                 ResultSetMapper<Contact> resultSetMapper = new ResultSetMapper<>();
-                List<Contact> contactList = resultSetMapper.mapToList(resultSet, Contact.class);
+                ArrayList<Contact> contactList = (ArrayList<Contact>)
+                        resultSetMapper.mapToList(resultSet, Contact.class);
                 log.info("Found " + contactList.size() + " companies for name '" + company + "'.");
                 return  contactList;
             }
@@ -246,6 +248,89 @@ public class DataAccessLayer implements IDataAccessLayer{
             log.error("Failed to set total!");
         }
         return false;
+    }
+
+    @Override
+    public ArrayList<InvoiceItem> getInvoiceItems(String invoiceId) {
+        ArrayList<InvoiceItem> invoiceItems = new ArrayList<>();
+        sql = "SELECT * FROM invoiceItem WHERE invoiceID = ?;";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, Integer.parseInt(invoiceId));
+            resultSet = preparedStatement.executeQuery();
+            if(resultSet != null){
+                ResultSetMapper<InvoiceItem> resultSetMapper = new ResultSetMapper<>();
+                invoiceItems = (ArrayList<InvoiceItem>) resultSetMapper.mapToList(resultSet, InvoiceItem.class);
+                log.info("Found "+ invoiceItems.size() + " invoiceitems for invoice "+invoiceId);
+            }
+        } catch(SQLException | ResultSetMapper.ResultSetMapperException e){
+            log .error("Error fetching invoice items for id '" + invoiceId + "'", e);
+        }
+        return invoiceItems;
+    }
+
+    @Override
+    public ArrayList<Invoice> searchInvoices(HashMap<String, String> parameters) {
+        ArrayList<Invoice> invoices = new ArrayList<>();
+        boolean valid = false;
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("SELECT * FROM invoice WHERE ");
+        if(parameters != null && parameters.size() > 0 && !parameters.isEmpty()){
+            for (Map.Entry<String, String> entry : parameters.entrySet()) {
+                String key = entry.getKey();
+                if (key.equals("contactId")){
+                    stringBuilder.append(key).append(" LIKE :").append(key).append(" AND ");
+                    valid = true;
+                }
+                if(key.equals("dateMin")){
+                    stringBuilder.append("issueDate > :").append(key).append(" AND ");
+                    valid = true;
+                }
+                if(key.equals("dateMax")){
+                    stringBuilder.append("issueDate < :").append(key).append(" AND ");
+                    valid = true;
+                }
+                if(key.equals("totalMin")){
+                    stringBuilder.append("total > :").append(key).append(" AND ");
+                    valid = true;
+                }
+                if(key.equals("totalMax")){
+                    stringBuilder.append("total < :").append(key).append(" AND ");
+                    valid = true;
+                }
+            }
+            stringBuilder.append("1=1");
+        }
+        if(valid){
+            try{
+                sql = stringBuilder.toString();
+                log.debug("invoice sql: "+ sql);
+                NamedParameterStatement namedParameterStatement = new NamedParameterStatement(connection, sql);
+                for (Map.Entry<String, String> entry : parameters.entrySet()) {
+                    String key = entry.getKey();
+                    String value = entry.getValue();
+                    if (key.equals("contactId")){
+                        namedParameterStatement.setInt(key, Integer.parseInt(value));
+                    }
+                    if(key.equals("dateMin") || key.equals("dateMax")){
+                        //TODO: SimpleDateFormat und umwandeln!!!
+                        //namedParameterStatement.setDate(key, new Date());
+                    }
+                    if(key.equals("totalMin") || key.equals("totalMax")){
+                        namedParameterStatement.setDouble(key, Double.parseDouble(value));
+                    }
+                }
+                resultSet = namedParameterStatement.executeQuery();
+                if(resultSet != null){
+                    ResultSetMapper<Invoice> resultSetMapper = new ResultSetMapper<>();
+                    invoices = (ArrayList<Invoice>) resultSetMapper.mapToList(resultSet, Invoice.class);
+                    log.info("Found "+ invoices.size() +" invoices!");
+                }
+            } catch (SQLException | ResultSetMapper.ResultSetMapperException | NumberFormatException e) {
+                log.error("Error searching for eierlegende Wollmilchsau", e);
+            }
+        }
+        return invoices;
     }
 }
 

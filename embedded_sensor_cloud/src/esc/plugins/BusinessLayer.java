@@ -3,7 +3,6 @@ package esc.plugins;
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
-import com.sun.media.jfxmediaimpl.MediaDisposer;
 import esc.plugins.dal.IDataAccessLayer;
 import org.apache.log4j.Logger;
 
@@ -25,7 +24,7 @@ public class BusinessLayer {
         this.dataAccessLayer = dataAccessLayer;
     }
 
-    public List<Contact> searchContacts(HashMap<String, String> parameters){
+    public ArrayList<Contact> searchContacts(HashMap<String, String> parameters){
         return dataAccessLayer.searchContacts(parameters);
     }
 
@@ -57,7 +56,7 @@ public class BusinessLayer {
         return false;
     }
 
-    public List<Contact> findCompany(String company) {
+    public ArrayList<Contact> findCompany(String company) {
         return dataAccessLayer.findCompany(company);
     }
 
@@ -87,6 +86,7 @@ public class BusinessLayer {
                     BigDecimal nettoPrice = BigDecimal.valueOf(invoiceItem.getPricePerUnit() * invoiceItem.getQuantity());
                     total = total.add(taxPercent.multiply(nettoPrice));
                 }
+                log.debug("Added "+ invoiceItems.size() +" invoice items, total: " + total.toString());
                 result = dataAccessLayer.setTotalInInvoice(total.doubleValue(), invoiceItems.get(0).getInvoiceID());
             }
             else{
@@ -98,4 +98,11 @@ public class BusinessLayer {
         return result;
     }
 
+    public ArrayList<Invoice> searchInvoices(HashMap<String, String> parameters) {
+        return dataAccessLayer.searchInvoices(parameters);
+    }
+
+    public ArrayList<InvoiceItem> getInvoiceItems(String invoiceId) {
+        return dataAccessLayer.getInvoiceItems(invoiceId);
+    }
 }

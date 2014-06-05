@@ -26,8 +26,8 @@ public class PluginManager {
         for(IPlugin iPlugin : this.pluginList){
             if(iPlugin.acceptRequest(url.getPluginPath())){
                 try {
-                    iPlugin.runPlugin(socket, url);
-                } catch (SQLException e) {
+                    iPlugin.runPlugin(socket.getOutputStream(), url);
+                } catch (SQLException | IOException e) {
                     e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                 }
                 return true;

@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class FakeDataAccessLayer implements IDataAccessLayer {
     @Override
-    public List<Contact> searchContacts(HashMap<String, String> parameters) {
+    public ArrayList<Contact> searchContacts(HashMap<String, String> parameters) {
         Type arrayType = new TypeToken<ArrayList<Contact>>(){}.getType();
         Gson gson = new Gson();
         if(parameters != null && !parameters.containsKey("firstName")) {
@@ -42,7 +42,7 @@ public class FakeDataAccessLayer implements IDataAccessLayer {
     }
 
     @Override
-    public List<Contact> findCompany(String company) {
+    public ArrayList<Contact> findCompany(String company) {
         Gson gson = new Gson();
         Type arrayType = new TypeToken<ArrayList<Contact>>(){}.getType();
         if(!company.equals("")){
@@ -65,9 +65,16 @@ public class FakeDataAccessLayer implements IDataAccessLayer {
 
     @Override
     public boolean setTotalInInvoice(double total, int invoiceID) {
-        if(total == 35.40 && invoiceID == 1){
-            return true;
-        }
-        return false;
+        return total == 35.40 && invoiceID == 1;
+    }
+
+    @Override
+    public ArrayList<InvoiceItem> getInvoiceItems(String invoiceId) {
+        return new ArrayList<>();
+    }
+
+    @Override
+    public ArrayList<Invoice> searchInvoices(HashMap<String, String> parameters) {
+        return new ArrayList<>();
     }
 }

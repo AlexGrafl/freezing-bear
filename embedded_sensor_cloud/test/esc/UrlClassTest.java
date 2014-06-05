@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +20,17 @@ public class UrlClassTest {
 
     @Test
     public void simpleValidUrlPasses() {
+        UrlClass url = new UrlClass("/valid/simple/url");
+        url.parseUrl();
+        String[] expectedPath = {"valid", "simple", "url"};
+
+        assertEquals("valid", url.getPluginPath());
+        assertArrayEquals(expectedPath, url.getSplitFullPath());
+        assertTrue(url.getParameters().isEmpty());
+    }
+
+    @Test
+    public void urlEncodingFails() {
         UrlClass url = new UrlClass("/valid/simple/url");
         url.parseUrl();
         String[] expectedPath = {"valid", "simple", "url"};
@@ -85,7 +98,37 @@ public class UrlClassTest {
         HashMap expectedMap = new HashMap<String, String>();
         expectedMap.put("asdf", "");
         expectedMap.put("woop", "1");
-
         assertEquals(expectedMap, url.getParameters());
+        assertEquals("", url.getParameterAsString("asdf"));
+        assertEquals("1", url.getParameterAsString("woop"));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void getParameterAsStringExeption(){
+        UrlClass url = new UrlClass("/findCompany");
+        boolean ok = url.parseUrl();
+        assertTrue(ok);
+        url.parseParameters("asdf=&==&woop=1&&&=woo");
+        url.getParameterAsString("meh");
+
+    }
+
+    @Test
+    public void parseUrlTestException(){
+        UrlClass url = new UrlClass("");
+        boolean ok = url.parseUrl();
+        assertFalse(ok);
+    }
+    @Test
+    public void parseParameterTestException(){
+        try {
+            UrlClass url = new UrlClass(URLEncoder.encode("/asdf/?%$äüö#!", "US-ASCII"));
+            boolean ok = url.parseUrl();
+            assertTrue(ok);
+            url.parseParameters(null);
+        }
+        catch (UnsupportedEncodingException e){
+            e.printStackTrace();
+        }
     }
 }
