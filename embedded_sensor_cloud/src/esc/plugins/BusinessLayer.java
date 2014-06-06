@@ -61,40 +61,35 @@ public class BusinessLayer {
 
     public boolean createInvoice(String json) {
         try {
+            log.debug("Invoice: "+json);
             Gson gson = new Gson();
             Invoice newInvoice = gson.fromJson(json, Invoice.class);
-            return dataAccessLayer.createInvoice(newInvoice);
+            //303
+            newInvoice.calculateTotal();
+            boolean result = false;
+            int invoiceId = dataAccessLayer.createInvoice(newInvoice);
+            if(invoiceId != -1){
+                if(newInvoice.getInvoiceItems().size() > 0) {
+                    for (InvoiceItem invoiceItem : newInvoice.getInvoiceItems()) {
+                        result = dataAccessLayer.addInvoiceItem(invoiceItem, invoiceId);
+                    }
+                    log.debug("Added "+ newInvoice.getInvoiceItems().size() +" invoice items");
+                }
+                else{
+                    log.info("No invoiceitems to add!");
+                    result = true;
+                }
+            }
+            else throw new IllegalArgumentException();
+            return result;
         }
         catch(JsonParseException e){
             log.error("Cannot parse JSON '"+json+"'-", e);
-            return false;
         }
-    }
-
-    public boolean addInvoiceItems(String json){
-        Gson gson = new Gson();
-        boolean result = false;
-        BigDecimal total = BigDecimal.ZERO;
-        Type arrayType = new TypeToken<ArrayList<InvoiceItem>>(){}.getType();
-        try{
-            ArrayList<InvoiceItem> invoiceItems = gson.fromJson(json, arrayType);
-            if(invoiceItems.size() > 0) {
-                for (InvoiceItem invoiceItem : invoiceItems) {
-                    result = dataAccessLayer.addInvoiceItem(invoiceItem);
-                    BigDecimal taxPercent = BigDecimal.valueOf(1 + (invoiceItem.getTax() / 100.0));
-                    BigDecimal nettoPrice = BigDecimal.valueOf(invoiceItem.getPricePerUnit() * invoiceItem.getQuantity());
-                    total = total.add(taxPercent.multiply(nettoPrice));
-                }
-                log.debug("Added "+ invoiceItems.size() +" invoice items, total: " + total.toString());
-                result = dataAccessLayer.setTotalInInvoice(total.doubleValue(), invoiceItems.get(0).getInvoiceID());
-            }
-            else{
-                log.info("No invoiceitems to add!");
-            }
-        } catch (JsonParseException e){
-            log.error("Cannot parse JSON '" + json + "' - ", e);
+        catch (IllegalArgumentException e){
+            log.error("Error while inserting invoice!");
         }
-        return result;
+        return false;
     }
 
     public ArrayList<Invoice> searchInvoices(HashMap<String, String> parameters) {

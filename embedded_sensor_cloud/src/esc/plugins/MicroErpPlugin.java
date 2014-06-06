@@ -62,11 +62,6 @@ public class MicroErpPlugin implements IPlugin {
             sendResponse(String.valueOf(created), outputStream);
         }
 
-        if(url.getFullPath().contains("addInvoiceItems")){
-            boolean added = businessLayer.addInvoiceItems(url.getParameterAsString("json"));
-            sendResponse(String.valueOf(added), outputStream);
-        }
-
         if(url.getFullPath().contains("searchInvoices")){
             Gson gson = new Gson();
             Type arrayType = new TypeToken<ArrayList<Invoice>>(){}.getType();

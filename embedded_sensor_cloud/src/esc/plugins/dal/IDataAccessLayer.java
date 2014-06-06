@@ -19,11 +19,9 @@ public interface IDataAccessLayer {
 
     ArrayList<Contact> findCompany(String company);
 
-    boolean createInvoice(Invoice newInvoice);
+    int createInvoice(Invoice newInvoice);
 
-    boolean addInvoiceItem(InvoiceItem invoiceItem);
-
-    boolean setTotalInInvoice(double total, int invoiceID);
+    boolean addInvoiceItem(InvoiceItem invoiceItem, int invoiceId);
 
     ArrayList<InvoiceItem> getInvoiceItems(String invoiceId);
 

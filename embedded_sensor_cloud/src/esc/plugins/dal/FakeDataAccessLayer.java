@@ -2,6 +2,7 @@ package esc.plugins.dal;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.sun.istack.internal.logging.Logger;
 import esc.plugins.Contact;
 import esc.plugins.Invoice;
 import esc.plugins.InvoiceItem;
@@ -14,6 +15,8 @@ import java.util.HashMap;
  * @author Alex
  */
 public class FakeDataAccessLayer implements IDataAccessLayer {
+    private static final Logger log = Logger.getLogger(FakeDataAccessLayer.class);
+
     @Override
     public ArrayList<Contact> searchContacts(HashMap<String, String> parameters) {
         Type arrayType = new TypeToken<ArrayList<Contact>>(){}.getType();
@@ -53,18 +56,18 @@ public class FakeDataAccessLayer implements IDataAccessLayer {
     }
 
     @Override
-    public boolean createInvoice(Invoice newInvoice) {
-        return true;
+    public int createInvoice(Invoice newInvoice) {
+        if(newInvoice.getTotal() == 35.4 || newInvoice.getTotal() == 0){
+            return 1;
+        }
+
+        log.info("Total: "+newInvoice.getTotal());
+        return -1;
     }
 
     @Override
-    public boolean addInvoiceItem(InvoiceItem invoiceItem) {
+    public boolean addInvoiceItem(InvoiceItem invoiceItem, int invoiceId) {
         return true;
-    }
-
-    @Override
-    public boolean setTotalInInvoice(double total, int invoiceID) {
-        return total == 35.40 && invoiceID == 1;
     }
 
     @Override

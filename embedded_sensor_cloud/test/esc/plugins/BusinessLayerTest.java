@@ -1,7 +1,5 @@
 package esc.plugins;
 
-import esc.plugins.BusinessLayer;
-import esc.plugins.Contact;
 import esc.plugins.dal.FakeDataAccessLayer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -114,9 +112,24 @@ public class BusinessLayerTest {
 
     @Test
     public void createInvoiceTestSuccess(){
-        String json = "{\"dueDate\":\"Mar 28, 2014 12:00:00 AM\"}";
+        String json = "{\"dueDate\":\"Mar 28, 2014 12:00:00 AM\", \"invoiceItems\":[{\"invoiceItemID\":1," +
+                " \"invoiceID\":1, " +
+                "\"quantity\":2, \"nettoPrice\":10.60, \"pricePerUnit\":5.30, \"tax\":20, \"description\":" +
+                "\"wooop\"}, {\"invoiceItemID\":2, \"invoiceID\":1, \"quantity\":1, \"nettoPrice\":18.90, " +
+                "\"pricePerUnit\":18.90, \"tax\":20, \"description\":\"wooopieh\"}]}";
         boolean success = businessLayer.createInvoice(json);
         assertTrue(success);
+    }
+
+    @Test
+    public void createInvoiceTestNotSuccess(){
+        String json = "{\"dueDate\":\"Mar 28, 2014 12:00:00 AM\", \"invoiceItems\":[{\"invoiceItemID\":1," +
+                " \"invoiceID\":1, " +
+                "\"quantity\":2, \"nettoPrice\":10.60, \"pricePerUnit\":5.30, \"tax\":20, \"description\":" +
+                "\"wooop\"}, {\"invoiceItemID\":2, \"invoiceID\":1, \"quantity\":1, \"nettoPrice\":18.90, " +
+                "\"pricePerUnit\":12.90, \"tax\":20, \"description\":\"wooopieh\"}]}";
+        boolean success = businessLayer.createInvoice(json);
+        assertFalse(success);
     }
 
     @Test
@@ -125,29 +138,10 @@ public class BusinessLayerTest {
         boolean success = businessLayer.createInvoice(json);
         assertFalse(success);
     }
-
     @Test
-    public void addInvoiceItemsTestSuccess(){
-        String json = "[{\"invoiceItemID\":1, \"invoiceID\":1, \"quantity\":2, \"nettoPrice\":10.60, \"pricePerUnit\":" +
-                "5.30, \"tax\":20, \"description\":\"wooop\"}, {\"invoiceItemID\":2, \"invoiceID\":1, \"quantity\":1, " +
-                "\"nettoPrice\":18.90, \"pricePerUnit\":18.90, \"tax\":20, \"description\":\"wooopieh\"}]";
-        boolean success = businessLayer.addInvoiceItems(json);
-        assertTrue(success);
-    }
-
-    @Test
-    public void addInvoiceItemsTestNoInvoices(){
-        String json = "[]";
-        boolean success = businessLayer.addInvoiceItems(json);
-        assertFalse(success);
-    }
-
-    @Test
-    public void addInvoiceItemsFails(){
-        String json = "[{\"invoiceItemID\":1, \"invoiceID\":1, \"quantity\":2, \"nettoPrice\":10.60, \"pricePerUnit\":" +
-                "5.30, tax\":20, \"description\":\"wooop\"} {\"invoiceItemID\":2, \"invoiceID\":1, \"quantity\":1, " +
-                "\"nettoPrice\":18.90, \"pricePerUnit\":18.90, \"tax\":20, \"description\":\"wooopieh\"}]";
-        boolean success = businessLayer.addInvoiceItems(json);
+    public void createInvoiceTestNoInvoiceItems(){
+        String json = "{\"dueDate\":\"Mar 28, 2014 12:00:00 AM\", \"invoiceItems\":[]}";
+        boolean success = businessLayer.createInvoice(json);
         assertFalse(success);
     }
 

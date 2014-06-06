@@ -2,6 +2,7 @@ package esc.plugins;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.LinkedList;
 
@@ -22,17 +23,17 @@ public class Invoice {
     @Column(name="message")
     private String message;
     @Column(name="contactID")
-    private int contactID;
+    private Integer contactID;
     @Column(name="total")
     private double total;
 
     private LinkedList<InvoiceItem> invoiceItems = new LinkedList<>();
 
-    public int getContactID() {
+    public Integer getContactID() {
         return contactID;
     }
 
-    public void setContactID(int contactID) {
+    public void setContactID(Integer contactID) {
         this.contactID = contactID;
     }
 
@@ -92,5 +93,15 @@ public class Invoice {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    public void calculateTotal() {
+        BigDecimal total = BigDecimal.ZERO;
+        for (InvoiceItem invoiceItem : invoiceItems) {
+            BigDecimal taxPercent = BigDecimal.valueOf(1 + (invoiceItem.getTax() / 100.0));
+            BigDecimal nettoPrice = BigDecimal.valueOf(invoiceItem.getPricePerUnit() * invoiceItem.getQuantity());
+            total = total.add(taxPercent.multiply(nettoPrice));
+        }
+        this.total = total.doubleValue();
     }
 }

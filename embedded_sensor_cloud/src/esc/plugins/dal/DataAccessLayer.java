@@ -9,9 +9,6 @@ import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.sql.Date;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -193,34 +190,44 @@ public class DataAccessLayer implements IDataAccessLayer{
     }
 
     @Override
-    public boolean createInvoice(Invoice newInvoice) {
+    public int createInvoice(Invoice newInvoice) {
         sql = "INSERT INTO invoice VALUES (?,?,?,?,?,?);";
         try{
-            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setDate(1, new Date(new java.util.Date().getTime()));
-            preparedStatement.setDate(2, new Date(newInvoice.getDueDate().getTime()));
+            if(newInvoice.getDueDate() != null) {
+                preparedStatement.setDate(2, new Date(newInvoice.getDueDate().getTime()));
+            }else{
+                preparedStatement.setNull(2, Types.DATE);
+            }
             preparedStatement.setString(3, newInvoice.getComment());
             preparedStatement.setString(4, newInvoice.getMessage());
-            preparedStatement.setInt(5, newInvoice.getContactID());
-            preparedStatement.setNull(6, Types.DOUBLE);
-            int result = preparedStatement.executeUpdate();
-            if(result == 1){
-                log.info("Invoice added.");
-                return true;
+            preparedStatement.setDouble(5, newInvoice.getTotal());
+            if(newInvoice.getContactID() != null) {
+                preparedStatement.setInt(6, newInvoice.getContactID());
+            } else {
+                preparedStatement.setNull(6, Types.INTEGER);
+            }
+            preparedStatement.executeUpdate();
+            resultSet = preparedStatement.getGeneratedKeys();
+            if(resultSet.next()){
+                long id = resultSet.getLong(1);
+                log.info("Invoice " + id + " added.");
+                return (int) id;
             }
         }
         catch(SQLException e){
             log.error("Cannot create new invoice - ", e);
         }
-        return false;
+        return -1;
     }
 
     @Override
-    public boolean addInvoiceItem(InvoiceItem invoiceItem) {
+    public boolean addInvoiceItem(InvoiceItem invoiceItem, int invoiceId) {
         sql = "INSERT INTO invoiceItem VALUES (?, ?, ?, ?, ?, ?)";
         try {
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, invoiceItem.getInvoiceID());
+            preparedStatement.setInt(1, invoiceId);
             preparedStatement.setInt(2, invoiceItem.getQuantity());
             preparedStatement.setDouble(3, invoiceItem.getNettoPrice());
             preparedStatement.setDouble(4, invoiceItem.getPricePerUnit());
@@ -233,24 +240,6 @@ public class DataAccessLayer implements IDataAccessLayer{
             }
         }catch (SQLException e){
             log.error("Cannot add InvoiceItem - ", e);
-        }
-        return false;
-    }
-
-    @Override
-    public boolean setTotalInInvoice(double total, int invoiceID) {
-        sql = "UPDATE invoice SET total = ? WHERE invoiceID = ?;";
-        try{
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setDouble(1, total);
-            preparedStatement.setInt(2, invoiceID);
-            int success = preparedStatement.executeUpdate();
-            if(success == 1){
-                log.info("Set total to '"+total+"' in invoice '"+invoiceID+"'");
-                return true;
-            }
-        }catch (SQLException e){
-            log.error("Failed to set total!");
         }
         return false;
     }
