@@ -1,7 +1,5 @@
-package merp.PresentationModels;
+package merp.DummyStuff;
 
-import merp.Utils;
-import merp.Models.Person;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;

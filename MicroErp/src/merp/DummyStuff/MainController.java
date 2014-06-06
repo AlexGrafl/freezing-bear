@@ -1,8 +1,8 @@
-package merp;
+package merp.DummyStuff;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import merp.Models.Person;
+import merp.DummyStuff.Person;
 import merp.PresentationModels.AbstractController;
 
 import java.io.IOException;
@@ -14,7 +14,7 @@ public class MainController extends AbstractController {
     @FXML
 	public void onPresentationModel() throws IOException {
 		Person model = getPersonModelFromBusinessLayer();
-		showDialog("Samples/PresentationModel.fxml", model, "PresentationModel");
+		showDialog("Samples/ContactModel.fxml", model, "PresentationModel");
 	}
     @FXML
     public void onShowData() throws IOException {

@@ -13,33 +13,48 @@ import java.util.HashSet;
 public class Contact {
 
     @Column(name="contactID")
-    private int contactID;
+    private int contactID = -1;
+
     @Column(name="name")
-    private String name;
+    private String name = null;
+
     @Column(name="uid")
-    private Integer uid;
+    private Integer uid = null;
+
+    @Column(name="companyID")
+    private Integer companyID = null;
+
     @Column(name="title")
-    private String title;
+    private String title = null;
+
     @Column(name="firstName")
-    private String firstName;
+    private String firstName = null;
+
     @Column(name="lastName")
-    private String lastName;
+    private String lastName = null;
+
     @Column(name="suffix")
-    private String suffix;
+    private String suffix = null;
+
     @Column(name="birthDate")
-    private Date birthDate;
+    private Date birthDate = null;
+
     @Column(name="address")
-    private String address;
+    private String address = null;
+
     @Column(name="invoiceAddress")
-    private String invoiceAddress;
+    private String invoiceAddress = null;
+
     @Column(name="shippingAddress")
-    private String shippingAddress;
+    private String shippingAddress = null;
+
     @Column(name="isActive")
-    private boolean isActive;
+    private boolean isActive = false;
+
     private HashSet<Invoice> invoiceList;
 
     public Contact(){}
-    public Contact(int contactID, String name, Integer uid, String title, String firstName, String lastName,
+    public Contact(int contactID, String name, int uid, String title, String firstName, String lastName,
                    String suffix, Date birthDate, String address, String invoiceAddress,
                    String shippingAddress, boolean isActive) {
         this.contactID = contactID;
@@ -151,7 +166,7 @@ public class Contact {
         this.invoiceList = invoiceList;
     }
 
-    public boolean getIsActive() {
+    public boolean isActive() {
         return isActive;
     }
 
@@ -159,4 +174,11 @@ public class Contact {
         this.isActive = isActive;
     }
 
+    public Integer getCompanyID() {
+        return companyID;
+    }
+
+    public void setCompanyID(Integer companyID) {
+        this.companyID = companyID;
+    }
 }

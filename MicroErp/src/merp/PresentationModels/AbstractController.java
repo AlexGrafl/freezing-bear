@@ -27,7 +27,7 @@ public abstract class AbstractController implements Initializable {
 	public void initialize(URL url, ResourceBundle resources) {
 	}
 
-	private void show(String resource, Object model, String title, Modality m, 
+	private AbstractController show(String resource, Object model, String title, Modality m,
 			String... cssList) throws IOException {
 		FXMLLoader fl = new FXMLLoader();
 		fl.setLocation(getClass().getResource(resource));
@@ -36,41 +36,43 @@ public abstract class AbstractController implements Initializable {
 
 		Stage newStage = new Stage(StageStyle.DECORATED);
 		newStage.initModality(m);
-		newStage.initOwner(stage);
-		Scene scene = new Scene(root, 1024, 768);
+		newStage.initOwner(this.getStage());
+		Scene scene = new Scene(root);
 		scene.getStylesheets().add(
-				getClass().getResource("application.css").toExternalForm());
+				getClass().getResource("/application.css").toExternalForm());
 		// more css by code
 		for (String css : cssList) {
 			scene.getStylesheets().add(
 					getClass().getResource(css).toExternalForm());
 		}
 
-		AbstractController controller = (AbstractController) fl.getController();
-		controller.setStage(newStage);
-		controller.setModel(model);
+		this.setStage(newStage);
+		this.setModel(model);
 		newStage.setScene(scene);
 		newStage.setTitle(title);
-		newStage.show();
+        newStage.show();
+        return fl.getController();
 	}
 
-	public void show(String resource, Object model, String title, String... cssList) throws IOException {
-		show(resource, model, title, Modality.NONE, cssList);
+
+	public AbstractController show(String resource, Object model, String title, String... cssList) throws IOException {
+		return show(resource, model, title, Modality.NONE, cssList);
 	}
 
-	public void showDialog(String resource, Object model, String title, String... cssList) throws IOException {
-		show(resource, model, title, Modality.WINDOW_MODAL, cssList);
+	public AbstractController showDialog(String resource, Object model, String title, String... cssList) throws IOException {
+		return show(resource, model, title, Modality.APPLICATION_MODAL, cssList);
 	}
 
-	public void show(String resource, String title, String... cssList) throws IOException {
-		show(resource, null, title, Modality.NONE, cssList);
+	public AbstractController show(String resource, String title, String... cssList) throws IOException {
+		return show(resource, null, title, Modality.NONE, cssList);
 	}
 
-	public void showDialog(String resource, String title, String... cssList) throws IOException {
-		show(resource, null, title, Modality.WINDOW_MODAL, cssList);
+	public AbstractController showDialog(String resource, String title, String... cssList) throws IOException {
+		return show(resource, null, title, Modality.APPLICATION_MODAL, cssList);
 	}
 
 	public void setModel(Object model) {
 		// optional set model in derived classes
 	}
+
 }

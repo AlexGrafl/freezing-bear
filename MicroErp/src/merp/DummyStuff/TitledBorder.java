@@ -1,4 +1,4 @@
-package merp.Controls;
+package merp.DummyStuff;
 
 import javafx.geometry.Pos;
 import javafx.scene.Node;

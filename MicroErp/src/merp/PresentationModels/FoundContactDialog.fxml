@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane prefHeight="257.0" prefWidth="401.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="merp.PresentationModels.FoundContactDialogController">
+  <children>
+    <Label layoutX="14.0" layoutY="14.0" text="Please select one of the following Contacts:" />
+    <TableView fx:id="tableView" layoutX="14.0" layoutY="41.0" prefHeight="183.5" prefWidth="375.0">
+      <columns>
+        <TableColumn prefWidth="75.0" text="First name" fx:id="firstName">
+          <cellValueFactory>
+            <PropertyValueFactory property="firstName" />
+          </cellValueFactory>
+        </TableColumn>
+        <TableColumn prefWidth="75.0" text="Last name" fx:id="lastName">
+          <cellValueFactory>
+            <PropertyValueFactory property="lastName" />
+          </cellValueFactory>
+        </TableColumn>
+        <TableColumn prefWidth="75.0" text="Name" fx:id="name">
+          <cellValueFactory>
+            <PropertyValueFactory property="name" />
+          </cellValueFactory>
+        </TableColumn>
+        <TableColumn prefWidth="75.0" text="UID" fx:id="uid">
+          <cellValueFactory>
+            <PropertyValueFactory property="uid" />
+          </cellValueFactory>
+        </TableColumn>
+        <TableColumn prefWidth="75.0" text="Address" fx:id="address">
+          <cellValueFactory>
+            <PropertyValueFactory property="address" />
+          </cellValueFactory>
+        </TableColumn>
+      </columns>
+    </TableView>
+    <Button fx:id="btnFinish" layoutX="337.0" layoutY="233.0" mnemonicParsing="false" onAction="#onSelect" text="Finish" />
+    <Button fx:id="btnCancel" layoutX="273.0" layoutY="233.0" mnemonicParsing="false" onAction="#onCancel" text="Cancel" />
+  </children>
+</Pane>

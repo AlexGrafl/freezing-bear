@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import eu.schudt.javafx.controls.calendar.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -7,12 +8,11 @@
 <?import javafx.scene.text.*?>
 <?import merp.PresentationModels.* ?>
 
-<?import eu.schudt.javafx.controls.calendar.DatePicker?>
-<Pane prefHeight="457.0" prefWidth="364.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="merp.PresentationModels.PresentationModelController">
+<Pane prefHeight="457.0" prefWidth="364.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="merp.PresentationModels.ContactModelController">
   <children>
     <Button fx:id="btnSave" layoutX="294.0" layoutY="423.0" mnemonicParsing="false" onAction="#onSave" text="Save" />
     <Button fx:id="btnCancel" layoutX="228.0" layoutY="423.0" mnemonicParsing="false" onAction="#onCancel" text="Cancel" />
-    <Pane fx:id="paneInput" layoutX="14.0" layoutY="14.0" prefHeight="328.0" prefWidth="336.0">
+    <Pane fx:id="paneInput" layoutX="14.0" layoutY="14.0" prefHeight="357.0" prefWidth="336.0">
       <children>
         <TextField fx:id="uid" layoutX="122.0" layoutY="14.0" prefWidth="200.0" />
         <Label layoutX="21.0" layoutY="14.0" text="UID" />
@@ -26,15 +26,19 @@
         <Label layoutX="21.0" layoutY="134.0" text="Last name" />
         <TextField fx:id="suffix" layoutX="122.0" layoutY="162.0" prefWidth="200.0" />
         <Label layoutX="21.0" layoutY="162.0" text="Suffix" />
-        <DatePicker fx:id="birthDate" layoutX="122.0" layoutY="191.0" prefWidth="200.0"/>
+        <DatePicker fx:id="birthDate" layoutX="122.0" layoutY="191.0" prefWidth="200.0" />
         <Label layoutX="21.0" layoutY="191.0" text="Birthdate" />
-        <TextField fx:id="address" layoutX="122.0" layoutY="227.0" prefWidth="200.0" />
-        <Label layoutX="21.0" layoutY="227.0" text="Address" />
-        <TextField fx:id="invoiceAddress" layoutX="122.0" layoutY="253.0" prefWidth="200.0" />
-        <Label layoutX="20.0" layoutY="253.0" text="Invoiceaddress" />
-        <TextField fx:id="shippingAddress" layoutX="122.0" layoutY="278.0" prefWidth="200.0" />
-        <Label layoutX="21.0" layoutY="278.0" text="Shippingaddress" />
+        <Label fx:id="companyLabel" layoutX="20.0" layoutY="220.0" text="Company" />
+        <TextField fx:id="companyText" layoutX="123.0" layoutY="220.0" prefWidth="147.0" />
+        <Label fx:id="companyResultLabel" layoutX="292.0" layoutY="220.0" prefHeight="30.0" prefWidth="30.0" text="" />
+        <Label layoutX="22.0" layoutY="256.0" text="Address" />
+        <TextField fx:id="address" layoutX="123.0" layoutY="256.0" prefWidth="200.0" />
+        <Label layoutX="21.0" layoutY="282.0" text="Invoiceaddress" />
+        <TextField fx:id="invoiceAddress" layoutX="123.0" layoutY="282.0" prefWidth="200.0" />
+        <Label layoutX="22.0" layoutY="307.0" text="Shippingaddress" />
+        <TextField fx:id="shippingAddress" layoutX="123.0" layoutY="307.0" prefWidth="200.0" />
       </children>
     </Pane>
+    <Label fx:id="messageLabel" layoutX="35.0" layoutY="427.0" text="" />
   </children>
 </Pane>

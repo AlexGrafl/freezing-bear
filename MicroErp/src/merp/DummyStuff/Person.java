@@ -1,4 +1,4 @@
-package merp.Models;
+package merp.DummyStuff;
 
 public class Person {
 	private String vorname;

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import eu.schudt.javafx.controls.calendar.*?>
 <?import java.lang.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.control.cell.*?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -17,9 +16,9 @@
       <content>
         <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
           <children>
-            <Pane fx:id="paneConfactFilter" layoutX="14.0" layoutY="14.0" prefHeight="162.0" prefWidth="376.0">
+            <Pane id="paneConfactFilter" fx:id="paneContactFilter" layoutX="14.0" layoutY="14.0" prefHeight="162.0" prefWidth="376.0">
               <children>
-                <Label fx:id="labelContactFilter" labelFor="$paneConfactFilter" layoutX="0.0" layoutY="-8.0" text="Filter:" textAlignment="LEFT">
+                <Label fx:id="labelContactFilter" labelFor="$paneContactFilter" layoutX="0.0" layoutY="-8.0" text="Filter:" textAlignment="LEFT">
                   <font>
                     <Font size="14.0" fx:id="x1" />
                   </font>
@@ -74,22 +73,46 @@
       <content>
         <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
           <children>
-            <Pane id="paneConfactFilter" fx:id="paneFilterInv" layoutX="14.0" layoutY="14.0" prefHeight="162.0" prefWidth="376.0">
+            <Pane id="paneContactFilter" fx:id="paneFilterInv" layoutX="14.0" layoutY="14.0" prefHeight="160.0" prefWidth="376.0">
               <children>
                 <Label id="labelContactFilter" fx:id="labelFilterInv" font="$x1" labelFor="$paneFilterInv" layoutX="0.0" layoutY="-8.0" text="Filter:" textAlignment="LEFT" />
-                <TextField id="textfieldSurname" fx:id="textfieldSurnameInv" layoutX="145.0" layoutY="50.0" prefWidth="200.0" />
-                <TextField id="textfieldName" fx:id="textfieldNameInv" layoutX="145.0" layoutY="80.0" prefWidth="200.0" />
-                <TextField id="firstNameTextfield" fx:id="textfieldFirstNameInv" layoutX="145.0" layoutY="21.0" prefWidth="200.0" />
-                <TextField id="textfieldUid" fx:id="textfieldUidInv" layoutX="145.0" layoutY="110.0" prefWidth="200.0" />
-                <Label id="contactVorname" fx:id="labelFirstnameInv" layoutX="37.0" layoutY="21.0" text="First name" />
-                <Label id="labelSurname" fx:id="labelSurnameInv" layoutX="37.0" layoutY="50.0" text="Surname" />
-                <Label fx:id="labelNameInv" layoutX="37.0" layoutY="80.0" text="Name" />
-                <Label fx:id="labelUIDInv" layoutX="37.0" layoutY="110.0" text="UID" />
-                <Button id="btnSearchContact" layoutX="320.0" layoutY="138.0" mnemonicParsing="false" prefHeight="24.0" text="Search" />
-                <Button id="btnCreateContact" layoutX="34.0" layoutY="136.0" mnemonicParsing="false" onAction="#onCreateContact" prefHeight="24.0" prefWidth="-1.0" text="Create" />
+                <Label fx:id="labelDateStart" layoutX="37.0" layoutY="21.0" text="Date from" />
+                <DatePicker fx:id="dateStart" layoutX="145.0" layoutY="21.0" prefWidth="72.0" />
+                <Label fx:id="labelDateEnd" layoutX="227.0" layoutY="21.0" text="to" />
+                <DatePicker fx:id="dateEnd" layoutX="248.0" layoutY="21.0" prefWidth="72.0" />
+                <Label fx:id="labelValueStart" layoutX="37.0" layoutY="50.0" text="Amount from" />
+                <TextField id="textValueStart" fx:id="textAmountStart" layoutX="145.0" layoutY="50.0" prefWidth="72.0" />
+                <Label layoutX="227.0" layoutY="50.0" text="to" />
+                <TextField id="textValueEnd" fx:id="textAmountEnd" layoutX="248.0" layoutY="50.0" prefWidth="72.0" />
+                <Label fx:id="labelContact" layoutX="37.0" layoutY="80.0" text="Contact" />
+                <TextField fx:id="textContactInvoice" layoutX="145.0" layoutY="80.0" prefWidth="122.0" />
+                <Label fx:id="labelContactCheck" layoutX="272.0" layoutY="80.0" prefHeight="24.0" prefWidth="27.0" text="" />
+                <Button fx:id="btnCreateInvoice" layoutX="34.0" layoutY="136.0" mnemonicParsing="false" onAction="#onCreateInvoice" prefHeight="24.0" prefWidth="-1.0" text="Create" />
+                <Button id="btnSearchContact" fx:id="btnSearchInvoice" layoutX="320.0" layoutY="136.0" mnemonicParsing="false" onAction="#onSearchInvoice" prefHeight="24.0" text="Search" />
+                <RadioButton id="radioCompany" fx:id="radioPerson" layoutX="145.0" layoutY="104.0" mnemonicParsing="false" text="Person" />
+                <RadioButton fx:id="radioCompany" layoutX="206.0" layoutY="104.0" mnemonicParsing="false" text="Company" />
+                <Button id="btnCreateInvoice" fx:id="btnShow" layoutX="109.0" layoutY="136.0" mnemonicParsing="false" onAction="#onCreateInvoice" prefHeight="24.0" prefWidth="-1.0" text="Show" />
               </children>
             </Pane>
-            <TableView fx:id="tableInv" layoutX="14.0" layoutY="188.0" prefHeight="282.0" prefWidth="376.0" />
+            <TableView fx:id="tableInvoice" layoutX="14.0" layoutY="188.0" prefHeight="282.0" prefWidth="376.0">
+              <columns>
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="140.0" text="Issue Date" fx:id="issueDate">
+                  <cellValueFactory>
+                    <PropertyValueFactory property="issueDate" />
+                  </cellValueFactory>
+                </TableColumn>
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="140.0" text="Due Date" fx:id="dueDate">
+                  <cellValueFactory>
+                    <PropertyValueFactory property="dueDate" />
+                  </cellValueFactory>
+                </TableColumn>
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="95.0" text="Amount" fx:id="amount">
+                  <cellValueFactory>
+                    <PropertyValueFactory property="total" />
+                  </cellValueFactory>
+                </TableColumn>
+              </columns>
+            </TableView>
           </children>
         </AnchorPane>
       </content>

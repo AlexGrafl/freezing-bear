@@ -62,41 +62,70 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="HttpConnectionHandler.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/merp/Models/HttpConnectionHandler.java">
+      <file leaf-file-name="InvoiceModel.fxml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/InvoiceModel.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="694" max-vertical-offset="3536">
-              <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="282" max-vertical-offset="714">
+              <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PresentationModelController.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/PresentationModelController.java">
+      <file leaf-file-name="Invoice.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/merp/Models/Invoice.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3325359" vertical-offset="1289" max-vertical-offset="2261">
-              <caret line="99" column="26" selection-start-line="99" selection-start-column="26" selection-end-line="99" selection-end-column="26" />
+            <state vertical-scroll-proportion="-5.08" vertical-offset="247" max-vertical-offset="1105">
+              <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProxySingleton.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/merp/Models/ProxySingleton.java">
+      <file leaf-file-name="InvoiceItemModelController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/InvoiceItemModelController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="262" max-vertical-offset="680">
-              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1615">
+              <caret line="97" column="60" selection-start-line="97" selection-start-column="57" selection-end-line="97" selection-end-column="57" />
+              <folding>
+                <element signature="e#1112#1113#0" expanded="true" />
+                <element signature="e#1148#1149#0" expanded="true" />
+                <element signature="e#2802#2803#0" expanded="true" />
+                <element signature="e#2868#2869#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ContactModel.fxml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/ContactModel.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.28333333" vertical-offset="357" max-vertical-offset="850">
+              <caret line="27" column="88" selection-start-line="27" selection-start-column="62" selection-end-line="27" selection-end-column="62" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PresentationModel.fxml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/PresentationModel.fxml">
+      <file leaf-file-name="FoundContactDialogController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/FoundContactDialogController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="782">
-              <caret line="28" column="90" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="89" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="599" max-vertical-offset="1088">
+              <caret line="52" column="43" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1627#1628#0" expanded="true" />
+                <element signature="e#1666#1667#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InvoiceItemModel.fxml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/InvoiceItemModel.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.2" vertical-offset="873" max-vertical-offset="1190">
+              <caret line="59" column="108" selection-start-line="59" selection-start-column="108" selection-end-line="59" selection-end-column="108" />
               <folding />
             </state>
           </provider>
@@ -105,18 +134,48 @@
       <file leaf-file-name="MainDialogController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/MainDialogController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="782" max-vertical-offset="1445">
-              <caret line="94" column="31" selection-start-line="94" selection-start-column="31" selection-end-line="94" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="3265" max-vertical-offset="5474">
+              <caret line="345" column="50" selection-start-line="345" selection-start-column="0" selection-end-line="345" selection-end-column="0" />
+              <folding>
+                <element signature="method#MainDialogController#0;class#MainDialogController#0" expanded="false" />
+                <element signature="e#2699#3080#0" expanded="true" />
+                <element signature="e#3069#3070#0" expanded="true" />
+                <element signature="e#5579#7083#0" expanded="true" />
+                <element signature="e#7072#7073#0" expanded="true" />
+                <element signature="e#7272#7273#0" expanded="true" />
+                <element signature="e#7326#7327#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ContactModelController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/ContactModelController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3044" max-vertical-offset="4386">
+              <caret line="187" column="13" selection-start-line="187" selection-start-column="13" selection-end-line="187" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InvoiceModelController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/InvoiceModelController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2993" max-vertical-offset="3825">
+              <caret line="216" column="6" selection-start-line="197" selection-start-column="4" selection-end-line="216" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/merp/Main.java">
+      <file leaf-file-name="FoundContactDialog.fxml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/FoundContactDialog.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
-              <caret line="16" column="69" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="393" max-vertical-offset="867">
+              <caret line="39" column="18" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -141,27 +200,39 @@
         <option value="$PROJECT_DIR$/src/merp/Samples/DisplayDataController.java" />
         <option value="$PROJECT_DIR$/src/merp/Models/httpClient.java" />
         <option value="$PROJECT_DIR$/src/merp/ProxySingleton.java" />
-        <option value="$PROJECT_DIR$/src/merp/Models/Invoice.java" />
         <option value="$PROJECT_DIR$/src/merp/Models/HttpClient.java" />
         <option value="$PROJECT_DIR$/src/merp/Contact.java" />
         <option value="$PROJECT_DIR$/src/merp/Main.fxml" />
         <option value="$PROJECT_DIR$/src/merp/MainDialogController.java" />
         <option value="$PROJECT_DIR$/src/merp/Models/MainDialogController.java" />
-        <option value="$PROJECT_DIR$/src/merp/PresentationModels/AbstractController.java" />
         <option value="$PROJECT_DIR$/src/merp/MainController.java" />
         <option value="$PROJECT_DIR$/src/merp/Models/ContactModelBind.java" />
-        <option value="$PROJECT_DIR$/src/merp/PresentationModels/MainDialog.fxml" />
         <option value="$PROJECT_DIR$/src/merp/Models/CustomerTableModel.java" />
         <option value="$PROJECT_DIR$/src/merp/Samples/PresentationModelController.java" />
-        <option value="$PROJECT_DIR$/src/merp/Main.java" />
-        <option value="$PROJECT_DIR$/src/merp/Models/ProxySingleton.java" />
-        <option value="$PROJECT_DIR$/src/merp/Models/HttpConnectionHandler.java" />
-        <option value="$PROJECT_DIR$/src/merp/Models/JsonParser.java" />
         <option value="$PROJECT_DIR$/src/merp/Models/ContactTableModel.java" />
-        <option value="$PROJECT_DIR$/src/merp/PresentationModels/MainDialogController.java" />
-        <option value="$PROJECT_DIR$/src/merp/Models/Contact.java" />
         <option value="$PROJECT_DIR$/src/merp/PresentationModels/PresentationModel.fxml" />
         <option value="$PROJECT_DIR$/src/merp/PresentationModels/PresentationModelController.java" />
+        <option value="$PROJECT_DIR$/src/merp/PresentationModels/ContactController.java" />
+        <option value="$PROJECT_DIR$/src/merp/Models/JsonParser.java" />
+        <option value="$PROJECT_DIR$/src/merp/Models/Contact.java" />
+        <option value="$PROJECT_DIR$/src/merp/Main.java" />
+        <option value="$PROJECT_DIR$/src/merp/Models/ProxySingleton.java" />
+        <option value="$PROJECT_DIR$/src/merp/DummyStuff/PersonModel.java" />
+        <option value="$PROJECT_DIR$/src/merp/Models/InvoiceItem.java" />
+        <option value="$PROJECT_DIR$/src/merp/PresentationModels/MainDialog.fxml" />
+        <option value="$PROJECT_DIR$/src/merp/PresentationModels/InvoiceItemModel.java" />
+        <option value="$PROJECT_DIR$/src/merp/PresentationModels/AbstractController.java" />
+        <option value="$PROJECT_DIR$/src/merp/PresentationModels/FoundContactDialogController.java" />
+        <option value="$PROJECT_DIR$/src/merp/PresentationModels/FoundContactDialog.fxml" />
+        <option value="$PROJECT_DIR$/src/merp/Models/HttpConnectionHandler.java" />
+        <option value="$PROJECT_DIR$/src/merp/PresentationModels/InvoiceItemModel.fxml" />
+        <option value="$PROJECT_DIR$/src/merp/Models/Invoice.java" />
+        <option value="$PROJECT_DIR$/src/merp/PresentationModels/InvoiceModel.fxml" />
+        <option value="$PROJECT_DIR$/src/merp/PresentationModels/InvoiceModelController.java" />
+        <option value="$PROJECT_DIR$/src/merp/PresentationModels/MainDialogController.java" />
+        <option value="$PROJECT_DIR$/src/merp/PresentationModels/InvoiceItemModelController.java" />
+        <option value="$PROJECT_DIR$/src/merp/PresentationModels/ContactModelController.java" />
+        <option value="$PROJECT_DIR$/src/merp/PresentationModels/ContactModel.fxml" />
       </list>
     </option>
   </component>
@@ -170,7 +241,7 @@
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
-    <option name="height" value="754" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -201,6 +272,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -305,21 +377,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="merp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controls" />
+              <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -334,30 +397,33 @@
     <property name="dynamic.classpath" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="FullScreen" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../lib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="merp" />
+      <recent name="merp.PresentationModels" />
       <recent name="merp.Models" />
+      <recent name="merp" />
       <recent name="merp.Samples" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Phips\Documents\FH\Laptop\Semester4\SWE\Client\MicroErp\src\merp\PresentationModels" />
       <recent name="C:\Users\Phips\Documents\FH\Laptop\Semester4\SWE\Client\MicroErp\src\merp" />
       <recent name="C:\Users\Phips\Documents\FH\Laptop\Semester4\SWE\Client\MicroErp\src\merp\Samples" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\FH\SS2014\SWE\MicroErp\src\merp" />
-      <recent name="C:\FH\SS2014\SWE\MicroErp\src\merp\PresentationModels" />
-      <recent name="C:\Users\Phips\Documents\FH\Laptop\Semester4\SWE\Client\MicroErp\src\merp\PresentationModels" />
+      <recent name="C:\Users\Phips\Documents\FH\Laptop\Semester4\SWE\Client\MicroErp\src\merp\DummyStuff" />
+      <recent name="C:\Users\Phips\Documents\FH\Laptop\Semester4\SWE\Client\MicroErp\res" />
       <recent name="C:\Users\Phips\Documents\FH\Laptop\Semester4\SWE\Client\MicroErp\src\merp" />
-      <recent name="C:\Users\Phips\Documents\FH\Laptop\Semester4\SWE\Client\MicroErp\src\merp\Models" />
+      <recent name="C:\Users\Phips\Documents\FH\Laptop\Semester4\SWE\Client\MicroErp\src" />
+      <recent name="C:\FH\SS2014\SWE\MicroErp\src\merp" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.Client">
     <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
       <module name="" />
       <setting name="vmparams" value="" />
@@ -571,19 +637,19 @@
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
-    <configuration default="false" name="Main" type="Application" factoryName="Application">
+    <configuration default="false" name="Client" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="merp.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="merp.Main" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="MAIN_CLASS_NAME" value="merp.Client" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
@@ -600,7 +666,7 @@
       <method />
     </configuration>
     <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+      <item index="0" class="java.lang.String" itemvalue="Application.Client" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -632,43 +698,71 @@
       <workItem from="1399488484798" duration="15719000" />
       <workItem from="1399504622890" duration="2760000" />
       <workItem from="1399538180283" duration="6938000" />
+      <workItem from="1400762629685" duration="15816000" />
+      <workItem from="1400925223075" duration="11849000" />
+      <workItem from="1401961886870" duration="10585000" />
+      <workItem from="1402040893913" duration="173000" />
+      <workItem from="1402041068744" duration="98000" />
+      <workItem from="1402041184900" duration="22000" />
+      <workItem from="1402041373540" duration="10855000" />
+      <workItem from="1402056957053" duration="23496000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74638000" />
+    <option name="totallyTimeSpent" value="147532000" />
+  </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33658537" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33333334" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32663316" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3219512" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998326" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18504532" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2896" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17069486" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31707317" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -691,7 +785,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="16" />
+      <option name="time" value="34" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -699,82 +793,19 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/merp/Models/HttpConnectionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4114">
-          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/PresentationModelController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1719" max-vertical-offset="2397">
-          <caret line="91" column="12" selection-start-line="91" selection-start-column="12" selection-end-line="91" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/MainDialogController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="1853">
-          <caret line="25" column="61" selection-start-line="25" selection-start-column="61" selection-end-line="25" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/PresentationModel.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="765">
-          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/merp/Models/ProxySingleton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1" max-vertical-offset="680">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/merp/Models/HttpConnectionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1020" max-vertical-offset="4114">
-          <caret line="60" column="77" selection-start-line="60" selection-start-column="63" selection-end-line="60" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/PresentationModelController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1435" max-vertical-offset="2380">
-          <caret line="91" column="36" selection-start-line="91" selection-start-column="36" selection-end-line="91" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_40/src.zip!/java/net/URI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="52615" max-vertical-offset="60044">
-          <caret line="3095" column="38" selection-start-line="3095" selection-start-column="21" selection-end-line="3095" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/PersonModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="2465">
-          <caret line="16" column="17" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/MainDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1581" max-vertical-offset="1853">
           <caret line="93" column="48" selection-start-line="93" selection-start-column="48" selection-end-line="93" selection-end-column="48" />
-          <folding />
+          <folding>
+            <element signature="method#MainDialogController#0;class#MainDialogController#0" expanded="false" />
+            <element signature="e#2699#3080#0" expanded="true" />
+            <element signature="e#3069#3070#0" expanded="true" />
+            <element signature="e#5579#7083#0" expanded="true" />
+            <element signature="e#7072#7073#0" expanded="true" />
+            <element signature="e#7272#7273#0" expanded="true" />
+            <element signature="e#7326#7327#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -782,11 +813,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="6154" max-vertical-offset="17612">
           <caret line="362" column="30" selection-start-line="362" selection-start-column="30" selection-end-line="362" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/PresentationModel.fxml">
+    <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/ContactModel.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="765">
           <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
@@ -798,23 +828,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="544" max-vertical-offset="731">
           <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/merp/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
-          <caret line="21" column="47" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/merp/Controls/TitledBorder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="629">
-          <caret line="31" column="45" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -829,13 +842,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.71348315" vertical-offset="4336" max-vertical-offset="4692">
           <caret line="271" column="0" selection-start-line="271" selection-start-column="0" selection-end-line="271" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/merp/Models/Invoice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="214" max-vertical-offset="782">
-          <caret line="18" column="21" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -902,40 +908,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_40/jre/lib/jfxrt.jar!/javafx/fxml/FXMLLoader.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3896" max-vertical-offset="8398">
-          <caret line="230" column="97" selection-start-line="230" selection-start-column="91" selection-end-line="230" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/merp/Main.fxml">
+    <entry file="file://$PROJECT_DIR$/src/merp/DummyStuff/Main.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="478" max-vertical-offset="1054">
           <caret line="53" column="84" selection-start-line="53" selection-start-column="53" selection-end-line="53" selection-end-column="84" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/merp/MainController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
-          <caret line="23" column="12" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/AbstractController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="200" max-vertical-offset="1156">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/PersonModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="7" max-vertical-offset="1496">
-          <caret line="16" column="17" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -944,7 +920,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="5124" max-vertical-offset="16184">
           <caret line="362" column="30" selection-start-line="362" selection-start-column="30" selection-end-line="362" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -955,100 +930,269 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/merp/DummyStuff/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+          <caret line="21" column="47" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/valid.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_40/jre/lib/jfxrt.jar!/javafx/fxml/FXMLLoader.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3896" max-vertical-offset="8398">
+          <caret line="237" column="20" selection-start-line="237" selection-start-column="20" selection-end-line="237" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/merp/DummyStuff/TitledBorder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="629">
+          <caret line="31" column="45" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/merp/Models/JsonParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4005891" vertical-offset="0" max-vertical-offset="679">
-          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-          <folding />
+        <state vertical-scroll-proportion="0.5504808" vertical-offset="332" max-vertical-offset="748">
+          <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/merp/Models/Person.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_40/src.zip!/java/net/SocksSocketImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3936842" vertical-offset="0" max-vertical-offset="475">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5717" max-vertical-offset="17697">
+          <caret line="394" column="49" selection-start-line="394" selection-start-column="49" selection-end-line="394" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/merp/DummyStuff/Person.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
           <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_45/jre/lib/jfxrt.jar!/javafx/scene/image/Image.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3664" max-vertical-offset="4046">
+          <caret line="233" column="0" selection-start-line="233" selection-start-column="0" selection-end-line="233" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/merp/DummyStuff/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41262135" vertical-offset="0" max-vertical-offset="595">
+          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_45/jre/lib/jfxrt.jar!/javafx/scene/Parent.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="2332" max-vertical-offset="3638">
+          <caret line="146" column="69" selection-start-line="146" selection-start-column="69" selection-end-line="146" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/merp/DummyStuff/PersonModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="7" max-vertical-offset="1496">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/merp/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="765">
+          <caret line="12" column="28" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_45/jre/lib/jfxrt.jar!/javafx/event/Event.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="257" max-vertical-offset="595">
+          <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_45/jre/lib/jfxrt.jar!/javafx/scene/Scene.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="14797" max-vertical-offset="16609">
+          <caret line="884" column="12" selection-start-line="884" selection-start-column="12" selection-end-line="884" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_45/jre/lib/jfxrt.jar!/javafx/beans/property/BooleanPropertyBase.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="461" max-vertical-offset="901">
+          <caret line="35" column="19" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/MainDialog.fxml">
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_45/jre/lib/jfxrt.jar!/javafx/scene/control/ToggleButton.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4047619" vertical-offset="612" max-vertical-offset="1768">
-          <caret line="47" column="71" selection-start-line="47" selection-start-column="36" selection-end-line="47" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="257" max-vertical-offset="867">
+          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/merp/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/AbstractController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
-          <caret line="16" column="69" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="376" max-vertical-offset="1190">
+          <caret line="48" column="22" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/merp/Models/Contact.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33222038" vertical-offset="940" max-vertical-offset="1972">
-          <caret line="77" column="30" selection-start-line="77" selection-start-column="30" selection-end-line="77" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/merp/DatePicker.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.727811" vertical-offset="1598" max-vertical-offset="218705">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="70" max-vertical-offset="2227">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/merp/application.css">
+    <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/MainDialog.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/MainDialogController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="782" max-vertical-offset="1445">
-          <caret line="94" column="31" selection-start-line="94" selection-start-column="31" selection-end-line="94" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/PresentationModel.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="782">
-          <caret line="28" column="90" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="89" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/merp/Models/HttpConnectionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="155" max-vertical-offset="1292">
-          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1386" max-vertical-offset="2142">
+          <caret line="90" column="159" selection-start-line="90" selection-start-column="159" selection-end-line="90" selection-end-column="159" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/merp/Models/ProxySingleton.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1" max-vertical-offset="680">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="474" max-vertical-offset="816">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/PresentationModelController.java">
+    <entry file="file://$PROJECT_DIR$/src/merp/Models/HttpConnectionHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3325359" vertical-offset="1289" max-vertical-offset="2261">
-          <caret line="99" column="26" selection-start-line="99" selection-start-column="26" selection-end-line="99" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="3695" max-vertical-offset="4335">
+          <caret line="264" column="49" selection-start-line="264" selection-start-column="49" selection-end-line="264" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_45/src.zip!/java/lang/NumberFormatException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="427" max-vertical-offset="782">
+          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/merp/Models/InvoiceItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1003">
+          <caret line="18" column="69" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/merp/Models/Invoice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.08" vertical-offset="247" max-vertical-offset="1105">
+          <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/FoundContactDialogController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="599" max-vertical-offset="1088">
+          <caret line="52" column="43" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1627#1628#0" expanded="true" />
+            <element signature="e#1666#1667#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/InvoiceItemModel.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.2" vertical-offset="873" max-vertical-offset="1190">
+          <caret line="59" column="108" selection-start-line="59" selection-start-column="108" selection-end-line="59" selection-end-column="108" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/InvoiceModel.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="282" max-vertical-offset="714">
+          <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/MainDialogController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3758" max-vertical-offset="5474">
+          <caret line="345" column="50" selection-start-line="345" selection-start-column="0" selection-end-line="345" selection-end-column="0" />
+          <folding>
+            <element signature="method#MainDialogController#0;class#MainDialogController#0" expanded="false" />
+            <element signature="e#2699#3080#0" expanded="true" />
+            <element signature="e#3069#3070#0" expanded="true" />
+            <element signature="e#5579#7083#0" expanded="true" />
+            <element signature="e#7072#7073#0" expanded="true" />
+            <element signature="e#7272#7273#0" expanded="true" />
+            <element signature="e#7326#7327#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/FoundContactDialog.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="393" max-vertical-offset="867">
+          <caret line="39" column="18" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/InvoiceItemModelController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1219" max-vertical-offset="1615">
+          <caret line="97" column="60" selection-start-line="97" selection-start-column="57" selection-end-line="97" selection-end-column="57" />
+          <folding>
+            <element signature="e#1112#1113#0" expanded="true" />
+            <element signature="e#1148#1149#0" expanded="true" />
+            <element signature="e#2802#2803#0" expanded="true" />
+            <element signature="e#2868#2869#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/InvoiceModelController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2993" max-vertical-offset="3825">
+          <caret line="216" column="6" selection-start-line="197" selection-start-column="4" selection-end-line="216" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/ContactModelController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3044" max-vertical-offset="4386">
+          <caret line="187" column="13" selection-start-line="187" selection-start-column="13" selection-end-line="187" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/ContactModel.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28333333" vertical-offset="357" max-vertical-offset="850">
+          <caret line="27" column="88" selection-start-line="27" selection-start-column="62" selection-end-line="27" selection-end-column="62" />
           <folding />
         </state>
       </provider>
@@ -1095,7 +1239,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.7</last-edited>
+          <last-edited>1.7 (1)</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

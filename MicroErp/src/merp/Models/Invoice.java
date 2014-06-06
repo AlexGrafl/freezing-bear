@@ -1,24 +1,39 @@
 package merp.Models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import java.util.Date;
+import java.util.LinkedList;
 
 /**
  * @author Alex
  */
-public class Invoice {
-    private int invoiceID;
-    private Date issueDate;
-    private Date dueDate;
-    private String comment;
-    private String message;
-    private int customerID;
 
-    public int getCustomerID() {
-        return customerID;
+@Entity
+public class Invoice {
+    @Column(name="invoiceID")
+    private int invoiceID;
+    @Column(name="issueDate")
+    private Date issueDate;
+    @Column(name="dueDate")
+    private Date dueDate;
+    @Column(name="comment")
+    private String comment;
+    @Column(name="message")
+    private String message;
+    @Column(name="contactID")
+    private Integer contactID;
+    @Column(name="total")
+    private double total;
+
+    private LinkedList<InvoiceItem> invoiceItems = new LinkedList<>();
+
+    public Integer getContactID() {
+        return contactID;
     }
 
-    public void setCustomerID(int customerID) {
-        this.customerID = customerID;
+    public void setContactID(Integer contactID) {
+        this.contactID = contactID;
     }
 
     public int getInvoiceID() {
@@ -61,4 +76,21 @@ public class Invoice {
         this.message = message;
     }
 
+    public LinkedList<InvoiceItem> getInvoiceItems() {
+        return invoiceItems;
+    }
+    public void setInvoiceItems(LinkedList<InvoiceItem> invoiceItems) {
+        this.invoiceItems = invoiceItems;
+    }
+    public void addInvoiceItems(InvoiceItem invoiceItem){
+        invoiceItems.add(invoiceItem);
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
 }

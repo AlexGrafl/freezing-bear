@@ -6,7 +6,7 @@
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.*?>
 
-<GridPane alignment="TOP_CENTER" hgap="10.0" prefWidth="427.0" styleClass="pane" vgap="10.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="merp.MainController">
+<GridPane alignment="TOP_CENTER" hgap="10.0" prefWidth="427.0" styleClass="pane" vgap="10.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="merp.DummyStuff.MainController">
   <columnConstraints>
     <ColumnConstraints prefWidth="100.0" />
     <ColumnConstraints prefWidth="100.0" />

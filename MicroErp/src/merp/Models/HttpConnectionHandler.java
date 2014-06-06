@@ -19,17 +19,15 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class HttpConnectionHandler {
-    private static String url = "http://localhost:8080/server/";
+    //private static String url = "http://localhost:8080/server/";
+    private static String url = "http://192.168.1.18:8080/server/";
 
-
+    /*******************************Contact*******************************/
     public boolean sendPostCreateContactRequest(String jsonObject) throws IOException {
-
-        // url = server/insertNewContacts
-        // keyword: json
-        // maybe search auch per POST  ??
         HttpClient client = HttpClientBuilder.create().build();
         HttpPost post = new HttpPost(url + "insertNewContact");
 
@@ -54,10 +52,6 @@ public class HttpConnectionHandler {
         return true;
     }
     public boolean sendPostEditContactRequest(String jsonObject) throws IOException {
-
-        // url = server/insertNewContacts
-        // keyword: json
-        // maybe search auch per POST  ??
         HttpClient client = HttpClientBuilder.create().build();
         HttpPost post = new HttpPost(url + "editContact");
 
@@ -82,7 +76,7 @@ public class HttpConnectionHandler {
         return true;
     }
 
-    public String sendPostSearchRequest(String firstName, String lastName, String name, String uid) throws IOException {
+    public String sendPostSearchContactRequest(String firstName, String lastName, String name, String uid) throws IOException {
 
         HttpClient client = HttpClientBuilder.create().build();
         HttpPost httpPost = new HttpPost(url + "searchContacts");
@@ -232,5 +226,59 @@ public class HttpConnectionHandler {
 
     }
 
+    /*******************************Invoice*******************************/
+    public boolean sendPostCreateInvoiceRequest(String jsonObject) throws IOException {
+        HttpClient client = HttpClientBuilder.create().build();
+        HttpPost post = new HttpPost(url + "createInvoice");
+
+        List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
+        urlParameters.add(new BasicNameValuePair("json", jsonObject));
+
+        post.setEntity(new UrlEncodedFormEntity(urlParameters));
+
+        HttpResponse response = client.execute(post);
+        System.out.println("Response Code : "
+                + response.getStatusLine().getStatusCode());
+
+        BufferedReader rd = new BufferedReader(
+                new InputStreamReader(response.getEntity().getContent()));
+
+        StringBuffer result = new StringBuffer();
+        String line = "";
+        while ((line = rd.readLine()) != null) {
+            result.append(line);
+        }
+
+        return true;
+    }
+
+    public String sendPostSearchInvoicesRequest(Date startDate, Date endDate, Double startAmount, Double endAmount, Integer contactId) throws IOException {
+
+        HttpClient client = HttpClientBuilder.create().build();
+        HttpPost httpPost = new HttpPost(url + "searchInvoices");
+        List <NameValuePair> urlParameters = new ArrayList <NameValuePair>();
+        System.out.println();
+        if(startDate != null) urlParameters.add(new BasicNameValuePair("dateMin", Long.toString(startDate.getTime())));
+        if(endDate != null) urlParameters.add(new BasicNameValuePair("dateMax", Long.toString(endDate.getTime())));
+        if(startAmount != null) urlParameters.add(new BasicNameValuePair("totalMin", startAmount.toString()));
+        if(endAmount != null) urlParameters.add(new BasicNameValuePair("totalMax", endAmount.toString()));
+        if(contactId != null) urlParameters.add(new BasicNameValuePair("contactId", contactId.toString()));
+
+        UrlEncodedFormEntity urlEncodedFormEntity = new UrlEncodedFormEntity(urlParameters, "UTF-8");
+        httpPost.setEntity(urlEncodedFormEntity);
+        HttpResponse response = client.execute(httpPost);
+        System.out.println("Response Code : "
+                + response.getStatusLine().getStatusCode());
+
+        BufferedReader rd = new BufferedReader(
+                new InputStreamReader(response.getEntity().getContent()));
+
+        StringBuffer result = new StringBuffer();
+        String line = "";
+        while ((line = rd.readLine()) != null) {
+            result.append(line);
+        }
+        return result.toString();
+    }
 
 }
