@@ -13,7 +13,7 @@ import java.net.Socket;
 public class ConnectionHandler implements Runnable{
 
     private static final Logger log = Logger.getLogger(ConnectionHandler.class);
-    private Socket _socket;
+    private final Socket _socket;
     ConnectionHandler(Socket socket) {
         this._socket = socket;
     }

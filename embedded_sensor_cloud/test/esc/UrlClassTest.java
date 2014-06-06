@@ -2,7 +2,6 @@ package esc;
 
 import static org.junit.Assert.*;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -10,11 +9,11 @@ import org.junit.runners.JUnit4;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author Alex
  */
+@SuppressWarnings("unchecked")
 @RunWith(JUnit4.class)
 public class UrlClassTest {
 

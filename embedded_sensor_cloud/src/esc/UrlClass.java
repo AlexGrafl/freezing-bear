@@ -4,7 +4,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author Alex
@@ -82,6 +81,7 @@ public class UrlClass {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public void parseParameters(String parameterString){
         HashMap foo = new HashMap<String, String>();
         try{
@@ -117,7 +117,7 @@ public class UrlClass {
 
     public String getParameterAsString(String key){
         if(this.parameters.containsKey(key)) {
-            return this.parameters.get(key).toString();
+            return this.parameters.get(key);
         }
         else throw new IllegalArgumentException("Cannot find parameter: '"+key+"'.");
     }

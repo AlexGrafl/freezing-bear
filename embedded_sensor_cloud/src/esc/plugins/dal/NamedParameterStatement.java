@@ -73,10 +73,10 @@ public class NamedParameterStatement {
 
                     List<Integer> indexList = indexes.get(name);
                     if (indexList == null) {
-                        indexList = new LinkedList<Integer>();
+                        indexList = new LinkedList<>();
                         indexes.put(name, indexList);
                     }
-                    indexList.add(Integer.valueOf(index));
+                    indexList.add(index);
 
                     index++;
                 }
@@ -84,14 +84,14 @@ public class NamedParameterStatement {
             parsedQuery.append(c);
         }
 
-        indexMap = new HashMap<String, int[]>(indexes.size());
+        indexMap = new HashMap<>(indexes.size());
         // replace the lists of Integer objects with arrays of ints
         for (Map.Entry<String, List<Integer>> entry : indexes.entrySet()) {
             List<Integer> list = entry.getValue();
             int[] intIndexes = new int[list.size()];
             int i = 0;
             for (Integer x : list) {
-                intIndexes[i++] = x.intValue();
+                intIndexes[i++] = x;
             }
             indexMap.put(entry.getKey(), intIndexes);
         }
@@ -131,8 +131,8 @@ public class NamedParameterStatement {
      */
     public void setObject(String name, Object value) throws SQLException {
         int[] indexes = getIndexes(name);
-        for (int i = 0; i < indexes.length; i++) {
-            statement.setObject(indexes[i], value);
+        for (int indexe : indexes) {
+            statement.setObject(indexe, value);
         }
     }
 
@@ -151,8 +151,8 @@ public class NamedParameterStatement {
      */
     public void setString(String name, String value) throws SQLException {
         int[] indexes = getIndexes(name);
-        for (int i = 0; i < indexes.length; i++) {
-            statement.setString(indexes[i], value);
+        for (int indexe : indexes) {
+            statement.setString(indexe, value);
         }
     }
 
@@ -171,8 +171,8 @@ public class NamedParameterStatement {
      */
     public void setInt(String name, int value) throws SQLException {
         int[] indexes = getIndexes(name);
-        for (int i = 0; i < indexes.length; i++) {
-            statement.setInt(indexes[i], value);
+        for (int indexe : indexes) {
+            statement.setInt(indexe, value);
         }
     }
     /**
@@ -190,8 +190,8 @@ public class NamedParameterStatement {
      */
     public void setDouble(String name, double value) throws SQLException {
         int[] indexes = getIndexes(name);
-        for (int i = 0; i < indexes.length; i++) {
-            statement.setDouble(indexes[i], value);
+        for (int indexe : indexes) {
+            statement.setDouble(indexe, value);
         }
     }
 
@@ -210,8 +210,8 @@ public class NamedParameterStatement {
      */
     public void setDate(String name, Date value) throws SQLException {
         int[] indexes = getIndexes(name);
-        for (int i = 0; i < indexes.length; i++) {
-            statement.setDate(indexes[i], value);
+        for (int indexe : indexes) {
+            statement.setDate(indexe, value);
         }
     }
 
@@ -230,8 +230,8 @@ public class NamedParameterStatement {
      */
     public void setLong(String name, long value) throws SQLException {
         int[] indexes = getIndexes(name);
-        for (int i = 0; i < indexes.length; i++) {
-            statement.setLong(indexes[i], value);
+        for (int indexe : indexes) {
+            statement.setLong(indexe, value);
         }
     }
 
@@ -250,8 +250,8 @@ public class NamedParameterStatement {
      */
     public void setTimestamp(String name, Timestamp value) throws SQLException {
         int[] indexes = getIndexes(name);
-        for (int i = 0; i < indexes.length; i++) {
-            statement.setTimestamp(indexes[i], value);
+        for (int indexe : indexes) {
+            statement.setTimestamp(indexe, value);
         }
     }
 

@@ -2,7 +2,6 @@ package esc;
 
 import esc.plugins.MicroErpPlugin;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.Socket;
 import java.sql.SQLException;
@@ -27,7 +26,7 @@ public class PluginManager {
             if(iPlugin.acceptRequest(url.getPluginPath())){
                 try {
                     iPlugin.runPlugin(socket.getOutputStream(), url);
-                } catch (SQLException | IOException e) {
+                } catch (IOException e) {
                     e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                 }
                 return true;

@@ -13,15 +13,15 @@ import java.util.HashMap;
 public class HttpRequest {
     private String protocol;
     private UrlClass url;
-    private String httpVersion;
     private Socket socket;
+    @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
     private HashMap requestOptions;
 
     HttpRequest(String[] s, Socket socket) {
         //Request headline aufteilen und decodieren
         this.protocol = s[0];
         this.url = new UrlClass(s[1]);
-        this.httpVersion = s[2];
+        @SuppressWarnings("UnusedAssignment") String httpVersion = s[2];
         this.socket = socket;
         this.requestOptions = new HashMap<String, String>();
 		if(! url.parseUrl()){
@@ -41,6 +41,7 @@ public class HttpRequest {
     public void addLine(String line){
         String[] foo = line.split(": ");
         if(foo.length > 1){
+            //noinspection unchecked
             this.requestOptions.put(foo[0], foo[1]);
         }
     }

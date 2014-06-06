@@ -2,7 +2,6 @@ package esc.plugins;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import esc.HttpResponse;
 import esc.IPlugin;
 import esc.UrlClass;
 import esc.plugins.dal.DataAccessLayer;
@@ -13,7 +12,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
-import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +21,7 @@ import java.util.List;
 public class MicroErpPlugin implements IPlugin {
     private static final Logger log = Logger.getLogger(MicroErpPlugin.class);
 
-    private BusinessLayer businessLayer = new BusinessLayer(new DataAccessLayer());
+    private final BusinessLayer businessLayer = new BusinessLayer(new DataAccessLayer());
 
     @Override
     public boolean acceptRequest(String requestUrl){
@@ -34,7 +32,7 @@ public class MicroErpPlugin implements IPlugin {
         if(url.getFullPath().contains("searchContacts")){
 
             Gson gson = new Gson();
-            List<Contact> contactList = businessLayer.searchContacts(url.getParameters());
+            @SuppressWarnings("unchecked") List<Contact> contactList = businessLayer.searchContacts(url.getParameters());
             Type arrayType = new TypeToken<ArrayList<Contact>>(){}.getType();
             String json = gson.toJson(contactList, arrayType);
             sendResponse(json, outputStream);
@@ -72,7 +70,7 @@ public class MicroErpPlugin implements IPlugin {
         if(url.getFullPath().contains("searchInvoices")){
             Gson gson = new Gson();
             Type arrayType = new TypeToken<ArrayList<Invoice>>(){}.getType();
-            List<Invoice> invoices = businessLayer.searchInvoices(url.getParameters());
+            @SuppressWarnings("unchecked") List<Invoice> invoices = businessLayer.searchInvoices(url.getParameters());
             String json = gson.toJson(invoices, arrayType);
             sendResponse(json, outputStream);
         }

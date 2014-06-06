@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
 @RunWith(JUnit4.class)
 public class BusinessLayerTest {
 
-    private BusinessLayer businessLayer;
+    private final BusinessLayer businessLayer;
 
     public BusinessLayerTest(){
         this.businessLayer = new BusinessLayer(new FakeDataAccessLayer());

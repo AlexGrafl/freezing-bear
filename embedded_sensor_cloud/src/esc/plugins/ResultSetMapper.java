@@ -23,7 +23,7 @@ public class ResultSetMapper<T> {
 
     @SuppressWarnings("unchecked")
     public List<T> mapToList(ResultSet rs, Class outputClass) throws ResultSetMapperException {
-        List<T> outputList = new ArrayList<T>();
+        List<T> outputList = new ArrayList<>();
         if (rs == null) {
             return outputList;
         }

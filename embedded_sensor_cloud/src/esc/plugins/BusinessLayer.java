@@ -10,7 +10,6 @@ import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * @author Alex
@@ -18,7 +17,7 @@ import java.util.List;
 public class BusinessLayer {
     private static final Logger log = Logger.getLogger(BusinessLayer.class);
 
-    private IDataAccessLayer dataAccessLayer;
+    private final IDataAccessLayer dataAccessLayer;
 
     public BusinessLayer(IDataAccessLayer dataAccessLayer){
         this.dataAccessLayer = dataAccessLayer;
