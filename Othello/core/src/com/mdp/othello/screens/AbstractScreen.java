@@ -18,9 +18,6 @@ import com.mdp.othello.OthelloGame;
  */
 public abstract class AbstractScreen implements Screen {
     // the fixed viewport dimensions (ratio: 1.6)
-    public static final int GAME_VIEWPORT_WIDTH = 240, GAME_VIEWPORT_HEIGHT = 400;
-    public static final int MENU_VIEWPORT_WIDTH = 480, MENU_VIEWPORT_HEIGHT = 800;
-
     protected final OthelloGame game;
     protected final Stage stage;
     private Label debugLabel;
@@ -34,8 +31,8 @@ public abstract class AbstractScreen implements Screen {
 
 	public AbstractScreen( OthelloGame game ){
         this.game = game;
-        width = ( isGameScreen() ? GAME_VIEWPORT_WIDTH : MENU_VIEWPORT_WIDTH );
-        height = ( isGameScreen() ? GAME_VIEWPORT_HEIGHT : MENU_VIEWPORT_HEIGHT );
+        width = Gdx.graphics.getWidth();
+        height = Gdx.graphics.getHeight();
         this.stage = new Stage();
     }
 	

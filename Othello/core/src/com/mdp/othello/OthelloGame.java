@@ -12,7 +12,7 @@ import com.mdp.othello.utils.DataCallback;
 
 public class OthelloGame extends Game {
     public static final String LOG = OthelloGame.class.getSimpleName();
-    public static final boolean DEV_MODE = false;
+    public static final boolean DEV_MODE = true;
     private PreferencesManager preferencesManager;
     private MusicManager musicManager;
     private SoundManager soundManager;
@@ -20,25 +20,25 @@ public class OthelloGame extends Game {
 
     public OthelloGame(ActionResolver actionResolver){
         this.actionResolver = actionResolver;
-        actionResolver.addCallback(new DataCallback(this, actionResolver));
+        this.actionResolver.addCallback(new DataCallback(this, this.actionResolver));
     }
 
     @Override
     public void create(){
         Gdx.app.log(OthelloGame.LOG, "Creating game on " + Gdx.app.getType() );
-        if (!DEV_MODE) actionResolver.signIn();
-        if(actionResolver.isSignedIn()) {
-            soundManager = new SoundManager();
-            musicManager = new MusicManager();
-            preferencesManager = new PreferencesManager();
-            if(DEV_MODE) {
-                setScreen(new GameScreen(this, actionResolver, null));
-            }
-            else{
-                setScreen(new MenuScreen(this, actionResolver));
-            }
+        soundManager = new SoundManager();
+        musicManager = new MusicManager();
+        preferencesManager = new PreferencesManager();
+        if(DEV_MODE) setScreen(new GameScreen(this, actionResolver, null));
+        else {
+            if(!actionResolver.isSignedIn()) actionResolver.signIn();
+            else proceedToMenuScreen();
 
         }
+    }
+
+    public void proceedToMenuScreen(){
+            setScreen(new MenuScreen(this, actionResolver));
     }
 
     @Override

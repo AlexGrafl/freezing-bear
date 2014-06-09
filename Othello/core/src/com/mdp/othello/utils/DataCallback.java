@@ -17,6 +17,11 @@ public class DataCallback implements IDataCallback {
     }
 
     @Override
+    public void proceedToMenuScreen(){
+        game.proceedToMenuScreen();
+    }
+
+    @Override
     public void initializeGame(String data) {
         game.setScreen(new GameScreen(game, actionResolver, data));
     }

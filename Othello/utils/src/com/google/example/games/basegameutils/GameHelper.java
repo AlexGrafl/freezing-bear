@@ -151,7 +151,7 @@ public class GameHelper implements GoogleApiClient.ConnectionCallbacks,
     boolean mShowErrorDialogs = true;
 
     // Print debug logs?
-    boolean mDebugLog = false;
+    boolean mDebugLog = true;
 
     Handler mHandler;
 
@@ -637,7 +637,7 @@ public class GameHelper implements GoogleApiClient.ConnectionCallbacks,
         debugLog("beginUserInitiatedSignIn: resetting attempt count.");
         resetSignInCancellations();
         mSignInCancelled = false;
-        mConnectOnStart = true;
+        mConnectOnStart = false;
 
         if (mGoogleApiClient.isConnected()) {
             // nothing to do

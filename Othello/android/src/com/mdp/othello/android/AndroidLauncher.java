@@ -1,11 +1,13 @@
 package com.mdp.othello.android;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
-import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.games.multiplayer.Invitation;
 import com.google.android.gms.games.multiplayer.Multiplayer;
@@ -14,7 +16,6 @@ import com.google.android.gms.games.multiplayer.realtime.RoomConfig;
 import com.google.android.gms.games.multiplayer.turnbased.OnTurnBasedMatchUpdateReceivedListener;
 import com.google.android.gms.games.multiplayer.turnbased.TurnBasedMatch;
 import com.google.android.gms.games.multiplayer.turnbased.TurnBasedMatchConfig;
-import com.google.android.gms.games.multiplayer.turnbased.TurnBasedMultiplayer;
 import com.google.example.games.basegameutils.GameHelper;
 import com.mdp.othello.OthelloGame;
 import com.mdp.othello.utils.ActionResolver;
@@ -24,33 +25,46 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 
 public class AndroidLauncher extends AndroidApplication implements OnInvitationReceivedListener,
-        OnTurnBasedMatchUpdateReceivedListener,
-        ActionResolver, GameHelper.GameHelperListener, ResultCallback<TurnBasedMultiplayer.UpdateMatchResult>{
+        OnTurnBasedMatchUpdateReceivedListener,ActionResolver,
+        GameHelper.GameHelperListener{
     final static int RC_SELECT_PLAYERS = 1337;
     final static int RC_INVITATION_ACCEPTED = 1234;
     private GameHelper gameHelper;
     private IDataCallback dataCallback;
-
+    private TurnBasedMatch turnBasedMatch = null;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        gameHelper = new GameHelper(this, GameHelper.CLIENT_GAMES);
-        gameHelper.setup(this);
         AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
         config.useCompass = false;
         config.useAccelerometer = false;
-        initialize(new OthelloGame(this), config);
+        int error = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this.getContext());
+        if(error != ConnectionResult.SUCCESS ) {
+            Dialog dialog = GooglePlayServicesUtil.getErrorDialog(error, this, 11110);
+            dialog.show();
+        }else{
+            initialize(new OthelloGame(this), config);
+        }
+        gameHelper = new GameHelper(this, GameHelper.CLIENT_GAMES);
+        gameHelper.setConnectOnStart(false);
+        gameHelper.setShowErrorDialogs(false);
+        gameHelper.setup(this);
+
     }
 
     @Override
     public void onSignInFailed() {
+        log(OthelloGame.LOG, "Sign in failed!");
         gameHelper.showFailureDialog();
     }
 
     @Override
     public void onSignInSucceeded() {
+        log(OthelloGame.LOG, "Sign in succeeded");
+        this.turnBasedMatch = gameHelper.getTurnBasedMatch();
         Games.Invitations.registerInvitationListener(gameHelper.getApiClient(), this);
+        dataCallback.proceedToMenuScreen();
     }
 
     @Override
@@ -89,7 +103,7 @@ public class AndroidLauncher extends AndroidApplication implements OnInvitationR
         //https://developers.google.com/games/services/android/turnbasedMultiplayer#taking_a_turn
         Games.TurnBasedMultiplayer.takeTurn(gameHelper.getApiClient(),
                 gameHelper.getTurnBasedMatch().getMatchId(), data.getBytes(Charset.forName("UTF-16")),
-                getNextParticipantId()).setResultCallback(this);
+                getNextParticipantId()).setResultCallback(new UpdateMatchCallback(dataCallback));
     }
 
     @Override
@@ -138,6 +152,7 @@ public class AndroidLauncher extends AndroidApplication implements OnInvitationR
     @Override
     public void onActivityResult(int request, int response, Intent data) {
         super.onActivityResult(request, response, data);
+        gameHelper.onActivityResult(request, response, data);
         if (request == RC_SELECT_PLAYERS) {
             if (response != RESULT_OK) {
                 // user canceled
@@ -193,6 +208,7 @@ public class AndroidLauncher extends AndroidApplication implements OnInvitationR
 
     @Override
     public void onTurnBasedMatchReceived(TurnBasedMatch turnBasedMatch) {
+        this.turnBasedMatch = turnBasedMatch;
         if(turnBasedMatch.getStatus() == TurnBasedMatch.MATCH_STATUS_ACTIVE){
             if(turnBasedMatch.getTurnStatus() == TurnBasedMatch.MATCH_TURN_STATUS_MY_TURN){
                 dataCallback.processGameData(new String(turnBasedMatch.getData()));
@@ -208,9 +224,9 @@ public class AndroidLauncher extends AndroidApplication implements OnInvitationR
     public String getNextParticipantId() {
 
         String playerId = Games.Players.getCurrentPlayerId(gameHelper.getApiClient());
-        String myParticipantId = gameHelper.getTurnBasedMatch().getParticipantId(playerId);
+        String myParticipantId = turnBasedMatch.getParticipantId(playerId);
 
-        ArrayList<String> participantIds = gameHelper.getTurnBasedMatch().getParticipantIds();
+        ArrayList<String> participantIds = turnBasedMatch.getParticipantIds();
 
         int desiredIndex = -1;
 
@@ -224,7 +240,7 @@ public class AndroidLauncher extends AndroidApplication implements OnInvitationR
             return participantIds.get(desiredIndex);
         }
 
-        if (gameHelper.getTurnBasedMatch().getAvailableAutoMatchSlots() <= 0) {
+        if (turnBasedMatch.getAvailableAutoMatchSlots() <= 0) {
             // You've run out of automatch slots, so we start over.
             return participantIds.get(0);
         } else {
@@ -234,18 +250,5 @@ public class AndroidLauncher extends AndroidApplication implements OnInvitationR
         }
     }
 
-    @Override
-    public void onResult(TurnBasedMultiplayer.UpdateMatchResult updateMatchResult) {
-        if (!updateMatchResult.getStatus().isSuccess()) {
-            return;
-        }
 
-        TurnBasedMatch match = updateMatchResult.getMatch();
-        if (match.getData() != null) {
-            dataCallback.showIdleScreen();
-            return;
-        }
-        dataCallback.initializeGame(new String(match.getData()));
-        dataCallback.processGameData(new String(match.getData()));
-    }
 }

@@ -24,7 +24,7 @@ public class MenuScreen extends AbstractScreen{
         table.add( "Welcome to Othello!" ).spaceBottom( 50 );
         table.row();
 
-        TextButton quickPlay = new TextButton( "Quick Play", getSkin() );
+        TextButton quickPlay = new TextButton( "Play", getSkin() );
         quickPlay.addListener(new DefaultInputListener() {
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
