@@ -24,7 +24,7 @@ import java.util.List;
 
 public class HttpConnectionHandler {
     //private static String url = "http://localhost:8080/server/";
-    private static String url = "http://192.168.1.18:8080/server/";
+    private static String url = "http://192.168.1.11:8080/server/";
 
     /*******************************Contact*******************************/
     public boolean sendPostCreateContactRequest(String jsonObject) throws IOException {
@@ -263,6 +263,29 @@ public class HttpConnectionHandler {
         if(startAmount != null) urlParameters.add(new BasicNameValuePair("totalMin", startAmount.toString()));
         if(endAmount != null) urlParameters.add(new BasicNameValuePair("totalMax", endAmount.toString()));
         if(contactId != null) urlParameters.add(new BasicNameValuePair("contactId", contactId.toString()));
+
+        UrlEncodedFormEntity urlEncodedFormEntity = new UrlEncodedFormEntity(urlParameters, "UTF-8");
+        httpPost.setEntity(urlEncodedFormEntity);
+        HttpResponse response = client.execute(httpPost);
+        System.out.println("Response Code : "
+                + response.getStatusLine().getStatusCode());
+
+        BufferedReader rd = new BufferedReader(
+                new InputStreamReader(response.getEntity().getContent()));
+
+        StringBuffer result = new StringBuffer();
+        String line = "";
+        while ((line = rd.readLine()) != null) {
+            result.append(line);
+        }
+        return result.toString();
+    } public String getInvoiceItemsPost(Integer invoiceID) throws IOException {
+
+        HttpClient client = HttpClientBuilder.create().build();
+        HttpPost httpPost = new HttpPost(url + "getInvoiceItems");
+        List <NameValuePair> urlParameters = new ArrayList<NameValuePair>();
+        System.out.println();
+        if( invoiceID != null) urlParameters.add(new BasicNameValuePair("invoiceId", Integer.toString(invoiceID)));
 
         UrlEncodedFormEntity urlEncodedFormEntity = new UrlEncodedFormEntity(urlParameters, "UTF-8");
         httpPost.setEntity(urlEncodedFormEntity);

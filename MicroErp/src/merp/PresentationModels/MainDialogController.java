@@ -25,6 +25,7 @@ import merp.Models.ProxySingleton;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.LinkedList;
 import java.util.List;
 
 public class MainDialogController extends AbstractController {
@@ -49,11 +50,15 @@ public class MainDialogController extends AbstractController {
     private RadioButton radioPerson, radioCompany;
     @FXML
     private TableView tableInvoice;
+    @FXML
+    private Button btnShow;
 
     private Integer invoiceContactID;
     private boolean isValid;
     private ImageView ivValid, ivInvalid;
     private ToggleGroup radioGroup;
+
+    List<Invoice> invoiceList = new LinkedList<>();
 
     public MainDialogController(){
     }
@@ -107,7 +112,7 @@ public class MainDialogController extends AbstractController {
         textNameCont.setOnKeyPressed(handleContactEnter);
         textUIDCont.setOnKeyPressed(handleContactEnter);
 
-        /*** Search Innvoice ***/
+        /*** Search Invoice ***/
         EventHandler handleInvoiceEnter = new EventHandler<KeyEvent>()  {
             @Override
             public void handle(KeyEvent ke) {
@@ -256,7 +261,7 @@ public class MainDialogController extends AbstractController {
     @FXML
     private void onSearchInvoice() throws IOException {
         if(isValid) {
-            final List<Invoice> invoiceList = ProxySingleton.getInstance().searchInvoice(dateStart.getSelectedDate(),
+            invoiceList = ProxySingleton.getInstance().searchInvoice(dateStart.getSelectedDate(),
                     dateEnd.getSelectedDate(),textAmountStart.getText().equals("") ? null :
                             Double.parseDouble(textAmountStart.getText()), textAmountEnd.getText().equals("")? null :
                             Double.parseDouble(textAmountEnd.getText()), invoiceContactID);
@@ -264,6 +269,19 @@ public class MainDialogController extends AbstractController {
                 ObservableList<Invoice> resultElements = FXCollections.observableArrayList();
                 resultElements.addAll(invoiceList);
                 tableInvoice.setItems(resultElements);
+
+            tableInvoice.setOnMouseClicked(new EventHandler<MouseEvent>(){
+                @Override
+                public void handle(MouseEvent event) {
+                    if(event.getClickCount() == 2 && event.getButton().equals(MouseButton.PRIMARY)){
+                        try {
+                            onShowItems();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            });
         }
     }
     @FXML
@@ -347,6 +365,31 @@ public class MainDialogController extends AbstractController {
         stage.showAndWait();
 
         return foundContactDialogController.selectedResult;
+    }
+
+    @FXML
+    private void onShowItems() throws IOException {
+        int index = tableInvoice.getSelectionModel().getSelectedIndex();
+        if(index >= 0){
+            //tableInvoice.getItems().get(index);
+            openDisplayInvoiceDialog(invoiceList.get(index));
+        }
+    }
+
+    private void openDisplayInvoiceDialog(Invoice invoice) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DisplayInvoice.fxml"));
+        Pane root = (Pane)fxmlLoader.load();
+
+        Stage secondStage = new Stage(StageStyle.DECORATED);
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
+        secondStage.setScene(scene);
+        secondStage.setTitle("MERP - Display Invoice");
+
+        DisplayInvoiceController controller = fxmlLoader.getController();
+        controller.initDialog(invoice);
+        secondStage.show();
+
     }
 
 

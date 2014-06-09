@@ -43,4 +43,7 @@ public class ProxySingleton {
     public void createInvoice(Invoice invoice) throws IOException {
         Boolean success = httpHandler.sendPostCreateInvoiceRequest(jp.invoiceToJson(invoice));
     }
+    public List<InvoiceItem> getInvoiceItems(Integer invoiceID) throws IOException {
+        return jp.jsonToInvoiceItemList(httpHandler.getInvoiceItemsPost(invoiceID));
+    }
 }

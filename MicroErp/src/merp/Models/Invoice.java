@@ -2,8 +2,8 @@ package merp.Models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedList;
 
 /**
  * @author Alex
@@ -26,7 +26,7 @@ public class Invoice {
     @Column(name="total")
     private double total;
 
-    private LinkedList<InvoiceItem> invoiceItems = new LinkedList<>();
+    private ArrayList<InvoiceItem> invoiceItems = new ArrayList<>();
 
     public Integer getContactID() {
         return contactID;
@@ -76,10 +76,10 @@ public class Invoice {
         this.message = message;
     }
 
-    public LinkedList<InvoiceItem> getInvoiceItems() {
+    public ArrayList<InvoiceItem> getInvoiceItems() {
         return invoiceItems;
     }
-    public void setInvoiceItems(LinkedList<InvoiceItem> invoiceItems) {
+    public void setInvoiceItems(ArrayList<InvoiceItem> invoiceItems) {
         this.invoiceItems = invoiceItems;
     }
     public void addInvoiceItems(InvoiceItem invoiceItem){

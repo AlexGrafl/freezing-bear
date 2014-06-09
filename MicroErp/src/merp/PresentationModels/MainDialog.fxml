@@ -91,7 +91,7 @@
                 <Button id="btnSearchContact" fx:id="btnSearchInvoice" layoutX="320.0" layoutY="136.0" mnemonicParsing="false" onAction="#onSearchInvoice" prefHeight="24.0" text="Search" />
                 <RadioButton id="radioCompany" fx:id="radioPerson" layoutX="145.0" layoutY="104.0" mnemonicParsing="false" text="Person" />
                 <RadioButton fx:id="radioCompany" layoutX="206.0" layoutY="104.0" mnemonicParsing="false" text="Company" />
-                <Button id="btnCreateInvoice" fx:id="btnShow" layoutX="109.0" layoutY="136.0" mnemonicParsing="false" onAction="#onCreateInvoice" prefHeight="24.0" prefWidth="-1.0" text="Show" />
+                <Button id="btnCreateInvoice" fx:id="btnShow" layoutX="109.0" layoutY="136.0" mnemonicParsing="false" onAction="#onShowItems" prefHeight="24.0" prefWidth="-1.0" text="Show" />
               </children>
             </Pane>
             <TableView fx:id="tableInvoice" layoutX="14.0" layoutY="188.0" prefHeight="282.0" prefWidth="376.0">

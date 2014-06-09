@@ -14,7 +14,7 @@ import merp.Models.ProxySingleton;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -31,7 +31,7 @@ public class InvoiceItemModelController extends AbstractController {
 
     private Invoice tmpInvoice;
 
-    private LinkedList<InvoiceItem> invoiceItemList = new LinkedList<>();
+    private ArrayList<InvoiceItem> invoiceItemList = new ArrayList<>();
 
 	@Override
 	public void setModel(Object model) {

@@ -35,4 +35,12 @@ public class JsonParser {
         Gson gson = new Gson();
         return gson.toJson(obj);
     }
+
+    //InvoiceItems
+    public List<InvoiceItem> jsonToInvoiceItemList(String text) {
+        Type arrayType = new TypeToken<ArrayList<InvoiceItem>>(){}.getType();
+        Gson gson = new Gson();
+
+        return gson.fromJson(text, arrayType);
+    }
 }
