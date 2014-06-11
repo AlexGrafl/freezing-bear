@@ -1,5 +1,6 @@
 package com.mdp.othello.screens;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mdp.othello.OthelloGame;
@@ -21,7 +22,9 @@ public class MenuScreen extends AbstractScreen{
 
         // retrieve the default table actor
         Table table = super.getTable();
-        table.add( "Welcome to Othello!" ).spaceBottom( 50 );
+        Label welcome = new Label("Welcome to Othello!", getSkin());
+        welcome.setFontScale(UNITSCALE);
+        table.add( welcome).spaceBottom( 50 );
         table.row();
 
         TextButton quickPlay = new TextButton( "Play", getSkin() );
@@ -30,32 +33,42 @@ public class MenuScreen extends AbstractScreen{
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                 super.touchUp(event, x, y, pointer, button);
                 game.getSoundManager().play( SoundManager.OurSound.CLICK );
+                if(actionResolver.isSignedIn()) actionResolver.startGame();
+                else actionResolver.signIn();
 
             }
         });
-        table.add(quickPlay).size( 300, 60 ).uniform().spaceBottom( 10 );
+        quickPlay.getStyle().font.setScale(UNITSCALE);
+        table.add(quickPlay).size( 200 * UNITSCALE, 30 *UNITSCALE).uniform().spaceBottom( 10 *UNITSCALE);
         table.row();
 
         TextButton achievementsButton = new TextButton( "Achievements", getSkin() );
         achievementsButton.addListener(new DefaultInputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                actionResolver.showAchievements();
+                if(actionResolver.isSignedIn()) {
+                    actionResolver.showAchievements();
+                }else{
+                    actionResolver.signIn();
+                }
                 return super.touchDown(event, x, y, pointer, button);
             }
         });
-        table.add( achievementsButton ).uniform().fill().spaceBottom( 10 );
+        achievementsButton.getStyle().font.setScale(UNITSCALE);
+        table.add( achievementsButton ).uniform().fill().spaceBottom( 10 *UNITSCALE);
         table.row();
 
         TextButton highScoresButton = new TextButton( "High Scores", getSkin() );
         highScoresButton.addListener(new DefaultInputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                actionResolver.showLeaderboard();
+                if(actionResolver.isSignedIn()) actionResolver.showLeaderboard();
+                else actionResolver.signIn();
                 return super.touchDown(event, x, y, pointer, button);
             }
         });
-        table.add( highScoresButton ).uniform().fill().spaceBottom( 10 );
+        highScoresButton.getStyle().font.setScale(UNITSCALE);
+        table.add( highScoresButton ).uniform().fill().spaceBottom( 10 * UNITSCALE);
         table.row();
         // register the button "options"
         TextButton optionsButton = new TextButton( "Options", getSkin() );
@@ -67,9 +80,8 @@ public class MenuScreen extends AbstractScreen{
                 game.setScreen(new OptionsScreen(game, actionResolver));
             }
         });
-        table.add( optionsButton ).uniform().fill().spaceBottom(10);
-
-
+        optionsButton.getStyle().font.setScale(UNITSCALE);
+        table.add( optionsButton ).uniform().fill().spaceBottom(10* UNITSCALE);
 
     }
 }

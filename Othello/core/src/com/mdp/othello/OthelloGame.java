@@ -12,7 +12,7 @@ import com.mdp.othello.utils.DataCallback;
 
 public class OthelloGame extends Game {
     public static final String LOG = OthelloGame.class.getSimpleName();
-    public static final boolean DEV_MODE = true;
+    public static final boolean DEV_MODE = false;
     private PreferencesManager preferencesManager;
     private MusicManager musicManager;
     private SoundManager soundManager;
@@ -31,9 +31,7 @@ public class OthelloGame extends Game {
         preferencesManager = new PreferencesManager();
         if(DEV_MODE) setScreen(new GameScreen(this, actionResolver, null));
         else {
-            if(!actionResolver.isSignedIn()) actionResolver.signIn();
-            else proceedToMenuScreen();
-
+            proceedToMenuScreen();
         }
     }
 

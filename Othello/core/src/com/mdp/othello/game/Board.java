@@ -23,6 +23,7 @@ public class Board{
     private PerformTurn performTurn;
     private BoardState myColor;
     private boolean[] validTurns;
+    public static int TOTAL_WHITE = 0, TOTAL_BLACK = 0;
 
     public Board(TiledMap map, BoardState myColor){
         this.map = map;
@@ -37,9 +38,6 @@ public class Board{
         }
         boardData[3][3] = boardData[4][4] = BoardState.BLACK;
         boardData[3][4] = boardData[4][3] = BoardState.WHITE;
-        boardData[3][5] = boardData[4][3] = BoardState.WHITE;
-        boardData[3][6] = boardData[4][1] = BoardState.WHITE;
-        boardData[4][5] = boardData[4][6] = BoardState.WHITE;
     }
 
     public TiledMap getMap(){ return map;}
@@ -62,7 +60,6 @@ public class Board{
         int transformedX, transformedY;
         transformedX = (int) (x / (32 * GameScreen.UNITSCALE)) - 1;
         transformedY = 9 - (int) (y / (32 * GameScreen.UNITSCALE)) - 1;
-        Gdx.app.log(OthelloGame.LOG, "X: "+x+" transformed: " + transformedX + "\nY: "+y+" tranformed: "+transformedY);
         if(transformedX < 0 || transformedX > 7 || transformedY < 0 || transformedY > 7) return false;
         if(boardData[transformedX][transformedY] == BoardState.EMPTY){
             boardData[transformedX][transformedY] = color;
@@ -99,7 +96,16 @@ public class Board{
         String[] strings = data.split("$");
         lastX = Integer.parseInt(strings[0]);
         lastY = Integer.parseInt(strings[1]);
+    }
 
+    public void updateTotals(){
+        TOTAL_BLACK = TOTAL_WHITE = 0;
+        for(int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if(boardData[i][j] == BoardState.BLACK) TOTAL_BLACK++;
+                if(boardData[i][j] == BoardState.WHITE) TOTAL_WHITE++;
+            }
+        }
     }
 
 }

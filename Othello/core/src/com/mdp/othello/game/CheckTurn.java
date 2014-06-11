@@ -1,5 +1,7 @@
 package com.mdp.othello.game;
 
+import com.badlogic.gdx.Gdx;
+import com.mdp.othello.OthelloGame;
 import com.mdp.othello.game.Board.BoardState;
 
 
@@ -31,9 +33,10 @@ public class CheckTurn {
     public boolean checkRight(int posX, int posY){
         boolean isValid = false;
         if(posX < 0 || posX > 7 || posY < 0 || posY > 7) return false;
-        for(int i = posX;i < 8;i++){
-            if(board[i][posY] != yourColor && board[i][posY] != BoardState.EMPTY) isValid = true;
-            if(isValid && board[i][posY] == yourColor) return isValid;
+        for(int i = posX; i < 8; i++){
+            if(board[i][posY] == BoardState.EMPTY) return false;
+            if(isValid && board[i][posY] == yourColor) return true;
+            if(board[i][posY] != yourColor ) isValid = true;
         }
         return false;
     }
@@ -41,26 +44,29 @@ public class CheckTurn {
         boolean isValid = false;
         if(posX < 0 || posX > 7 || posY < 0 || posY > 7) return false;
         for(int i = posX;i >= 0;i--){
-            if(board[i][posY] != yourColor && board[i][posY] != BoardState.EMPTY) isValid = true;
-            if(isValid && board[i][posY] == yourColor) return isValid;
-        }
-        return false;
-    }
-    public boolean checkUp(int posX, int posY){
-        boolean isValid = false;
-        if(posX < 0 || posX > 7 || posY < 0 || posY > 7) return false;
-        for(int j = posY ; j >= 0;j--){
-            if(board[posX][j] != yourColor && board[posX][j] != BoardState.EMPTY) isValid = true;
-            if(isValid && board[posX][j] == yourColor) return isValid;
+            if(board[i][posY] == BoardState.EMPTY) return false;
+            if(isValid && board[i][posY] == yourColor) return true;
+            if(board[i][posY] != yourColor) isValid = true;
         }
         return false;
     }
     public boolean checkDown(int posX, int posY){
         boolean isValid = false;
         if(posX < 0 || posX > 7 || posY < 0 || posY > 7) return false;
+        for(int j = posY ; j >= 0;j--){
+            if(board[posX][j] == BoardState.EMPTY) return false;
+            if(isValid && board[posX][j] == yourColor) return true;
+            if(board[posX][j] != yourColor) isValid = true;
+        }
+        return false;
+    }
+    public boolean checkUp(int posX, int posY){
+        boolean isValid = false;
+        if(posX < 0 || posX > 7 || posY < 0 || posY > 7) return false;
         for(int j = posY;j < 8;j++){
-            if(board[posX][j] != yourColor && board[posX][j] != BoardState.EMPTY) isValid = true;
-            if(isValid && board[posX][j] == yourColor) return isValid;
+            if(board[posX][j] == BoardState.EMPTY) return false;
+            if(isValid && board[posX][j] == yourColor) return true;
+            if(board[posX][j] != yourColor) isValid = true;
         }
         return false;
     }
@@ -69,22 +75,20 @@ public class CheckTurn {
     public boolean checkUpRight(int posX, int posY){
         boolean isValid = false;
         if(posX < 0 || posX > 7 || posY < 0 || posY > 7) return false;
-        for(int i = posX;i < 8;i++){
-            for(int j = posY; j >= 0; j--) {
-                if (board[i][j] != yourColor && board[i][j] != BoardState.EMPTY) isValid = true;
-                if (isValid && board[i][j] == yourColor) return isValid;
-            }
+        for(int i = posX, j = posY;i < 8 && j < 8;i++, j++){
+            if(board[i][j] == BoardState.EMPTY) return false;
+            if (isValid && board[i][j] == yourColor) return true;
+            if (board[i][j] != yourColor ) isValid = true;
         }
         return false;
     }
     public boolean checkDownRight(int posX, int posY){
         boolean isValid = false;
         if(posX < 0 || posX > 7 || posY < 0 || posY > 7) return false;
-        for(int i = posX;i < 8;i++){
-            for(int j = posY; j < 8; j++) {
-                if (board[i][j] != yourColor && board[i][j] != BoardState.EMPTY) isValid = true;
-                if (isValid && board[i][j] == yourColor) return isValid;
-            }
+        for(int i = posX, j = posY;i < 8 && j >= 0;i++, j--){
+            if(board[i][j] == BoardState.EMPTY) return false;
+            if (isValid && board[i][j] == yourColor) return true;
+            if (board[i][j] != yourColor) isValid = true;
         }
         return false;
     }
@@ -93,22 +97,20 @@ public class CheckTurn {
     public boolean checkUpLeft(int posX, int posY){
         boolean isValid = false;
         if(posX < 0 || posX > 7 || posY < 0 || posY > 7) return false;
-        for(int i = posX;i >= 0;i--){
-            for(int j = posY; j >= 0; j--) {
-                if (board[i][j] != yourColor && board[i][j] != BoardState.EMPTY) isValid = true;
-                if (isValid && board[i][j] == yourColor) return isValid;
-            }
+        for(int i = posX, j = posY;i >= 0 && j < 8;i--, j++){
+            if(board[i][j] == BoardState.EMPTY) return false;
+            if (isValid && board[i][j] == yourColor) return true;
+            if (board[i][j] != yourColor) isValid = true;
         }
         return false;
     }
     public boolean checkDownLeft(int posX, int posY){
         boolean isValid = false;
         if(posX < 0 || posX > 7 || posY < 0 || posY > 7) return false;
-        for(int i = posX;i >= 0;i--){
-            for(int j = posY; j < 8; j++) {
-                if (board[i][j] != yourColor && board[i][j] != BoardState.EMPTY) isValid = true;
-                if (isValid && board[i][j] == yourColor) return isValid;
-            }
+        for(int i = posX, j = posY;i >= 0 && j >= 0;i--, j--){
+            if(board[i][j] == BoardState.EMPTY) return false;
+            if (isValid && board[i][j] == yourColor) return true;
+            if (board[i][j] != yourColor) isValid = true;
         }
         return false;
     }

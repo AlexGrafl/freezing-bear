@@ -48,7 +48,7 @@ public class AndroidLauncher extends AndroidApplication implements OnInvitationR
         }
         gameHelper = new GameHelper(this, GameHelper.CLIENT_GAMES);
         gameHelper.setConnectOnStart(false);
-        gameHelper.setShowErrorDialogs(false);
+        gameHelper.setShowErrorDialogs(true);
         gameHelper.setup(this);
 
     }
@@ -100,7 +100,6 @@ public class AndroidLauncher extends AndroidApplication implements OnInvitationR
 
     @Override
     public void takeTurn(String data) {
-        //https://developers.google.com/games/services/android/turnbasedMultiplayer#taking_a_turn
         Games.TurnBasedMultiplayer.takeTurn(gameHelper.getApiClient(),
                 gameHelper.getTurnBasedMatch().getMatchId(), data.getBytes(Charset.forName("UTF-16")),
                 getNextParticipantId()).setResultCallback(new UpdateMatchCallback(dataCallback));

@@ -18,6 +18,7 @@ import com.mdp.othello.OthelloGame;
  */
 public abstract class AbstractScreen implements Screen {
     // the fixed viewport dimensions (ratio: 1.6)
+    public static float UNITSCALE;
     protected final OthelloGame game;
     protected final Stage stage;
     private Label debugLabel;
@@ -33,6 +34,7 @@ public abstract class AbstractScreen implements Screen {
         this.game = game;
         width = Gdx.graphics.getWidth();
         height = Gdx.graphics.getHeight();
+        UNITSCALE = getHeight() / 320f;
         this.stage = new Stage();
     }
 	

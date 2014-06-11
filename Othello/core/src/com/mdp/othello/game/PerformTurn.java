@@ -29,63 +29,55 @@ public class PerformTurn {
 
     private void right(int posX, int posY){
         for(int i = posX;i < 8;i++){
-            if(playBoard[i][posY] != yourColor && playBoard[i][posY] != BoardState.EMPTY) playBoard[i][posY] = yourColor;
             if(playBoard[i][posY] == yourColor) return;
+            if(playBoard[i][posY] != yourColor && playBoard[i][posY] != BoardState.EMPTY) playBoard[i][posY] = yourColor;
         }
     }
     private void left(int posX, int posY){
         for(int i = posX;i >= 0;i--){
-            if(playBoard[i][posY] != yourColor && playBoard[i][posY] != BoardState.EMPTY) playBoard[i][posY] = yourColor;
             if(playBoard[i][posY] == yourColor) return;
-        }
-    }
-    private void up(int posX, int posY){
-        for(int j = posY;j >= 0; j--){
-            if(playBoard[posX][j] != yourColor && playBoard[posX][j] != BoardState.EMPTY) playBoard[posX][j] = yourColor;
-            if(playBoard[posX][j] == yourColor) return;
+            if(playBoard[i][posY] != yourColor && playBoard[i][posY] != BoardState.EMPTY) playBoard[i][posY] = yourColor;
         }
     }
     private void down(int posX, int posY){
-        for(int j = posY;j < 8; j++){
-            if(playBoard[posX][j] != yourColor && playBoard[posX][j] != BoardState.EMPTY) playBoard[posX][j] = yourColor;
+        for(int j = posY;j >= 0; j--){
             if(playBoard[posX][j] == yourColor) return;
+            if(playBoard[posX][j] != yourColor && playBoard[posX][j] != BoardState.EMPTY) playBoard[posX][j] = yourColor;
+        }
+    }
+    private void up(int posX, int posY){
+        for(int j = posY;j < 8; j++){
+            if(playBoard[posX][j] == yourColor) return;
+            if(playBoard[posX][j] != yourColor && playBoard[posX][j] != BoardState.EMPTY) playBoard[posX][j] = yourColor;
         }
     }
 
     //diagonalRight
     private void upRight(int posX, int posY){
-        for(int i = posX;i < 8; i++){
-            for(int j = posY;j >= 0; j--) {
-                if (playBoard[i][j] != yourColor && playBoard[i][j] != BoardState.EMPTY) playBoard[i][j] = yourColor;
-                if (playBoard[i][j] == yourColor) return;
-            }
+        for(int i = posX, j = posY;i < 8 && j < 8;i++, j++){
+            if (playBoard[i][j] == yourColor) return;
+            if (playBoard[i][j] != yourColor && playBoard[i][j] != BoardState.EMPTY) playBoard[i][j] = yourColor;
         }
     }
 
     private void downRight(int posX, int posY){
-        for(int i = posX;i < 8; i++){
-            for(int j = posY;j < 8; j++) {
-                if (playBoard[i][j] != yourColor && playBoard[i][j] != BoardState.EMPTY) playBoard[i][j] = yourColor;
-                if (playBoard[i][j] == yourColor) return;
-            }
+        for(int i = posX, j = posY;i < 8 && j >= 0;i++, j--){
+            if (playBoard[i][j] == yourColor) return;
+            if (playBoard[i][j] != yourColor && playBoard[i][j] != BoardState.EMPTY) playBoard[i][j] = yourColor;
         }
     }
 
     //diagonalLeft
     private void upLeft(int posX, int posY){
-        for(int i = posX;i >= 0; i--){
-            for(int j = posY;j >= 0; j--) {
-                if (playBoard[i][j] != yourColor && playBoard[i][j] != BoardState.EMPTY) playBoard[i][j] = yourColor;
-                if (playBoard[i][j] == yourColor) return;
-            }
+        for(int i = posX, j = posY;i >= 0 && j < 8;i--, j++){
+            if (playBoard[i][j] == yourColor) return;
+            if (playBoard[i][j] != yourColor && playBoard[i][j] != BoardState.EMPTY) playBoard[i][j] = yourColor;
         }
     }
     private void downLeft(int posX, int posY){
-        for(int i = posX;i >= 0; i--){
-            for(int j = posY;j < 8; j++) {
-                if (playBoard[i][j] != yourColor && playBoard[i][j] != BoardState.EMPTY) playBoard[i][j] = yourColor;
-                if (playBoard[i][j] == yourColor) return;
-            }
+        for(int i = posX, j = posY;i >= 0 && j >= 0;i--, j--){
+            if (playBoard[i][j] == yourColor) return;
+            if (playBoard[i][j] != yourColor && playBoard[i][j] != BoardState.EMPTY) playBoard[i][j] = yourColor;
         }
     }
 

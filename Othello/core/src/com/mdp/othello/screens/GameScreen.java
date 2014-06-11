@@ -1,24 +1,23 @@
 package com.mdp.othello.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mdp.othello.OthelloGame;
 import com.mdp.othello.game.Board;
 import com.mdp.othello.utils.ActionResolver;
 import com.mdp.othello.utils.DefaultInputListener;
 
-import javax.xml.soap.Text;
-import java.awt.*;
+
 
 
 public class GameScreen extends AbstractScreen{
-    public static float UNITSCALE;
     public static int OFFSET;
 
     private ActionResolver actionResolver;
@@ -29,6 +28,10 @@ public class GameScreen extends AbstractScreen{
     private OrthogonalTiledMapRenderer renderer;
     private OrthographicCamera camera;
     private TextButton endTurn;
+    private boolean good = false;
+    private Label invalidTurn;
+    private Label blackScore;
+    private Label whiteScore;
 
     public GameScreen(final OthelloGame game, final ActionResolver actionResolver, String data){
         super(game);
@@ -38,7 +41,6 @@ public class GameScreen extends AbstractScreen{
             myColor = Board.BoardState.BLACK;
         }
         gameData = data;
-        UNITSCALE = getHeight() / 320f;
         OFFSET = (int) (getWidth() - (320 * UNITSCALE)) / 2;
         gameBoard = new Board(new TmxMapLoader().load("map/board.tmx"), myColor);
         renderer = new OrthogonalTiledMapRenderer(gameBoard.getMap(), UNITSCALE);
@@ -46,21 +48,44 @@ public class GameScreen extends AbstractScreen{
         endTurn.addListener(new DefaultInputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                invalidTurn.setText("");
                 if(gameBoard.checkTurn()) {
                     gameBoard.performTurn();
                     gameData = gameBoard.getLastPiece();
-                    actionResolver.takeTurn(gameData);
+                    myTurn = false;
+                    endTurn.setDisabled(true);
+                    updateLabels();
+             //       actionResolver.takeTurn(gameData);
                 }else {
-                    gameBoard.unsetLastPiece();
+                    if(myTurn) {
+                        gameBoard.unsetLastPiece();
+                        invalidTurn.setText("Invalid Turn!");
+                    }
                 }
                 return super.touchDown(event, x, y, pointer, button);
             }
         });
-        endTurn.setWidth(endTurn.getWidth());
+        endTurn.setWidth(OFFSET - 20);
         endTurn.setHeight(endTurn.getWidth());
         endTurn.setX((getWidth() - OFFSET + 3));
         endTurn.setY(10 * UNITSCALE);
+        endTurn.getStyle().font.setScale(UNITSCALE);
+        invalidTurn = new Label("", getSkin());
+        invalidTurn.setColor(Color.RED);
+        invalidTurn.setFontScale(UNITSCALE);
+        invalidTurn.setPosition(getWidth() - OFFSET + 3, getHeight() - 30 * UNITSCALE);
+        whiteScore = new Label("", getSkin());
+        blackScore = new Label("", getSkin());
+        whiteScore.setPosition(10 * UNITSCALE, getHeight() - 30 * UNITSCALE);
+        blackScore.setPosition(10 * UNITSCALE, getHeight() - 60 * UNITSCALE);
+        whiteScore.setFontScale(UNITSCALE);
+        blackScore.setFontScale(UNITSCALE);
+       // if(myColor == Board.BoardState.BLACK) blackScore
         getStage().addActor(endTurn);
+        getStage().addActor(invalidTurn);
+        getStage().addActor(blackScore);
+        getStage().addActor(whiteScore);
+        updateLabels();
     }
 
     @Override
@@ -80,12 +105,12 @@ public class GameScreen extends AbstractScreen{
         if(myTurn){
             //do stuff on my turn
             if(Gdx.input.isTouched()){
-                boolean good = gameBoard.setPiece(myColor, Gdx.input.getX() - OFFSET, Gdx.input.getY());
-
+                if(good) gameBoard.unsetLastPiece();
+                good = gameBoard.setPiece(myColor, Gdx.input.getX() - OFFSET, Gdx.input.getY());
             }
         }
         else{
-            //disable everything
+            invalidTurn.setText("Wait ...");
         }
         getBatch().end();
         getStage().act();
@@ -93,7 +118,11 @@ public class GameScreen extends AbstractScreen{
     }
 
     public boolean isMyTurn(){return myTurn;}
-    public void setMyTurn(boolean myTurn){this.myTurn = myTurn;}
+    public void setMyTurn(boolean myTurn){
+        this.myTurn = myTurn;
+        endTurn.setDisabled(false);
+        invalidTurn.setText("");
+    }
 
     public String getGameData() {
         return gameData;
@@ -101,5 +130,11 @@ public class GameScreen extends AbstractScreen{
 
     public void setGameData(String gameData) {
         this.gameData = gameData;
+    }
+
+    public void updateLabels(){
+        gameBoard.updateTotals();
+        whiteScore.setText("White: " + Board.TOTAL_WHITE);
+        blackScore.setText("Black: " + Board.TOTAL_BLACK);
     }
 }
