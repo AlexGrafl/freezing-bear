@@ -4,7 +4,6 @@ import esc.plugins.MicroErpPlugin;
 
 import java.io.IOException;
 import java.net.Socket;
-import java.sql.SQLException;
 import java.util.LinkedList;
 
 /**

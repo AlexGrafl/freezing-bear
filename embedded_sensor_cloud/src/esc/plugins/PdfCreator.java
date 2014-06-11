@@ -3,9 +3,7 @@ package esc.plugins;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfPTableHeader;
 import com.itextpdf.text.pdf.PdfWriter;
-import javafx.scene.control.Cell;
 import org.apache.log4j.Logger;
 
 import java.io.FileNotFoundException;
@@ -85,7 +83,7 @@ public class PdfCreator {
         table.addCell(cell);
     }
 
-    private static void addMetaData(Document document) throws DocumentException{
+    private static void addMetaData(Document document){
         document.addTitle("ERP");
         document.addSubject("Invoice");
         document.addKeywords("Wow, such, very");

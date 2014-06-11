@@ -25,7 +25,7 @@ public class MicroErpPlugin implements IPlugin {
 
     @Override
     public boolean acceptRequest(String requestUrl){
-        return requestUrl.equals("server");
+        return requestUrl != null && requestUrl.equals("server");
     }
     @Override
     public void runPlugin(OutputStream outputStream, UrlClass url){

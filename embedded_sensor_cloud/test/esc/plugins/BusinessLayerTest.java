@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Alex
@@ -24,14 +25,47 @@ public class BusinessLayerTest {
     }
 
     @Test
-    public void searchContactsTest() {
+    public void searchContactsNameTest() {
+        HashMap<String, String> parameters = new HashMap<>();
+        parameters.put("name", "Grafl");
+        List<Contact> contactList = businessLayer.searchContacts(parameters);
+        assertEquals(1, contactList.size());
+        assertEquals("Grafl GmbH", contactList.get(0).getName());
+    }
+    @Test
+    public void searchContactsUidTest() {
+        HashMap<String, String> parameters = new HashMap<>();
+        parameters.put("uid", "1234");
+        List<Contact> contactList = businessLayer.searchContacts(parameters);
+        assertEquals(1, contactList.size());
+        assertEquals(1, (int)contactList.get(0).getUid());
+    }
+    @Test
+    public void searchContactsFirstNameTest() {
+        HashMap<String, String> parameters = new HashMap<>();
+        parameters.put("firstName", "Alex");
+        List<Contact> contactList = businessLayer.searchContacts(parameters);
+        assertEquals(1, contactList.size());
+        assertEquals("Alexander", contactList.get(0).getFirstName());
+        assertNull(contactList.get(0).getUid());
+    }
+    @Test
+    public void searchContactsLastNameTest() {
+        HashMap<String, String> parameters = new HashMap<>();
+        parameters.put("lastName", "Grafl");
+        List<Contact> contactList = businessLayer.searchContacts(parameters);
+        assertEquals(1, contactList.size());
+        assertEquals("Grafl", contactList.get(0).getLastName());
+    }
+    @Test
+    public void searchContactsAllTest() {
         HashMap<String, String> parameters = new HashMap<>();
         parameters.put("name", "Grafl");
         parameters.put("uid", "1234");
+        parameters.put("lastName", "Grafl");
+        parameters.put("firstName", "Alex");
         List<Contact> contactList = businessLayer.searchContacts(parameters);
-        assertEquals(2, contactList.size());
-        assertEquals("Grafl", contactList.get(0).getLastName());
-        assertNull(contactList.get(0).getUid());
+        assertEquals(0, contactList.size());
     }
 
     @Test
@@ -43,7 +77,7 @@ public class BusinessLayerTest {
     @Test
     public void searchContactsCannotFind(){
         HashMap<String, String> parameters = new HashMap<>();
-        parameters.put("firstName", "woop");
+        parameters.put("firstNaame", "woop");
         List<Contact> contactList = businessLayer.searchContacts(parameters);
         assertEquals(new ArrayList<Contact>(), contactList);
     }
@@ -101,12 +135,22 @@ public class BusinessLayerTest {
 
     @Test
     public void findCompanySuccess(){
+        String company = "woo";
+        List<Contact> contacts = businessLayer.findCompany(company);
+        assertEquals(2, contacts.size());
+    }
+
+    @Test
+    public void findCompanyFails(){
         String company = "Grafl";
         List<Contact> contacts = businessLayer.findCompany(company);
-        assertEquals(1, contacts.size());
+        assertEquals(new ArrayList<Contact>(), contacts);
+    }
 
-        company = "";
-        contacts = businessLayer.findCompany(company);
+    @Test
+    public void findCompanyEmpty(){
+        String company = "";
+        List<Contact> contacts = businessLayer.findCompany(company);
         assertEquals(new ArrayList<Contact>(), contacts);
     }
 
@@ -142,7 +186,7 @@ public class BusinessLayerTest {
     public void createInvoiceTestNoInvoiceItems(){
         String json = "{\"dueDate\":\"Mar 28, 2014 12:00:00 AM\", \"invoiceItems\":[]}";
         boolean success = businessLayer.createInvoice(json);
-        assertFalse(success);
+        assertTrue(success);
     }
 
     @Test

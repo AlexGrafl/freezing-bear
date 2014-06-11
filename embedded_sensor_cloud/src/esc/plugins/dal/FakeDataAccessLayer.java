@@ -21,14 +21,19 @@ public class FakeDataAccessLayer implements IDataAccessLayer {
     public ArrayList<Contact> searchContacts(HashMap<String, String> parameters) {
         Type arrayType = new TypeToken<ArrayList<Contact>>(){}.getType();
         Gson gson = new Gson();
-        if(parameters != null && !parameters.containsKey("firstName")) {
-            return gson.fromJson("[{\"contactID\":1,\"name\":\"Alexander Grafl\",\"title\":\"Dr.\",\"firstName\":" +
+        if(parameters == null) return new ArrayList<>();
+        if(parameters.containsKey("firstName") && parameters.containsKey("lastName") &&
+                parameters.containsKey("name") && parameters.containsKey("uid")) return new ArrayList<>();
+        if(parameters.containsKey("firstName") || parameters.containsKey("lastName")) {
+            return gson.fromJson("[{\"contactID\":1,\"title\":\"Dr.\",\"firstName\":" +
                     "\"Alexander\",\"lastName\":\"Grafl\",\"suffix\":\"Msc\",\"birthDate\":\"Mar 28, 2014 12:00:0" +
                     "0 AM\",\"address\":\"Bergengasse 6/5/14 1220 Wien\",\"invoiceAddress\":\"Bergengasse 6/5/14 " +
-                    "1220 Wien\",\"shippingAddress\":\"Bergengasse 6/5/14 1220 Wien\",\"isActive\":false},{\"cont" +
-                    "actID\":2,\"name\":\"Grafl GmbH\",\"uid\":1,\"address\":\"Bergengasse 6/5/14 1220 Wien\",\"i" +
-                    "nvoiceAddress\":\"Bergengasse 6/5/14 1220 Wien\",\"shippingAddress\":\"Bergengasse 6/5/14 12" +
-                    "20 Wien\",\"isActive\":false}]", arrayType);
+                    "1220 Wien\",\"shippingAddress\":\"Bergengasse 6/5/14 1220 Wien\",\"isActive\":false}]", arrayType);
+        }
+        if(parameters.containsKey("name") || parameters.containsKey("uid")){
+            return gson.fromJson("[{\"contactID\":2,\"name\":\"Grafl GmbH\",\"uid\":1,\"address\":\"Bergengasse 6/5/" +
+                    "14 1220 Wien\",\"invoiceAddress\":\"Bergengasse 6/5/14 1220 Wien\",\"shippingAddress\":\"Bergen" +
+                    "gasse 6/5/14 1220 Wien\",\"isActive\":false}]", arrayType);
         }
         return new ArrayList<>();
     }
@@ -47,10 +52,23 @@ public class FakeDataAccessLayer implements IDataAccessLayer {
     public ArrayList<Contact> findCompany(String company) {
         Gson gson = new Gson();
         Type arrayType = new TypeToken<ArrayList<Contact>>(){}.getType();
-        if(!company.equals("")){
-            return gson.fromJson("[{\"contactID\":2,\"name\":\"Grafl GmbH\",\"uid\":1,\"address\":\"Bergengasse 6/5" +
-                    "/14 1220 Wien\",\"invoiceAddress\":\"Bergengasse 6/5/14 1220 Wien\",\"shippingAddress\":\"Berg" +
-                    "engasse 6/5/14 1220 Wien\",\"isActive\":false}]", arrayType);
+        if(company.equals("woo")){
+            return gson.fromJson("[{\"contactID\":2,\"name\":\"Grafl GmbH\",\"uid\":1,\"address\":\"Bergengasse 6/5/" +
+                    "14 1220 Wien\",\"invoiceAddress\":\"Bergengasse 6/5/14 1220 Wien\",\"shippingAddress\":\"Bergen" +
+                    "gasse 6/5/14 1220 Wien\",\"isActive\":false}, {\"contactID\":2,\"name\":\"Grafl GmbH\",\"uid\":" +
+                    "1,\"address\":\"Bergengasse 6/5/14 1220 Wien\",\"invoiceAddress\":\"Bergengasse 6/5/14 1220 Wie" +
+                    "n\",\"shippingAddress\":\"Bergengasse 6/5/14 1220 Wien\",\"isActive\":false}]", arrayType);
+        }
+        if(company.equals("Grafl")){
+            return gson.fromJson("[{\"contactID\":2,\"name\":\"Grafl GmbH\",\"uid\":1,\"address\":\"Bergengasse 6/5/" +
+                    "14 1220 Wien\",\"invoiceAddress\":\"Bergengasse 6/5/14 1220 Wien\",\"shippingAddress\":\"Bergen" +
+                    "gasse 6/5/14 1220 Wien\",\"isActive\":false}, {\"contactID\":2,\"name\":\"Grafl GmbH\",\"uid\":" +
+                    "1,\"address\":\"Bergengasse 6/5/14 1220 Wien\",\"invoiceAddress\":\"Bergengasse 6/5/14 1220 Wie" +
+                    "n\",\"shippingAddress\":\"Bergengasse 6/5/14 1220 Wien\",\"isActive\":false}, {\"contactID\":3," +
+                    "\"name\":\"Alexander Grafl\",\"title\":\"Dr.\",\"firstName\":\"Alexander\",\"lastName\":\"Grafl" +
+                    "\",\"suffix\":\"Msc\",\"birthDate\":\"Mar 28, 2014 12:00:00 AM\",\"address\":\"Bergengasse 6/5/" +
+                    "14 1220 Wien\",\"invoiceAddress\":\"Bergengasse 6/5/14 1220 Wien\",\"shippingAddress\":\"Bergen" +
+                    "gasse 6/5/14 1220 Wien\",\"isActive\":false}]", arrayType);
         }
         return new ArrayList<>();
     }

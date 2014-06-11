@@ -2,12 +2,9 @@ package esc.plugins;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
-import com.google.gson.reflect.TypeToken;
 import esc.plugins.dal.IDataAccessLayer;
 import org.apache.log4j.Logger;
 
-import java.lang.reflect.Type;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -15,26 +12,26 @@ import java.util.HashMap;
  * @author Alex
  */
 public class BusinessLayer {
-    private static final Logger log = Logger.getLogger(BusinessLayer.class);
+    private static final Logger LOG = Logger.getLogger(BusinessLayer.class);
 
     private final IDataAccessLayer dataAccessLayer;
 
-    public BusinessLayer(IDataAccessLayer dataAccessLayer){
+    public BusinessLayer(IDataAccessLayer dataAccessLayer) {
         this.dataAccessLayer = dataAccessLayer;
     }
 
-    public ArrayList<Contact> searchContacts(HashMap<String, String> parameters){
+    public ArrayList<Contact> searchContacts(HashMap<String, String> parameters) {
         return dataAccessLayer.searchContacts(parameters);
     }
 
-    public boolean insertNewContact(String json){
+    public boolean insertNewContact(String json) {
         try {
             Gson gson = new Gson();
             Contact newContact = gson.fromJson(json, Contact.class);
             return dataAccessLayer.insertNewContact(newContact);
         }
         catch(JsonParseException e){
-            log.error("Cannot parse JSON '"+json+"'-", e);
+            LOG.error("Cannot parse JSON '" + json + "'-", e);
             return false;
         }
     }
@@ -47,24 +44,30 @@ public class BusinessLayer {
             return dataAccessLayer.editContact(contact);
         }
         catch(JsonParseException e){
-            log.error("Cannot parse JSON '"+json+"'-", e);
+            LOG.error("Cannot parse JSON '" + json + "'-", e);
         }
         catch(IllegalArgumentException e){
-            log.error("Cannot edit contact with ID < 0!", e);
+            LOG.error("Cannot edit contact with ID < 0!", e);
         }
         return false;
     }
 
     public ArrayList<Contact> findCompany(String company) {
-        return dataAccessLayer.findCompany(company);
+        ArrayList<Contact> contacts = dataAccessLayer.findCompany(company);
+        for(Contact contact : contacts){
+            if(!contact.isCompany()){
+                LOG.info("Contact with ID " + contact.getContactID() + " is not a company!");
+                return new ArrayList<>();
+            }
+        }
+        return contacts;
     }
 
     public boolean createInvoice(String json) {
         try {
-            log.debug("Invoice: "+json);
+            LOG.debug("Invoice: " + json);
             Gson gson = new Gson();
             Invoice newInvoice = gson.fromJson(json, Invoice.class);
-            //303
             newInvoice.calculateTotal();
             boolean result = false;
             int invoiceId = dataAccessLayer.createInvoice(newInvoice);
@@ -73,21 +76,21 @@ public class BusinessLayer {
                     for (InvoiceItem invoiceItem : newInvoice.getInvoiceItems()) {
                         result = dataAccessLayer.addInvoiceItem(invoiceItem, invoiceId);
                     }
-                    log.debug("Added "+ newInvoice.getInvoiceItems().size() +" invoice items");
+                    LOG.debug("Added " + newInvoice.getInvoiceItems().size() + " invoice items");
                 }
                 else{
-                    log.info("No invoiceitems to add!");
+                    LOG.info("No invoiceitems to add!");
                     result = true;
                 }
             }
             else throw new IllegalArgumentException();
             return result;
         }
-        catch(JsonParseException e){
-            log.error("Cannot parse JSON '"+json+"'-", e);
+        catch(JsonParseException e) {
+            LOG.error("Cannot parse JSON '" + json + "'-", e);
         }
-        catch (IllegalArgumentException e){
-            log.error("Error while inserting invoice!");
+        catch (IllegalArgumentException e) {
+            LOG.error("Error while inserting invoice!");
         }
         return false;
     }
