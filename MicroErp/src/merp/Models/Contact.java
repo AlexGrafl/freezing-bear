@@ -166,7 +166,7 @@ public class Contact {
         this.invoiceList = invoiceList;
     }
 
-    public boolean isActive() {
+    public boolean getIsActive() {
         return isActive;
     }
 

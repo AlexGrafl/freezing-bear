@@ -1,7 +1,8 @@
 package merp.PresentationModels;
 
 import eu.schudt.javafx.controls.calendar.DatePicker;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +19,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import merp.Models.Contact;
 import merp.Models.Invoice;
+import merp.Models.InvoicePresentationModel;
 import merp.Models.ProxySingleton;
 
 import java.io.IOException;
@@ -48,6 +50,7 @@ public class InvoiceModelController extends AbstractController {
     private ImageView ivValid, ivInvalid;
     private boolean isValid;
     private FoundContactDialogController foundContactDialogController;
+    private InvoicePresentationModel invoicePresentationModel;
 
     @Override
 	public void setModel(Object model) {
@@ -57,6 +60,7 @@ public class InvoiceModelController extends AbstractController {
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 
+        invoicePresentationModel = new InvoicePresentationModel();
 		applyBindings();
 
         Image invalid = new Image(getClass().getResourceAsStream("/invalid.png"));
@@ -93,6 +97,12 @@ public class InvoiceModelController extends AbstractController {
         dueDate.getStylesheets().add("/DatePicker.css");
 
 
+        contactText.textProperty().addListener(new InvalidationListener() {
+            @Override
+            public void invalidated(Observable observable) {
+                setInvalid();
+            }
+        });
         contactText.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent ke) {
@@ -126,11 +136,13 @@ public class InvoiceModelController extends AbstractController {
     private void setValid(){
         isValid = true;
         contactResultLabel.setGraphic(ivValid);
+        btnNext.setDisable(false);
     }
 
     private void setInvalid(){
         isValid = false;
         contactResultLabel.setGraphic(ivInvalid);
+        btnNext.setDisable(true);
     }
 
     private String findCompany(String uid, String name, String firstName, String lastName) throws IOException {
@@ -166,16 +178,16 @@ public class InvoiceModelController extends AbstractController {
         }
         return result;
     }
-    //ToDo: input-error handling through binding
+
     @FXML
     private void onNext() throws IOException, ParseException {
-        //Todo: Properties binden
 
-        if(isValid) {
+        if(isValid && invoicePresentationModel.validateInput()) {
             tmpInvoice.setInvoiceID(-1);
-            tmpInvoice.setDueDate(dueDate.getSelectedDate());
+            /*tmpInvoice.setDueDate(dueDate.getSelectedDate());
             tmpInvoice.setMessage(messageTextArea.getText());
-            tmpInvoice.setComment(commentTextArea.getText());
+            tmpInvoice.setComment(commentTextArea.getText());*/
+            tmpInvoice = invoicePresentationModel.updateModel(tmpInvoice);
 
             //open InvoiceItem Dialog
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("InvoiceItemModel.fxml"));
@@ -224,24 +236,8 @@ public class InvoiceModelController extends AbstractController {
     }
 
 	private void applyBindings() {
-
-        SimpleStringProperty stringProperty = new SimpleStringProperty();
-//        firstName.textProperty().bindBidirectional( stringProperty);
-
-		/*vorname.textProperty().bindBidirectional(presenationModel.vornameProperty());
-		nachname.textProperty().bindBidirectional(presenationModel.nachnameProperty());
-		firmenname.textProperty().bindBidirectional(presenationModel.firmennameProperty());
-		UID.textProperty().bindBidirectional(presenationModel.UIDProperty());
-
-		isFirma.selectedProperty().bind(presenationModel.isFirmaBinding());
-		disableEditPerson.selectedProperty().bind(
-				presenationModel.disableEditPersonBinding());
-		disableEditFirma.selectedProperty().bind(
-				presenationModel.disableEditFirmaBinding());
-		
-		personPane.disableProperty().bind(
-				presenationModel.disableEditPersonBinding());
-		firmaPane.disableProperty().bind(
-				presenationModel.disableEditFirmaBinding()); */
+        dueDate.selectedDateProperty().bindBidirectional(invoicePresentationModel.dueDateProperty());
+        messageTextArea.textProperty().bindBidirectional(invoicePresentationModel.messageProperty());
+        commentTextArea.textProperty().bindBidirectional( invoicePresentationModel.commentProperty());
 	}
 }

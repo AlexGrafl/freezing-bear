@@ -1,6 +1,8 @@
 package merp.PresentationModels;
 
 import eu.schudt.javafx.controls.calendar.DatePicker;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -19,7 +21,9 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.converter.NumberStringConverter;
 import merp.Models.Contact;
+import merp.Models.ContactPresentationModel;
 import merp.Models.Invoice;
 import merp.Models.ProxySingleton;
 
@@ -51,13 +55,15 @@ public class MainDialogController extends AbstractController {
     @FXML
     private TableView tableInvoice;
     @FXML
-    private Button btnShow;
+    private Button btnShow, btnCreateInvoice;
 
     private Integer invoiceContactID;
     private boolean isValid;
     private ImageView ivValid, ivInvalid;
     private ToggleGroup radioGroup;
 
+
+    ContactPresentationModel contactPresentationModel;
     List<Invoice> invoiceList = new LinkedList<>();
 
     public MainDialogController(){
@@ -65,6 +71,7 @@ public class MainDialogController extends AbstractController {
 
     public void initDialog(){
 
+        contactPresentationModel = new ContactPresentationModel();
         applyBindings();
 
         ToggleGroup radioGroup = new ToggleGroup();
@@ -141,6 +148,12 @@ public class MainDialogController extends AbstractController {
         dateEnd.getCalendarView().setShowWeeks(false);
         dateEnd.getStylesheets().add("/DatePicker.css");
 
+        textContactInvoice.textProperty().addListener(new InvalidationListener() {
+            @Override
+            public void invalidated(Observable observable) {
+                setInvalid();
+            }
+        });
         textContactInvoice.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent ke) {
@@ -195,7 +208,19 @@ public class MainDialogController extends AbstractController {
 
     }
     private void applyBindings() {
-        //TODO: disable fields for Company <--> Person
+        textNameCont.textProperty().bindBidirectional(contactPresentationModel.nameProperty());
+        textUIDCont.textProperty().bindBidirectional(contactPresentationModel.uidProperty(), new NumberStringConverter());
+
+        textFirstNameCont.textProperty().bindBidirectional( contactPresentationModel.firstNameProperty());
+        textSurnameCont.textProperty().bindBidirectional( contactPresentationModel.lastNameProperty());
+
+
+        textNameCont.disableProperty().bind(contactPresentationModel.disableEditCompanyBinding());
+        textUIDCont.disableProperty().bind(contactPresentationModel.disableEditCompanyBinding());
+        textFirstNameCont.disableProperty().bind(contactPresentationModel.disableEditPersonBinding());
+        textSurnameCont.disableProperty().bind(contactPresentationModel.disableEditPersonBinding());
+
+
     }
 
     /*** Contact ***/
@@ -310,11 +335,15 @@ public class MainDialogController extends AbstractController {
     private void setValid(){
         isValid = true;
         labelContactCheck.setGraphic(ivValid);
+        btnShow.setDisable(false);
+        btnCreateInvoice.setDisable(false);
     }
 
     private void setInvalid(){
         isValid = false;
         labelContactCheck.setGraphic(ivInvalid);
+        btnShow.setDisable(true);
+        btnCreateInvoice.setDisable(true);
     }
     private String findCompany(String uid, String name, String firstName, String lastName) throws IOException {
         String result = "";

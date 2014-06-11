@@ -20,6 +20,7 @@
         <TextField fx:id="textQuantity" layoutX="147.0" layoutY="37.0" prefWidth="200.0" />
         <TextField fx:id="textPriceUnit" layoutX="147.0" layoutY="59.0" prefWidth="200.0" />
         <TextField fx:id="textTax" layoutX="147.0" layoutY="82.0" prefWidth="200.0" />
+        <Label fx:id="labelMessage" layoutX="147.0" layoutY="127.0" prefWidth="-1.0" text="" />
         <Button fx:id="btnAdd" layoutX="305.0" layoutY="122.0" mnemonicParsing="false" onAction="#onAdd" text="Add" />
         <Button fx:id="btnDelete" layoutX="22.0" layoutY="160.0" mnemonicParsing="false" onAction="#onDelete" text="Delete" />
       </children>

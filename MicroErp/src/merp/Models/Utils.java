@@ -1,4 +1,4 @@
-package merp.DummyStuff;
+package merp.Models;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

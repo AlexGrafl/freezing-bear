@@ -1,20 +1,27 @@
 package merp.PresentationModels;
 
 import eu.schudt.javafx.controls.calendar.DatePicker;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.converter.NumberStringConverter;
 import merp.Models.Contact;
+import merp.Models.ContactPresentationModel;
 import merp.Models.ProxySingleton;
 
 import java.io.IOException;
@@ -27,7 +34,11 @@ import java.util.ResourceBundle;
 public class ContactModelController extends AbstractController {
     /* Control */
     @FXML
-    Button btnSave, btnCancel;
+    private Button btnSave, btnCancel;
+
+    /* Panes */
+    @FXML
+    private Pane paneCompany, panePerson, paneMisc, paneFooter;
     /* Textfields */
     @FXML
     private TextField uid;
@@ -57,6 +68,7 @@ public class ContactModelController extends AbstractController {
     private ImageView ivValid, ivInvalid;
     private boolean isValid;
     private Contact resultContact;
+    ContactPresentationModel contactPresentationModel;
 
 	@Override
 	public void setModel(Object model) {
@@ -65,9 +77,6 @@ public class ContactModelController extends AbstractController {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-
-		applyBindings();
-
         Image invalid = new Image(getClass().getResourceAsStream("/invalid.png"));
         Image valid = new Image(getClass().getResourceAsStream("/valid.png"));
 
@@ -87,6 +96,16 @@ public class ContactModelController extends AbstractController {
 
         setValid();
 
+        contactPresentationModel = new ContactPresentationModel();
+
+        applyBindings();
+
+        companyText.textProperty().addListener(new InvalidationListener() {
+            @Override
+            public void invalidated(Observable observable) {
+                setInvalid();
+            }
+        });
         companyText.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent ke) {
@@ -139,16 +158,19 @@ public class ContactModelController extends AbstractController {
             this.resultContact.setContactID(-1);
         }
         this.resultContact = result;
+        contactPresentationModel.setModel(this.resultContact);
     }
 
     private void setValid(){
         isValid = true;
         companyResultLabel.setGraphic(ivValid);
+        btnSave.setDisable(false);
     }
 
     private void setInvalid(){
         isValid = false;
         companyResultLabel.setGraphic(ivInvalid);
+        btnSave.setDisable(true);
     }
     private String findCompany(String uid, String name, String firstName, String lastName) throws IOException {
         String result = "";
@@ -204,8 +226,8 @@ public class ContactModelController extends AbstractController {
     //ToDo: input-error handling
     @FXML
     private void onSave() throws IOException, ParseException {
-        //Todo: Properties binden
-        resultContact.setUid(uid.getText().equals("") ? null : Integer.parseInt(uid.getText()));
+
+        /*resultContact.setUid(uid.getText().equals("") ? null : Integer.parseInt(uid.getText()));
         resultContact.setName(name.getText().equals("") ? null : name.getText());
         resultContact.setTitle(title.getText().equals("") ? null : title.getText());
         resultContact.setFirstName(firstName.getText().equals("") ? null : firstName.getText());
@@ -214,7 +236,18 @@ public class ContactModelController extends AbstractController {
         resultContact.setSuffix(suffix.getText().equals("") ? null : suffix.getText());
         resultContact.setAddress(address.getText().equals("") ? null : address.getText());
         resultContact.setInvoiceAddress(invoiceAddress.getText().equals("") ? null : invoiceAddress.getText());
-        resultContact.setShippingAddress(shippingAddress.getText().equals("") ? null : shippingAddress.getText());
+        resultContact.setShippingAddress(shippingAddress.getText().equals("") ? null : shippingAddress.getText());*/
+
+        messageLabel.setText("");
+        messageLabel.setTextFill(Color.BLACK);
+
+        if(!isValid || !contactPresentationModel.validateInput()) {
+            messageLabel.setText("Please check your input!");
+            messageLabel.setTextFill(Color.RED);
+            return;
+        }
+
+        resultContact = contactPresentationModel.updateModel(resultContact);
 
         if(this.resultContact.getContactID() == -1){
            ProxySingleton.getInstance().createContact(resultContact);
@@ -231,25 +264,21 @@ public class ContactModelController extends AbstractController {
     }
 
 	private void applyBindings() {
+        name.textProperty().bindBidirectional(contactPresentationModel.nameProperty());
+        uid.textProperty().bindBidirectional(contactPresentationModel.uidProperty(), new NumberStringConverter());
 
-        SimpleStringProperty stringProperty = new SimpleStringProperty();
-        // Todo: disable fields (e.g. Name for Person and Firstname for Firm)
-        //firstName.textProperty().bindBidirectional( stringProperty);
+        title.textProperty().bindBidirectional(contactPresentationModel.titleProperty());
+        firstName.textProperty().bindBidirectional( contactPresentationModel.firstNameProperty());
+        lastName.textProperty().bindBidirectional( contactPresentationModel.lastNameProperty());
+        suffix.textProperty().bindBidirectional(contactPresentationModel.suffixProperty());
+        birthDate.selectedDateProperty().bindBidirectional(contactPresentationModel.birthDateProperty());
 
-		/*vorname.textProperty().bindBidirectional(presenationModel.vornameProperty());
-		nachname.textProperty().bindBidirectional(presenationModel.nachnameProperty());
-		firmenname.textProperty().bindBidirectional(presenationModel.firmennameProperty());
-		UID.textProperty().bindBidirectional(presenationModel.UIDProperty());
+        address.textProperty().bindBidirectional(contactPresentationModel.addressProperty());
+        invoiceAddress.textProperty().bindBidirectional(contactPresentationModel.invoiceAddressProperty());
+        shippingAddress.textProperty().bindBidirectional(contactPresentationModel.shippingAddressProperty());
 
-		isFirma.selectedProperty().bind(presenationModel.isFirmaBinding());
-		disableEditPerson.selectedProperty().bind(
-				presenationModel.disableEditPersonBinding());
-		disableEditFirma.selectedProperty().bind(
-				presenationModel.disableEditFirmaBinding());
-		
-		personPane.disableProperty().bind(
-				presenationModel.disableEditPersonBinding());
-		firmaPane.disableProperty().bind(
-				presenationModel.disableEditFirmaBinding()); */
+        paneCompany.disableProperty().bind(contactPresentationModel.disableEditCompanyBinding());
+        panePerson.disableProperty().bind(contactPresentationModel.disableEditPersonBinding());
+
 	}
 }
