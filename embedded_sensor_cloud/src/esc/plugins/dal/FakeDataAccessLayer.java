@@ -49,28 +49,19 @@ public class FakeDataAccessLayer implements IDataAccessLayer {
     }
 
     @Override
-    public ArrayList<Contact> findCompany(String company) {
+    public Contact findCompany(String company) {
         Gson gson = new Gson();
-        Type arrayType = new TypeToken<ArrayList<Contact>>(){}.getType();
         if(company.equals("woo")){
-            return gson.fromJson("[{\"contactID\":2,\"name\":\"Grafl GmbH\",\"uid\":1,\"address\":\"Bergengasse 6/5/" +
+            return gson.fromJson("{\"contactID\":2,\"name\":\"Grafl GmbH\",\"uid\":1,\"address\":\"Bergengasse 6/5/" +
                     "14 1220 Wien\",\"invoiceAddress\":\"Bergengasse 6/5/14 1220 Wien\",\"shippingAddress\":\"Bergen" +
-                    "gasse 6/5/14 1220 Wien\",\"isActive\":false}, {\"contactID\":2,\"name\":\"Grafl GmbH\",\"uid\":" +
-                    "1,\"address\":\"Bergengasse 6/5/14 1220 Wien\",\"invoiceAddress\":\"Bergengasse 6/5/14 1220 Wie" +
-                    "n\",\"shippingAddress\":\"Bergengasse 6/5/14 1220 Wien\",\"isActive\":false}]", arrayType);
+                    "gasse 6/5/14 1220 Wien\",\"isActive\":false}", Contact.class);
         }
         if(company.equals("Grafl")){
-            return gson.fromJson("[{\"contactID\":2,\"name\":\"Grafl GmbH\",\"uid\":1,\"address\":\"Bergengasse 6/5/" +
+            return gson.fromJson("{\"contactID\":2,\"name\":\"Grafl GmbH\",\"uid\":1,\"address\":\"Bergengasse 6/5/" +
                     "14 1220 Wien\",\"invoiceAddress\":\"Bergengasse 6/5/14 1220 Wien\",\"shippingAddress\":\"Bergen" +
-                    "gasse 6/5/14 1220 Wien\",\"isActive\":false}, {\"contactID\":2,\"name\":\"Grafl GmbH\",\"uid\":" +
-                    "1,\"address\":\"Bergengasse 6/5/14 1220 Wien\",\"invoiceAddress\":\"Bergengasse 6/5/14 1220 Wie" +
-                    "n\",\"shippingAddress\":\"Bergengasse 6/5/14 1220 Wien\",\"isActive\":false}, {\"contactID\":3," +
-                    "\"name\":\"Alexander Grafl\",\"title\":\"Dr.\",\"firstName\":\"Alexander\",\"lastName\":\"Grafl" +
-                    "\",\"suffix\":\"Msc\",\"birthDate\":\"Mar 28, 2014 12:00:00 AM\",\"address\":\"Bergengasse 6/5/" +
-                    "14 1220 Wien\",\"invoiceAddress\":\"Bergengasse 6/5/14 1220 Wien\",\"shippingAddress\":\"Bergen" +
-                    "gasse 6/5/14 1220 Wien\",\"isActive\":false}]", arrayType);
+                    "gasse 6/5/14 1220 Wien\",\"isActive\":false}", Contact.class);
         }
-        return new ArrayList<>();
+        return new Contact();
     }
 
     @Override

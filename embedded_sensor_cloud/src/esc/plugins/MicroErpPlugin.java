@@ -51,9 +51,8 @@ public class MicroErpPlugin implements IPlugin {
         if(url.getFullPath().contains("findCompany")){
 
             Gson gson = new Gson();
-            List<Contact> contactList = businessLayer.findCompany(url.getParameterAsString("company"));
-            Type arrayType = new TypeToken<ArrayList<Contact>>(){}.getType();
-            String json = gson.toJson(contactList, arrayType);
+            Contact company = businessLayer.findCompany(url.getParameterAsString("company"));
+            String json = gson.toJson(company, Contact.class);
             sendResponse(json, outputStream);
         }
 

@@ -17,7 +17,7 @@ public interface IDataAccessLayer {
 
     boolean editContact(Contact contact);
 
-    ArrayList<Contact> findCompany(String company);
+    Contact findCompany(String company);
 
     int createInvoice(Invoice newInvoice);
 

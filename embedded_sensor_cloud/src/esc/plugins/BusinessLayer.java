@@ -52,15 +52,10 @@ public class BusinessLayer {
         return false;
     }
 
-    public ArrayList<Contact> findCompany(String company) {
-        ArrayList<Contact> contacts = dataAccessLayer.findCompany(company);
-        for(Contact contact : contacts){
-            if(!contact.isCompany()){
-                LOG.info("Contact with ID " + contact.getContactID() + " is not a company!");
-                return new ArrayList<>();
-            }
-        }
-        return contacts;
+    public Contact findCompany(String company) {
+        Contact companyContact = dataAccessLayer.findCompany(company);
+        if(companyContact != null && companyContact.isCompany()) return companyContact;
+        else return null;
     }
 
     public boolean createInvoice(String json) {

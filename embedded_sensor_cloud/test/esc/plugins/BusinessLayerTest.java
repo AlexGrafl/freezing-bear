@@ -136,22 +136,22 @@ public class BusinessLayerTest {
     @Test
     public void findCompanySuccess(){
         String company = "woo";
-        List<Contact> contacts = businessLayer.findCompany(company);
-        assertEquals(2, contacts.size());
+        Contact contact = businessLayer.findCompany(company);
+        assertTrue(contact.isCompany());
     }
 
     @Test
     public void findCompanyFails(){
         String company = "Grafl";
-        List<Contact> contacts = businessLayer.findCompany(company);
-        assertEquals(new ArrayList<Contact>(), contacts);
+        Contact contact = businessLayer.findCompany(company);
+        assertTrue(contact.isCompany());
     }
 
     @Test
     public void findCompanyEmpty(){
         String company = "";
-        List<Contact> contacts = businessLayer.findCompany(company);
-        assertEquals(new ArrayList<Contact>(), contacts);
+        Contact contact = businessLayer.findCompany(company);
+        assertNull(contact);
     }
 
     @Test

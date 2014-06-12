@@ -85,7 +85,7 @@ public class DataAccessLayer implements IDataAccessLayer{
         try{
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, newContact.getName());
-            if(newContact.getUid() != null) {
+            if(newContact.getUid() != null && newContact.getUid() != 0) {
                 preparedStatement.setInt(2, newContact.getUid());
             }
             else{
@@ -167,26 +167,24 @@ public class DataAccessLayer implements IDataAccessLayer{
     }
 
     @Override
-    public ArrayList<Contact> findCompany(String company) {
-        sql = "SELECT * FROM contact WHERE name LIKE ? AND isActive = 1;";
+    public Contact findCompany(String company) {
+        sql = "SELECT * FROM contact WHERE contactID  = ? AND isActive = 1;";
         try {
             resultSet = null;
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, "%" + company + "%");
+            preparedStatement.setInt(1, Integer.parseInt(company));
 
             resultSet = preparedStatement.executeQuery();
             if (resultSet != null) {
                 ResultSetMapper<Contact> resultSetMapper = new ResultSetMapper<>();
-                ArrayList<Contact> contactList = (ArrayList<Contact>)
-                        resultSetMapper.mapToList(resultSet, Contact.class);
-                log.info("Found " + contactList.size() + " companies for name '" + company + "'.");
-                return  contactList;
+                Contact companyContact = resultSetMapper.mapToSingle(resultSet, Contact.class);
+                return  companyContact;
             }
 
         } catch (SQLException | ResultSetMapper.ResultSetMapperException e) {
             log.error(e);
         }
-        return new ArrayList<>();
+        return null;
     }
 
     @Override
