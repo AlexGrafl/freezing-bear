@@ -9,4 +9,15 @@
     <string name="achievement_first_white_blood">CgkIm4OC460SEAIQBQ</string>
     <string name="achievement_keep_up_the_good_work">CgkIm4OC460SEAIQBg</string>
     <string name="achievement_master_mind">CgkIm4OC460SEAIQBw</string>
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="play">Play</string>
+    <string name="leaderboard">Leaderboard</string>
+    <string name="achievements">Achievements</string>
+    <string name="options">Options</string>
+
 </resources>

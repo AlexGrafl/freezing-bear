@@ -11,6 +11,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mdp.othello.OthelloGame;
 import com.mdp.othello.game.Board;
+import com.mdp.othello.game.CheckTurn;
+import com.mdp.othello.game.PerformTurn;
 import com.mdp.othello.utils.ActionResolver;
 import com.mdp.othello.utils.DefaultInputListener;
 
@@ -21,7 +23,7 @@ public class GameScreen extends AbstractScreen{
     public static int OFFSET;
 
     private ActionResolver actionResolver;
-    private Board.BoardState myColor = Board.BoardState.WHITE;
+    private Board.BoardState myColor = Board.BoardState.WHITE, hisColor = Board.BoardState.BLACK;
     private String gameData;
     private boolean myTurn = false;
     private Board gameBoard;
@@ -40,22 +42,23 @@ public class GameScreen extends AbstractScreen{
             myTurn = true;
             myColor = Board.BoardState.BLACK;
         }
+        if(myColor == Board.BoardState.BLACK) hisColor = Board.BoardState.WHITE;
         gameData = data;
         OFFSET = (int) (getWidth() - (320 * UNITSCALE)) / 2;
-        gameBoard = new Board(new TmxMapLoader().load("map/board.tmx"), myColor);
+        gameBoard = new Board(new TmxMapLoader().load("map/board.tmx"));
         renderer = new OrthogonalTiledMapRenderer(gameBoard.getMap(), UNITSCALE);
         endTurn = new TextButton("End turn", getSkin());
         endTurn.addListener(new DefaultInputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 invalidTurn.setText("");
-                if(gameBoard.checkTurn()) {
-                    gameBoard.performTurn();
+                if(gameBoard.checkTurn(myColor)) {
+                    gameBoard.performTurn(myColor);
                     gameData = gameBoard.getLastPiece();
                     myTurn = false;
                     endTurn.setDisabled(true);
                     updateLabels();
-             //       actionResolver.takeTurn(gameData);
+                    actionResolver.takeTurn(gameData);
                 }else {
                     if(myTurn) {
                         gameBoard.unsetLastPiece();
@@ -97,12 +100,13 @@ public class GameScreen extends AbstractScreen{
         camera.update();
         Gdx.gl.glClearColor(0.55f, 0.55f, 0.55f, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        Gdx.gl.glUseProgram(0);
         camera.update();
         renderer.setView(camera);
         renderer.render();
         getBatch().begin();
         gameBoard.draw(getBatch());
-        if(myTurn){
+        if(isMyTurn()){
             //do stuff on my turn
             if(Gdx.input.isTouched()){
                 if(good) gameBoard.unsetLastPiece();
@@ -130,6 +134,10 @@ public class GameScreen extends AbstractScreen{
 
     public void setGameData(String gameData) {
         this.gameData = gameData;
+        gameBoard.setLastPiece(gameData);
+        gameBoard.checkTurn(hisColor);
+        gameBoard.performTurn(hisColor);
+        updateLabels();
     }
 
     public void updateLabels(){

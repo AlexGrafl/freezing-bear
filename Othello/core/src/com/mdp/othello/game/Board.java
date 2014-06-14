@@ -21,14 +21,12 @@ public class Board{
     private BoardState[][] boardData = new BoardState[8][8];
     private int lastX, lastY;
     private PerformTurn performTurn;
-    private BoardState myColor;
     private boolean[] validTurns;
     public static int TOTAL_WHITE = 0, TOTAL_BLACK = 0;
 
-    public Board(TiledMap map, BoardState myColor){
+    public Board(TiledMap map){
         this.map = map;
-        this.myColor = myColor;
-        this.performTurn = new PerformTurn(myColor);
+        this.performTurn = new PerformTurn();
         this.whitePiece = new Texture(Gdx.files.internal("map/pieceWhite_single10.png"));
         this.blackPiece = new Texture(Gdx.files.internal("map/pieceBlack_single10.png"));
         for(int i = 0; i < 8; i++) {
@@ -70,7 +68,7 @@ public class Board{
         return false;
     }
 
-    public boolean checkTurn(){
+    public boolean checkTurn(BoardState myColor){
         CheckTurn checkTurn = new CheckTurn(this.boardData, myColor);
         validTurns = checkTurn.check(lastX, lastY);
         for(boolean value : validTurns){
@@ -80,8 +78,8 @@ public class Board{
     }
 
 
-    public void performTurn(){
-        this.boardData = performTurn.perform(this.boardData, lastX, lastY, validTurns);
+    public void performTurn(BoardState myColor){
+        this.boardData = performTurn.perform(this.boardData, lastX, lastY, validTurns, myColor);
     }
 
     public void unsetLastPiece(){
@@ -89,11 +87,11 @@ public class Board{
     }
 
     public String getLastPiece(){
-        return lastX+"$"+lastY;
+        return lastX+"-"+lastY;
     }
 
     public void setLastPiece(String data){
-        String[] strings = data.split("$");
+        String[] strings = data.split("-");
         lastX = Integer.parseInt(strings[0]);
         lastY = Integer.parseInt(strings[1]);
     }

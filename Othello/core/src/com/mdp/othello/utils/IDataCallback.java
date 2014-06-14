@@ -5,8 +5,7 @@ package com.mdp.othello.utils;
  */
 public interface IDataCallback {
 
-    public void proceedToMenuScreen();
-    public void initializeGame(String data);
+    public void initializeGame();
     public void processGameData(String data);
     public void showIdleScreen();
 

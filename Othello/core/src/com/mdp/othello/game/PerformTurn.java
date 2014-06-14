@@ -7,13 +7,10 @@ public class PerformTurn {
     private BoardState yourColor;
     private BoardState[][] playBoard;
 
-    public PerformTurn(BoardState yourcolor) {
-        this.yourColor = yourcolor;
-    }
-
-    public BoardState[][] perform(BoardState[][] playboard, int posX, int posY, boolean[] validTurns){
+    public BoardState[][] perform(BoardState[][] playboard, int posX, int posY, boolean[] validTurns,
+                                  BoardState yourColor){
         this.playBoard = playboard;
-
+        this.yourColor = yourColor;
         if(validTurns[0]) right(posX + 1, posY);
         if(validTurns[1]) left(posX - 1, posY);
         if(validTurns[2]) up(posX, posY + 1);

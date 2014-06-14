@@ -16,6 +16,7 @@ import com.google.android.gms.games.multiplayer.realtime.RoomConfig;
 import com.google.android.gms.games.multiplayer.turnbased.OnTurnBasedMatchUpdateReceivedListener;
 import com.google.android.gms.games.multiplayer.turnbased.TurnBasedMatch;
 import com.google.android.gms.games.multiplayer.turnbased.TurnBasedMatchConfig;
+import com.google.android.gms.games.multiplayer.turnbased.TurnBasedMultiplayer;
 import com.google.example.games.basegameutils.GameHelper;
 import com.mdp.othello.OthelloGame;
 import com.mdp.othello.utils.ActionResolver;
@@ -32,6 +33,8 @@ public class AndroidLauncher extends AndroidApplication implements OnInvitationR
     private GameHelper gameHelper;
     private IDataCallback dataCallback;
     private TurnBasedMatch turnBasedMatch = null;
+    private MatchInitiatedCallback matchInitiatedCallback;
+    private UpdateMatchCallback updateMatchCallback;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -39,6 +42,7 @@ public class AndroidLauncher extends AndroidApplication implements OnInvitationR
         AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
         config.useCompass = false;
         config.useAccelerometer = false;
+        config.useGLSurfaceView20API18 = true;
         int error = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this.getContext());
         if(error != ConnectionResult.SUCCESS ) {
             Dialog dialog = GooglePlayServicesUtil.getErrorDialog(error, this, 11110);
@@ -47,10 +51,9 @@ public class AndroidLauncher extends AndroidApplication implements OnInvitationR
             initialize(new OthelloGame(this), config);
         }
         gameHelper = new GameHelper(this, GameHelper.CLIENT_GAMES);
-        gameHelper.setConnectOnStart(false);
+        gameHelper.setConnectOnStart(true);
         gameHelper.setShowErrorDialogs(true);
         gameHelper.setup(this);
-
     }
 
     @Override
@@ -64,7 +67,6 @@ public class AndroidLauncher extends AndroidApplication implements OnInvitationR
         log(OthelloGame.LOG, "Sign in succeeded");
         this.turnBasedMatch = gameHelper.getTurnBasedMatch();
         Games.Invitations.registerInvitationListener(gameHelper.getApiClient(), this);
-        dataCallback.proceedToMenuScreen();
     }
 
     @Override
@@ -101,8 +103,8 @@ public class AndroidLauncher extends AndroidApplication implements OnInvitationR
     @Override
     public void takeTurn(String data) {
         Games.TurnBasedMultiplayer.takeTurn(gameHelper.getApiClient(),
-                gameHelper.getTurnBasedMatch().getMatchId(), data.getBytes(Charset.forName("UTF-16")),
-                getNextParticipantId()).setResultCallback(new UpdateMatchCallback(dataCallback));
+                getTurnBasedMatch().getMatchId(), data.getBytes(Charset.forName("UTF-16")),
+                getNextParticipantId()).setResultCallback(updateMatchCallback);
     }
 
     @Override
@@ -134,6 +136,8 @@ public class AndroidLauncher extends AndroidApplication implements OnInvitationR
     @Override
     public void addCallback(IDataCallback dataCallback) {
         this.dataCallback = dataCallback;
+        updateMatchCallback = new UpdateMatchCallback(dataCallback);
+        matchInitiatedCallback = new MatchInitiatedCallback(dataCallback);
     }
 
     @Override
@@ -184,7 +188,7 @@ public class AndroidLauncher extends AndroidApplication implements OnInvitationR
             // kick the match off
             Games.TurnBasedMultiplayer
                     .createMatch(gameHelper.getApiClient(), tbmc)
-                    .setResultCallback(new MatchInitiatedCallback(dataCallback));
+                    .setResultCallback(matchInitiatedCallback);
         }
 
         if(request == RC_INVITATION_ACCEPTED){
@@ -197,7 +201,8 @@ public class AndroidLauncher extends AndroidApplication implements OnInvitationR
 
     @Override
     public void onInvitationReceived(Invitation invitation) {
-        startActivityForResult(Games.Invitations.getInvitationInboxIntent(gameHelper.getApiClient()), RC_INVITATION_ACCEPTED);
+        startActivityForResult(
+                Games.Invitations.getInvitationInboxIntent(gameHelper.getApiClient()), RC_INVITATION_ACCEPTED);
     }
 
     @Override
@@ -220,12 +225,29 @@ public class AndroidLauncher extends AndroidApplication implements OnInvitationR
 
     }
 
+
+    private TurnBasedMatch getTurnBasedMatch(){
+        if(turnBasedMatch == null){
+            turnBasedMatch = gameHelper.getTurnBasedMatch();
+        }
+        if(turnBasedMatch == null){
+            turnBasedMatch = matchInitiatedCallback.getTurnBasedMatch();
+        }
+        if(turnBasedMatch == null){
+            turnBasedMatch = updateMatchCallback.getTurnBasedMatch();
+        }
+        if(turnBasedMatch == null){
+           // turnBasedMatch =
+        }
+        return turnBasedMatch;
+    }
+
     public String getNextParticipantId() {
 
         String playerId = Games.Players.getCurrentPlayerId(gameHelper.getApiClient());
-        String myParticipantId = turnBasedMatch.getParticipantId(playerId);
+        String myParticipantId = getTurnBasedMatch().getParticipantId(playerId);
 
-        ArrayList<String> participantIds = turnBasedMatch.getParticipantIds();
+        ArrayList<String> participantIds = getTurnBasedMatch().getParticipantIds();
 
         int desiredIndex = -1;
 

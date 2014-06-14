@@ -9,30 +9,32 @@ import com.mdp.othello.screens.GameScreen;
 public class DataCallback implements IDataCallback {
 
     private OthelloGame game;
-    private ActionResolver actionResolver;
+    private boolean isGameSetUp = false;
+    private GameScreen gameScreen;
 
-    public DataCallback(OthelloGame game, ActionResolver actionResolver) {
+    public DataCallback(OthelloGame game) {
         this.game = game;
-        this.actionResolver = actionResolver;
     }
 
     @Override
-    public void proceedToMenuScreen(){
-        game.proceedToMenuScreen();
-    }
-
-    @Override
-    public void initializeGame(String data) {
-        game.setScreen(new GameScreen(game, actionResolver, data));
+    public void initializeGame() {
+        isGameSetUp = true;
+        gameScreen = game.proceedToGame(null);
     }
 
     @Override
     public void processGameData(String data) {
-        ((GameScreen) game.getScreen()).setGameData(data);
+        if(!isGameSetUp){
+            isGameSetUp = true;
+            gameScreen = game.proceedToGame(data);
+        }
+        gameScreen.setGameData(data);
+        gameScreen.setMyTurn(true);
+
     }
 
     @Override
     public void showIdleScreen() {
-        ((GameScreen) game.getScreen()).setMyTurn(false);
+        gameScreen.setMyTurn(false);
     }
 }

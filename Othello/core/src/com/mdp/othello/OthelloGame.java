@@ -20,7 +20,6 @@ public class OthelloGame extends Game {
 
     public OthelloGame(ActionResolver actionResolver){
         this.actionResolver = actionResolver;
-        this.actionResolver.addCallback(new DataCallback(this, this.actionResolver));
     }
 
     @Override
@@ -31,13 +30,13 @@ public class OthelloGame extends Game {
         preferencesManager = new PreferencesManager();
         if(DEV_MODE) setScreen(new GameScreen(this, actionResolver, null));
         else {
-            proceedToMenuScreen();
+            setScreen(new MenuScreen(this, actionResolver));
         }
     }
 
-    public void proceedToMenuScreen(){
-            setScreen(new MenuScreen(this, actionResolver));
-    }
+ //   public void proceedToMenuScreen(){
+
+ //   }
 
     @Override
     public void render(){
@@ -73,6 +72,7 @@ public class OthelloGame extends Game {
     @Override
     public void resize(int width, int height){
         super.resize(width, height);
+        this.actionResolver.addCallback(new DataCallback(this));
         Gdx.app.log(OthelloGame.LOG, "Resizing game to: " + width + " x " + height);
     }
 
@@ -82,5 +82,11 @@ public class OthelloGame extends Game {
 
     public SoundManager getSoundManager(){
         return soundManager;
+    }
+
+    public GameScreen proceedToGame(String data) {
+        GameScreen gameScreen = new GameScreen(this, actionResolver, data);
+        setScreen(gameScreen);
+        return gameScreen;
     }
 }

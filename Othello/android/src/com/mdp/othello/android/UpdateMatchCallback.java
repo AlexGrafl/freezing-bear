@@ -10,6 +10,7 @@ import com.mdp.othello.utils.IDataCallback;
  */
 public class UpdateMatchCallback implements ResultCallback<TurnBasedMultiplayer.UpdateMatchResult> {
     private IDataCallback dataCallback;
+    private TurnBasedMatch turnBasedMatch;
 
     public UpdateMatchCallback(IDataCallback dataCallback) {
         this.dataCallback = dataCallback;
@@ -21,12 +22,13 @@ public class UpdateMatchCallback implements ResultCallback<TurnBasedMultiplayer.
             return;
         }
 
-        TurnBasedMatch match = updateMatchResult.getMatch();
-        if (match.getData() != null) {
+        turnBasedMatch = updateMatchResult.getMatch();
+        if (turnBasedMatch.getTurnStatus() == TurnBasedMatch.MATCH_TURN_STATUS_THEIR_TURN) {
             dataCallback.showIdleScreen();
             return;
         }
-        dataCallback.initializeGame(new String(match.getData()));
-        dataCallback.processGameData(new String(match.getData()));
+        dataCallback.processGameData(new String(turnBasedMatch.getData()));
     }
+
+    public TurnBasedMatch getTurnBasedMatch(){return turnBasedMatch;}
 }

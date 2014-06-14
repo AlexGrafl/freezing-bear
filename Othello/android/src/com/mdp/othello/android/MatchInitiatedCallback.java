@@ -11,7 +11,7 @@ import com.mdp.othello.utils.IDataCallback;
  */
 public class MatchInitiatedCallback implements ResultCallback<InitiateMatchResult> {
     private IDataCallback dataCallback;
-
+    private TurnBasedMatch turnBasedMatch;
     public MatchInitiatedCallback(IDataCallback dataCallback) {
         this.dataCallback = dataCallback;
     }
@@ -22,12 +22,17 @@ public class MatchInitiatedCallback implements ResultCallback<InitiateMatchResul
             return;
         }
 
-        TurnBasedMatch match = initiateMatchResult.getMatch();
-        if (match.getData() != null) {
-            dataCallback.processGameData(new String(match.getData()));
+        turnBasedMatch = initiateMatchResult.getMatch();
+        byte[] data = turnBasedMatch.getData();
+        if (data == null) {
+
+            dataCallback.initializeGame();
             return;
         }
-        dataCallback.initializeGame(new String(match.getData()));
-        dataCallback.processGameData(new String(match.getData()));
+        dataCallback.processGameData(new String(data));
+    }
+
+    public TurnBasedMatch getTurnBasedMatch(){
+       return turnBasedMatch;
     }
 }
