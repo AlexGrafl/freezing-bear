@@ -1,6 +1,7 @@
 package com.cge.lab;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,52 +11,64 @@ import java.util.ArrayList;
  */
 public class LoadMaze {
 
-    public enum  FieldType{
+    public enum FieldType {
         EMPTY,
         CRATE,
         START
     }
-    public ArrayList<ArrayList<FieldType>> map = new ArrayList<ArrayList<FieldType>>();
+
+
+    private ArrayList<ArrayList<FieldType>> map = new ArrayList<ArrayList<FieldType>>();
+
+
     private int startX, startY;
     private String debugFile = "res/testMaze1.txt";
 
 
-
-    public LoadMaze(String fileName) throws IOException {
+    public LoadMaze(String fileName) {
         this.load(fileName);
         this.findStart();
     }
 
-    private void load(String fileName) throws IOException {
-        FileReader inputFile = new FileReader(fileName);
-        BufferedReader bufferReader = new BufferedReader(inputFile);
-        ArrayList<FieldType> row;
+    private void load(String fileName) {
+        FileReader inputFile = null;
+        try {
+            inputFile = new FileReader(fileName);
 
-        String line;
-        int countX = 0;
+            BufferedReader bufferReader = new BufferedReader(inputFile);
+            ArrayList<FieldType> row;
+
+            String line;
+            int countX = 0;
 
 
-        // Read file line by line and print on the console
-        while ((line = bufferReader.readLine()) != null)   {
-            row  = new ArrayList<FieldType>();
-            char[] charLine = line.toCharArray();
-            for(char c : charLine){
-                if (c == '#') row.add(FieldType.CRATE);
-                if (c == ' ') row.add(FieldType.EMPTY);
+            // Read file line by line and print on the console
+            while ((line = bufferReader.readLine()) != null) {
+                row = new ArrayList<FieldType>();
+                char[] charLine = line.toCharArray();
+                for (char c : charLine) {
+                    if (c == '#') row.add(FieldType.CRATE);
+                    if (c == ' ') row.add(FieldType.EMPTY);
+                }
+                if (!row.isEmpty()) map.add(row);
             }
-            if(! row.isEmpty() )map.add(row);
+            //Close the buffer reader
+            bufferReader.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        //Close the buffer reader
-        bufferReader.close();
     }
+
     private void findStart() {
         int count = 0;
         //first row
-       for (FieldType tmp : this.map.get(0)) {
+        for (FieldType tmp : this.map.get(0)) {
             if (tmp == FieldType.EMPTY) {
                 this.startX = count;
                 this.startY = 0;
-                this.map.get(startY).set(startX,FieldType.START);
+                this.map.get(startY).set(startX, FieldType.START);
                 return;
             }
             count++;
@@ -67,7 +80,7 @@ public class LoadMaze {
             if (tmp == FieldType.EMPTY) {
                 this.startX = count;
                 this.startY = this.map.size() - 1;
-                this.map.get(startY).set(startX,FieldType.START);
+                this.map.get(startY).set(startX, FieldType.START);
                 return;
             }
             count++;
@@ -78,7 +91,7 @@ public class LoadMaze {
             if (this.map.get(y).get(0) == FieldType.EMPTY) {
                 this.startX = 0;
                 this.startY = y;
-                this.map.get(startY).set(startX,FieldType.START);
+                this.map.get(startY).set(startX, FieldType.START);
                 return;
             }
         }
@@ -89,12 +102,22 @@ public class LoadMaze {
             if (this.map.get(y).get(this.map.get(y).size() - 1) == FieldType.EMPTY) {
                 this.startX = this.map.get(y).size() - 1;
                 this.startY = y;
-                this.map.get(startY).set(startX,FieldType.START);
+                this.map.get(startY).set(startX, FieldType.START);
                 return;
             }
         }
 
     }
 
+    public ArrayList<ArrayList<FieldType>> getMap() {
+        return map;
+    }
 
+    public int getStartX() {
+        return startX;
+    }
+
+    public int getStartY() {
+        return startY;
+    }
 }

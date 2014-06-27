@@ -45,7 +45,8 @@ public class Main {
                         }.start();
                     }
                 });
-                LabyrinthEventListener labyrinthEventListener = new LabyrinthEventListener();
+                LabyrinthEventListener labyrinthEventListener = new LabyrinthEventListener(
+                        new LoadMaze("res/testMaze1.txt"));
                 window.addGLEventListener(labyrinthEventListener);
                 window.addKeyListener(labyrinthEventListener);
                 window.addMouseListener(labyrinthEventListener);

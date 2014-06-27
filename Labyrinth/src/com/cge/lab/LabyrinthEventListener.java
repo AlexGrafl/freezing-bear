@@ -16,8 +16,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
 import static javax.media.opengl.GL2.*;
 import static java.awt.event.KeyEvent.*;
+
+import com.cge.lab.LoadMaze.FieldType;
 
 /**
  * @author Alex
@@ -28,8 +31,7 @@ import static java.awt.event.KeyEvent.*;
     TODO:   - Lighting
             - Floor
             - Collision Detection
-            - Dynamically create crates
-            -
+            - Load maze via command line parameter oder so
  */
 
 
@@ -42,12 +44,14 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
     private GLU glu;
 
     //our maze map
-//    private ArrayList<FieldType> map;
+    private LoadMaze maze;
 
     //player properties
     private float lookAngle;
     private float posX = 0;
     private float posZ = 0;
+    private float prevPosX;
+    private float prevPosZ;
 
     private float moveIncrement = 0.1f;
 
@@ -55,9 +59,9 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
     private float walkBiasAngle = 0;
 
 
-   /* public LabyrinthEventListener(ArrayList<FieldType> map){
-        this.map = map;
-    }*/
+    public LabyrinthEventListener(LoadMaze maze){
+        this.maze = maze;
+    }
 
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
@@ -86,6 +90,8 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
         } catch (IOException e) {
             e.printStackTrace();
         }
+        posZ = -maze.getStartX() * 2;
+        posX = -maze.getStartY() * 2;
     }
 
     @Override
@@ -108,18 +114,20 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
         // instead.
         gl.glTranslatef(-posX, -walkBias - 0.25f, -posZ);
 
+        //Enable textures for crates
         crateTexture.enable(gl);
         crateTexture.bind(gl);
         gl.glPushMatrix();
-        for(float i = 1; i < 6; i++) {
-            drawCube();
-            gl.glTranslatef(2, 0f, 0f);
+        //draw crates
+        for(ArrayList<FieldType> list : maze.getMap()){
+            for(FieldType type : list){
+                //draw a crate where a crate belongs
+                if(type == FieldType.CRATE) drawCube();
+                gl.glTranslatef(0f, 0f, -2f);
+            }
+            //basically a carriage return
+            gl.glTranslatef(2f, 0f, 2 * list.size());
         }
-        for(float i = 1; i < 6; i++){
-            drawCube();
-            gl.glTranslatef(0f , 0f, 2f);
-        }
-
 
         gl.glPopMatrix();
     }
@@ -212,6 +220,8 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
         int keyCode = keyEvent.getKeyCode();
         switch (keyCode) {
             case VK_W:
+                prevPosX = posX;
+                prevPosZ = posZ;
                 posX -= (float)Math.sin(Math.toRadians(lookAngle)) * moveIncrement;
                 posZ -= (float)Math.cos(Math.toRadians(lookAngle)) * moveIncrement;
                 walkBiasAngle = (walkBiasAngle >= 359.0f) ? 0.0f : walkBiasAngle + 10.0f;
@@ -221,6 +231,8 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
                 walkBias = (float)Math.sin(Math.toRadians(walkBiasAngle)) / 20.0f;
                 break;
             case VK_S:
+                prevPosX = posX;
+                prevPosZ = posZ;
                 posX += (float)Math.sin(Math.toRadians(lookAngle)) * moveIncrement;
                 posZ += (float)Math.cos(Math.toRadians(lookAngle)) * moveIncrement;
                 walkBiasAngle = (walkBiasAngle <= 1.0f) ? 359.0f : walkBiasAngle - 10.0f;
@@ -228,10 +240,14 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
                 break;
 
              case VK_D:
+                 prevPosX = posX;
+                 prevPosZ = posZ;
                  posX -= (float)Math.sin(Math.toRadians(lookAngle - 90)) * moveIncrement;
                  posZ -= (float)Math.cos(Math.toRadians(lookAngle - 90)) * moveIncrement;
                 break;
             case VK_A:
+                prevPosX = posX;
+                prevPosZ = posZ;
                 posX -= (float)Math.sin(Math.toRadians(lookAngle + 90)) * moveIncrement;
                 posZ -= (float)Math.cos(Math.toRadians(lookAngle + 90)) * moveIncrement;
                 break;
