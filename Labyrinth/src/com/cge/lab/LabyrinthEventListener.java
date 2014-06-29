@@ -29,22 +29,26 @@ import com.cge.lab.LoadMaze.FieldType;
 
 /*
     TODO:   - Lighting (incl. lights attached to roof)
-            - Load maze via command line parameter oder so
-            - Walls
  */
 
 
 public class LabyrinthEventListener implements GLEventListener, KeyListener, MouseListener {
 
-    private Texture crateTexture, floorTexture;
-    private String crateTextureFileName = "res/crate.tga", floorTextureFileName = "res/lava_glow.tga";
+    private Texture crateTexture, floorTexture, wallTexture;
+    private String crateTextureFileName = "res/crate.tga", floorTextureFileName = "res/lava_glow.tga",
+            wallTextureFileName = "res/brick3.tga";
     private float crateTextureTop, crateTextureBottom, crateTextureLeft, crateTextureRight, floorTextureTop,
-            floorTextureBottom, floorTextureLeft, floorTextureRight;
+            floorTextureBottom, floorTextureLeft, floorTextureRight, wallTextureTop,
+            wallTextureBottom, wallTextureLeft, wallTextureRight;
     private GL2 gl;
     private GLU glu;
+    private int crateDisplayList;
+    private int buildingDisplayList;
 
     //our maze map
     private LoadMaze maze;
+    private int mapHeight, mapWidth;
+    private float buildingHeight = 7f;
 
     //player properties
     private float lookAngleX = 0, lookAngleY = 0;
@@ -53,13 +57,15 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
     private float prevPosX;
     private float prevPosZ;
 
-    private float moveIncrement = 0.1f;
+    private float moveIncrement = 0.15f;
 
     private float walkBias = 0;
     private float walkBiasAngle = 0;
 
     private boolean up = true;
     private float upValue = 0.25f;
+
+    private boolean checkForCollision = true;
 
 
     public LabyrinthEventListener(LoadMaze maze){
@@ -103,11 +109,49 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
             floorTextureBottom = textureCoords.bottom();
             floorTextureLeft = textureCoords.left();
             floorTextureRight = textureCoords.right();
+
+            //setup wall texture
+            wallTexture = TextureIO.newTexture(new File(wallTextureFileName), false);
+            wallTexture.setTexParameteri(gl, GL_TEXTURE_WRAP_S, GL_REPEAT);
+            wallTexture.setTexParameteri(gl, GL_TEXTURE_WRAP_T, GL_REPEAT);
+            wallTexture.setTexParameteri(gl, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+            wallTexture.setTexParameteri(gl, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+            textureCoords = wallTexture.getImageTexCoords();
+            wallTextureTop = textureCoords.top();
+            wallTextureBottom = textureCoords.bottom();
+            wallTextureLeft = textureCoords.left();
+            wallTextureRight = textureCoords.right();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        //set start
         prevPosZ = posZ = -maze.getStartX() * 2;
         prevPosX = posX = -maze.getStartY() * 2;
+
+        //get map properties
+        mapHeight = maze.getMap().size();
+        mapWidth = maze.getMap().get(0).size();
+
+        //setup display list
+        int base = gl.glGenLists(2);
+        crateDisplayList = base;
+        gl.glNewList(crateDisplayList, GL_COMPILE);
+        for(ArrayList<FieldType> list : maze.getMap()){
+            for(FieldType type : list){
+                //draw a crate where a crate belongs
+                if(type == FieldType.CRATE) drawCube();
+                gl.glTranslatef(0f, 0f, -2f);
+            }
+            //basically a carriage return
+            gl.glTranslatef(2f, 0f, 2 * list.size());
+        }
+        gl.glEndList();
+        buildingDisplayList = crateDisplayList + 1;
+        gl.glNewList(buildingDisplayList, GL_COMPILE);
+        drawBuilding();
+        gl.glEndList();
+
     }
 
     @Override
@@ -122,7 +166,7 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
         gl.glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         gl.glLoadIdentity();
 
-        checkCollision();
+        if(checkForCollision) checkCollision();
         // Player at lookAngle. Rotate the scene by -lookAngle instead (add 360 to get a
         // positive angle) for X and Y directions
         gl.glRotatef(360f - lookAngleY, 1.0f, 0, 0f);
@@ -134,29 +178,28 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
         floorTexture.enable(gl);
         floorTexture.bind(gl);
         drawFloor();
-
+        wallTexture.enable(gl);
+        wallTexture.bind(gl);
+        gl.glCallList(buildingDisplayList);
         //Enable textures for crates
         crateTexture.enable(gl);
         crateTexture.bind(gl);
-        gl.glPushMatrix();
-        //draw crates
-        for(ArrayList<FieldType> list : maze.getMap()){
-            for(FieldType type : list){
-                //draw a crate where a crate belongs
-                if(type == FieldType.CRATE) drawCube();
-                gl.glTranslatef(0f, 0f, -2f);
-            }
-            //basically a carriage return
-            gl.glTranslatef(2f, 0f, 2 * list.size());
-        }
-
-        gl.glPopMatrix();
+        //draw crates display list
+        gl.glCallList(crateDisplayList);
     }
 
     private void checkCollision() {
         float posX = this.posX, posZ = this.posZ;
         //calculate indices from current position
         int indexX = (int)(Math.abs(posX) + 1) / 2, indexY = (int) (Math.abs(posZ) + 1) / 2;
+        if(indexX >= mapWidth || this.posX <= -1){
+            this.posX = prevPosX;
+            return;
+        }
+        if(indexY >= mapHeight || this.posZ >= 1){
+            this.posZ = prevPosZ;
+            return;
+        }
         if(maze.getMap().get(indexX).get(indexY) == FieldType.CRATE){
             //if the field the the current position is a crate, reset the position to the previous one
             this.posX = prevPosX;
@@ -183,20 +226,73 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
         gl.glLoadIdentity();
     }
 
-    void drawFloor(){
+    void drawFloor() {
 
         //draw the floor as large as the map
         gl.glBegin(GL_QUADS);
-        gl.glTexCoord2f(floorTextureRight, floorTextureTop);
-        gl.glVertex3f(-1.0f, -1.0f, -1.0f);
-        gl.glTexCoord2f(floorTextureLeft, floorTextureTop);
-        gl.glVertex3f(maze.getMap().size() * 2, -1.0f, -1.0f);
-        gl.glTexCoord2f(floorTextureLeft, floorTextureBottom);
-        gl.glVertex3f(maze.getMap().size() * 2, -1.0f, - maze.getMap().get(0).size() * 2);
-        gl.glTexCoord2f(floorTextureRight, floorTextureBottom);
-        gl.glVertex3f(-1.0f, -1.0f, - maze.getMap().get(0).size() * 2);
-
+        gl.glTexCoord2f(floorTextureRight * mapHeight, floorTextureTop * mapWidth);
+        gl.glVertex3f(-1.0f, -1.0f, 1.0f);
+        gl.glTexCoord2f(floorTextureLeft * mapHeight, floorTextureTop * mapWidth);
+        gl.glVertex3f(this.mapHeight * 2 - 1, -1.0f, 1.0f);
+        gl.glTexCoord2f(floorTextureLeft * mapHeight, floorTextureBottom * mapWidth);
+        gl.glVertex3f(this.mapHeight * 2 - 1, -1.0f, -this.mapWidth * 2 + 1);
+        gl.glTexCoord2f(floorTextureRight * mapHeight, floorTextureBottom * mapWidth);
+        gl.glVertex3f(-1.0f, -1.0f, -this.mapWidth * 2 + 1);
         gl.glEnd();
+    }
+    void drawBuilding(){
+        //draw the roof
+        gl.glBegin(GL_QUADS);
+        gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureTop * mapWidth);
+        gl.glVertex3f(-1.0f, buildingHeight, 1.0f);
+        gl.glTexCoord2f(wallTextureLeft * mapHeight, wallTextureTop * mapWidth);
+        gl.glVertex3f(this.mapHeight * 2 - 1, buildingHeight, 1.0f);
+        gl.glTexCoord2f(wallTextureLeft * mapHeight, wallTextureBottom * mapWidth);
+        gl.glVertex3f(this.mapHeight * 2 - 1, buildingHeight, - this.mapWidth * 2 + 1);
+        gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureBottom * mapWidth);
+        gl.glVertex3f(-1.0f, buildingHeight, - this.mapWidth * 2 + 1);
+
+        //front side
+        gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureTop * mapWidth);
+        gl.glVertex3f(-1.0f, -1.0f, 1.0f);
+        gl.glTexCoord2f(wallTextureLeft * mapHeight, wallTextureTop * mapWidth);
+        gl.glVertex3f(this.mapHeight * 2 - 1, -1.0f, 1.0f);
+        gl.glTexCoord2f(wallTextureLeft * mapHeight, wallTextureBottom * mapWidth);
+        gl.glVertex3f(this.mapHeight * 2 - 1, buildingHeight, 1.0f);
+        gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureBottom * mapWidth);
+        gl.glVertex3f(-1.0f, buildingHeight, 1.0f);
+
+        //left side
+        gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureTop * mapWidth);
+        gl.glVertex3f(-1.0f, -1.0f, 1.0f);
+        gl.glTexCoord2f(wallTextureLeft * mapHeight, wallTextureTop * mapWidth);
+        gl.glVertex3f(-1.0f, -1.0f, - this.mapWidth * 2 + 1);
+        gl.glTexCoord2f(wallTextureLeft * mapHeight, wallTextureBottom * mapWidth);
+        gl.glVertex3f(-1.0f, buildingHeight, - this.mapWidth * 2 + 1);
+        gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureBottom * mapWidth);
+        gl.glVertex3f(-1.0f, buildingHeight, 1.0f);
+
+        //back side
+        gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureTop * mapWidth);
+        gl.glVertex3f(-1.0f, -1.0f, - this.mapWidth * 2 + 1);
+        gl.glTexCoord2f(wallTextureLeft * mapHeight, wallTextureTop * mapWidth);
+        gl.glVertex3f(this.mapHeight * 2 - 1, -1.0f, -this.mapWidth * 2 + 1);
+        gl.glTexCoord2f(wallTextureLeft * mapHeight, wallTextureBottom * mapWidth);
+        gl.glVertex3f(this.mapHeight * 2 - 1, buildingHeight, -this.mapWidth * 2 + 1);
+        gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureBottom * mapWidth);
+        gl.glVertex3f(-1.0f, buildingHeight, -this.mapWidth * 2 + 1);
+
+        //right side
+        gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureTop * mapWidth);
+        gl.glVertex3f(this.mapHeight * 2 - 1, buildingHeight, -this.mapWidth * 2 + 1);
+        gl.glTexCoord2f(wallTextureLeft * mapHeight, wallTextureTop * mapWidth);
+        gl.glVertex3f(this.mapHeight * 2 - 1, buildingHeight, 1.0f);
+        gl.glTexCoord2f(wallTextureLeft * mapHeight, wallTextureBottom * mapWidth);
+        gl.glVertex3f(this.mapHeight * 2 - 1, -1.0f, 1.0f);
+        gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureBottom * mapWidth);
+        gl.glVertex3f(this.mapHeight * 2 - 1, -1.0f, -this.mapWidth * 2 + 1);
+        gl.glEnd();
+
     }
 
     void drawCube()
@@ -309,6 +405,9 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
             case VK_B:
                 //toggle up or down
                 up = !up;
+                break;
+            case VK_C:
+                checkForCollision = !checkForCollision;
                 break;
             case VK_SPACE:
                 //move camera up/down

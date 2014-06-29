@@ -11,12 +11,13 @@ import javax.swing.*;
 
 public class Main {
 
+    private static String fallBackMaze = "res/testMaze1.txt";
     private static String TITLE = "CGE - Labyrinth";  // window's title
     private static final int WINDOW_WIDTH = 1024;  // width of the drawable
     private static final int WINDOW_HEIGHT = 768; // height of the drawable
     private static final int FPS = 60; // animator's target frames per second
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 
         // Run the GUI codes in the event-dispatching thread for thread safety
         SwingUtilities.invokeLater(new Runnable() {
@@ -45,8 +46,12 @@ public class Main {
                         }.start();
                     }
                 });
+                String maze = fallBackMaze;
+                if(args.length > 0){
+                    maze = args[0];
+                }
                 LabyrinthEventListener labyrinthEventListener = new LabyrinthEventListener(
-                        new LoadMaze("res/testMaze1.txt"));
+                        new LoadMaze(maze));
                 window.addGLEventListener(labyrinthEventListener);
                 window.addKeyListener(labyrinthEventListener);
                 window.addMouseListener(labyrinthEventListener);
