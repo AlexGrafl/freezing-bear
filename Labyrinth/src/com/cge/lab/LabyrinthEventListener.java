@@ -326,43 +326,43 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
         gl.glVertex3f(-1.0f, buildingHeight, - this.mapWidth * 2 + 1);
 
         //front side
-        gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureTop * mapWidth);
+        gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureTop * buildingHeight);
         gl.glVertex3f(-1.0f, -1.0f, 1.0f);
-        gl.glTexCoord2f(wallTextureLeft * mapHeight, wallTextureTop * mapWidth);
+        gl.glTexCoord2f(wallTextureLeft * mapHeight, wallTextureTop * buildingHeight);
         gl.glVertex3f(this.mapHeight * 2 - 1, -1.0f, 1.0f);
-        gl.glTexCoord2f(wallTextureLeft * mapHeight, wallTextureBottom * mapWidth);
+        gl.glTexCoord2f(wallTextureLeft * mapHeight, wallTextureBottom * buildingHeight);
         gl.glVertex3f(this.mapHeight * 2 - 1, buildingHeight, 1.0f);
-        gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureBottom * mapWidth);
+        gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureBottom * buildingHeight);
         gl.glVertex3f(-1.0f, buildingHeight, 1.0f);
 
         //left side
-        gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureTop * mapWidth);
+        gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureTop * buildingHeight);
         gl.glVertex3f(-1.0f, -1.0f, 1.0f);
-        gl.glTexCoord2f(wallTextureLeft * mapHeight, wallTextureTop * mapWidth);
+        gl.glTexCoord2f(wallTextureLeft * mapHeight, wallTextureTop * buildingHeight);
         gl.glVertex3f(-1.0f, -1.0f, - this.mapWidth * 2 + 1);
-        gl.glTexCoord2f(wallTextureLeft * mapHeight, wallTextureBottom * mapWidth);
+        gl.glTexCoord2f(wallTextureLeft * mapHeight, wallTextureBottom * buildingHeight);
         gl.glVertex3f(-1.0f, buildingHeight, - this.mapWidth * 2 + 1);
-        gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureBottom * mapWidth);
+        gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureBottom * buildingHeight);
         gl.glVertex3f(-1.0f, buildingHeight, 1.0f);
 
         //back side
-        gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureTop * mapWidth);
+        gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureTop * buildingHeight);
         gl.glVertex3f(-1.0f, -1.0f, - this.mapWidth * 2 + 1);
-        gl.glTexCoord2f(wallTextureLeft * mapHeight, wallTextureTop * mapWidth);
+        gl.glTexCoord2f(wallTextureLeft * mapHeight, wallTextureTop * buildingHeight);
         gl.glVertex3f(this.mapHeight * 2 - 1, -1.0f, -this.mapWidth * 2 + 1);
-        gl.glTexCoord2f(wallTextureLeft * mapHeight, wallTextureBottom * mapWidth);
+        gl.glTexCoord2f(wallTextureLeft * mapHeight, wallTextureBottom * buildingHeight);
         gl.glVertex3f(this.mapHeight * 2 - 1, buildingHeight, -this.mapWidth * 2 + 1);
-        gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureBottom * mapWidth);
+        gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureBottom * buildingHeight);
         gl.glVertex3f(-1.0f, buildingHeight, -this.mapWidth * 2 + 1);
 
         //right side
-        gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureTop * mapWidth);
+        gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureTop * buildingHeight);
         gl.glVertex3f(this.mapHeight * 2 - 1, buildingHeight, -this.mapWidth * 2 + 1);
-        gl.glTexCoord2f(wallTextureLeft * mapHeight, wallTextureTop * mapWidth);
+        gl.glTexCoord2f(wallTextureLeft * mapHeight, wallTextureTop * buildingHeight);
         gl.glVertex3f(this.mapHeight * 2 - 1, buildingHeight, 1.0f);
-        gl.glTexCoord2f(wallTextureLeft * mapHeight, wallTextureBottom * mapWidth);
+        gl.glTexCoord2f(wallTextureLeft * mapHeight, wallTextureBottom * buildingHeight);
         gl.glVertex3f(this.mapHeight * 2 - 1, -1.0f, 1.0f);
-        gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureBottom * mapWidth);
+        gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureBottom * buildingHeight);
         gl.glVertex3f(this.mapHeight * 2 - 1, -1.0f, -this.mapWidth * 2 + 1);
         gl.glEnd();
 
