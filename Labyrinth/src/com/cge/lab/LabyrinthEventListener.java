@@ -76,12 +76,12 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
     private float lightBulbRadius = 0.4f;
     private boolean isLightEnabled, light1Enabled = false;
 
-    private float lightColor0[] = {0.7f, 0.7f, 0.7f, 1.0f};
-    private float lightPos0[] = {lightBulbRadius, lightBulbRadius, lightBulbRadius, 1.0f};
+    private float[] lightColor0 = {1f, 1f, 1f, 1f};
+    private float[] lightPos0 = {0, -1, 0, 0};
 
     private float[] lightAmbient = {0.2f, 0.2f, 0.2f, 1.0f}; //"Color" (0.2, 0.2, 0.2)
-    private float lightColor1[] = lightColor0;
-    private float lightPos1[] = lightPos0;
+    private float[] lightColor1 = lightColor0;
+    private float[] lightPos1 = lightPos0;
 
 
 
@@ -92,12 +92,12 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
         //timer
-        Timer uploadCheckerTimer = new Timer(true);
+       /* Timer uploadCheckerTimer = new Timer(true);
         uploadCheckerTimer.scheduleAtFixedRate(
                 new TimerTask() {
                     public void run() { light1Enabled = !light1Enabled; }
                 }, 0, 3 * 1000);
-
+         */
 
         gl = glAutoDrawable.getGL().getGL2();
         glu = new GLU();
@@ -106,6 +106,15 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
         gl.glClearDepth(1.0);
         gl.glDepthFunc(GL_LESS);
         gl.glEnable(GL_DEPTH_TEST);
+
+       // float spot_diffuse[] =  {0.8f,0.8f,0.8f,1.0f };
+        float spot_specular[] =  {1f,1f,1f,1.0f };
+        // set colors here and do the geometry in draw
+       // gl.glLightfv(GL_LIGHT0, GL_DIFFUSE,  spot_diffuse,0);
+        gl.glLightfv(GL_LIGHT0, GL_SPECULAR, spot_specular,0);
+        gl.glEnable(GL_LIGHTING);
+        gl.glEnable(GL_LIGHT0);
+
         gl.glShadeModel(GL_SMOOTH); // blends colors nicely, and smoothes out lighting
 
         try {
@@ -162,10 +171,7 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
         // Set up lighting
         this.isLightEnabled = false;
         gl.glEnable(GL_NORMALIZE);
-        gl.glEnable(GL_LIGHT0);
-        gl.glEnable(GL_LIGHT1);
-        gl.glEnable(GL_LIGHTING);
-        gl.glLightModelfv(GL_LIGHT_MODEL_AMBIENT, FloatBuffer.wrap(lightAmbient));
+        gl.glLightModelfv(GL_LIGHT_MODEL_AMBIENT, lightAmbient, 0);
         // Set material properties.
         float[] rgba = {0.7f, 0.1f, 0.0f};
         gl.glMaterialfv(GL_FRONT, GL_AMBIENT, rgba, 0);
@@ -175,31 +181,14 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
 
 
         //setup display list
-        int base = gl.glGenLists(2);
-        crateDisplayList = base;
+        crateDisplayList = gl.glGenLists(2);
         gl.glNewList(crateDisplayList, GL_COMPILE);
         for(ArrayList<FieldType> list : maze.getMap()){
             for(FieldType type : list){
-                if(((lightCountX++) % 5) == 0 && (lightCountY % 3) == 0){
-                    gl.glTranslatef(0f, (buildingHeight - 0.35f), 0);
-
-                    if((lightBulbCount%2) == 0){
-                        gl.glLightfv(GL_LIGHT0, GL_DIFFUSE, FloatBuffer.wrap(lightColor0));
-                        gl.glLightfv(GL_LIGHT0, GL_POSITION, FloatBuffer.wrap(lightPos0));
-                    }
-                    if((lightBulbCount%2) == 1){
-                        gl.glLightfv(GL_LIGHT1, GL_DIFFUSE, FloatBuffer.wrap(lightColor1));
-                        gl.glLightfv(GL_LIGHT1, GL_POSITION, FloatBuffer.wrap(lightPos1));
-                    }
-                    drawSphere();
-                    gl.glTranslatef(0f, -(buildingHeight - 0.35f), 0);
-                    lightBulbCount++;
-                }
                 //draw a crate where a crate belongs
                 if(type == FieldType.CRATE) drawCube();
                 gl.glTranslatef(0f, 0f, -2f);
             }
-            lightCountY++;
             //basically a carriage return
             gl.glTranslatef(2f, 0f, 2 * list.size());
         }
@@ -208,6 +197,7 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
         gl.glNewList(buildingDisplayList, GL_COMPILE);
         drawBuilding();
         gl.glEndList();
+
 
     }
 
@@ -222,16 +212,29 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
         gl = glAutoDrawable.getGL().getGL2();
         gl.glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         gl.glLoadIdentity();
-
         if(checkForCollision) checkCollision();
+
         // Player at lookAngle. Rotate the scene by -lookAngle instead (add 360 to get a
         // positive angle) for X and Y directions
-        gl.glRotatef(360f - lookAngleY, 1.0f, 0, 0f);
-        gl.glRotatef(360.0f - lookAngleX, 0, 1.0f, 0);
+        gl.glRotatef(- lookAngleY, 1.0f, 0, 0f);
+        gl.glRotatef(- lookAngleX, 0, 1.0f, 0);
+
+        float spot_position[] =  {0, 0, -1f, 1.0f};
+        float spot_direction[] = {0, 0, -1};
+        float spot_angle = 20.0f;
+        gl.glLightfv(GL_LIGHT0, GL_POSITION, spot_position, 0);
+        gl.glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, spot_direction, 0);
+        gl.glLightf(GL_LIGHT0, GL_SPOT_CUTOFF, spot_angle);
+        // "smoothing" the border of the lightcone
+        // change this for effect
+        gl.glLighti(GL_LIGHT0, GL_SPOT_EXPONENT, 10);
+
 
         // Player is at (posX, 0, posZ). Translate the scene to (-posX, 0, -posZ)
         // instead. upValue is a "debug"-y-offset
         gl.glTranslatef(-posX, -walkBias - upValue, -posZ);
+
+
         floorTexture.enable(gl);
         floorTexture.bind(gl);
         drawFloor();
@@ -242,26 +245,8 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
         crateTexture.enable(gl);
         crateTexture.bind(gl);
         //draw crates display list
-        gl.glCallList(crateDisplayList);
-        if (isLightEnabled) {
-            gl.glDisable(GL_LIGHT0);
-            gl.glDisable(GL_LIGHT1);
-            gl.glDisable(GL_LIGHTING);
-        }
-        else {
-            gl.glEnable(GL_LIGHTING);
-            gl.glEnable(GL_LIGHT0);
-            gl.glEnable(GL_LIGHT1);
-        }
+        //gl.glCallList(crateDisplayList);
 
-        if(light1Enabled){
-            gl.glDisable(GL_LIGHT0);
-            gl.glEnable(GL_LIGHT1);
-        }
-        else {
-            gl.glEnable(GL_LIGHT0);
-            gl.glDisable(GL_LIGHT1);
-        }
     }
 
     private void checkCollision() {
