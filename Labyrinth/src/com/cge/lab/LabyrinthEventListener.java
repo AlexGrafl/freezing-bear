@@ -72,14 +72,17 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
 
 
     //Lighting
-    private float lightColor0[] = {1.0f, 1.0f, 1.0f, 1.0f}; //"Color" (0.5, 0.5, 0.5)
-    private float lightPos0[] = {0.0f, 0.0f, 0.0f, 1.0f};
+    private int lightCountX = 1, lightCountY = 1, lightBulbCount = 0;
+    private float lightBulbRadius = 0.4f;
+    private boolean isLightEnabled, light1Enabled = false;
 
-    private float[] lightAmbient = {0.2f, 0.2f, 0.2f, 1.0f};
+    private float lightColor0[] = {0.7f, 0.7f, 0.7f, 1.0f};
+    private float lightPos0[] = {lightBulbRadius, lightBulbRadius, lightBulbRadius, 1.0f};
+
+    private float[] lightAmbient = {0.2f, 0.2f, 0.2f, 1.0f}; //"Color" (0.2, 0.2, 0.2)
     private float lightColor1[] = lightColor0;
     private float lightPos1[] = lightPos0;
-    private int lightCountX = 1, lightCountY = 1, lightBulbCount = 0;
-    private boolean isLightEnabled, light1Enabled = false;
+
 
 
     public LabyrinthEventListener(LoadMaze maze){
@@ -164,7 +167,7 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
         gl.glEnable(GL_LIGHTING);
         gl.glLightModelfv(GL_LIGHT_MODEL_AMBIENT, FloatBuffer.wrap(lightAmbient));
         // Set material properties.
-        float[] rgba = {0.6f, 0.1f, 0.0f};
+        float[] rgba = {0.7f, 0.1f, 0.0f};
         gl.glMaterialfv(GL_FRONT, GL_AMBIENT, rgba, 0);
         gl.glMaterialfv(GL_FRONT, GL_SPECULAR, rgba, 0);
         gl.glMaterialf(GL_FRONT, GL_SHININESS, 0.5f);
@@ -440,10 +443,9 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
         glu.gluQuadricDrawStyle(lightBulb, GLU.GLU_FILL);
         glu.gluQuadricNormals(lightBulb, GLU.GLU_FLAT);
         glu.gluQuadricOrientation(lightBulb, GLU.GLU_OUTSIDE);
-        final float radius = 0.4f;
         final int slices = 16;
         final int stacks = 16;
-        glu.gluSphere(lightBulb, radius, slices, stacks);
+        glu.gluSphere(lightBulb, lightBulbRadius, slices, stacks);
         glu.gluDeleteQuadric(lightBulb);
         gl.glEnable(GL_TEXTURE_2D);
         //gl.glEnd();
