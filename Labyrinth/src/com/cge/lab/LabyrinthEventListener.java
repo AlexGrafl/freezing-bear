@@ -16,10 +16,7 @@ import javax.media.opengl.glu.GLU;
 import javax.media.opengl.glu.GLUquadric;
 import java.io.File;
 import java.io.IOException;
-import java.nio.FloatBuffer;
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import static java.awt.event.KeyEvent.*;
 import static javax.media.opengl.GL2.*;
@@ -74,7 +71,7 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
     //Lighting
     private int lightCountX = 1, lightCountY = 1, lightBulbCount = 0;
     private float lightBulbRadius = 0.4f;
-    private boolean isLightEnabled, light1Enabled = false;
+    private boolean isLightEnabled, flashLightEnabled = false;
 
     private float[] lightColor0 = {1f, 1f, 1f, 1f};
     private float[] lightPos0 = {0, -1, 0, 0};
@@ -91,13 +88,6 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
 
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
-        //timer
-       /* Timer uploadCheckerTimer = new Timer(true);
-        uploadCheckerTimer.scheduleAtFixedRate(
-                new TimerTask() {
-                    public void run() { light1Enabled = !light1Enabled; }
-                }, 0, 3 * 1000);
-         */
 
         gl = glAutoDrawable.getGL().getGL2();
         glu = new GLU();
@@ -169,7 +159,7 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
 
 
         // Set up lighting
-        this.isLightEnabled = false;
+        this.isLightEnabled = true;
         gl.glEnable(GL_NORMALIZE);
         gl.glLightModelfv(GL_LIGHT_MODEL_AMBIENT, lightAmbient, 0);
         // Set material properties.
@@ -219,9 +209,9 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
         gl.glRotatef(- lookAngleY, 1.0f, 0, 0f);
         gl.glRotatef(- lookAngleX, 0, 1.0f, 0);
 
-        float spot_position[] =  {0, 0, -1f, 1.0f};
+        float spot_position[] =  {0, 0, -0.5f, 1.0f};
         float spot_direction[] = {0, 0, -1};
-        float spot_angle = 20.0f;
+        float spot_angle = 15.0f;
         gl.glLightfv(GL_LIGHT0, GL_POSITION, spot_position, 0);
         gl.glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, spot_direction, 0);
         gl.glLightf(GL_LIGHT0, GL_SPOT_CUTOFF, spot_angle);
@@ -245,8 +235,20 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
         crateTexture.enable(gl);
         crateTexture.bind(gl);
         //draw crates display list
-        //gl.glCallList(crateDisplayList);
+        gl.glCallList(crateDisplayList);
 
+        if(isLightEnabled) {
+            gl.glEnable(GL_LIGHTING);
+            gl.glEnable(GL_LIGHT0);
+        }
+        else{
+            gl.glDisable(GL_LIGHT0);
+            gl.glDisable(GL_LIGHTING);
+        }
+        if(flashLightEnabled)
+            gl.glEnable(GL_LIGHT0);
+        else
+            gl.glDisable(GL_LIGHT0);
     }
 
     private void checkCollision() {
@@ -489,7 +491,7 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
                 isLightEnabled = !isLightEnabled;
                 break;
             case VK_2:
-                light1Enabled = !light1Enabled;
+                flashLightEnabled = !flashLightEnabled;
                 break;
             case VK_SPACE:
                 //move camera up/down
