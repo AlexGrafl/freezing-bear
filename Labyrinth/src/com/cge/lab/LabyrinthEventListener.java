@@ -1,5 +1,6 @@
 package com.cge.lab;
 
+import com.cge.lab.LoadMaze.FieldType;
 import com.jogamp.newt.event.KeyEvent;
 import com.jogamp.newt.event.KeyListener;
 import com.jogamp.newt.event.MouseEvent;
@@ -12,15 +13,16 @@ import javax.media.opengl.GL2;
 import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.GLEventListener;
 import javax.media.opengl.glu.GLU;
+import javax.media.opengl.glu.GLUquadric;
 import java.io.File;
 import java.io.IOException;
+import java.nio.FloatBuffer;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
-
-import static javax.media.opengl.GL2.*;
 import static java.awt.event.KeyEvent.*;
-
-import com.cge.lab.LoadMaze.FieldType;
+import static javax.media.opengl.GL2.*;
 
 /**
  * @author Alex
@@ -28,7 +30,8 @@ import com.cge.lab.LoadMaze.FieldType;
 
 
 /*
-    TODO:   - Lighting (incl. lights attached to roof)
+    TODO:   - Lighting: *Fix Lighting position, *add "light texture",*disable "light from 0,0"?
+
  */
 
 
@@ -68,12 +71,31 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
     private boolean checkForCollision = true;
 
 
+    //Lighting
+    private float lightColor0[] = {1.0f, 1.0f, 1.0f, 1.0f}; //"Color" (0.5, 0.5, 0.5)
+    private float lightPos0[] = {0.0f, 0.0f, 0.0f, 1.0f};
+
+    private float[] lightAmbient = {0.2f, 0.2f, 0.2f, 1.0f};
+    private float lightColor1[] = lightColor0;
+    private float lightPos1[] = lightPos0;
+    private int lightCountX = 1, lightCountY = 1, lightBulbCount = 0;
+    private boolean isLightEnabled, light1Enabled = false;
+
+
     public LabyrinthEventListener(LoadMaze maze){
         this.maze = maze;
     }
 
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
+        //timer
+        Timer uploadCheckerTimer = new Timer(true);
+        uploadCheckerTimer.scheduleAtFixedRate(
+                new TimerTask() {
+                    public void run() { light1Enabled = !light1Enabled; }
+                }, 0, 3 * 1000);
+
+
         gl = glAutoDrawable.getGL().getGL2();
         glu = new GLU();
 
@@ -133,16 +155,48 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
         mapHeight = maze.getMap().size();
         mapWidth = maze.getMap().get(0).size();
 
+
+        // Set up lighting
+        this.isLightEnabled = false;
+        gl.glEnable(GL_NORMALIZE);
+        gl.glEnable(GL_LIGHT0);
+        gl.glEnable(GL_LIGHT1);
+        gl.glEnable(GL_LIGHTING);
+        gl.glLightModelfv(GL_LIGHT_MODEL_AMBIENT, FloatBuffer.wrap(lightAmbient));
+        // Set material properties.
+        float[] rgba = {0.6f, 0.1f, 0.0f};
+        gl.glMaterialfv(GL_FRONT, GL_AMBIENT, rgba, 0);
+        gl.glMaterialfv(GL_FRONT, GL_SPECULAR, rgba, 0);
+        gl.glMaterialf(GL_FRONT, GL_SHININESS, 0.5f);
+
+
+
         //setup display list
         int base = gl.glGenLists(2);
         crateDisplayList = base;
         gl.glNewList(crateDisplayList, GL_COMPILE);
         for(ArrayList<FieldType> list : maze.getMap()){
             for(FieldType type : list){
+                if(((lightCountX++) % 5) == 0 && (lightCountY % 3) == 0){
+                    gl.glTranslatef(0f, (buildingHeight - 0.35f), 0);
+
+                    if((lightBulbCount%2) == 0){
+                        gl.glLightfv(GL_LIGHT0, GL_DIFFUSE, FloatBuffer.wrap(lightColor0));
+                        gl.glLightfv(GL_LIGHT0, GL_POSITION, FloatBuffer.wrap(lightPos0));
+                    }
+                    if((lightBulbCount%2) == 1){
+                        gl.glLightfv(GL_LIGHT1, GL_DIFFUSE, FloatBuffer.wrap(lightColor1));
+                        gl.glLightfv(GL_LIGHT1, GL_POSITION, FloatBuffer.wrap(lightPos1));
+                    }
+                    drawSphere();
+                    gl.glTranslatef(0f, -(buildingHeight - 0.35f), 0);
+                    lightBulbCount++;
+                }
                 //draw a crate where a crate belongs
                 if(type == FieldType.CRATE) drawCube();
                 gl.glTranslatef(0f, 0f, -2f);
             }
+            lightCountY++;
             //basically a carriage return
             gl.glTranslatef(2f, 0f, 2 * list.size());
         }
@@ -186,6 +240,25 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
         crateTexture.bind(gl);
         //draw crates display list
         gl.glCallList(crateDisplayList);
+        if (isLightEnabled) {
+            gl.glDisable(GL_LIGHT0);
+            gl.glDisable(GL_LIGHT1);
+            gl.glDisable(GL_LIGHTING);
+        }
+        else {
+            gl.glEnable(GL_LIGHTING);
+            gl.glEnable(GL_LIGHT0);
+            gl.glEnable(GL_LIGHT1);
+        }
+
+        if(light1Enabled){
+            gl.glDisable(GL_LIGHT0);
+            gl.glEnable(GL_LIGHT1);
+        }
+        else {
+            gl.glEnable(GL_LIGHT0);
+            gl.glDisable(GL_LIGHT1);
+        }
     }
 
     private void checkCollision() {
@@ -241,7 +314,7 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
         gl.glEnd();
     }
     void drawBuilding(){
-        //draw the roof
+        //draw the roof                f
         gl.glBegin(GL_QUADS);
         gl.glTexCoord2f(wallTextureRight * mapHeight, wallTextureTop * mapWidth);
         gl.glVertex3f(-1.0f, buildingHeight, 1.0f);
@@ -359,6 +432,22 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
         gl.glVertex3f(-1.0f, 1.0f, -1.0f);
         gl.glEnd();
     }
+    private void drawSphere(){
+        //gl.glBegin(GL_SPHERE_MAP);
+        GLUquadric lightBulb = glu.gluNewQuadric();
+        gl.glDisable(GL_TEXTURE_2D);
+        gl.glColor4f(1,1,1,1);
+        glu.gluQuadricDrawStyle(lightBulb, GLU.GLU_FILL);
+        glu.gluQuadricNormals(lightBulb, GLU.GLU_FLAT);
+        glu.gluQuadricOrientation(lightBulb, GLU.GLU_OUTSIDE);
+        final float radius = 0.4f;
+        final int slices = 16;
+        final int stacks = 16;
+        glu.gluSphere(lightBulb, radius, slices, stacks);
+        glu.gluDeleteQuadric(lightBulb);
+        gl.glEnable(GL_TEXTURE_2D);
+        //gl.glEnd();
+    }
 
     @Override
     public void keyPressed(KeyEvent keyEvent) {
@@ -408,6 +497,12 @@ public class LabyrinthEventListener implements GLEventListener, KeyListener, Mou
                 break;
             case VK_C:
                 checkForCollision = !checkForCollision;
+                break;
+            case VK_1:
+                isLightEnabled = !isLightEnabled;
+                break;
+            case VK_2:
+                light1Enabled = !light1Enabled;
                 break;
             case VK_SPACE:
                 //move camera up/down
