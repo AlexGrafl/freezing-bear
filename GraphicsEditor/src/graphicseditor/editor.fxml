@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<BorderPane id="BorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="606.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="graphicseditor.Controller">
+  <center>
+    <Pane fx:id="canvasPane" style="-fx-background-color:#dfdfdf;" />
+  </center>
+  <top>
+    <ToolBar fx:id="toolBar">
+      <ComboBox fx:id="typeBox" value="Pen">
+        <items>
+          <FXCollections fx:factory="observableArrayList">
+            <String fx:value="Rectangle" />
+            <String fx:value="Circle" />
+            <String fx:value="Ellipse" />
+            <String fx:value="Square" />
+            <String fx:value="Pen" />
+            <String fx:value="Triangle" />
+          </FXCollections>
+        </items>
+      </ComboBox>
+      <Separator orientation="VERTICAL" prefHeight="21.0" />
+      <ColorPicker fx:id="colorPicker" />
+      <Separator orientation="VERTICAL" prefHeight="21.0" />
+      <Label fx:id="scaleLabel" text="Scale (%)" />
+      <Slider fx:id="scaleSlide" max="500.0" min="0.0" prefWidth="124.0" showTickLabels="false" showTickMarks="false" value="100.0" />
+      <Label fx:id="scaleValue" text="" />
+      <Separator orientation="VERTICAL" prefHeight="21.0" />
+      <Button mnemonicParsing="false" text="Group" onAction="#groupSelection"/>
+      <Button mnemonicParsing="false" text="Un-Group" onAction="#ungroupSelection"/>
+      <Separator orientation="VERTICAL" prefHeight="21.0" />
+      <Button mnemonicParsing="false" text="Delete" onAction="#deleteSelection"/>
+    </ToolBar>
+  </top>
+</BorderPane>

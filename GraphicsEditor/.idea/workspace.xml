@@ -11,6 +11,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/GraphicsEditor$Main.coverage" NAME="Main Coverage Results" MODIFIED="1398096290441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>graphicseditor.*</FILTER>
+    </SUITE>
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -62,6 +67,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
       <file leaf-file-name="InvoiceItemModelController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/InvoiceItemModelController.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -71,11 +77,26 @@
                 <element signature="imports" expanded="true" />
                 <element signature="e#1480#1708#0" expanded="true" />
                 <element signature="e#1697#1698#0" expanded="true" />
+=======
+      <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/graphicseditor/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.46815288" vertical-offset="1474" max-vertical-offset="3400">
+              <caret line="132" column="53" selection-start-line="132" selection-start-column="41" selection-end-line="132" selection-end-column="41" />
+              <folding>
+                <element signature="e#3347#6222#0" expanded="true" />
+                <element signature="e#6210#6211#0" expanded="true" />
+                <element signature="e#6262#7706#0" expanded="true" />
+                <element signature="e#7694#7695#0" expanded="true" />
+                <element signature="e#7748#8284#0" expanded="true" />
+                <element signature="e#8273#8274#0" expanded="true" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
       <file leaf-file-name="ContactModelController.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/ContactModelController.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -87,30 +108,55 @@
                 <element signature="e#3018#3762#0" expanded="true" />
                 <element signature="e#3751#3752#0" expanded="true" />
               </folding>
+=======
+      <file leaf-file-name="Pen.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/graphicseditor/factory/shapes/Pen.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1241">
+              <caret line="21" column="45" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+              <folding />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
       <file leaf-file-name="Invoice.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/merp/Models/Invoice.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1105">
               <caret line="14" column="57" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+=======
+      <file leaf-file-name="ShapePrototype.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/graphicseditor/factory/ShapePrototype.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+              <caret line="16" column="38" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
       <file leaf-file-name="ContactModel.fxml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/ContactModel.fxml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="373" max-vertical-offset="1054">
               <caret line="49" column="34" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="34" />
+=======
+      <file leaf-file-name="Controller.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/graphicseditor/Controller.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
       <file leaf-file-name="MainDialogController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/MainDialogController.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -124,10 +170,19 @@
                 <element signature="e#8706#8707#0" expanded="true" />
                 <element signature="e#8760#8761#0" expanded="true" />
               </folding>
+=======
+      <file leaf-file-name="CustomEllipse.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/graphicseditor/factory/shapes/CustomEllipse.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="646" max-vertical-offset="1411">
+              <caret line="38" column="26" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+              <folding />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
       <file leaf-file-name="InvoicePresentationModel.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/merp/Models/InvoicePresentationModel.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -137,10 +192,19 @@
                 <element signature="e#1550#1551#0" expanded="true" />
                 <element signature="e#1580#1581#0" expanded="true" />
               </folding>
+=======
+      <file leaf-file-name="CustomRectangle.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/graphicseditor/factory/shapes/CustomRectangle.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="109" max-vertical-offset="867">
+              <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+              <folding />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
       <file leaf-file-name="ContactPresentationModel.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/merp/Models/ContactPresentationModel.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -167,10 +231,19 @@
                 <element signature="e#7124#7125#0" expanded="true" />
                 <element signature="e#7157#7158#0" expanded="true" />
               </folding>
+=======
+      <file leaf-file-name="ObjectModel.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/graphicseditor/ObjectModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="212" max-vertical-offset="2040">
+              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+              <folding />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
       <file leaf-file-name="InvoiceModelController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/InvoiceModelController.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -178,11 +251,21 @@
               <caret line="103" column="37" selection-start-line="103" selection-start-column="13" selection-end-line="103" selection-end-column="13" />
               <folding>
                 <element signature="e#2963#3128#0" expanded="true" />
+=======
+      <file leaf-file-name="ShapeFactory.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/graphicseditor/factory/ShapeFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
+              <caret line="26" column="61" selection-start-line="26" selection-start-column="61" selection-end-line="26" selection-end-column="61" />
+              <folding>
+                <element signature="imports" expanded="true" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
       <file leaf-file-name="InvoiceItemPresentationModel.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/merp/Models/InvoiceItemPresentationModel.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -193,6 +276,8 @@
           </provider>
         </entry>
       </file>
+=======
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
     </leaf>
   </component>
   <component name="FindManager">
@@ -205,6 +290,7 @@
       <list>
         <option value="$PROJECT_DIR$/src/sample/sample.fxml" />
         <option value="$PROJECT_DIR$/src/sample/Controller.java" />
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
         <option value="$PROJECT_DIR$/src/merp/Controller.java" />
         <option value="$PROJECT_DIR$/src/merp/Samples/ControlsController.java" />
         <option value="$PROJECT_DIR$/src/merp/Samples/ShowDataController.java" />
@@ -254,6 +340,35 @@
         <option value="$PROJECT_DIR$/src/merp/PresentationModels/InvoiceModelController.java" />
         <option value="$PROJECT_DIR$/src/merp/PresentationModels/MainDialogController.java" />
         <option value="$PROJECT_DIR$/src/merp/PresentationModels/ContactModelController.java" />
+=======
+        <option value="$PROJECT_DIR$/src/graphicseditor/shapePrototype.java" />
+        <option value="$PROJECT_DIR$/src/graphicseditor/factory/shapePrototype.java" />
+        <option value="$PROJECT_DIR$/src/graphicseditor/factory/circle.java" />
+        <option value="$PROJECT_DIR$/src/graphicseditor/factory/Circle.java" />
+        <option value="$PROJECT_DIR$/src/graphicseditor/factory/RFectangle.java" />
+        <option value="$PROJECT_DIR$/src/graphicseditor/factory/Rectangle.java" />
+        <option value="$PROJECT_DIR$/src/graphicseditor/factory/Pen.java" />
+        <option value="$PROJECT_DIR$/src/graphicseditor/factory/Ellipse.java" />
+        <option value="$PROJECT_DIR$/src/graphicseditor/factory/Square.java" />
+        <option value="$PROJECT_DIR$/src/graphicseditor/factory/shapes/Circle.java" />
+        <option value="$PROJECT_DIR$/src/graphicseditor/factory/shapes/customCircle.java" />
+        <option value="$PROJECT_DIR$/src/graphicseditor/factory/shapes/Rectangle.java" />
+        <option value="$PROJECT_DIR$/src/graphicseditor/factory/shapes/Ellipse.java" />
+        <option value="$PROJECT_DIR$/src/graphicseditor/factory/shapes/CustomRectange.java" />
+        <option value="$PROJECT_DIR$/src/graphicseditor/factory/ShapePrototype.java" />
+        <option value="$PROJECT_DIR$/src/graphicseditor/factory/shapes/Triangle.java" />
+        <option value="$PROJECT_DIR$/src/graphicseditor/factory/shapes/Square.java" />
+        <option value="$PROJECT_DIR$/src/graphicseditor/factory/shapes/CustomCircle.java" />
+        <option value="$PROJECT_DIR$/src/graphicseditor/editor.fxml" />
+        <option value="$PROJECT_DIR$/src/graphicseditor/factory/shapes/CustomEllipse.java" />
+        <option value="$PROJECT_DIR$/src/graphicseditor/factory/shapes/CustomRectangle.java" />
+        <option value="$PROJECT_DIR$/src/graphicseditor/Controller.java" />
+        <option value="$PROJECT_DIR$/src/graphicseditor/factory/shapes/Composite.java" />
+        <option value="$PROJECT_DIR$/src/graphicseditor/ObjectModel.java" />
+        <option value="$PROJECT_DIR$/src/graphicseditor/factory/shapes/Pen.java" />
+        <option value="$PROJECT_DIR$/src/graphicseditor/factory/ShapeFactory.java" />
+        <option value="$PROJECT_DIR$/src/graphicseditor/Main.java" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
       </list>
     </option>
   </component>
@@ -261,8 +376,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1296" />
+    <option name="height" value="1010" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -292,63 +407,56 @@
       <sortByType />
     </navigator>
     <panes>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
+=======
+      <pane id="Scope" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="MicroErp" />
+              <option name="myItemId" value="GraphicsEditor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="MicroErp" />
+              <option name="myItemId" value="GraphicsEditor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="MicroErp" />
+              <option name="myItemId" value="GraphicsEditor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="MicroErp" />
+              <option name="myItemId" value="GraphicsEditor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="MicroErp" />
+              <option name="myItemId" value="GraphicsEditor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
+=======
+            <PATH_ELEMENT>
+              <option name="myItemId" value="graphicseditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="MicroErp" />
+              <option name="myItemId" value="GraphicsEditor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="MicroErp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="merp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MicroErp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MicroErp" />
+              <option name="myItemId" value="GraphicsEditor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -356,16 +464,40 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="merp" />
+              <option name="myItemId" value="graphicseditor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
+=======
             <PATH_ELEMENT>
-              <option name="myItemId" value="PresentationModels" />
+              <option name="myItemId" value="factory" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
           </PATH>
           <PATH>
             <PATH_ELEMENT>
+              <option name="myItemId" value="GraphicsEditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GraphicsEditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="graphicseditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="factory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
               <option name="myItemId" value="MicroErp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
@@ -397,12 +529,18 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="res" />
+=======
+              <option name="myItemId" value="shapes" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
       <pane id="Scope" />
+=======
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -417,11 +555,10 @@
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="FullScreen" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Server/embedded_sensor_cloud" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
     <property name="restartRequiresConfirmation" value="true" />
   </component>
   <component name="RecentsManager">
@@ -436,6 +573,20 @@
       <recent name="C:\Users\Phips\Documents\FH\Laptop\Semester4\SWE\Client\MicroErp\src\merp\PresentationModels" />
       <recent name="C:\Users\Phips\Documents\FH\Laptop\Semester4\SWE\Client\MicroErp\src\merp" />
       <recent name="C:\Users\Phips\Documents\FH\Laptop\Semester4\SWE\Client\MicroErp\src\merp\Samples" />
+=======
+    <property name="options.lastSelected" value="preferences.pluginManager" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="OverrideImplement.overriding.sorted" value="false" />
+    <property name="FullScreen" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../GraphicsEditor_" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="graphicseditor.factory.shapes" />
+      <recent name="graphicseditor.factory" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Phips\Documents\FH\Laptop\Semester4\SWE\Client\MicroErp\src\merp\DummyStuff" />
@@ -662,27 +813,36 @@
     <configuration default="false" name="Client" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="merp.*" />
+          <option name="PATTERN" value="graphicseditor.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
       <option name="MAIN_CLASS_NAME" value="merp.Client" />
       <option name="VM_PARAMETERS" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+=======
+      <option name="MAIN_CLASS_NAME" value="graphicseditor.Main" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="MicroErp" />
+      <module name="GraphicsEditor" />
       <envs />
+      <RunnerSettings RunnerId="Cover" />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="" />
         <option name="TRANSPORT" value="0" />
         <option name="LOCAL" value="true" />
       </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Cover" />
       <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
@@ -705,6 +865,7 @@
       <created>1359379246138</created>
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
       <workItem from="1395306806939" duration="167000" />
       <workItem from="1395307047494" duration="1861000" />
       <workItem from="1395679489570" duration="27000" />
@@ -730,10 +891,26 @@
       <workItem from="1402056957053" duration="23496000" />
       <workItem from="1402322000876" duration="8707000" />
       <workItem from="1402481678404" duration="24720000" />
+=======
+      <workItem from="1397839663518" duration="2501000" />
+      <workItem from="1398004068570" duration="2260000" />
+      <workItem from="1398071423880" duration="3321000" />
+      <workItem from="1398077049569" duration="11785000" />
+      <workItem from="1398148941764" duration="13000" />
+      <workItem from="1398148998647" duration="11495000" />
+      <workItem from="1398161141403" duration="3649000" />
+      <workItem from="1398165053218" duration="1661000" />
+      <workItem from="1398169269425" duration="1842000" />
+      <workItem from="1398171981030" duration="4703000" />
+      <workItem from="1398176837645" duration="6410000" />
+      <workItem from="1398183870316" duration="1074000" />
+      <workItem from="1398185108899" duration="3030000" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
     <option name="totallyTimeSpent" value="180959000" />
   </component>
   <component name="TodoView" selected-index="0">
@@ -755,9 +932,12 @@
       <flatten-packages value="false" />
       <is-autoscroll-to-source value="false" />
     </todo-panel>
+=======
+    <option name="totallyTimeSpent" value="55046000" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1296" height="1010" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -768,6 +948,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33333334" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32663316" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -783,11 +964,34 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24622357" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31544715" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39500567" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32122588" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24555735" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21906924" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956383" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
       <window_info id="Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291714" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -809,7 +1013,19 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
       <option name="time" value="54" />
+=======
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/graphicseditor/ObjectModel.java</url>
+          <line>37</line>
+          <properties />
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="40" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -817,6 +1033,7 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_40/jre/lib/jfxrt.jar!/javafx/stage/Window.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4471">
@@ -917,18 +1134,129 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="282" max-vertical-offset="714">
           <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/editor.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="748">
+          <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/factory/shapes/CustomRectangle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="544" max-vertical-offset="884">
+          <caret line="32" column="40" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/factory/shapes/Triangle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="867" max-vertical-offset="1105">
+          <caret line="51" column="21" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
+          <folding>
+            <element signature="e#884#885#0" expanded="true" />
+            <element signature="e#919#920#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/factory/ShapeFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="646">
+          <caret line="14" column="60" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/ObjectModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="1190">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1037" max-vertical-offset="1139">
+          <caret line="83" column="33" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <folding>
+            <element signature="e#3347#6222#0" expanded="true" />
+            <element signature="e#6210#6211#0" expanded="true" />
+            <element signature="e#6262#7706#0" expanded="true" />
+            <element signature="e#7694#7695#0" expanded="true" />
+            <element signature="e#7748#8284#0" expanded="true" />
+            <element signature="e#8273#8274#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/editor.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="527" max-vertical-offset="714">
+          <caret line="31" column="30" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/factory/shapes/CustomRectangle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="731">
+          <caret line="9" column="19" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="561">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/factory/ShapeFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="121" max-vertical-offset="612">
+          <caret line="17" column="59" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/factory/ShapePrototype.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="255">
+          <caret line="4" column="68" selection-start-line="4" selection-start-column="68" selection-end-line="4" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/ObjectModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1190">
+          <caret line="18" column="50" selection-start-line="18" selection-start-column="50" selection-end-line="18" selection-end-column="50" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
     <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/InvoiceItemModel.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="635" max-vertical-offset="1190">
           <caret line="59" column="108" selection-start-line="59" selection-start-column="108" selection-end-line="59" selection-end-column="108" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/factory/shapes/CustomCircle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="731" max-vertical-offset="918">
+          <caret line="43" column="40" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
     <entry file="file://$PROJECT_DIR$/src/merp/Models/JsonParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="129" max-vertical-offset="799">
@@ -940,10 +1268,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="1343">
           <caret line="49" column="63" selection-start-line="49" selection-start-column="63" selection-end-line="49" selection-end-column="63" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/factory/shapes/CustomEllipse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="901">
+          <caret line="45" column="5" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
     <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/MainDialog.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.04" vertical-offset="1405" max-vertical-offset="2159">
@@ -956,34 +1291,77 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1003">
           <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1513">
+          <caret line="43" column="54" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding>
+            <element signature="e#3347#6222#0" expanded="true" />
+            <element signature="e#6210#6211#0" expanded="true" />
+            <element signature="e#6262#7706#0" expanded="true" />
+            <element signature="e#7694#7695#0" expanded="true" />
+            <element signature="e#7748#8284#0" expanded="true" />
+            <element signature="e#8273#8274#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/editor.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="27" max-vertical-offset="714">
+          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
     <entry file="file://$PROJECT_DIR$/src/merp/Models/ProxySingleton.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="493" max-vertical-offset="867">
           <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/factory/shapes/CustomRectangle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="731">
+          <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
     <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/FoundContactDialog.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="393" max-vertical-offset="867">
           <caret line="39" column="16" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="16" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/ObjectModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="267" max-vertical-offset="1088">
+          <caret line="21" column="28" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
     <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/PdfCreator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1326" max-vertical-offset="1751">
           <caret line="29" column="106" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/factory/ShapeFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="612">
+          <caret line="28" column="54" selection-start-line="28" selection-start-column="54" selection-end-line="28" selection-end-column="54" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
     <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/AbstractController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="308" max-vertical-offset="1190">
@@ -1007,42 +1385,114 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4726">
           <caret line="30" column="46" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1513">
+          <caret line="43" column="54" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding>
+            <element signature="e#3347#6222#0" expanded="true" />
+            <element signature="e#6210#6211#0" expanded="true" />
+            <element signature="e#6262#7706#0" expanded="true" />
+            <element signature="e#7694#7695#0" expanded="true" />
+            <element signature="e#7748#8284#0" expanded="true" />
+            <element signature="e#8273#8274#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/editor.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="27" max-vertical-offset="714">
+          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
     <entry file="file://$PROJECT_DIR$/src/merp/Models/Contact.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1506" max-vertical-offset="2227">
           <caret line="164" column="31" selection-start-line="164" selection-start-column="31" selection-end-line="164" selection-end-column="31" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/factory/shapes/CustomRectangle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="731">
+          <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
     <entry file="file://$PROJECT_DIR$/src/merp/Client.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="61" max-vertical-offset="629">
           <caret line="12" column="28" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/ObjectModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="335" max-vertical-offset="1190">
+          <caret line="41" column="6" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
     <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/FoundContactDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.84" vertical-offset="501" max-vertical-offset="850">
           <caret line="57" column="12" selection-start-line="57" selection-start-column="10" selection-end-line="57" selection-end-column="12" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/factory/ShapeFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="612">
+          <caret line="28" column="54" selection-start-line="28" selection-start-column="54" selection-end-line="28" selection-end-column="54" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
     <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/DisplayInvoiceController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.64" vertical-offset="71" max-vertical-offset="1241">
           <caret line="28" column="52" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="52" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1071">
+          <caret line="18" column="19" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <element signature="e#3347#6222#0" expanded="true" />
+            <element signature="e#6210#6211#0" expanded="true" />
+            <element signature="e#6262#7706#0" expanded="true" />
+            <element signature="e#7694#7695#0" expanded="true" />
+            <element signature="e#7748#8284#0" expanded="true" />
+            <element signature="e#8273#8274#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/editor.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="493" max-vertical-offset="595">
+          <caret line="29" column="34" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
     <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_45/jre/lib/jfxrt.jar!/javafx/fxml/FXMLLoader.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="3896" max-vertical-offset="8398">
@@ -1071,66 +1521,187 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="245" max-vertical-offset="595">
           <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
+=======
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_40/jre/lib/jfxrt.jar!/javafx/event/EventHandler.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2771739" vertical-offset="0" max-vertical-offset="368">
+          <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_40/jre/lib/jfxrt.jar!/com/sun/javafx/application/LauncherImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.71267605" vertical-offset="393" max-vertical-offset="748">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_40/jre/lib/jfxrt.jar!/javafx/beans/property/StringPropertyBase.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_40/jre/lib/jfxrt.jar!/javafx/scene/Parent.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1315" max-vertical-offset="3638">
+          <caret line="88" column="38" selection-start-line="88" selection-start-column="38" selection-end-line="88" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_40/jre/lib/jfxrt.jar!/javafx/scene/Node.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4052" max-vertical-offset="22797">
+          <caret line="249" column="44" selection-start-line="249" selection-start-column="44" selection-end-line="249" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_40/jre/lib/jfxrt.jar!/com/sun/javafx/scene/control/skin/SliderSkin.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5490716" vertical-offset="490" max-vertical-offset="867">
+          <caret line="42" column="45" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_40/jre/lib/rt.jar!/sun/misc/FloatingDecimal.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1510" max-vertical-offset="1887">
+          <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_40/src.zip!/java/lang/Double.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="8513" max-vertical-offset="15929">
+          <caret line="539" column="0" selection-start-line="539" selection-start-column="0" selection-end-line="539" selection-end-column="0" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
     <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_45/jre/lib/jfxrt.jar!/javafx/scene/Scene.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="14317" max-vertical-offset="16609">
           <caret line="881" column="5" selection-start-line="881" selection-start-column="0" selection-end-line="881" selection-end-column="0" />
+=======
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_40/src.zip!/java/lang/Cloneable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.86339754" vertical-offset="0" max-vertical-offset="629">
+          <caret line="52" column="17" selection-start-line="52" selection-start-column="17" selection-end-line="52" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/factory/shapes/Triangle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1122">
+          <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="28" />
+          <folding>
+            <element signature="e#884#885#0" expanded="true" />
+            <element signature="e#919#920#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/factory/shapes/Square.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="1309">
+          <caret line="40" column="28" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
     <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_45/jre/lib/jfxrt.jar!/javafx/beans/property/StringPropertyBase.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/factory/shapes/CustomCircle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="1428">
+          <caret line="39" column="28" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
     <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_45/jre/lib/jfxrt.jar!/javafx/beans/binding/BooleanExpression.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="13" max-vertical-offset="493">
           <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/editor.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="799">
+          <caret line="34" column="76" selection-start-line="34" selection-start-column="76" selection-end-line="34" selection-end-column="76" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
     <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_45/jre/lib/jfxrt.jar!/javafx/beans/binding/BooleanBinding.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="132" max-vertical-offset="782">
           <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/factory/shapes/CustomEllipse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="646" max-vertical-offset="1411">
+          <caret line="38" column="26" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
     <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_45/jre/lib/jfxrt.jar!/javafx/beans/property/BooleanPropertyBase.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="491" max-vertical-offset="901">
           <caret line="37" column="16" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
+=======
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_40/jre/lib/jfxrt.jar!/javafx/scene/control/ComboBoxBase.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="455" max-vertical-offset="1921">
+          <caret line="37" column="19" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
     <entry file="file://$PROJECT_DIR$/src/merp/PresentationModels/ContactModel.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="373" max-vertical-offset="1054">
           <caret line="49" column="34" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="34" />
+=======
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_40/jre/lib/jfxrt.jar!/javafx/event/Event.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="122" max-vertical-offset="595">
+          <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/merp/Models/Invoice.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_40/jre/lib/jfxrt.jar!/javafx/scene/Scene.class">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
         <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1105">
           <caret line="14" column="57" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+=======
+        <state vertical-scroll-proportion="0.0" vertical-offset="14752" max-vertical-offset="16609">
+          <caret line="878" column="20" selection-start-line="878" selection-start-column="20" selection-end-line="878" selection-end-column="20" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:MicroErp/.idea/workspace.xml
     <entry file="file://$PROJECT_DIR$/src/merp/Models/ContactPresentationModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1460" max-vertical-offset="4420">
@@ -1224,6 +1795,69 @@
             <element signature="e#2968#2969#0" expanded="true" />
             <element signature="e#3018#3762#0" expanded="true" />
             <element signature="e#3751#3752#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/ObjectModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="212" max-vertical-offset="2040">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/factory/shapes/Pen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1241">
+          <caret line="21" column="45" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/factory/ShapeFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
+          <caret line="26" column="61" selection-start-line="26" selection-start-column="61" selection-end-line="26" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/factory/ShapePrototype.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+          <caret line="16" column="38" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="646" max-vertical-offset="748">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/factory/shapes/CustomRectangle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="109" max-vertical-offset="867">
+          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphicseditor/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46815288" vertical-offset="1474" max-vertical-offset="3400">
+          <caret line="132" column="53" selection-start-line="132" selection-start-column="41" selection-end-line="132" selection-end-column="41" />
+          <folding>
+            <element signature="e#3347#6222#0" expanded="true" />
+            <element signature="e#6210#6211#0" expanded="true" />
+            <element signature="e#6262#7706#0" expanded="true" />
+            <element signature="e#7694#7695#0" expanded="true" />
+            <element signature="e#7748#8284#0" expanded="true" />
+            <element signature="e#8273#8274#0" expanded="true" />
+>>>>>>> swp:GraphicsEditor/.idea/workspace.xml
           </folding>
         </state>
       </provider>
@@ -1239,7 +1873,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -1282,7 +1915,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>MicroErp</last-edited>
+          <last-edited>GraphicsEditor</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1295,7 +1928,6 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>lib</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
