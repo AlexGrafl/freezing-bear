@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import eu.schudt.javafx.controls.calendar.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import merp.PresentationModels.* ?>
+
+<Pane prefHeight="427.0" prefWidth="364.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="merp.PresentationModels.InvoiceModelController">
+  <children>
+    <Pane fx:id="controlPane" layoutX="0.0" layoutY="394.0" prefHeight="24.5" prefWidth="364.0">
+      <children>
+        <Button fx:id="btnCancel" layoutX="242.0" layoutY="2.0" mnemonicParsing="false" onAction="#onCancel" text="Cancel" />
+        <Button fx:id="btnNext" layoutX="305.0" layoutY="2.0" mnemonicParsing="false" onAction="#onNext" text="Next" />
+        <Label fx:id="messageLabel" layoutX="31.0" layoutY="2.0" prefWidth="-1.0" text="" />
+      </children>
+    </Pane>
+    <Pane fx:id="paneInput" layoutX="14.0" layoutY="14.0" prefHeight="336.0" prefWidth="336.0">
+      <children>
+        <Label fx:id="contactLabel" layoutX="20.0" layoutY="11.0" text="Contact" />
+        <TextField fx:id="contactText" layoutX="123.0" layoutY="11.0" prefWidth="146.9998779296875" />
+        <RadioButton fx:id="radioPerson" layoutX="123.0" layoutY="38.0" mnemonicParsing="false" text="Person" />
+        <RadioButton fx:id="radioCompany" layoutX="185.0" layoutY="38.0" mnemonicParsing="false" text="Company" />
+        <Label fx:id="contactResultLabel" layoutX="291.0" layoutY="11.0" prefHeight="30.0" prefWidth="30.0" text="" />
+        <DatePicker fx:id="dueDate" layoutX="122.0" layoutY="61.0" prefWidth="200.0" />
+        <Label layoutX="19.0" layoutY="61.0" text="Due date" />
+        <Label layoutX="20.0" layoutY="90.0" text="Comment" />
+        <TextArea fx:id="commentTextArea" layoutX="121.0" layoutY="90.0" prefHeight="77.0" prefWidth="200.0" wrapText="true" />
+        <Label layoutX="17.0" layoutY="189.0" text="Message" />
+        <TextArea fx:id="messageTextArea" layoutX="121.0" layoutY="189.0" prefHeight="77.0" prefWidth="200.0" wrapText="true" />
+      </children>
+    </Pane>
+  </children>
+</Pane>

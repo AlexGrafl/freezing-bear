@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="514.0" prefWidth="449.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="merp.PresentationModels.DisplayInvoiceController">
+  <children>
+    <Pane layoutX="0.0" layoutY="0.0" prefHeight="437.0" prefWidth="449.0">
+      <children>
+        <Label layoutX="23.0" layoutY="17.0" text="Invoice" />
+        <Label fx:id="invoiceID" layoutX="148.0" layoutY="17.0" prefWidth="200.0" text="" />
+        <Label layoutX="23.0" layoutY="39.0" text="Contact" />
+        <Label fx:id="contactID" layoutX="148.0" layoutY="39.0" prefWidth="200.0" text="" />
+        <Label layoutX="23.0" layoutY="61.0" text="Due Date" />
+        <Label id="issueDate" fx:id="dueDate" layoutX="148.0" layoutY="61.0" prefWidth="200.0" text="" />
+        <Label layoutX="23.0" layoutY="83.0" text="Issue Date" />
+        <Label id="dueDate" fx:id="issueDate" layoutX="148.0" layoutY="83.0" prefWidth="200.0" text="" />
+        <Label layoutX="23.0" layoutY="104.0" text="Message" />
+        <Label fx:id="message" layoutX="148.0" layoutY="104.0" prefWidth="-1.0" text="" />
+        <Label layoutX="23.0" layoutY="160.0" text="Comment" />
+        <Label fx:id="comment" layoutX="148.0" layoutY="160.0" prefWidth="-1.0" text="" />
+        <Button fx:id="btnPrintPDF" layoutX="368.0" layoutY="198.0" mnemonicParsing="false" onAction="#onPrintPDF" text="Print PDf" />
+        <TableView fx:id="tableView" layoutX="14.0" layoutY="229.0" prefHeight="207.99997792968497" prefWidth="421.0">
+          <columns>
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="146.0" text="Description" fx:id="description">
+              <cellValueFactory>
+                <PropertyValueFactory property="description" />
+              </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="75.0" text="Quantity" fx:id="quantity">
+              <cellValueFactory>
+                <PropertyValueFactory property="quantity" />
+              </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="75.0" text="Price/Unit" fx:id="pricePerUnit">
+              <cellValueFactory>
+                <PropertyValueFactory property="pricePerUnit" />
+              </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="75.0" text="Nettoprice" fx:id="nettoPrice">
+              <cellValueFactory>
+                <PropertyValueFactory property="nettoPrice" />
+              </cellValueFactory>
+            </TableColumn>
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="49.0" text="Tax" fx:id="tax">
+              <cellValueFactory>
+                <PropertyValueFactory property="tax" />
+              </cellValueFactory>
+            </TableColumn>
+          </columns>
+        </TableView>
+      </children>
+    </Pane>
+    <Pane layoutX="0.0" layoutY="460.0" prefHeight="54.0" prefWidth="449.0">
+      <children>
+        <Button fx:id="btnClose" layoutX="393.0" layoutY="27.0" mnemonicParsing="false" onAction="#onClose" text="Close" />
+      </children>
+    </Pane>
+    <Label layoutX="290.0" layoutY="437.0" text="netto-Total:" />
+    <Label id="labelTotal" fx:id="nettoTotal" layoutX="380.0" layoutY="437.0" text="">
+      <font>
+        <Font name="System Bold" size="14.0" fx:id="x1" />
+      </font>
+    </Label>
+    <Label layoutX="290.0" layoutY="463.0" text="brutto-Total:" />
+    <Label id="labelTotal" fx:id="bruttoTotal" font="$x1" layoutX="380.0" layoutY="463.0" text="" />
+  </children>
+</Pane>
