@@ -1,17 +1,24 @@
-package com.technikumwien.mad.rssreader;
+package com.technikumwien.mad.rssreader.fragments;
 
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Messenger;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.technikumwien.mad.rssreader.R;
+import com.technikumwien.mad.rssreader.services.ReadRssService;
 
 /**
  * Created by Alex on 05.10.2014.
  */
 public class ListFeedsFragment extends ListFragment {
+    //TODO: get rid of this
+    private static final String TEMP_URL = "http://rss.orf.at/news.xml";
+
     boolean mDualPane;
     int mCurCheckPosition = 0;
 
@@ -67,6 +74,14 @@ public class ListFeedsFragment extends ListFragment {
             if (viewFeed == null || viewFeed.getShownIndex() != index) {
                 // Make new fragment to show this selection.
                 viewFeed = ViewFeedFragment.newInstance(index);
+                Intent i = new Intent(getActivity(), ReadRssService.class);
+                Bundle bundle = new Bundle();
+                //TODO: get rss feed link from DB
+                bundle.putString(ReadRssService.RSS_FEED_URL, TEMP_URL);
+                bundle.putParcelable(ReadRssService.RSS_READER_HANDLER,
+                        new Messenger(viewFeed.getRssReadHandler()));
+                i.putExtras(bundle);
+                getActivity().startService(i);
 
                 // Execute a transaction, replacing any existing fragment
                 // with this one inside the frame.
@@ -82,5 +97,7 @@ public class ListFeedsFragment extends ListFragment {
 
         }
     }
+
+
 
 }

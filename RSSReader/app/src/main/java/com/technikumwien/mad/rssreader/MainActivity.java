@@ -8,6 +8,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.technikumwien.mad.rssreader.fragments.AddFeedFragment;
+import com.technikumwien.mad.rssreader.fragments.ListFeedsFragment;
+
+
 /**
  * Created by Alex on 05.10.2014.
  */
@@ -43,7 +47,7 @@ public class MainActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle presses on the action bar items
         switch (item.getItemId()) {
-            case R.id.add_feed:
+            case R.id.add_feed_menu:
                 AddFeedFragment addFeedFragment = new AddFeedFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 if(mDualPane) {
@@ -55,7 +59,7 @@ public class MainActivity extends Activity {
                 transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 transaction.commit();
                 return true;
-            case R.id.refresh:
+            case R.id.refresh_menu:
                 //TODO: REFRESH LISTS
                 return true;
             default:

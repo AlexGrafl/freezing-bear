@@ -9,18 +9,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Enter RSS feed URL:"
+        android:text="@string/rss_feed_nick"
+        android:id="@+id/textView1" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_feed_nick"
+        android:layout_marginBottom="10dp"
+        android:inputType="text" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/rss_feed_url"
         android:id="@+id/textView" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText" />
+        android:id="@+id/add_feed_url"
+        android:layout_marginBottom="10dp"
+        android:inputType="textUri" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add"
-        android:id="@+id/button"
-        android:layout_gravity="right" />
+        android:text="@string/add_feed_button_text"
+        android:id="@+id/add_feed_button"
+        android:layout_gravity="end" />
 </LinearLayout>
