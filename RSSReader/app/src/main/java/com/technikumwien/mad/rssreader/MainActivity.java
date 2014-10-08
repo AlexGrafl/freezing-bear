@@ -37,15 +37,12 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu items for use in the action bar
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle presses on the action bar items
+    public boolean onMenuItemSelected(int featureId, MenuItem item) {
         switch (item.getItemId()) {
             case R.id.add_feed_menu:
                 AddFeedFragment addFeedFragment = new AddFeedFragment();
@@ -59,11 +56,8 @@ public class MainActivity extends Activity {
                 transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 transaction.commit();
                 return true;
-            case R.id.refresh_menu:
-                //TODO: REFRESH LISTS
-                return true;
             default:
-                return super.onOptionsItemSelected(item);
+                return super.onMenuItemSelected(featureId, item);
         }
     }
 

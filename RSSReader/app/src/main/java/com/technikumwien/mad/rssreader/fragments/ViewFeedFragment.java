@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.Messenger;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
@@ -41,23 +43,6 @@ public class ViewFeedFragment extends ListFragment {
         return f;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if((savedInstanceState != null)
-                && (savedInstanceState.getParcelable(CURRENT_FEED) != null) ) {
-            currentRssFeed = savedInstanceState.getParcelable(CURRENT_FEED);
-            if (rssItemArrayAdapter == null){
-                rssItemArrayAdapter = new RssItemArrayAdapter(getActivity(), 1,
-                        1, currentRssFeed.getRssItems());
-                setListAdapter(rssItemArrayAdapter);
-            } else {
-                rssItemArrayAdapter.clear();
-                rssItemArrayAdapter.addAll(currentRssFeed.getRssItems());
-            }
-        }
-    }
-
     public int getShownIndex() {
         return getArguments().getInt("index", 0);
     }
@@ -65,10 +50,18 @@ public class ViewFeedFragment extends ListFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        rssItemArrayAdapter = new RssItemArrayAdapter(getActivity(),
-                android.R.layout.simple_list_item_activated_1, 1 ,new ArrayList<RssItem>(){});
-        setListAdapter(rssItemArrayAdapter);
+        if (rssItemArrayAdapter == null){
+            rssItemArrayAdapter = new RssItemArrayAdapter(getActivity(), 1,
+                    1, new ArrayList<RssItem>());
+            setListAdapter(rssItemArrayAdapter);
+        }
+        if((savedInstanceState != null)
+                && (savedInstanceState.getParcelable(CURRENT_FEED) != null) ) {
+            currentRssFeed = savedInstanceState.getParcelable(CURRENT_FEED);
+            rssItemArrayAdapter.clear();
+            rssItemArrayAdapter.addAll(currentRssFeed.getRssItems());
+        }
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -85,11 +78,21 @@ public class ViewFeedFragment extends ListFragment {
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        // Inflate the menu items for use in the action bar
+        super.onCreateOptionsMenu(menu, inflater);
+        if(menu.findItem(R.id.add_feed_menu) != null){
+            menu.findItem(R.id.add_feed_menu).setVisible(true);
+            menu.findItem(R.id.refresh_menu).setVisible(true);
+        }
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()){
             case R.id.refresh_menu:
                 Intent i = new Intent(getActivity(), ReadRssService.class);
-                i.putExtra(ReadRssService.RSS_FEED_URL, currentRssFeed.getLink());
+                i.putExtra(ReadRssService.RSS_FEED_URL, currentRssFeed.getRssLink());
                 i.putExtra(ReadRssService.RSS_READER_HANDLER, new Messenger(new RssReadHandler()));
                 getActivity().startService(i);
                 Log.i(TAG, "refresh pressed");
@@ -110,6 +113,7 @@ public class ViewFeedFragment extends ListFragment {
             rssItemArrayAdapter.clear();
             currentRssFeed = (RssFeed) msg.obj;
             rssItemArrayAdapter.addAll(currentRssFeed.getRssItems());
+            getActivity().setTitle(currentRssFeed.getTitle());
             Log.i(TAG, "List refreshed successfully, got " + currentRssFeed.getRssItems().size()
                     + " items.");
         }

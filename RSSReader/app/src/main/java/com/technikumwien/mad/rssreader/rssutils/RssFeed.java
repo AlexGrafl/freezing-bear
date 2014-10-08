@@ -23,6 +23,7 @@ import android.os.Parcelable;
 
 public class RssFeed implements Parcelable {
 
+    private String rssLink;
     private String title;
     private String link;
     private String description;
@@ -36,6 +37,7 @@ public class RssFeed implements Parcelable {
     public RssFeed(Parcel source) {
 
         Bundle data = source.readBundle();
+        rssLink = data.getString("rssLink");
         title = data.getString("title");
         link = data.getString("link");
         description = data.getString("description");
@@ -48,6 +50,7 @@ public class RssFeed implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
 
         Bundle data = new Bundle();
+        data.putString("rssLink", rssLink);
         data.putString("title", title);
         data.putString("link", link);
         data.putString("description", description);
@@ -112,5 +115,13 @@ public class RssFeed implements Parcelable {
 
     public void setRssItems(ArrayList<RssItem> rssItems) {
         this.rssItems = rssItems;
+    }
+
+    public String getRssLink() {
+        return rssLink;
+    }
+
+    public void setRssLink(String rssLink) {
+        this.rssLink = rssLink;
     }
 }

@@ -17,6 +17,7 @@ package com.technikumwien.mad.rssreader.rssutils;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -30,10 +31,8 @@ import org.xml.sax.XMLReader;
 public class RssReader {
 
     public static RssFeed read(URL url) throws SAXException, IOException {
-
         return read(url.openStream());
-
-    }
+}
 
     public static RssFeed read(InputStream stream) throws SAXException, IOException {
 
@@ -47,7 +46,6 @@ public class RssReader {
 
             reader.setContentHandler(handler);
             reader.parse(input);
-
             return handler.getResult();
 
         } catch (ParserConfigurationException e) {

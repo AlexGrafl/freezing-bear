@@ -5,6 +5,9 @@ import android.app.ListFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Messenger;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -46,6 +49,30 @@ public class ListFeedsFragment extends ListFragment {
             getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
             // Make sure our UI is in the correct state.
             showFeed(mCurCheckPosition);
+        }
+        getActivity().setTitle(R.string.title_activity_main);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        // Inflate the menu items for use in the action bar
+        super.onCreateOptionsMenu(menu, inflater);
+        if(menu.findItem(R.id.add_feed_menu) != null){
+            menu.findItem(R.id.add_feed_menu).setVisible(true);
+            menu.findItem(R.id.refresh_menu).setVisible(true);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+            case R.id.refresh_menu:
+                //TODO: REFRESH LISTS
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 

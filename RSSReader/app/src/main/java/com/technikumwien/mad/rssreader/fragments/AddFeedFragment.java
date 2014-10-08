@@ -17,6 +17,8 @@ public class AddFeedFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        setHasOptionsMenu(true);
         return inflater.inflate(R.layout.add_feed_fragment, container, false);
     }
 
@@ -25,8 +27,8 @@ public class AddFeedFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         if(menu != null){
-            //FIXME: des geht ned
             menu.findItem(R.id.add_feed_menu).setVisible(false);
+            menu.findItem(R.id.refresh_menu).setVisible(false);
         }
     }
 

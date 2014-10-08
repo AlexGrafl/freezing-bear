@@ -9,6 +9,7 @@ import android.os.Messenger;
 import android.os.RemoteException;
 import android.util.Log;
 
+import com.technikumwien.mad.rssreader.rssutils.RssFeed;
 import com.technikumwien.mad.rssreader.rssutils.RssItem;
 import com.technikumwien.mad.rssreader.rssutils.RssReader;
 
@@ -49,7 +50,9 @@ public class ReadRssService extends Service {
             public void run(){
                 try {
                     Message msg = new Message();
-                    msg.obj = RssReader.read(new URL(rssFeedUrl));
+                    RssFeed rssFeed = RssReader.read(new URL(rssFeedUrl));
+                    rssFeed.setRssLink(rssFeedUrl);
+                    msg.obj = rssFeed;
                     messenger.send(msg);
                     stopSelf();
                 } catch (SAXException | RemoteException |IOException e) {
