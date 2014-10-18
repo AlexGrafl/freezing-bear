@@ -34,6 +34,11 @@ public class RssFeed implements Parcelable {
         rssItems = new ArrayList<>();
     }
 
+    public RssFeed(String rssLink, String title) {
+        this.rssLink = rssLink;
+        this.title = title;
+    }
+
     public RssFeed(Parcel source) {
 
         Bundle data = source.readBundle();

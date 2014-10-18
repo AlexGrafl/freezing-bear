@@ -27,7 +27,6 @@ public class MainActivity extends Activity {
         listFeedsFragment = new ListFeedsFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.list, listFeedsFragment);
-        transaction.addToBackStack(null);
         transaction.commit();
 
         View detailsFrame = findViewById(R.id.details);

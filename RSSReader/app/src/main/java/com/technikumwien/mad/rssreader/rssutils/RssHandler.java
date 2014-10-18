@@ -45,7 +45,6 @@ public class RssHandler extends DefaultHandler {
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) {
         stringBuilder = new StringBuilder();
-
         if(qName.equals("item") && rssFeed != null) {
             rssItem = new RssItem();
             rssItem.setFeed(rssFeed);
@@ -65,7 +64,6 @@ public class RssHandler extends DefaultHandler {
         qName = stripNamespaces(qName);
         if(rssFeed != null && rssItem == null) {
             // Parse feed properties
-
             try {
                 if (qName != null && qName.length() > 0) {
                     String methodName = "set" + qName.substring(0, 1).toUpperCase() + qName.substring(1);
@@ -76,14 +74,10 @@ public class RssHandler extends DefaultHandler {
                     | IllegalAccessException | InvocationTargetException e) {
                 Log.e(TAG, "Parsing RSS feed failed - ", e);
             } catch (NoSuchMethodException ignore){
-
             }
-
         } else if (rssItem != null) {
             // Parse item properties
-
             try {
-
                 String methodName = "set" + qName.substring(0, 1).toUpperCase() + qName.substring(1);
                 Method method = RssItem.class.getMethod(methodName, String.class);
                 method.invoke(rssItem, stringBuilder.toString());

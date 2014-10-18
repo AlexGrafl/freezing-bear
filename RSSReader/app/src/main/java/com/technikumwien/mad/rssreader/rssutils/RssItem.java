@@ -58,7 +58,6 @@ public class RssItem implements Comparable<RssItem>, Parcelable {
         data.putSerializable("pubDate", pubDate);
         data.putString("description", description);
         data.putString("content", content);
-        //data.putParcelable("feed", feed);
         dest.writeBundle(data);
     }
 

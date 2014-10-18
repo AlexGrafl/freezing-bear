@@ -8,11 +8,13 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.Messenger;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import com.technikumwien.mad.rssreader.R;
 import com.technikumwien.mad.rssreader.rssutils.RssFeed;

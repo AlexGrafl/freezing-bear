@@ -30,6 +30,13 @@ import org.xml.sax.XMLReader;
 
 public class RssReader {
 
+    public static RssFeed read(RssFeed rssFeed) throws IOException, SAXException {
+        if(rssFeed.getRssLink() != null){
+            return read(new URL(rssFeed.getRssLink()));
+        }
+        return null;
+    }
+
     public static RssFeed read(URL url) throws SAXException, IOException {
         return read(url.openStream());
 }
@@ -37,7 +44,6 @@ public class RssReader {
     public static RssFeed read(InputStream stream) throws SAXException, IOException {
 
         try {
-
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser parser = factory.newSAXParser();
             XMLReader reader = parser.getXMLReader();
