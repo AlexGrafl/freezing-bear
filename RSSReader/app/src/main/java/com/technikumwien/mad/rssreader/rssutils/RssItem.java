@@ -24,18 +24,53 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.technikumwien.mad.rssreader.greenDAO.DaoSession;
+import com.technikumwien.mad.rssreader.greenDAO.RssFeedDao;
+import com.technikumwien.mad.rssreader.greenDAO.RssItemDao;
+
+import de.greenrobot.dao.DaoException;
+
 public class RssItem implements Comparable<RssItem>, Parcelable {
 
+
+    private long id;
     private RssFeed feed;
     private String title;
     private String link;
     private Date pubDate;
     private String description;
     private String content;
+    private boolean read;
+    private boolean starred;
+
+    /** Used to resolve relations */
+    private transient DaoSession daoSession;
+
+    /** Used for active entity operations. */
+    private transient RssItemDao myDao;
+
+    private RssFeed rssFeed;
+    private Long rssFeed__resolvedKey;
 
     public RssItem() {
 
     }
+
+    public RssItem(long id, String title, String link,
+                   Date pubDate, String description, String content,
+                   long rssFeed__resolvedKey, boolean read, boolean starred) {
+
+        this.id = id;
+        this.title = title;
+        this.link = link;
+        this.pubDate = pubDate;
+        this.description = description;
+        this.content = content;
+        this.rssFeed__resolvedKey = rssFeed__resolvedKey;
+        this.read = read;
+        this.starred = starred;
+    }
+
 
     public RssItem(Parcel source) {
 
@@ -75,14 +110,23 @@ public class RssItem implements Comparable<RssItem>, Parcelable {
         return 0;
     }
 
-    public RssFeed getFeed() {
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+   /*
+   public RssFeed getFeed() {
         return feed;
     }
 
     public void setFeed(RssFeed feed) {
         this.feed = feed;
     }
-
+    */
     public String getTitle() {
         return title;
     }
@@ -132,6 +176,22 @@ public class RssItem implements Comparable<RssItem>, Parcelable {
         this.content = content;
     }
 
+    public void setRead(boolean read) {
+        this.read = read;
+    }
+
+    public void setStarred(boolean starred) {
+        this.starred = starred;
+    }
+
+    public boolean isRead() {
+
+        return read;
+    }
+
+    public boolean isStarred() {
+        return starred;
+    }
     @Override
     public int compareTo(RssItem another) {
         if(getPubDate() != null && another.getPubDate() != null) {
@@ -139,6 +199,71 @@ public class RssItem implements Comparable<RssItem>, Parcelable {
         } else {
             return 0;
         }
+    }
+
+    public void setRssFeed__resolvedKey(Long rssFeed__resolvedKey) {
+        this.rssFeed__resolvedKey = rssFeed__resolvedKey;
+    }
+
+    public Long getRssFeed__resolvedKey() {
+
+        return rssFeed__resolvedKey;
+    }
+    /* ---------------------------- GreenDao Methods ---------------------------- */
+    /* To-one relationship, resolved on first access. */
+    public RssFeed getFeed() {
+        long __key = this.feed.getId();
+        if (rssFeed__resolvedKey == null || !rssFeed__resolvedKey.equals(__key)) {
+            if (daoSession == null) {
+                throw new DaoException("Entity is detached from DAO context");
+            }
+            RssFeedDao targetDao = daoSession.getRssFeedDao();
+            RssFeed rssFeedNew = targetDao.load(__key);
+            synchronized (this) {
+                rssFeed = rssFeedNew;
+                rssFeed__resolvedKey = __key;
+            }
+        }
+        return rssFeed;
+    }
+
+    public void setFeed(RssFeed rssFeed) {
+        if (rssFeed == null) {
+            throw new DaoException("To-one property 'customerId' has not-null constraint; cannot set to-one to null");
+        }
+        synchronized (this) {
+            this.rssFeed = rssFeed;
+            rssFeed__resolvedKey = rssFeed.getId();
+        }
+    }
+
+    public void __setDaoSession(DaoSession daoSession) {
+        this.daoSession = daoSession;
+        myDao = daoSession != null ? daoSession.getRssItemDao() : null;
+    }
+
+    /* Convenient call for {@link AbstractDao#delete(Object)}. Entity must attached to an entity context. */
+    public void delete() {
+        if (myDao == null) {
+            throw new DaoException("Entity is detached from DAO context");
+        }
+        myDao.delete(this);
+    }
+
+    /* Convenient call for {@link AbstractDao#update(Object)}. Entity must attached to an entity context. */
+    public void update() {
+        if (myDao == null) {
+            throw new DaoException("Entity is detached from DAO context");
+        }
+        myDao.update(this);
+    }
+
+    /* Convenient call for {@link AbstractDao#refresh(Object)}. Entity must attached to an entity context. */
+    public void refresh() {
+        if (myDao == null) {
+            throw new DaoException("Entity is detached from DAO context");
+        }
+        myDao.refresh(this);
     }
 
 }
