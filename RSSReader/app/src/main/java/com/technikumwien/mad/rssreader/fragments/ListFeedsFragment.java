@@ -52,6 +52,7 @@ public class ListFeedsFragment extends ListFragment {
         }
         getActivity().setTitle(R.string.title_activity_main);
         setHasOptionsMenu(true);
+        getActivity().getActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     @Override

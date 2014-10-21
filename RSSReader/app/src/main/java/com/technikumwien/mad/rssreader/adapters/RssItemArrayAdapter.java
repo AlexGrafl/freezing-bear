@@ -1,11 +1,13 @@
 package com.technikumwien.mad.rssreader.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.technikumwien.mad.rssreader.R;
@@ -38,11 +40,15 @@ public class RssItemArrayAdapter extends ArrayAdapter<RssItem> {
         ViewHolder views = (ViewHolder) convertView.getTag();
         RssItem item = getItem(position);
         views.label.setText(item.getTitle());
-
+        convertView.setSelected(item.isSelected());
+        views.label.setTextColor(item.isRead() ? Color.GRAY : Color.BLACK);
+        views.label.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0,
+                item.isStarred() ? R.drawable.heart32_black : 0, 0);
         return convertView;
     }
 
     private static final class ViewHolder{
         private TextView label;
+        private ImageView image;
     }
 }
