@@ -55,7 +55,7 @@ public class RssFeedDao extends AbstractDao<RssFeed, Long> {
                 "'TITLE' TEXT NOT NULL ," +
                 "'LINK' TEXT ," +
                 "'DESCRIPTION' TEXT ," +
-                "'LANGUAGE' TEXT ," +
+                "'LANGUAGE' TEXT" +
                 ");");
     }
 

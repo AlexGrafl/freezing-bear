@@ -40,7 +40,7 @@ public class DaoMaster extends AbstractDaoMaster {
     }
 
     /** WARNING: Drops all table on Upgrade! Use only during development. */
-    //TODO: remove this
+    //TODO: don't use this methode for release
     public static class DevOpenHelper extends OpenHelper {
         public DevOpenHelper(Context context, String name, CursorFactory factory) {
             super(context, name, factory);
