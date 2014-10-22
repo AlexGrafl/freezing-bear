@@ -34,12 +34,12 @@ public class RssItem implements Comparable<RssItem>, Parcelable {
 
 
     private long id;
-    private RssFeed feed;
     private String title;
     private String link;
     private Date pubDate;
     private String description;
     private String content;
+    private String usid;
     private boolean read;
     private boolean starred;
 
@@ -57,7 +57,7 @@ public class RssItem implements Comparable<RssItem>, Parcelable {
     }
 
     public RssItem(long id, String title, String link,
-                   Date pubDate, String description, String content,
+                   Date pubDate, String description, String content, String usid,
                    long rssFeed__resolvedKey, boolean read, boolean starred) {
 
         this.id = id;
@@ -66,6 +66,7 @@ public class RssItem implements Comparable<RssItem>, Parcelable {
         this.pubDate = pubDate;
         this.description = description;
         this.content = content;
+        this.usid = usid;
         this.rssFeed__resolvedKey = rssFeed__resolvedKey;
         this.read = read;
         this.starred = starred;
@@ -80,7 +81,7 @@ public class RssItem implements Comparable<RssItem>, Parcelable {
         pubDate = (Date) data.getSerializable("pubDate");
         description = data.getString("description");
         content = data.getString("content");
-        feed = data.getParcelable("feed");
+        rssFeed = data.getParcelable("feed");
 
     }
 
@@ -118,6 +119,7 @@ public class RssItem implements Comparable<RssItem>, Parcelable {
         this.id = id;
     }
 
+
    /*
    public RssFeed getFeed() {
         return feed;
@@ -141,6 +143,14 @@ public class RssItem implements Comparable<RssItem>, Parcelable {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public String getUsid() {
+        return usid;
+    }
+
+    public void setUsid(String usid) {
+        this.usid = usid;
     }
 
     public Date getPubDate() {
@@ -213,18 +223,22 @@ public class RssItem implements Comparable<RssItem>, Parcelable {
     /* ---------------------------- GreenDao Methods ---------------------------- */
     /* To-one relationship, resolved on first access. */
     public RssFeed getFeed() {
-        long __key = this.feed.getId();
-        if (rssFeed__resolvedKey == null || !rssFeed__resolvedKey.equals(__key)) {
-            if (daoSession == null) {
-                throw new DaoException("Entity is detached from DAO context");
+//        if(this.feed != null) {
+
+            //TODO: Recursive Call: - fix it!
+            long __key = this.getFeed().getId();
+            if (rssFeed__resolvedKey == null || !rssFeed__resolvedKey.equals(__key)) {
+                if (daoSession == null) {
+                    throw new DaoException("Entity is detached from DAO context");
+                }
+                RssFeedDao targetDao = daoSession.getRssFeedDao();
+                RssFeed rssFeedNew = targetDao.load(__key);
+                synchronized (this) {
+                    rssFeed = rssFeedNew;
+                    rssFeed__resolvedKey = __key;
+                }
             }
-            RssFeedDao targetDao = daoSession.getRssFeedDao();
-            RssFeed rssFeedNew = targetDao.load(__key);
-            synchronized (this) {
-                rssFeed = rssFeedNew;
-                rssFeed__resolvedKey = __key;
-            }
-        }
+  //      }
         return rssFeed;
     }
 

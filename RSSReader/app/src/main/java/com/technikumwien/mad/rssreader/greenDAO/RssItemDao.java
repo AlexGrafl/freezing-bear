@@ -35,8 +35,11 @@ public class RssItemDao extends AbstractDao<RssItem, Long> {
         public final static Property pubDate = new Property(3,String.class,"pubDate",false,"PUBDATE");
         public final static Property description = new Property(4,String.class,"description",false,"DESCRIPTION");
         public final static Property content = new Property(5,String.class,"content",false,"CONTENT");
+        public final static Property usid = new Property(6,String.class,"usid",false,"USID");
+        public final static Property rssFeedId = new Property(7, long.class, "rssFeedId", false, "RSSFEED_ID");
+        public final static Property read = new Property(8, boolean.class, "read", false, "READ");
+        public final static Property starred = new Property(9, boolean.class, "starred", false, "STARRED");
 
-        public final static Property rssFeedId = new Property(6, long.class, "rssFeedId", false, "RSSFEED_ID");
     };
 
     private DaoSession daoSession;
@@ -57,15 +60,16 @@ public class RssItemDao extends AbstractDao<RssItem, Long> {
     public static void createTable(SQLiteDatabase db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "'RSSITEMS' (" + //
-                "'_id' INTEGER PRIMARY KEY ," + // 0: id
-                "'TITLE' TEXT NOT NULL," + // 1: title
-                "'LINK' TEXT NOT NULL," + // 2: link
-                "'PUBDATE' INTEGER," + // 3: pubDate
-                "'DESCRIPTION' TEXT," + // 4: description
-                "'CONTENT' TEXT," + // 5: content
-                "'RSSFEED_ID' INTEGER NOT NULL, " + // 6: RssFeedId
-                "'READ' INTEGER," + // 7: Read
-                "'STARRED' INTEGER);"); // 8: Starred
+                "'_id' INTEGER PRIMARY KEY ," + // 0: id    //AUTO_INCREMENT
+                "'TITLE' TEXT NOT NULL ," + // 1: title   >NOT NULL
+                "'LINK' TEXT NOT NULL, " + // 2: link
+                "'PUBDATE' INTEGER, " + // 3: pubDate
+                "'DESCRIPTION' TEXT, " + // 4: description
+                "'CONTENT' TEXT, " + // 5: content
+                "'USID' TEXT, " + //6: usid
+                "'RSSFEED_ID' INTEGER NOT NULL, " + // 7: RssFeedId
+                "'READ' INTEGER," + // 8: Read
+                "'STARRED' INTEGER);"); // 9: Starred
     }
 
     /** Drops the underlying database table. */
@@ -83,12 +87,20 @@ public class RssItemDao extends AbstractDao<RssItem, Long> {
         if (id != null) {
             stmt.bindLong(1, id);
         }
+        stmt.bindString(2,entity.getTitle());
+        stmt.bindString(3,entity.getLink());
 
         java.util.Date date = entity.getPubDate();
         if (date != null) {
-            stmt.bindLong(2, date.getTime());
+            stmt.bindLong(4, date.getTime());
         }
-        stmt.bindLong(3, entity.getFeed().getId());
+        stmt.bindString(5,entity.getDescription());
+        stmt.bindString(6,entity.getContent());
+        stmt.bindString(7,entity.getUsid());
+        stmt.bindLong(8,entity.getRssFeed__resolvedKey());
+        stmt.bindLong(9,entity.isRead()? 1 : 0);
+        stmt.bindLong(10,entity.isStarred() ? 1 : 0);
+
     }
 
     @Override
@@ -113,9 +125,10 @@ public class RssItemDao extends AbstractDao<RssItem, Long> {
                 cursor.isNull(offset + 3) ? null : new java.util.Date(cursor.getLong(offset + 3)), // date
                 cursor.getString((offset + 4)), // description
                 cursor.getString((offset + 5)), // content
-                cursor.getLong(offset + 6), // rssFeedId
-                cursor.getInt(offset + 7) == 1, // read (boolean)
-                cursor.getInt(offset + 8) == 1 // starred (boolean)
+                cursor.getString((offset + 6)), // usid
+                cursor.getLong(offset + 7), // rssFeedId
+                cursor.getInt(offset + 8) == 1, // read (boolean)
+                cursor.getInt(offset + 9) == 1 // starred (boolean)
         );
         return entity;
     }
@@ -129,9 +142,10 @@ public class RssItemDao extends AbstractDao<RssItem, Long> {
         entity.setPubDate(cursor.isNull(offset + 3) ? null : new java.util.Date(cursor.getLong(offset + 3)));
         entity.setDescription(cursor.getString(offset + 4));
         entity.setContent(cursor.getString(offset + 5));
-        entity.setRssFeed__resolvedKey(cursor.getLong(offset + 6));
-        entity.setRead(cursor.getInt(offset + 7) == 1);
-        entity.setStarred(cursor.getInt(offset + 8) == 1);
+        entity.setUsid(cursor.getString(offset + 6));
+        entity.setRssFeed__resolvedKey(cursor.getLong(offset + 7));
+        entity.setRead(cursor.getInt(offset + 8) == 1);
+        entity.setStarred(cursor.getInt(offset + 9) == 1);
 
     }
 
