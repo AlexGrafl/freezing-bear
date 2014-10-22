@@ -86,7 +86,6 @@ public class AddFeedFragment extends Fragment {
             ((MainActivity)getActivity())
                     .getDaoSession().getRssItemDao().insertInTx(rssFeed.getRssItems());
             getActivity().onBackPressed();
-
         }
     }
 }

@@ -146,7 +146,7 @@ public class RssItem extends DomainObject implements Comparable<RssItem>, Parcel
         this.link = link;
     }
 
-    public void setGuid(String guid){ this.guid = guid + "feed#" + getRssFeedId();;}
+    public void setGuid(String guid){ this.guid = guid + "feed#" + getRssFeedId();}
 
     public String getGuid(){ return guid;}
 

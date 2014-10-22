@@ -1,14 +1,8 @@
 package com.technikumwien.mad.rssreader.adapters;
 import android.content.Context;
-import android.database.ContentObserver;
-import android.database.Cursor;
-import android.database.DataSetObserver;
-import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Filterable;
 
 import de.greenrobot.dao.query.LazyList;
 
@@ -59,7 +53,7 @@ public abstract class LazyListAdapter<T extends DomainObject> extends BaseAdapte
      */
     @Override
     public long getItemId(int position) {
-        if (dataValid && lazyList != null) {
+        if (dataValid && lazyList != null && lazyList.size() > position) {
             T item = lazyList.get(position);
             if (item != null) {
                 return item.getId();
@@ -115,6 +109,7 @@ public abstract class LazyListAdapter<T extends DomainObject> extends BaseAdapte
             return null;
         }
     }
+
 
     /**
      * Makes a new view to hold the data contained in the item.

@@ -223,6 +223,5 @@ public class ViewFeedFragment extends ListFragment implements AbsListView.MultiC
                     .getDaoSession().getRssItemDao().insertOrReplace(adapter.getItem(index));
         }
         adapter.notifyDataSetChanged();
-
     }
 }
