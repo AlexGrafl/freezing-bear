@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.Messenger;
 import android.util.Log;
+import android.util.SparseBooleanArray;
 import android.view.ActionMode;
 import android.view.Gravity;
 import android.view.Menu;
@@ -78,7 +79,6 @@ public class ViewFeedFragment extends ListFragment implements AbsListView.MultiC
                 actionMode = true;
                 getActivity().startActionMode(ViewFeedFragment.this);
                 view.setSelected(true);
-                rssItemArrayAdapter.getItem(position).setSelected(true);
                 return true;
             }
         });
@@ -157,15 +157,7 @@ public class ViewFeedFragment extends ListFragment implements AbsListView.MultiC
                 mode.finish();
                 return true;
             default:
-                clearSelection();
                 return false;
-        }
-    }
-
-    private void clearSelection() {
-        for(RssItem item : currentRssFeed.getRssItems()){
-            if(item.isSelected())
-                item.setSelected(false);
         }
     }
 
@@ -176,7 +168,7 @@ public class ViewFeedFragment extends ListFragment implements AbsListView.MultiC
 
     @Override
     public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
-        rssItemArrayAdapter.getItem(position).setSelected(checked);
+
     }
 
 
@@ -193,22 +185,22 @@ public class ViewFeedFragment extends ListFragment implements AbsListView.MultiC
     }
 
     private void doContextAction(int id){
-        for(RssItem item : currentRssFeed.getRssItems()){
-            if(item.isSelected()){
-                switch (id){
-                    case R.id.mark_read:
-                        item.setRead(true);
-                        break;
-                    case R.id.mark_unread:
-                        item.setRead(false);
-                        break;
-                    case R.id.mark_starred:
-                        item.setStarred(true);
-                        break;
-                }
-                item.setSelected(false);
+        SparseBooleanArray checked = getListView().getCheckedItemPositions();
+        for (int i = 0; i < checked.size(); i++) {
+            final int index = checked.keyAt(i);
+            switch (id){
+                case R.id.mark_read:
+                    currentRssFeed.getRssItems().get(index).setRead(true);
+                    break;
+                case R.id.mark_unread:
+                    currentRssFeed.getRssItems().get(index).setRead(false);
+                    break;
+                case R.id.mark_starred:
+                    currentRssFeed.getRssItems().get(index).setStarred(true);
+                    break;
             }
         }
+        rssItemArrayAdapter.notifyDataSetChanged();
     }
 
 }

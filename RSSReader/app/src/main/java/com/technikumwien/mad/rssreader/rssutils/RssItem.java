@@ -42,7 +42,6 @@ public class RssItem implements Comparable<RssItem>, Parcelable {
     private String content;
     private boolean read;
     private boolean starred;
-    private boolean selected;
 
     /** Used to resolve relations */
     private transient DaoSession daoSession;
@@ -192,14 +191,6 @@ public class RssItem implements Comparable<RssItem>, Parcelable {
 
     public boolean isStarred() {
         return starred;
-    }
-
-    public boolean isSelected() {
-        return selected;
-    }
-
-    public void setSelected(boolean selected) {
-        this.selected = selected;
     }
 
     @Override

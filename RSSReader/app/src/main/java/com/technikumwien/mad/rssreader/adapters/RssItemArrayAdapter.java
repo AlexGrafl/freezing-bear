@@ -25,7 +25,6 @@ public class RssItemArrayAdapter extends ArrayAdapter<RssItem> {
     public RssItemArrayAdapter(Context context, int resource, int textViewResourceId,
                                List<RssItem> objects) {
         super(context, resource, textViewResourceId, objects);
-
     }
 
     @Override
@@ -40,7 +39,6 @@ public class RssItemArrayAdapter extends ArrayAdapter<RssItem> {
         ViewHolder views = (ViewHolder) convertView.getTag();
         RssItem item = getItem(position);
         views.label.setText(item.getTitle());
-        convertView.setSelected(item.isSelected());
         views.label.setTextColor(item.isRead() ? Color.GRAY : Color.BLACK);
         views.label.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0,
                 item.isStarred() ? R.drawable.heart32_black : 0, 0);
