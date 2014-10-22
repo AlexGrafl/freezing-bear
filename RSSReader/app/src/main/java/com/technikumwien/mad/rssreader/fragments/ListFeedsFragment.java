@@ -4,33 +4,44 @@ import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Messenger;
+import android.util.SparseBooleanArray;
+import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.technikumwien.mad.rssreader.MainActivity;
 import com.technikumwien.mad.rssreader.R;
 import com.technikumwien.mad.rssreader.adapters.RssFeedLazyListAdapter;
+import com.technikumwien.mad.rssreader.greenDAO.RssItemDao;
 import com.technikumwien.mad.rssreader.rssutils.RssFeed;
+import com.technikumwien.mad.rssreader.rssutils.RssItem;
 import com.technikumwien.mad.rssreader.services.ReadRssService;
 
+import java.util.List;
+
 import de.greenrobot.dao.query.LazyList;
+import de.greenrobot.dao.query.QueryBuilder;
 
 /**
  * Created by Alex on 05.10.2014.
  */
-public class ListFeedsFragment extends ListFragment {
+public class ListFeedsFragment extends ListFragment implements AbsListView.MultiChoiceModeListener {
     //TODO: get rid of this
     private static final String TEMP_URL = "http://rss.orf.at/news.xml";
 
     boolean mDualPane;
     int mCurCheckPosition = 0;
     private RssFeedLazyListAdapter adapter;
+
+    private boolean actionMode = false;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -60,6 +71,10 @@ public class ListFeedsFragment extends ListFragment {
         }
         getActivity().setTitle(R.string.title_activity_main);
         setHasOptionsMenu(true);
+
+        getListView().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+        getListView().setMultiChoiceModeListener(this);
+
         getActivity().getActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
@@ -72,6 +87,7 @@ public class ListFeedsFragment extends ListFragment {
             menu.findItem(R.id.refresh_menu).setVisible(true);
         }
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -93,11 +109,16 @@ public class ListFeedsFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
+        RssFeed item = adapter.getItem(position);
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(item.getLink()));
+        startActivity(intent);
+
         showFeed(position);
     }
 
     void showFeed(int index) {
         mCurCheckPosition = index;
+
 
 
         // We can display everything in-place with fragments, so update
@@ -126,6 +147,64 @@ public class ListFeedsFragment extends ListFragment {
         }
     }
 
+    @Override
+    public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+        MenuInflater inflater = mode.getMenuInflater();
+        inflater.inflate(R.menu.feed_cab_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+        return false;
+    }
+
+    @Override
+    public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.delete_feed:
+                doContextAction(item.getItemId());
+                mode.finish();
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    @Override
+    public void onDestroyActionMode(ActionMode mode) {
+        actionMode = false;
+    }
 
 
+    private void doContextAction(int id){
+        SparseBooleanArray checked = getListView().getCheckedItemPositions();
+        for (int i = 0; i < checked.size(); i++) {
+            final int index = checked.keyAt(i);
+            switch (id){
+                case R.id.delete_feed:
+                    QueryBuilder qb = ((MainActivity) getActivity())
+                            .getDaoSession().getRssItemDao().queryBuilder();
+                    qb.where(RssItemDao.Properties.Id.gt(0));
+                    List <RssItem>itemList = qb.list();
+
+                    for(RssItem tmpItem:itemList) {
+                        ((MainActivity) getActivity())
+                                .getDaoSession().getRssItemDao().delete(tmpItem);
+                    }
+
+                    ((MainActivity) getActivity())
+                            .getDaoSession().getRssFeedDao().delete(adapter.getItem(index));
+                    break;
+            }
+
+        }
+        adapter.notifyDataSetChanged();
+
+    }
+
+    @Override
+    public void onItemCheckedStateChanged(ActionMode actionMode, int i, long l, boolean b) {
+
+    }
 }
