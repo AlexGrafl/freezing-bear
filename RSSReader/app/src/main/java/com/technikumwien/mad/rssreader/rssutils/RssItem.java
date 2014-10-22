@@ -42,6 +42,7 @@ public class RssItem implements Comparable<RssItem>, Parcelable {
     private String usid;
     private boolean read;
     private boolean starred;
+    private boolean selected;
 
     /** Used to resolve relations */
     private transient DaoSession daoSession;
@@ -129,7 +130,7 @@ public class RssItem implements Comparable<RssItem>, Parcelable {
         this.feed = feed;
     }
     */
-    public String getTitle() {
+   public String getTitle() {
         return title;
     }
 
@@ -202,6 +203,15 @@ public class RssItem implements Comparable<RssItem>, Parcelable {
     public boolean isStarred() {
         return starred;
     }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
+
     @Override
     public int compareTo(RssItem another) {
         if(getPubDate() != null && another.getPubDate() != null) {

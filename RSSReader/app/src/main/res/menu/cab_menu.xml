@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mark_read"
+        android:icon="@drawable/check32"
+        android:title="@string/mark_read"
+        android:showAsAction="ifRoom|withText"
+        />
+    <item
+        android:id="@+id/mark_unread"
+        android:icon="@drawable/block32"
+        android:title="@string/mark_unread"
+        android:showAsAction="ifRoom|withText"
+        />
+    <item
+        android:id="@+id/mark_starred"
+        android:icon="@drawable/heart32"
+        android:title="@string/mark_starred"
+        android:showAsAction="ifRoom|withText"
+        />
+</menu>
