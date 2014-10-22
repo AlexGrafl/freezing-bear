@@ -50,7 +50,7 @@ public class RssFeedDao extends AbstractDao<RssFeed, Long> {
     public static void createTable(SQLiteDatabase db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "'RSSFEED' (" + //
-                "'_id' INTEGER PRIMARY KEY ," + // 0: id
+                "'_id' INTEGER PRIMARY KEY AUTOINCREMENT," + // 0: id
                 "'RSSLINK' TEXT NOT NULL ," + // 1: rssLink
                 "'TITLE' TEXT NOT NULL ," +
                 "'LINK' TEXT ," +
@@ -70,16 +70,13 @@ public class RssFeedDao extends AbstractDao<RssFeed, Long> {
     protected void bindValues(SQLiteStatement stmt, RssFeed entity) {
         stmt.clearBindings();
 
-        Long id = entity.getId();
-        if (id != null) {
-            stmt.bindLong(1, id);
-        }
+
 
         stmt.bindString(2, entity.getRssLink());
         stmt.bindString(3, entity.getTitle());
         stmt.bindString(4, entity.getLink());
-        stmt.bindString(5, entity.getDescription());
-        stmt.bindString(6, entity.getLanguage());
+        stmt.bindString(5, entity.getDescription() == null ? "" : entity.getDescription());
+        stmt.bindString(6, entity.getLanguage() == null ? "" : entity.getLanguage());
     }
 
     @Override

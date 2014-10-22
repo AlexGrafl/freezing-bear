@@ -5,25 +5,15 @@ import android.app.FragmentTransaction;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import de.greenrobot.dao.*;
-import de.greenrobot.dao.query.QueryBuilder;
 
 
 import com.technikumwien.mad.rssreader.fragments.AddFeedFragment;
 import com.technikumwien.mad.rssreader.fragments.ListFeedsFragment;
-import com.technikumwien.mad.rssreader.greenDAO.DaoGeneratorImpl;
 import com.technikumwien.mad.rssreader.greenDAO.DaoMaster;
 import com.technikumwien.mad.rssreader.greenDAO.DaoSession;
-import com.technikumwien.mad.rssreader.greenDAO.RssFeedDao;
-import com.technikumwien.mad.rssreader.greenDAO.RssItemDao;
-import com.technikumwien.mad.rssreader.rssutils.RssFeed;
-import com.technikumwien.mad.rssreader.rssutils.RssItem;
 
-import java.util.Date;
-import java.util.List;
 
 
 /**
@@ -33,7 +23,7 @@ public class MainActivity extends Activity {
     private ListFeedsFragment listFeedsFragment;
     private boolean mDualPane;
     private DaoSession daoSession;
-
+    private DaoMaster daoMaster;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +44,7 @@ public class MainActivity extends Activity {
 
 
         setupDatabase();
-
+/*
         RssFeedDao rssFeedDao = daoSession.getRssFeedDao();
         RssFeed rssFeed = new RssFeed(1, "www.test.com#rss", "title", "www.normallink.com", "testeditesttest", "EN");
         rssFeed.__setDaoSession(daoSession);
@@ -68,7 +58,7 @@ public class MainActivity extends Activity {
         qb.where(RssItemDao.Properties.Id.gt(0));
         List testList = qb.list();
         rssItem.update();
-
+*/
         setContentView(R.layout.main_activity);
         listFeedsFragment = new ListFeedsFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -119,7 +109,7 @@ public class MainActivity extends Activity {
     private void setupDatabase() {
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "rssdb", null);
         SQLiteDatabase db = helper.getWritableDatabase();
-        DaoMaster daoMaster = new DaoMaster(db);
+        daoMaster = new DaoMaster(db);
         daoSession = daoMaster.newSession();
     }
     public DaoSession getDaoSession() {

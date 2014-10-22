@@ -3,6 +3,7 @@ package com.technikumwien.mad.rssreader.fragments;
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Messenger;
 import android.view.Menu;
@@ -12,8 +13,13 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.technikumwien.mad.rssreader.MainActivity;
 import com.technikumwien.mad.rssreader.R;
+import com.technikumwien.mad.rssreader.adapters.RssFeedLazyListAdapter;
+import com.technikumwien.mad.rssreader.rssutils.RssFeed;
 import com.technikumwien.mad.rssreader.services.ReadRssService;
+
+import de.greenrobot.dao.query.LazyList;
 
 /**
  * Created by Alex on 05.10.2014.
@@ -24,15 +30,17 @@ public class ListFeedsFragment extends ListFragment {
 
     boolean mDualPane;
     int mCurCheckPosition = 0;
+    private RssFeedLazyListAdapter adapter;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        LazyList<RssFeed> list = ((MainActivity) getActivity()).getDaoSession()
+                .getRssFeedDao().queryBuilder().listLazy();
         // Populate list with our static array of titles.
-        //TODO: get subscribed feeds from DB
-        setListAdapter(new ArrayAdapter<>(getActivity(),
-                android.R.layout.simple_list_item_activated_1, new String[]{"a", "b", "c"}));
+        adapter = new RssFeedLazyListAdapter(getActivity(), list);
+        setListAdapter(adapter);
 
         // Check to see if we have a frame in which to embed the details
         // fragment directly in the containing UI.
@@ -92,36 +100,28 @@ public class ListFeedsFragment extends ListFragment {
         mCurCheckPosition = index;
 
 
-            // We can display everything in-place with fragments, so update
-            // the list to highlight the selected item and show the data.
-            getListView().setItemChecked(index, true);
+        // We can display everything in-place with fragments, so update
+        // the list to highlight the selected item and show the data.
+        getListView().setItemChecked(index, true);
+        RssFeed feed = adapter.getItem(mCurCheckPosition);
+        // Check what fragment is currently shown, replace if needed.
+        ViewFeedFragment viewFeed = (ViewFeedFragment)
+                getFragmentManager().findFragmentById(R.id.details);
+        if (viewFeed == null || viewFeed.getShownIndex() != index) {
+            // Make new fragment to show this selection.
+            viewFeed = ViewFeedFragment.newInstance(index, feed);
 
-            // Check what fragment is currently shown, replace if needed.
-            ViewFeedFragment viewFeed = (ViewFeedFragment)
-                    getFragmentManager().findFragmentById(R.id.details);
-            if (viewFeed == null || viewFeed.getShownIndex() != index) {
-                // Make new fragment to show this selection.
-                viewFeed = ViewFeedFragment.newInstance(index);
-                Intent i = new Intent(getActivity(), ReadRssService.class);
-                Bundle bundle = new Bundle();
-                //TODO: get rss feed link from DB
-                bundle.putString(ReadRssService.RSS_FEED_URL, TEMP_URL);
-                bundle.putParcelable(ReadRssService.RSS_READER_HANDLER,
-                        new Messenger(viewFeed.getRssReadHandler()));
-                i.putExtras(bundle);
-                getActivity().startService(i);
-
-                // Execute a transaction, replacing any existing fragment
-                // with this one inside the frame.
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                if (mDualPane) {
-                        ft.replace(R.id.details, viewFeed);
-                    } else {
-                        ft.replace(R.id.list, viewFeed);
-                        ft.addToBackStack(null);
-                    }
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                ft.commit();
+            // Execute a transaction, replacing any existing fragment
+            // with this one inside the frame.
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            if (mDualPane) {
+                    ft.replace(R.id.details, viewFeed);
+                } else {
+                    ft.replace(R.id.list, viewFeed);
+                    ft.addToBackStack(null);
+                }
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.commit();
 
         }
     }

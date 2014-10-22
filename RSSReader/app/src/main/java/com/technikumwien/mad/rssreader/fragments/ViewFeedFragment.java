@@ -1,9 +1,9 @@
 package com.technikumwien.mad.rssreader.fragments;
 
-import android.app.FragmentManager;
 import android.app.ListFragment;
+import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
+import android.database.sqlite.SQLiteConstraintException;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,7 +12,6 @@ import android.os.Messenger;
 import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.ActionMode;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -20,15 +19,19 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Spinner;
 
+import com.technikumwien.mad.rssreader.MainActivity;
 import com.technikumwien.mad.rssreader.R;
+import com.technikumwien.mad.rssreader.adapters.RssItemLazyListAdapter;
+import com.technikumwien.mad.rssreader.greenDAO.RssItemDao;
 import com.technikumwien.mad.rssreader.rssutils.RssFeed;
 import com.technikumwien.mad.rssreader.rssutils.RssItem;
 import com.technikumwien.mad.rssreader.adapters.RssItemArrayAdapter;
 import com.technikumwien.mad.rssreader.services.ReadRssService;
 
 import java.util.ArrayList;
+
+import de.greenrobot.dao.query.LazyList;
 
 
 /**
@@ -40,15 +43,18 @@ public class ViewFeedFragment extends ListFragment implements AbsListView.MultiC
 
     private boolean actionMode = false;
 
-    private RssItemArrayAdapter rssItemArrayAdapter;
+    private RssItemLazyListAdapter adapter;
     private RssFeed currentRssFeed;
 
-    public static ViewFeedFragment newInstance(int index) {
+    private ProgressDialog progressDialog;
+
+    public static ViewFeedFragment newInstance(int index, RssFeed feed) {
         ViewFeedFragment f = new ViewFeedFragment();
 
         Bundle args = new Bundle();
         args.putInt("index", index);
         f.setArguments(args);
+        f.currentRssFeed = feed;
 
         return f;
     }
@@ -60,16 +66,18 @@ public class ViewFeedFragment extends ListFragment implements AbsListView.MultiC
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        if (rssItemArrayAdapter == null){
-            rssItemArrayAdapter = new RssItemArrayAdapter(getActivity(), 1,
-                    1, new ArrayList<RssItem>());
-            setListAdapter(rssItemArrayAdapter);
+        if (adapter == null){
+            LazyList<RssItem> list = ((MainActivity) getActivity()).getDaoSession()
+                    .getRssItemDao().queryBuilder()
+                    .where(RssItemDao.Properties.rssFeedId.eq(currentRssFeed.getId()))
+                    .orderDesc(RssItemDao.Properties.pubDate)
+                    .listLazy();
+            adapter = new RssItemLazyListAdapter(getActivity(), list);
+            setListAdapter(adapter);
         }
         if((savedInstanceState != null)
                 && (savedInstanceState.getParcelable(CURRENT_FEED) != null) ) {
             currentRssFeed = savedInstanceState.getParcelable(CURRENT_FEED);
-            rssItemArrayAdapter.clear();
-            rssItemArrayAdapter.addAll(currentRssFeed.getRssItems());
         }
         setHasOptionsMenu(true);
         getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -86,6 +94,11 @@ public class ViewFeedFragment extends ListFragment implements AbsListView.MultiC
         getListView().setMultiChoiceModeListener(this);
 
         getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActivity().setTitle(currentRssFeed.getTitle());
+
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setCancelable(false);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
     }
 
     @Override
@@ -96,7 +109,7 @@ public class ViewFeedFragment extends ListFragment implements AbsListView.MultiC
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        RssItem item = rssItemArrayAdapter.getItem(position);
+        RssItem item = adapter.getItem(position);
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(item.getLink()));
         startActivity(intent);
     }
@@ -124,15 +137,11 @@ public class ViewFeedFragment extends ListFragment implements AbsListView.MultiC
                 i.putExtra(ReadRssService.RSS_FEED_URL, currentRssFeed.getRssLink());
                 i.putExtra(ReadRssService.RSS_READER_HANDLER, new Messenger(new RssReadHandler()));
                 getActivity().startService(i);
+                progressDialog.show();
                 Log.i(TAG, "refresh pressed");
             default:
                 return true;
         }
-    }
-
-
-    public RssReadHandler getRssReadHandler(){
-        return new RssReadHandler();
     }
 
     @Override
@@ -175,12 +184,23 @@ public class ViewFeedFragment extends ListFragment implements AbsListView.MultiC
     public class RssReadHandler extends Handler {
         @Override
         public void handleMessage(Message msg){
-            rssItemArrayAdapter.clear();
-            currentRssFeed = (RssFeed) msg.obj;
-            rssItemArrayAdapter.addAll(currentRssFeed.getRssItems());
-            getActivity().setTitle(currentRssFeed.getTitle());
-            Log.i(TAG, "List refreshed successfully, got " + currentRssFeed.getRssItems().size()
-                    + " items.");
+            if(msg.obj == null) return;
+            RssFeed rssFeed = (RssFeed) msg.obj;
+            updateFeedEntries(rssFeed);
+            adapter.notifyDataSetChanged();
+            progressDialog.hide();
+            Log.i(TAG, "List refreshed successfully.");
+        }
+    }
+
+    private void updateFeedEntries(RssFeed rssFeed) {
+        for(RssItem item : rssFeed.getRssItems()) {
+            try {
+                ((MainActivity) getActivity())
+                        .getDaoSession().getRssItemDao().insert(item);
+            }catch(SQLiteConstraintException ignore){
+
+            }
         }
     }
 
@@ -190,17 +210,19 @@ public class ViewFeedFragment extends ListFragment implements AbsListView.MultiC
             final int index = checked.keyAt(i);
             switch (id){
                 case R.id.mark_read:
-                    currentRssFeed.getRssItems().get(index).setRead(true);
+                    adapter.getItem(index).setRead(true);
                     break;
                 case R.id.mark_unread:
-                    currentRssFeed.getRssItems().get(index).setRead(false);
+                    adapter.getItem(index).setRead(false);
                     break;
                 case R.id.mark_starred:
-                    currentRssFeed.getRssItems().get(index).setStarred(true);
+                    adapter.getItem(index).setStarred(true);
                     break;
             }
+            ((MainActivity) getActivity())
+                    .getDaoSession().getRssItemDao().insertOrReplace(adapter.getItem(index));
         }
-        rssItemArrayAdapter.notifyDataSetChanged();
-    }
+        adapter.notifyDataSetChanged();
 
+    }
 }

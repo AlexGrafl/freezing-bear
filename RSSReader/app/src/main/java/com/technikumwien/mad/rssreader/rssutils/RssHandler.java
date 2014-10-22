@@ -96,7 +96,7 @@ public class RssHandler extends DefaultHandler {
             return "";
         int index = qName.indexOf(':');
         if(index > 0) {
-            return qName.substring(index);
+            return qName.substring(index + 1);
         }
         return qName;
     }

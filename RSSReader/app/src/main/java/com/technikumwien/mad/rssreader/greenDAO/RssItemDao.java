@@ -35,7 +35,7 @@ public class RssItemDao extends AbstractDao<RssItem, Long> {
         public final static Property pubDate = new Property(3,String.class,"pubDate",false,"PUBDATE");
         public final static Property description = new Property(4,String.class,"description",false,"DESCRIPTION");
         public final static Property content = new Property(5,String.class,"content",false,"CONTENT");
-        public final static Property usid = new Property(6,String.class,"usid",false,"USID");
+        public final static Property guid = new Property(6,String.class,"guid",false,"GUID");
         public final static Property rssFeedId = new Property(7, long.class, "rssFeedId", false, "RSSFEED_ID");
         public final static Property read = new Property(8, boolean.class, "read", false, "READ");
         public final static Property starred = new Property(9, boolean.class, "starred", false, "STARRED");
@@ -60,13 +60,13 @@ public class RssItemDao extends AbstractDao<RssItem, Long> {
     public static void createTable(SQLiteDatabase db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "'RSSITEMS' (" + //
-                "'_id' INTEGER PRIMARY KEY ," + // 0: id    //AUTO_INCREMENT
+                "'_id' INTEGER PRIMARY KEY AUTOINCREMENT," + // 0: id    //AUTO_INCREMENT
                 "'TITLE' TEXT NOT NULL ," + // 1: title   >NOT NULL
                 "'LINK' TEXT NOT NULL, " + // 2: link
                 "'PUBDATE' INTEGER, " + // 3: pubDate
                 "'DESCRIPTION' TEXT, " + // 4: description
                 "'CONTENT' TEXT, " + // 5: content
-                "'USID' TEXT, " + //6: usid
+                "'GUID' TEXT UNIQUE, " + //6: usid
                 "'RSSFEED_ID' INTEGER NOT NULL, " + // 7: RssFeedId
                 "'READ' INTEGER," + // 8: Read
                 "'STARRED' INTEGER);"); // 9: Starred
@@ -83,24 +83,19 @@ public class RssItemDao extends AbstractDao<RssItem, Long> {
     protected void bindValues(SQLiteStatement stmt, RssItem entity) {
         stmt.clearBindings();
 
-        Long id = entity.getId();
-        if (id != null) {
-            stmt.bindLong(1, id);
-        }
-        stmt.bindString(2,entity.getTitle());
-        stmt.bindString(3,entity.getLink());
+        stmt.bindString(2 ,entity.getTitle());
+        stmt.bindString(3, entity.getLink());
 
         java.util.Date date = entity.getPubDate();
         if (date != null) {
             stmt.bindLong(4, date.getTime());
         }
-        stmt.bindString(5,entity.getDescription());
-        stmt.bindString(6,entity.getContent());
-        stmt.bindString(7,entity.getUsid());
-        stmt.bindLong(8,entity.getRssFeed__resolvedKey());
-        stmt.bindLong(9,entity.isRead()? 1 : 0);
-        stmt.bindLong(10,entity.isStarred() ? 1 : 0);
-
+        stmt.bindString(5, entity.getDescription() == null ? "" : entity.getDescription());
+        stmt.bindString(6, entity.getContent() == null ? "" : entity.getContent());
+        stmt.bindString(7, entity.getGuid());
+        stmt.bindLong(8, entity.getRssFeedId());
+        stmt.bindLong(9, entity.isRead()? 1 : 0);
+        stmt.bindLong(10, entity.isStarred() ? 1 : 0);
     }
 
     @Override

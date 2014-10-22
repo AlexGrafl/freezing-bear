@@ -10,7 +10,7 @@
     <string name="refresh">Refresh</string>
     <string name="rss_feed_url">Enter RSS feed URL:</string>
     <string name="rss_feed_nick">Enter RSS feed nickname:</string>
-    <string name="add_feed_button_text">Add</string>
+    <string name="add_feed_button_text">Subscribe</string>
     <string name="mark_read">Read</string>
     <string name="mark_starred">Starred</string>
     <string name="mark_unread">Unread</string>

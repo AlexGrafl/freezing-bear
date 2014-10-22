@@ -24,13 +24,14 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.technikumwien.mad.rssreader.adapters.DomainObject;
 import com.technikumwien.mad.rssreader.greenDAO.DaoSession;
 import com.technikumwien.mad.rssreader.greenDAO.RssFeedDao;
 import com.technikumwien.mad.rssreader.greenDAO.RssItemDao;
 
 import de.greenrobot.dao.DaoException;
 
-public class RssItem implements Comparable<RssItem>, Parcelable {
+public class RssItem extends DomainObject implements Comparable<RssItem>, Parcelable {
 
 
     private long id;
@@ -39,7 +40,7 @@ public class RssItem implements Comparable<RssItem>, Parcelable {
     private Date pubDate;
     private String description;
     private String content;
-    private String usid;
+    private String guid;
     private boolean read;
     private boolean starred;
 
@@ -57,7 +58,7 @@ public class RssItem implements Comparable<RssItem>, Parcelable {
     }
 
     public RssItem(long id, String title, String link,
-                   Date pubDate, String description, String content, String usid,
+                   Date pubDate, String description, String content, String guid,
                    long rssFeed__resolvedKey, boolean read, boolean starred) {
 
         this.id = id;
@@ -66,7 +67,7 @@ public class RssItem implements Comparable<RssItem>, Parcelable {
         this.pubDate = pubDate;
         this.description = description;
         this.content = content;
-        this.usid = usid;
+        this.guid = guid;
         this.rssFeed__resolvedKey = rssFeed__resolvedKey;
         this.read = read;
         this.starred = starred;
@@ -145,18 +146,20 @@ public class RssItem implements Comparable<RssItem>, Parcelable {
         this.link = link;
     }
 
-    public String getUsid() {
-        return usid;
-    }
+    public void setGuid(String guid){ this.guid = guid + "feed#" + getRssFeedId();;}
+
+    public String getGuid(){ return guid;}
 
     public void setUsid(String usid) {
-        this.usid = usid;
+        setGuid(usid);
     }
 
     public Date getPubDate() {
         return pubDate;
     }
-
+    public void setDate(Date date){
+        setPubDate(date);
+    }
     public void setPubDate(Date pubDate) {
         this.pubDate = pubDate;
     }
@@ -219,6 +222,11 @@ public class RssItem implements Comparable<RssItem>, Parcelable {
     public Long getRssFeed__resolvedKey() {
 
         return rssFeed__resolvedKey;
+    }
+
+    public long getRssFeedId(){
+        if(rssFeed == null) return rssFeed__resolvedKey;
+        return rssFeed.getId();
     }
     /* ---------------------------- GreenDao Methods ---------------------------- */
     /* To-one relationship, resolved on first access. */

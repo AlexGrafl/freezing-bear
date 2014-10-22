@@ -9,6 +9,7 @@ import android.os.Messenger;
 import android.os.RemoteException;
 import android.util.Log;
 
+import com.technikumwien.mad.rssreader.MainActivity;
 import com.technikumwien.mad.rssreader.rssutils.RssFeed;
 import com.technikumwien.mad.rssreader.rssutils.RssItem;
 import com.technikumwien.mad.rssreader.rssutils.RssReader;
@@ -16,6 +17,7 @@ import com.technikumwien.mad.rssreader.rssutils.RssReader;
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
@@ -40,6 +42,9 @@ public class ReadRssService extends Service {
         Bundle extras = intent.getExtras();
         String rssFeedUrl = extras.getString(RSS_FEED_URL);
         messenger = extras.getParcelable(RSS_READER_HANDLER);
+        if(!rssFeedUrl.startsWith("http")){
+            rssFeedUrl = "http://" + rssFeedUrl;
+        }
         readRssFeed(rssFeedUrl);
         return START_NOT_STICKY;
     }
@@ -48,8 +53,8 @@ public class ReadRssService extends Service {
         Thread t = new Thread(){
             @Override
             public void run(){
+                Message msg = new Message();
                 try {
-                    Message msg = new Message();
                     RssFeed rssFeed = RssReader.read(new URL(rssFeedUrl));
                     rssFeed.setRssLink(rssFeedUrl);
                     msg.obj = rssFeed;
@@ -57,6 +62,13 @@ public class ReadRssService extends Service {
                     stopSelf();
                 } catch (SAXException | RemoteException |IOException e) {
                     Log.e(TAG, "Error reading RSS feed from " + rssFeedUrl, e);
+                        msg.obj = null;
+                    try {
+                        messenger.send(msg);
+                    } catch (RemoteException e1) {
+                        e1.printStackTrace();
+                    }
+
                 }
             }
         };

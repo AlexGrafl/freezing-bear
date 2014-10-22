@@ -21,13 +21,14 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.technikumwien.mad.rssreader.adapters.DomainObject;
 import com.technikumwien.mad.rssreader.greenDAO.DaoSession;
 import com.technikumwien.mad.rssreader.greenDAO.RssFeedDao;
 import com.technikumwien.mad.rssreader.greenDAO.RssItemDao;
 
 import de.greenrobot.dao.DaoException;
 
-public class RssFeed implements Parcelable {
+public class RssFeed extends DomainObject implements Parcelable {
 
 
     private long id;
