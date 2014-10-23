@@ -29,36 +29,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        /*** Test ***/
-        //rssFeedDao is functional
-        /*DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "notes-db", null);
-        SQLiteDatabase db = helper.getWritableDatabase();
-        DaoMaster daoMaster = new DaoMaster(db);
-        DaoSession daoSession = daoMaster.newSession();
-
-        daoSession.insert(rssFeed);
-
-        QueryBuilder qb = daoSession.getRssFeedDao().queryBuilder();
-        qb.where(RssFeedDao.Properties.Id.gt(0));
-        List testList = qb.list();*/
-
-
         setupDatabase();
-/*
-        RssFeedDao rssFeedDao = daoSession.getRssFeedDao();
-        RssFeed rssFeed = new RssFeed(1, "www.test.com#rss", "title", "www.normallink.com", "testeditesttest", "EN");
-        rssFeed.__setDaoSession(daoSession);
-
-        RssItemDao rssItemDao = daoSession.getRssItemDao();
-        RssItem rssItem = new RssItem(2, "testTitle", "www.link.at",new Date(), "testDescription", "this is content","2250518", 1, false, false);
-        rssItem.setFeed(rssFeed);
-        rssItem.__setDaoSession(daoSession);
-        daoSession.insert(rssItem);
-        QueryBuilder qb = daoSession.getRssItemDao().queryBuilder();
-        qb.where(RssItemDao.Properties.Id.gt(0));
-        List testList = qb.list();
-        rssItem.update();
-*/
         setContentView(R.layout.main_activity);
         listFeedsFragment = new ListFeedsFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();

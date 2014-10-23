@@ -30,6 +30,7 @@ import com.technikumwien.mad.rssreader.adapters.RssItemArrayAdapter;
 import com.technikumwien.mad.rssreader.services.ReadRssService;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.greenrobot.dao.query.LazyList;
 
@@ -67,12 +68,7 @@ public class ViewFeedFragment extends ListFragment implements AbsListView.MultiC
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (adapter == null){
-            LazyList<RssItem> list = ((MainActivity) getActivity()).getDaoSession()
-                    .getRssItemDao().queryBuilder()
-                    .where(RssItemDao.Properties.rssFeedId.eq(currentRssFeed.getId()))
-                    .orderDesc(RssItemDao.Properties.pubDate)
-                    .listLazy();
-            adapter = new RssItemLazyListAdapter(getActivity(), list);
+            adapter = new RssItemLazyListAdapter(getActivity(), getLazyList());
             setListAdapter(adapter);
         }
         if((savedInstanceState != null)
@@ -101,6 +97,14 @@ public class ViewFeedFragment extends ListFragment implements AbsListView.MultiC
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
     }
 
+    private LazyList<RssItem> getLazyList() {
+        return ((MainActivity) getActivity()).getDaoSession()
+                .getRssItemDao().queryBuilder()
+                .where(RssItemDao.Properties.rssFeedId.eq(currentRssFeed.getId()))
+                .orderDesc(RssItemDao.Properties.pubDate)
+                .listLazy();
+    }
+
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -110,6 +114,10 @@ public class ViewFeedFragment extends ListFragment implements AbsListView.MultiC
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         RssItem item = adapter.getItem(position);
+        item.setRead(true);
+        ((MainActivity) getActivity())
+                .getDaoSession().getRssItemDao().insertOrReplace(item);
+        adapter.notifyDataSetChanged();
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(item.getLink()));
         startActivity(intent);
     }
@@ -196,12 +204,14 @@ public class ViewFeedFragment extends ListFragment implements AbsListView.MultiC
     private void updateFeedEntries(RssFeed rssFeed) {
         for(RssItem item : rssFeed.getRssItems()) {
             try {
+                item.setFeed(currentRssFeed);
+
                 ((MainActivity) getActivity())
                         .getDaoSession().getRssItemDao().insert(item);
             }catch(SQLiteConstraintException ignore){
-
             }
         }
+        adapter.updateLazyList(getLazyList());
     }
 
     private void doContextAction(int id){

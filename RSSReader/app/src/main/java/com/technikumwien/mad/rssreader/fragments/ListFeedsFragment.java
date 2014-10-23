@@ -2,12 +2,7 @@ package com.technikumwien.mad.rssreader.fragments;
 
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
-import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Messenger;
-import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.ActionMode;
 import android.view.Menu;
@@ -16,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.technikumwien.mad.rssreader.MainActivity;
@@ -25,12 +19,8 @@ import com.technikumwien.mad.rssreader.adapters.RssFeedLazyListAdapter;
 import com.technikumwien.mad.rssreader.greenDAO.RssItemDao;
 import com.technikumwien.mad.rssreader.rssutils.RssFeed;
 import com.technikumwien.mad.rssreader.rssutils.RssItem;
-import com.technikumwien.mad.rssreader.services.ReadRssService;
-
-import java.util.List;
 
 import de.greenrobot.dao.query.LazyList;
-import de.greenrobot.dao.query.QueryBuilder;
 
 /**
  * Created by Alex on 05.10.2014.
@@ -85,7 +75,6 @@ public class ListFeedsFragment extends ListFragment implements AbsListView.Multi
         getActivity().setTitle(R.string.title_activity_main);
         setHasOptionsMenu(true);
         getActivity().getActionBar().setDisplayHomeAsUpEnabled(false);
-
     }
 
     @Override
@@ -98,11 +87,20 @@ public class ListFeedsFragment extends ListFragment implements AbsListView.Multi
         }
     }
 
+    private void updateList(){
+        LazyList<RssFeed> list = ((MainActivity) getActivity()).getDaoSession()
+                .getRssFeedDao().queryBuilder().listLazy();
+        adapter.updateLazyList(list);
+        adapter.notifyDataSetChanged();
+
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()){
             case R.id.refresh_menu:
                 //TODO: refresh that shit
+                updateList();
             default:
                 return true;
         }
@@ -121,19 +119,12 @@ public class ListFeedsFragment extends ListFragment implements AbsListView.Multi
 
     void showFeed(int index) {
         mCurCheckPosition = index;
-        // We can display everything in-place with fragments, so update
-        // the list to highlight the selected item and show the data.
         getListView().setItemChecked(index, true);
         RssFeed feed = adapter.getItem(mCurCheckPosition);
-        // Check what fragment is currently shown, replace if needed.
         ViewFeedFragment viewFeed = (ViewFeedFragment)
                 getFragmentManager().findFragmentById(R.id.details);
         if (viewFeed == null || viewFeed.getShownIndex() != index) {
-            // Make new fragment to show this selection.
             viewFeed = ViewFeedFragment.newInstance(index, feed);
-
-            // Execute a transaction, replacing any existing fragment
-            // with this one inside the frame.
             FragmentTransaction ft = getFragmentManager().beginTransaction();
             if (mDualPane) {
                     ft.replace(R.id.details, viewFeed);
@@ -174,7 +165,7 @@ public class ListFeedsFragment extends ListFragment implements AbsListView.Multi
                     }
                     rssFeed.delete();
                 }
-                adapter.notifyDataSetChanged();
+                updateList();
                 mode.finish();
                 return true;
             default:

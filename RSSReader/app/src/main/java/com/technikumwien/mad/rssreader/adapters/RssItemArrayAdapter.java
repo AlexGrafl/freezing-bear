@@ -47,6 +47,5 @@ public class RssItemArrayAdapter extends ArrayAdapter<RssItem> {
 
     private static final class ViewHolder{
         private TextView label;
-        private ImageView image;
     }
 }

@@ -25,12 +25,20 @@ public class RssFeedLazyListAdapter extends LazyListAdapter<RssFeed> {
     public View newView(Context context, RssFeed item, ViewGroup parent) {
         if(item == null) return null;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        return inflater.inflate(R.layout.rss_list_item, parent, false);
+        View v = inflater.inflate(R.layout.rss_list_item, parent, false);
+        RssFeedViewHolder viewHolder = new RssFeedViewHolder();
+        viewHolder.title = (TextView) v.findViewById(R.id.rss_item_title);
+        v.setTag(viewHolder);
+        return v;
     }
 
     @Override
     public void bindView(View view, Context context, RssFeed item) {
-        TextView textView = (TextView) view.findViewById(R.id.rss_item_title);
-        textView.setText(item.getTitle());
+        RssFeedViewHolder viewHolder = (RssFeedViewHolder) view.getTag();
+        viewHolder.title.setText(item.getTitle());
+    }
+
+    public class RssFeedViewHolder{
+        TextView title;
     }
 }

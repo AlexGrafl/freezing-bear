@@ -120,20 +120,9 @@ public class RssItem extends DomainObject implements Comparable<RssItem>, Parcel
         this.id = id;
     }
 
-
-   /*
-   public RssFeed getFeed() {
-        return feed;
-    }
-
-    public void setFeed(RssFeed feed) {
-        this.feed = feed;
-    }
-    */
-   public String getTitle() {
+    public String getTitle() {
         return title;
     }
-
     public void setTitle(String title) {
         this.title = title;
     }
@@ -232,9 +221,7 @@ public class RssItem extends DomainObject implements Comparable<RssItem>, Parcel
     /* To-one relationship, resolved on first access. */
     public RssFeed getFeed() {
 //        if(this.feed != null) {
-
-            //TODO: Recursive Call: - fix it!
-            long __key = this.getFeed().getId();
+            long __key = this.getRssFeedId();
             if (rssFeed__resolvedKey == null || !rssFeed__resolvedKey.equals(__key)) {
                 if (daoSession == null) {
                     throw new DaoException("Entity is detached from DAO context");

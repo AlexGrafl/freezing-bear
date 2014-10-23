@@ -25,6 +25,11 @@ public abstract class LazyListAdapter<T extends DomainObject> extends BaseAdapte
     public LazyList<T> getLazyList() {
         return lazyList;
     }
+
+    public void updateLazyList(LazyList<T> lazyList){
+        this.lazyList = lazyList;
+    }
+
     /**
      * @see android.widget.ListAdapter#getCount()
      */
@@ -92,6 +97,7 @@ public abstract class LazyListAdapter<T extends DomainObject> extends BaseAdapte
         bindView(v, context, item);
         return v;
     }
+
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
 
@@ -133,7 +139,7 @@ public abstract class LazyListAdapter<T extends DomainObject> extends BaseAdapte
      * Bind an existing view to the data data contained in the item.
      * @param view Existing view, returned earlier by newView
      * @param context Interface to application's global information
-     * @param cursor The object that contains the data
+     * @param item The object that contains the data
      */
     public abstract void bindView(View view, Context context, T item);
 
